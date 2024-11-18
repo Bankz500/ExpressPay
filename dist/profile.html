@@ -73,7 +73,7 @@
 <!-- Profile Header -->
 <div class="flex items-left mb-4">
     <input type="file" id="profileImageInput" accept="image/*" class="hidden" onchange="uploadProfilePicture(event)">
-    <img id="profilePic" src="https://via.placeholder.com/100" alt="Profile Picture" class="w-16 h-16 rounded-full border border-gray-300 cursor-pointer" onclick="document.getElementById('profileImageInput').click();">
+    <img id="profilePic" src="https://via.placeholder.com/100" alt="Profile Picture" class="w-16 h-16 rounded-full border border-gray-300 cursor-pointer" onclick="document.getElementById('profileImageInput').click();">    
     <div class="ml-4">
         <h1 id="profileUsername" class="text-sm font-bold">@user299d4</h1>
         <span class="inline-block bg-purple-500 text-white text-xs font-semibold px-2 py-1 rounded-full">Fresher 🐾</span>
@@ -97,35 +97,33 @@
         </div>
 
 <script>
-// Function to upload and preview the profile picture
+// Function to upload the profile picture
 function uploadProfilePicture(event) {
-    const input = event.target;
-    const reader = new FileReader();
+    const file = event.target.files[0];
+    if (file) {
+        // Create a file reader to read the file
+        const reader = new FileReader();
 
-    // Once the file is loaded, set the src of the image
-    reader.onload = function() {
-        const dataURL = reader.result;
-        const profilePic = document.getElementById('profilePic');
-        profilePic.src = dataURL;
+        reader.onloadend = function () {
+            const imageUrl = reader.result; // The image URL after reading the file
+            document.getElementById('profilePic').src = imageUrl; // Set the image source to the uploaded file
 
-        // Store the image in localStorage
-        localStorage.setItem('profilePic', dataURL);
-    };
+            // Store the image URL in localStorage so it persists even after page reload
+            localStorage.setItem('profilePic', imageUrl);
+        };
 
-    // Read the selected file as a Data URL
-    if (input.files && input.files[0]) {
-        reader.readAsDataURL(input.files[0]);
+        // Read the file as a data URL
+        reader.readAsDataURL(file);
     }
 }
 
-// Load the stored profile data on page load
-window.onload = function() {
-    // Load stored image
+// Check if a profile picture is stored in localStorage when the page loads
+document.addEventListener('DOMContentLoaded', function () {
     const storedImage = localStorage.getItem('profilePic');
     if (storedImage) {
-        document.getElementById('profilePic').src = storedImage;
+        document.getElementById('profilePic').src = storedImage; // Use the stored image if available
     }
-};
+});
 
 // Function to show user information from Firebase
 async function showUserInfo() {
