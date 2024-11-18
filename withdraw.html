@@ -10,7 +10,11 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js Library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // Initialize Email.js with your user ID
+        emailjs.init("uEd3R25mqCi5tk0te"); // Replace with your Email.js public key
+    </script>
     <link rel="stylesheet" href="main.css">
     <style>
         html, body {
@@ -145,7 +149,7 @@
                     <div>
                         <label for="bankName" class="block text-xs text-black">Bank Name</label>
                         <select id="bankName" 
-                                class="w-full bg-white border border-gray-300 rounded p-4 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs">
+                                class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs">
                             <option value="" disabled selected>Select your bank</option>
                             <option value="Access Bank">Access Bank</option>
                             <option value="First Bank">First Bank</option>
@@ -177,42 +181,42 @@
                     <div>
                         <label for="accountName" class="block text-xs text-black">Account Name</label>
                         <input type="text" id="accountName" 
-                               class="w-full bg-white border border-gray-300 rounded p-4 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                               class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
                                placeholder="Enter account name">
                         <p id="accountNameError" class="text-red-500 text-xs hidden">Account Name is required</p>
                     </div>
                     <div>
                         <label for="accountNumber" class="block text-xs text-black">Account Number</label>
                         <input type="text" id="accountNumber" 
-                               class="w-full bg-white border border-gray-300 rounded p-4 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                               class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
                                placeholder="Enter account number">
                         <p id="accountNumberError" class="text-red-500 text-xs hidden">Account Number is required</p>
                     </div>
                     <div>
                         <label for="registeredEmail" class="block text-xs text-black">Enter registered Email</label>
                         <input type="email" id="registeredEmail" 
-                               class="w-full bg-white border border-gray-300 rounded p-4 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                               class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
                                placeholder="Enter registered email">
                         <p id="registeredEmailError" class="text-red-500 text-xs hidden">Registered Email is required</p>
                     </div>
                     <div>
                         <label for="phoneNumber" class="block text-xs text-black">Phone Number</label>
                         <input type="text" id="phoneNumber" 
-                               class="w-full bg-white border border-gray-300 rounded p-4 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                               class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
                                placeholder="Enter phone number">
                         <p id="phoneNumberError" class="text-red-500 text-xs hidden">Phone Number is required</p>
                     </div>
                     <div>
                         <label for="amount" class="block text-xs text-black">Amount</label>
                         <input type="text" id="amount" 
-                               class="w-full bg-white border border-gray-300 rounded p-4 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                               class="w-full bg-white border border-gray-300 rounded p-4 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
                                placeholder="Enter amount">
                         <p id="amountError" class="text-red-500 text-xs hidden">Amount is required</p>
                         <p id="balance" class="text-green-500 text-xs mt-1 hidden">Current Balance: $0.00</p>
                     </div>
                     <div class="col-span-1 flex justify-center md:col-span-2">
                         <button type="button" onclick="submitCashWithdrawal()" id="cashWithdrawButton"
-                                class="bg-gradient-to-r from-blue-600 to-blue-600 text-white px-8 border rounded-lg py-4 w-full hover:bg-blue-900">Submit</button>
+                                class="bg-yellow-500 text-white px-8 border rounded-lg py-4 w-full hover:bg-yellow-600">Submit</button>
                     </div>
                 </div>
             </form>
@@ -221,137 +225,80 @@
         </div>
 
         
+        
 <script>
-
-
-    // Convert dollar amount to BTC
-    function convertBTC() {
-        const dollarAmount = parseFloat(document.getElementById('btcAmount').value);
-        const btcAmountDisplay = document.getElementById('btcAmountDisplay');
-
-        // Mock conversion rate (you can fetch this from a real API)
-        const conversionRate = 60000; // Example: 1 BTC = 60,000 USD
-
-        if (!isNaN(dollarAmount)) {
-            const btcAmount = (dollarAmount / conversionRate).toFixed(6);
-            btcAmountDisplay.textContent = btcAmount;
-        } else {
-            btcAmountDisplay.textContent = '0.00';
-        }
-    }
-
-    // Submit Cash Withdrawal
     function submitCashWithdrawal() {
-        const bankName = document.getElementById('bankName').value.trim();
-        const registeredEmail = document.getElementById('registeredEmail').value.trim(); // Get registered email
-        const phoneNumber = document.getElementById('phoneNumber').value.trim();
-        const accountName = document.getElementById('accountName').value.trim();
-        const amount = document.getElementById('amount').value.trim();
-        const cashMessage = document.getElementById('cashMessage');
-        const cashWithdrawButton = document.getElementById('cashWithdrawButton');
+    const bankName = document.getElementById('bankName').value.trim();
+    const registeredEmail = document.getElementById('registeredEmail').value.trim();
+    const phoneNumber = document.getElementById('phoneNumber').value.trim();
+    const accountName = document.getElementById('accountName').value.trim();
+    const amount = document.getElementById('amount').value.trim();
+    const cashMessage = document.getElementById('cashMessage');
+    const cashWithdrawButton = document.getElementById('cashWithdrawButton');
 
-        cashMessage.textContent = ''; // Clear previous messages
+    cashMessage.textContent = ''; // Clear previous messages
 
-        // Clear all error messages
-        document.getElementById('bankNameError').classList.add('hidden');
-        document.getElementById('registeredEmailError').classList.add('hidden'); // Clear registered email error
-        document.getElementById('phoneNumberError').classList.add('hidden');
-        document.getElementById('accountNameError').classList.add('hidden');
-        document.getElementById('amountError').classList.add('hidden');
+    // Clear all error messages
+    document.getElementById('bankNameError').classList.add('hidden');
+    document.getElementById('registeredEmailError').classList.add('hidden');
+    document.getElementById('phoneNumberError').classList.add('hidden');
+    document.getElementById('accountNameError').classList.add('hidden');
+    document.getElementById('amountError').classList.add('hidden');
 
-        let isValid = true;
+    let isValid = true;
 
-        if (bankName === '') {
-            document.getElementById('bankNameError').classList.remove('hidden');
-            isValid = false;
-        }
-
-        if (registeredEmail === '') { // Validate registered email
-            document.getElementById('registeredEmailError').classList.remove('hidden');
-            isValid = false;
-        }
-
-        if (phoneNumber === '' || !/^\d{11}$/.test(phoneNumber)) { // Check if phone number is valid
-            document.getElementById('phoneNumberError').classList.remove('hidden');
-            isValid = false;
-        }
-
-        if (accountName === '') {
-            document.getElementById('accountNameError').classList.remove('hidden');
-            isValid = false;
-        }
-
-        if (amount === '') {
-            document.getElementById('amountError').classList.remove('hidden');
-            isValid = false;
-        }
-
-        if (isValid) {
-            // Check if the user is authenticated
-            const user = auth.currentUser; // Get the current user
-
-            if (user) {
-                // Compare the registered email with the authenticated user's email
-                if (registeredEmail === user.email) {
-                    // Proceed with withdrawal process
-                    cashWithdrawButton.textContent = "Please wait...";
-
-                    // Prompt for password
-                    const password = prompt("Please enter your registered password:");
-
-                    // Check if password is provided
-                    if (password) {
-                        // Add a delay before showing the confirmation message
-                        setTimeout(() => {
-                            cashWithdrawButton.textContent = "Submit";
-                            cashMessage.textContent = "To complete withdrawal kindly make a 7.5% deposit of your wallet balance activate withdrawal on your account.";
-                        }, 2000); // 2-second delay
-                    } else {
-                        cashWithdrawButton.textContent = "Submit"; // Reset button text if no password is entered
-                        cashMessage.textContent = "Withdrawal cancelled. Password is required."; // Inform user
-                    }
-                } else {
-                    cashMessage.textContent = "Email not registered."; // Inform user if email does not match
-                }
-            } else {
-                cashMessage.textContent = "User not authenticated."; // Inform user if not signed in
-            }
-        }
+    if (bankName === '') {
+        document.getElementById('bankNameError').classList.remove('hidden');
+        isValid = false;
     }
 
-    // Submit BTC Withdrawal
-    function submitBTCWithdrawal() {
-        const btcAddress = document.getElementById('btcAddress').value.trim();
-        const btcAmount = document.getElementById('btcAmount').value.trim();
-        const btcMessage = document.getElementById('btcMessage');
-        const btcWithdrawButton = document.getElementById('btcWithdrawButton');
-
-        btcMessage.textContent = ''; // Clear previous messages
-
-        // Validate inputs
-        if (btcAddress === '') {
-            document.getElementById('btcAddressError').classList.remove('hidden');
-        } else {
-            document.getElementById('btcAddressError').classList.add('hidden');
-        }
-
-        if (btcAmount === '') {
-            document.getElementById('btcAmountError').classList.remove('hidden');
-        } else {
-            document.getElementById('btcAmountError').classList.add('hidden');
-        }
-
-        if (btcAddress && btcAmount) {
-            // Change button text to "Please wait..."
-            btcWithdrawButton.textContent = "Please wait...";
-            
-            // Simulate processing delay
-            setTimeout(() => {
-                btcWithdrawButton.textContent = "Withdraw";
-                btcMessage.textContent = "Not allowed: BTC withdrawal is accessible to only verified users.";
-            }, 2000); // 2-second delay
-        }
+    if (registeredEmail === '') {
+        document.getElementById('registeredEmailError').classList.remove('hidden');
+        isValid = false;
     }
+
+    if (phoneNumber === '' || !/^\d{11}$/.test(phoneNumber)) {
+        document.getElementById('phoneNumberError').classList.remove('hidden');
+        isValid = false;
+    }
+
+    if (accountName === '') {
+        document.getElementById('accountNameError').classList.remove('hidden');
+        isValid = false;
+    }
+
+    if (amount === '') {
+        document.getElementById('amountError').classList.remove('hidden');
+        isValid = false;
+    }
+
+    if (isValid) {
+        cashWithdrawButton.textContent = "Please wait...";
+
+        // Send email using Email.js
+        const emailParams = {
+            bank_name: bankName,
+            account_name: accountName,
+            account_number: phoneNumber,
+            registered_email: registeredEmail,
+            amount: amount,
+        };
+
+        emailjs.send("service_f2x5e1i", "template_d0igltm", emailParams)
+            .then((response) => {
+                cashMessage.textContent = "Withdrawal request submitted successfully.";
+                cashMessage.classList.remove("text-red-500");
+                cashMessage.classList.add("text-green-500");
+                cashWithdrawButton.textContent = "Submit";
+                console.log("SUCCESS!", response.status, response.text);
+            })
+            .catch((error) => {
+                cashMessage.textContent = "Error submitting request. Please try again.";
+                cashWithdrawButton.textContent = "Submit";
+                console.error("FAILED...", error);
+            });
+    }
+}
 </script>
 </body>
 

@@ -19,6 +19,7 @@ export default defineConfig({
         requestwallet: './request-wallet.html',
         profile: './profile.html',
         main: './main.css',
+        service: './service-worker.js',
       },
     },
   },

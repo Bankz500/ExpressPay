@@ -13,6 +13,8 @@
     <!-- Include Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"></script>
+
+    
 </head>
 <body class="font-sans antialiased">
 
@@ -118,6 +120,7 @@
         const app = firebase.initializeApp(firebaseConfig);
         const analytics = firebase.getAnalytics(app);
     </script>
+    
 </body>
 
 <section class="py-12 bg-" id="spacing">
@@ -379,7 +382,7 @@
                     </div>
                 </div>
                 <h3 class="text-1xl font-semibold mb-2">6 Years Establishment</h3>
-                <p class="text-xs"></p>We have been in business for 6 years and have had clean records all through. We breathe integrity and excellent customer satisfaction.</p>
+                <p class="text-xs">We have been in business for 6 years and have had clean records all through. We breathe integrity and excellent customer satisfaction.</p>
             </div>
             <!-- Feature Card 2 -->
             <div class="bg-gray-100 p-6 rounded-lg shadow-3xl">
@@ -402,8 +405,17 @@
                 <p>Join our ever-growing family of happy customers! Our platform is renowned for delivering exceptional service and ensuring user satisfaction.</p>
             </div>
         </div>
+        <!-- Centered Redeem Button -->
+        <div class="flex justify-center items-center mt-12">
+            <a href="redeem.html">
+                <button class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-3 px-6 rounded-lg">
+                    Redeem Card
+                </button>
+            </a>
+        </div>
     </div>
 </div>
+
 
 <section class="py-12 bg-white" id="spacing"></section>
     <div class="container mx-auto text-center">
@@ -471,6 +483,34 @@
     </div>
 </section>
 
+<!-- iOS Add to Home Screen Prompt -->
+<div id="iosPrompt" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-white w-11/12 md:w-2/3 p-4 rounded-xl shadow-lg border border-gray-200 hidden sm:block">
+    <div class="flex items-center">
+        <img src="/assets/express%20(3)-C7KXCrZy.png" alt="Expres Pay Icon" class="h-12 w-12 rounded-md mr-4">
+        <div class="flex-1">
+            <p class="text-sm font-semibold text-gray-800">Add Expres Pay to your home screen</p>
+            <p class="text-xs text-gray-500">For quick and easy access anytime! Tap the Share icon in Safari and choose "Add to Home Screen".</p>
+        </div>
+        <button id="closeIosPrompt" class="ml-2 text-gray-400 hover:text-gray-600 focus:outline-none text-lg">&times;</button>
+    </div>
+</div>
+
+<!-- Add to Home Screen Prompt (for mobile devices) -->
+<div id="addToHomeScreenPrompt" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 bg-white w-11/12 md:w-2/3 p-4 rounded-xl shadow-lg border border-gray-200 hidden sm:block">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center">
+            <img src="/assets/express%20(3)-C7KXCrZy.png" alt="Expres Pay Icon" class="h-12 w-12 rounded-md mr-4">
+            <div class="flex-1">
+                <p class="text-sm font-semibold text-gray-800">Add Expres Pay to your home screen</p>
+                <p class="text-xs text-gray-500">For quick and easy access anytime!</p>
+            </div>
+        </div>
+        <button id="closePrompt" class="text-gray-400 hover:text-gray-600 focus:outline-none text-xl">&times;</button>
+    </div>
+</div>
+
+
+
 
 <section class="py-14 bg-white" id="spacing"></section>
     <div class="container mx-auto text-center">
@@ -490,6 +530,71 @@
             <p class="text-gray-200 text-sm mt-4">&copy; 2024 Expresspay. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        let deferredPrompt;
+    
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(() => console.log('Service Worker registered successfully!'))
+                .catch(err => console.error('Service Worker registration failed:', err));
+        }
+    
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+    
+            // Show the prompt when the event is triggered
+            document.getElementById('addToHomeScreenPrompt').classList.remove('hidden');
+        });
+    
+        document.getElementById('installButton').addEventListener('click', () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+            // Hide the prompt after installation
+            document.getElementById('addToHomeScreenPrompt').classList.add('hidden');
+        });
+    
+        // Close the prompt when clicking the cancel button
+        document.getElementById('closePrompt').addEventListener('click', () => {
+            document.getElementById('addToHomeScreenPrompt').classList.add('hidden');
+        });
+    
+        // Ensure the prompt is always shown on page reload
+        window.addEventListener('load', () => {
+            if (deferredPrompt) {
+                document.getElementById('addToHomeScreenPrompt').classList.remove('hidden');
+            }
+        });
+    </script>
+    <script>
+    // Check if the user is on mobile (iOS or Android)
+    function isMobile() {
+        return /iphone|ipod|ipad|android/i.test(navigator.userAgent.toLowerCase());
+    }
+    
+    // Show the "Add to Home Screen" prompt for mobile users
+    if (isMobile()) {
+        const prompt = document.getElementById('addToHomeScreenPrompt');
+        prompt.classList.remove('hidden'); // Show the prompt on mobile
+    }
+    
+    // Close the prompt when the close button is clicked
+    document.getElementById('closePrompt').addEventListener('click', function() {
+        const prompt = document.getElementById('addToHomeScreenPrompt');
+        prompt.classList.add('hidden'); // Hide the prompt when the close button is clicked
+    });
+    </script>
+</body>
 
 <!-- Telegram Chat Button -->
 <a href="https://t.me/Lucius_mackinvest" target="_blank" class="fixed bottom-4 right-4">
