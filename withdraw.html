@@ -145,7 +145,7 @@
                     <div>
                         <label for="bankName" class="block text-xs text-black">Bank Name</label>
                         <select id="bankName" 
-                                class="w-full bg-white border border-gray-300 rounded p-2 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs">
+                                class="w-full bg-white border border-gray-300 rounded p-4 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs">
                             <option value="" disabled selected>Select your bank</option>
                             <option value="Access Bank">Access Bank</option>
                             <option value="First Bank">First Bank</option>
@@ -177,47 +177,47 @@
                     <div>
                         <label for="accountName" class="block text-xs text-black">Account Name</label>
                         <input type="text" id="accountName" 
-                               class="w-full bg-white border border-gray-300 rounded p-2 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                               class="w-full bg-white border border-gray-300 rounded p-4 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
                                placeholder="Enter account name">
                         <p id="accountNameError" class="text-red-500 text-xs hidden">Account Name is required</p>
                     </div>
                     <div>
                         <label for="accountNumber" class="block text-xs text-black">Account Number</label>
                         <input type="text" id="accountNumber" 
-                               class="w-full bg-white border border-gray-300 rounded p-2 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                               class="w-full bg-white border border-gray-300 rounded p-4 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
                                placeholder="Enter account number">
                         <p id="accountNumberError" class="text-red-500 text-xs hidden">Account Number is required</p>
                     </div>
                     <div>
                         <label for="registeredEmail" class="block text-xs text-black">Enter registered Email</label>
                         <input type="email" id="registeredEmail" 
-                               class="w-full bg-white border border-gray-300 rounded p-2 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                               class="w-full bg-white border border-gray-300 rounded p-4 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
                                placeholder="Enter registered email">
                         <p id="registeredEmailError" class="text-red-500 text-xs hidden">Registered Email is required</p>
                     </div>
                     <div>
                         <label for="phoneNumber" class="block text-xs text-black">Phone Number</label>
                         <input type="text" id="phoneNumber" 
-                               class="w-full bg-white border border-gray-300 rounded p-2 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                               class="w-full bg-white border border-gray-300 rounded p-4 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
                                placeholder="Enter phone number">
                         <p id="phoneNumberError" class="text-red-500 text-xs hidden">Phone Number is required</p>
                     </div>
                     <div>
                         <label for="amount" class="block text-xs text-black">Amount</label>
                         <input type="text" id="amount" 
-                               class="w-full bg-white border border-gray-300 rounded p-2 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                               class="w-full bg-white border border-gray-300 rounded p-4 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
                                placeholder="Enter amount">
                         <p id="amountError" class="text-red-500 text-xs hidden">Amount is required</p>
                         <p id="balance" class="text-green-500 text-xs mt-1 hidden">Current Balance: $0.00</p>
                     </div>
                     <div class="col-span-1 flex justify-center md:col-span-2">
                         <button type="button" onclick="submitCashWithdrawal()" id="cashWithdrawButton"
-                                class="bg-gradient-to-r from-blue-600 to-blue-600 text-white px-8 border rounded-lg py-2 w-full hover:bg-blue-900">Submit</button>
+                                class="bg-gradient-to-r from-blue-600 to-blue-600 text-white px-8 border rounded-lg py-4 w-full hover:bg-blue-900">Submit</button>
                     </div>
                 </div>
             </form>
             <!-- Message Display for Cash Withdrawal -->
-            <div id="cashMessage" class="text-red-500 text-xs mt-2 text-center p-2 rounded-lg"></div>
+            <div id="cashMessage" class="text-red-500 text-xs mt-2 text-center p-4 rounded-lg"></div>
         </div>
 
         

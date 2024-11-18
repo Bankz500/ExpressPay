@@ -1,6 +1,6 @@
 {
     "name": "Expres Pay",
-    "short_name": "Express Pay",
+    "short_name": "Expres Pay",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
