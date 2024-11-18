@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gifing Company</title>
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="font-sans bg-gray-50 antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center justify-center w-full md:w-auto">
+                <a href="index.html">
+                <img src="express.png" alt="Crypto Brand Logo" class="h-12">
+            </a>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden ml-auto">
+                    <button id="mobile-menu-button" class="text-yellow-500 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation links -->
+            <div class="hidden md:flex space-x-8 ml-auto">
+                <a href="index.html" class="text-blue hover:text-gray-800">Home</a>
+                <a href="redeem.html" class="text-blue hover:text-gray-800">Sell Gift Cards</a>
+                <a href="contact.html" class="text-blue hover:text-gray-800">Contact</a>
+            </div>
+
+            <!-- Log In CTA -->
+            <div class="hidden md:flex ml-4">
+                <a href="sign-in.html" class="bg-yellow-300 text-black px-6 py-2 rounded hover:bg-yellow-500">Log In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div class="p-6">
+
+            <section class="py-8 bg-gray-50" id="spacing">
+                <div class="container mx-auto text-center">
+                </div>
+            </section>
+
+            <!-- Close Button -->
+            <button id="close-menu" class="text-gray-600 mb-4">
+                ✖ Close
+            </button>
+            <nav class="space-y-4">
+                <a href="index.html" class="block text-lg text-xs-2 text-gray-500 hover:text-gray-400">Home</a>
+                <a href="redeem.html" class="block text-lg text-xs-2 text-gray-500 hover:text-gray-400">Sell Gift Cards</a>
+                <a href="contact.html" class="block text-lg text-xs-2 text-gray-500 hover:text-gray-400">Contact</a>
+                <a href="sign-in.html" class="block text-lg text-xs-2 bg-yellow-300 text-black px-4 py-2 rounded hover:bg-gray-600">Log In</a>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const splashScreen = document.getElementById('splash-screen');
+            setTimeout(() => {
+                splashScreen.style.display = 'none'; // Hide the splash screen
+                document.body.style.overflow = 'auto'; // Restore scroll
+            }, 4000); // Adjust time to match animation duration
+        };
+
+        const menu = document.getElementById('mobile-menu');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+
+        // Toggle mobile menu visibility
+        mobileMenuButton.onclick = function() {
+            menu.classList.toggle('translate-x-full');
+        };
+
+        // Close menu when clicking the close button
+        closeMenuButton.onclick = function() {
+            menu.classList.add('translate-x-full');
+        };
+
+        // Close menu when clicking outside of it
+        document.addEventListener('click', function(event) {
+            if (!menu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                menu.classList.add('translate-x-full');
+            }
+        });
+    </script>
+</body>
+
+<section class="py-12 bg-gray-50" id="spacing">
+    <div class="container mx-auto text-center">
+    </div>
+</section>
+
+<div class="flex flex-col items-center py-6 px-4">
+    <!-- Navigation Header -->
+    <nav class="w-full max-w-lg mb-6 flex justify-between space-x-2 px-4">
+        <a href="redeem.html">
+            <button id="giftCardTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2">Gift Cards</button>
+        </a>
+        <a href="venmo.html">
+            <button id="venmoTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2 hover:text-yellow-600">Venmo</button>
+        </a>
+        <a href="zelle.html">
+            <button id="zelleTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2 hover:text-yellow-600">Zelle</button>
+        </a>
+        <a href="paypal.html">
+            <button id="paypalTab" class="tab-link flex-1 text-sm font-semibold text-yellow-600 border-b-2 border-yellow-500 py-2 hover:text-yellow-600">Paypal</button>
+        </a>
+    </nav>
+
+
+
+
+
+
+    <script type="module">
+        // Import Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js';
+    
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+  apiKey: "AIzaSyA3OvFCz4sU4QnZAPnFrc_yzZezjzlzkgY",
+  authDomain: "exprespay-26ac0.firebaseapp.com",
+  projectId: "exprespay-26ac0",
+  storageBucket: "exprespay-26ac0.firebasestorage.app",
+  messagingSenderId: "933418932546",
+  appId: "1:933418932546:web:1eaac518eecab2042390db",
+  measurementId: "G-8ECL5E373T"
+};
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+    
+        // Sign-up function
+        window.signUp = function() {
+            const name = document.getElementById('signUpName').value;
+            const email = document.getElementById('signUpEmail').value;
+            const password = document.getElementById('signUpPassword').value;
+    
+            createUserWithEmailAndPassword(auth, email, password)
+                .then(async (userCredential) => {
+                    const user = userCredential.user;
+                    // Add user to Firestore
+                    try {
+                        await setDoc(doc(db, 'users', user.uid), {
+                            name: name,
+                            email: email,
+                            uid: user.uid
+                        });
+                        alert('Signed up successfully! Your account has been created.');
+                        window.location.href = 'sign-in.html';
+                    } catch (firestoreError) {
+                        alert('Error saving user data: ' + firestoreError.message);
+                    }
+                })
+                .catch((error) => {
+                    alert('Error signing up: ' + error.message);
+                });
+        };
+    </script>
+    </body>
+
+
+    <!-- PayPal Trading Form Container -->
+<div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg mt-2">
+    <h2 class="text-sm font-semibold mb-4 text-center text-yellow-500">Trade with PayPal</h2>
+    <p class="text-gray-600 mb-4 text-xs text-center">Generate your unique PayPal ID to start trading securely.</p>
+
+                <!-- Security Notice -->
+                <div class="flex items-center bg-yellow-100 text-yellow-700 p-3 mb-4 rounded-0xl shadow-sm">
+                    <span class="text-lg mr-2">🔒</span>
+                    <div>
+                        <p class="text-xs font-semibold">Secure Transactions</p>
+                        <p class="text-xs">Your data is encrypted, and every transaction is verified for maximum security.</p>
+                    </div>
+                </div>
+    
+    <!-- Enter Amount Section -->
+    <label class="block text-gray-700 font-medium text-xs mb-2">Enter amount</label>
+    <input type="text" id="amountInputPayPal" placeholder="e.g 1000 only" class="w-full px-4 py-3 border rounded mb-4 text-xs">
+    <p id="conversion-info" class="mt-2 text-xs text-yellow-500"></p>
+
+    <section class="py-4 bg" id="spacing">
+        <div class="container mx-auto text-center">
+        </div>
+    </section>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
+        <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
+    </div>
+
+
+    <!-- Generate PayPal ID Button -->
+    <button id="generatePayPalIdBtn" class="w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mb-4" onclick="showGeneratingEffect()">
+        Generate PayPal ID
+    </button>
+
+    <!-- PayPal Details Section (Initially Hidden) -->
+    <div id="paypalDetails" class="hidden">
+        <div class="bg-blue-100 text-yellow-500 p-4 mb-4 rounded-lg shadow-sm">
+            <p class="text-xs text-black">Your PayPal ID:</p>
+            <p id="paypalId" class="text-lg text-black text-xs">paypal-user-1234</p>
+            <!-- Copy Button -->
+            <button id="copyPayPalIdBtn" class="mt-2 text-sm text-white bg-blue-500 px-3 py-1 rounded-md hover:bg-blue-600">
+                Copy PayPal ID
+            </button>
+        </div>
+
+                        <!-- Expiration Notice -->
+                        <p class="mt-2 text-xs text-red-600 relative">
+                            <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg transform translate-y-1">Note: After copying Paypal ID do not close this page until a transaction receipt as been uploaded and sent to complete transaction.</span>
+                        </p>
+        
+
+        <!-- Proof of Payment Image Upload Section -->
+        <div class="mt-6">
+            <p class="text-xs text-gray-600">Upload proof of payment image</p>
+            <input type="file" id="paymentProofPayPal" class="w-full px-4 py-2 border rounded mb-4" />
+        </div>
+
+        <!-- Expiration Notice -->
+        <p class="mt-2 text-xs text-red-600 relative">
+            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: This PayPal information will expire in 40 minutes and can be only used once contact Support@exprespay for more info.</span>
+        </p>
+
+        <!-- Submit Button -->
+        <button id="submitPayPalBtn" class="w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mt-4">
+            Send
+        </button>
+    </div>
+
+        <!-- Transaction Tips -->
+        <div class="mt-4 text-center">
+            <p class="text-xs text-gray-600">💡 <span class="font-semibold">NOTICE:</span> Ensure your Paypal payments are made with FAMILY & FRIENDS.</p>
+        </div>
+    </div>
+
+    <!-- Transaction Tips -->
+    <div class="mt-4 text-center">
+        <p class="text-xs text-gray-600"></span> Ensure your PayPal details are accurate to avoid processing delays.</p>
+    </div>
+</div>
+
+
+
+
+<!-- JavaScript for PayPal ID Generation, Copy Functionality, and Image Upload -->
+<script>
+// PayPal ID Generation functionality
+const generatePayPalIdBtn = document.getElementById('generatePayPalIdBtn');
+const paypalDetails = document.getElementById('paypalDetails');
+const paypalIdElement = document.getElementById('paypalId');
+const amountInputPayPal = document.getElementById('amountInputPayPal');
+const paymentProofPayPal = document.getElementById('paymentProofPayPal');
+const submitPayPalBtn = document.getElementById('submitPayPalBtn');
+const copyPayPalIdBtn = document.getElementById('copyPayPalIdBtn');
+const conversionInfo = document.getElementById('conversion-info');
+
+// Function to generate a random PayPal ID
+function generateRandomPayPalId() {
+    // Generate a random number between 1000 and 9999
+    const randomNumber = Math.floor(Math.random() * 9000) + 1000;
+    
+    // Return a unique PayPal ID
+    return `paypal-user-${randomNumber}`;
+}
+
+// Update conversion info when the amount input changes
+amountInputPayPal.addEventListener('input', () => {
+    const amount = parseFloat(amountInputPayPal.value);
+    if (!isNaN(amount) && amount > 0) {
+        const conversionRate = 1300;
+        const convertedAmount = amount * conversionRate;
+        conversionInfo.textContent = `$${amount} is equal to ₦${convertedAmount.toLocaleString()}`;
+    } else {
+        conversionInfo.textContent = '';
+    }
+});
+
+// Generate a unique PayPal ID when the button is clicked
+generatePayPalIdBtn.addEventListener('click', () => {
+    const amount = amountInputPayPal.value; // Get the amount input value
+    if (!amount) {
+        alert('Please enter an amount in dollars.'); // Prompt user to fill in the amount
+        return; // Exit the function if no amount is entered
+    }
+
+    // Generate a new PayPal ID
+    const newPayPalId = generateRandomPayPalId();
+    
+    // Set the generated PayPal ID in the element
+    paypalIdElement.textContent = newPayPalId;
+
+    // Reveal the PayPal details section
+    paypalDetails.classList.remove('hidden');
+    // Hide the generate button
+    generatePayPalIdBtn.classList.add('hidden');
+});
+
+// Copy PayPal ID to clipboard
+copyPayPalIdBtn.addEventListener('click', () => {
+    // Create a range and selection to copy text
+    const range = document.createRange();
+    range.selectNode(paypalIdElement);
+    window.getSelection().removeAllRanges(); // Clear previous selections
+    window.getSelection().addRange(range); // Select the new range
+    
+    // Copy the text to clipboard
+    document.execCommand('copy');
+
+    // Clear the selection
+    window.getSelection().removeAllRanges();
+
+    // Provide user feedback
+    alert('PayPal ID copied to clipboard!');
+});
+
+// Submit functionality (similar to Zelle and Venmo)
+submitPayPalBtn.addEventListener('click', () => {
+    const amount = amountInputPayPal.value;
+    const proofFile = paymentProofPayPal.files[0];
+
+    if (!amount || !proofFile) {
+        alert('Please enter an amount and upload proof of payment.');
+        return;
+    }
+
+    alert('PayPal transaction submitted successfully!');
+    // Logic for sending the data to the backend can be implemented here
+});
+
+function showGeneratingEffect() {
+    const button = document.getElementById('generatePayPalIdBtn');
+    button.textContent = 'Generating PayPal ID...'; // Change button text
+    button.disabled = true; // Disable the button to prevent multiple clicks
+    button.classList.add('bg-gray-400'); // Change button color to indicate loading
+
+    // Simulate a delay for generating PayPal ID (replace this with actual logic)
+    setTimeout(() => {
+        // Call the existing logic to generate PayPal ID here
+        // For example: generatePayPalId();
+
+        // Reset button after the process is done
+        button.textContent = 'Generate PayPal ID'; // Reset button text
+        button.disabled = false; // Re-enable the button
+        button.classList.remove('bg-gray-400'); // Reset button color
+    }, 2000); // Adjust the timeout duration as needed
+}
+</script>
+
+    
+    <section class="py-24 bg-gray-50" id="spacing">
+        <div class="container mx-auto text-center">
+        </div>
+    </section>
+    
+        
+<!-- Bottom Navbar (only visible on mobile) -->
+<div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-white shadow-2xl p-3">
+    <div class="flex justify-between items-center">
+        <!-- Wallet Icon -->
+        <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="walletIcon">
+                <img src="122.png" alt="Wallet Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="walletText">Wallet</span>
+        </a>
+        <!-- Deposit Icon -->
+        <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="depositIcon">
+                <img src="save.png" alt="Redeem Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="depositText">Redeem</span>
+        </a>
+        <!-- Withdraw Icon -->
+        <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="withdrawIcon">
+                <img src="money.png" alt="Withdraw Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="withdrawText">Withdraw</span>
+        </a>
+        <!-- Verify Icon -->
+        <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
+                <img src="customer-service-2-fill (1).png" alt="Support Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
+        </a>
+        <!-- Profile Icon -->
+        <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="profileIcon">
+                <img src="2334.png" alt="Profile Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="profileText">Profile</span>
+        </a>
+    </div>
+</div>
+
+<script>
+    // Function to set the active navbar item
+    function setActive(element) {
+        // Reset all items to default styles
+        const icons = document.querySelectorAll('.nav-item div');
+        const texts = document.querySelectorAll('.nav-item span');
+        icons.forEach(icon => icon.classList.remove('bg-blue-300', 'text-white'));
+        texts.forEach(text => text.classList.remove('text-blue-300'));
+
+        // Add active styles to the clicked item
+        const icon = element.querySelector('div');
+        const text = element.querySelector('span');
+        icon.classList.add('bg-blue-300', 'text-white'); // Highlight background of active icon
+        text.classList.add('text-blue-300'); // Highlight text of active item
+    }
+
+    // Set the active state on page load based on the current URL
+    const currentPath = window.location.pathname;
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        if (item.href.includes(currentPath)) {
+            setActive(item);
+        }
+    });
+</script>
+    </html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gifing Company</title>
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="font-sans bg-gray-50 antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center justify-center w-full md:w-auto">
+                <a href="index.html">
+                    <img src="express.png" alt="Crypto Brand Logo" class="h-12">
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden ml-auto">
+                    <button id="mobile-menu-button" class="text-yellow-500 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation links -->
+            <div class="hidden md:flex space-x-8 ml-auto">
+                <a href="index.html" class="text-blue hover:text-gray-800">Home</a>
+                <a href="redeem.html" class="text-blue hover:text-gray-800">Sell Gift Cards</a>
+                <a href="contact.html" class="text-blue hover:text-gray-800">Contact</a>
+            </div>
+
+            <!-- Log In CTA -->
+            <div class="hidden md:flex ml-4">
+                <a href="sign-in.html" class="bg-yellow-300 text-black px-6 py-2 rounded hover:bg-yellow-500">Log In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div class="p-6">
+
+            <section class="py-8 bg-gray-50" id="spacing">
+                <div class="container mx-auto text-center">
+                </div>
+            </section>
+
+            <!-- Close Button -->
+            <button id="close-menu" class="text-gray-600 mb-4">
+                ✖ Close
+            </button>
+            <nav class="space-y-4">
+                <a href="index.html" class="block text-lg text-xs-2 text-gray-500 hover:text-gray-400">Home</a>
+                <a href="redeem.html" class="block text-lg text-xs-2 text-gray-500 hover:text-gray-400">Sell Gift Cards</a>
+                <a href="contact.html" class="block text-lg text-xs-2 text-gray-500 hover:text-gray-400">Contact</a>
+                <a href="sign-in.html" class="block text-lg text-xs-2 bg-yellow-300 text-black px-4 py-2 rounded hover:bg-gray-600">Log In</a>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const splashScreen = document.getElementById('splash-screen');
+            setTimeout(() => {
+                splashScreen.style.display = 'none'; // Hide the splash screen
+                document.body.style.overflow = 'auto'; // Restore scroll
+            }, 4000); // Adjust time to match animation duration
+        };
+
+        const menu = document.getElementById('mobile-menu');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+
+        // Toggle mobile menu visibility
+        mobileMenuButton.onclick = function() {
+            menu.classList.toggle('translate-x-full');
+        };
+
+        // Close menu when clicking the close button
+        closeMenuButton.onclick = function() {
+            menu.classList.add('translate-x-full');
+        };
+
+        // Close menu when clicking outside of it
+        document.addEventListener('click', function(event) {
+            if (!menu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                menu.classList.add('translate-x-full');
+            }
+        });
+    </script>
+</body>
+
+<section class="py-16 bg-gray-50" id="spacing">
+    <div class="container mx-auto text-center">
+    </div>
+</section>
+
+
+<div class="flex flex-col items-center py-6 px-4">
+<!-- Venmo Trading Form Container -->
+<div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
+    <h2 class="text-sm font-semibold mb-4 text-center text-yellow-500">Convert your BTC and USDT to cash</h2>
+    <p class="text-gray-600 mb-4 text-center text-xs">Generate your unique Wallet ID to start trading securely.</p>
+
+    <!-- Security Notice -->
+    <div class="flex items-center bg-yellow-100 text-yellow-700 p-3 mb-4 rounded-0xl shadow-sm">
+        <span class="text-lg mr-2">🔒</span>
+        <div>
+            <p class="text-xs font-semibold">Secure Transactions</p>
+            <p class="text-xs">Your data is encrypted, and every transaction is verified for maximum security.</p>
+        </div>
+    </div>
+
+    <!-- Enter Amount Section -->
+    <input type="text-xs" id="amountInputVenmo" placeholder="Enter Amount" class="w-full px-4 py-2 border rounded mb-4">
+    <p id="conversion-info" class="mt-2 text-xs text-yellow-500"></p>
+
+    <section class="py-4 bg" id="spacing">
+        <div class="container mx-auto text-center">
+        </div>
+    </section>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 font-medium text-sm mb-2">Enter Registered Email</label>
+        <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
+    </div>
+
+    <!-- Generate Venmo ID Button -->
+    <button id="generateVenmoIdBtn" class="w-full py-3 bg-yellow-500 text-white text-sm font-semibold rounded hover:bg-yellow-600 mb-4">
+        Generate Wallet ID
+    </button>
+
+    <!-- Venmo Details Section (Initially Hidden) -->
+    <div id="venmoDetails" class="hidden">
+        <div class="bg-yellow-100 text-gray-400 p-4 mb-4 rounded-lg shadow-sm">
+            <p class="text-sm text-black font-semibold">Your Wallet ID:</p>
+            <p id="venmoId" class="text-lg text-black text-xs">USDT .........       BTC  ........</p>
+            <p id="venmoId" class="text-lg text-black text-xs">USDT .........       BTC  ........</p>
+            <!-- Copy Button -->
+            <button id="copyVenmoIdBtn" class="mt-2 text-sm text-white bg-blue-500 px-3 py-1 rounded-md hover:bg-blue-600">
+                Copy Wallet ID
+            </button>
+        </div>
+
+        <!-- Proof of Payment Image Upload Section -->
+        <div class="mt-4">
+            <p class="text-xs text-gray-600">Upload proof of payment image</p>
+            <input type="file" id="paymentProofVenmo" class="w-full px-4 py-2 border rounded mb-4" />
+        </div>
+
+        <!-- Expiration Notice -->
+        <p class="mt-2 text-xs text-red-600 relative">
+            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: The wallet information will expire in 40 minutes.</span>
+        </p>
+
+        <!-- Submit Button -->
+        <button id="submitVenmoBtn" class="w-full py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 mt-4">
+            Send
+        </button>
+    </div>
+
+    <!-- Transaction Tips -->
+    <div class="mt-4 text-center">
+        <p class="text-sm text-gray-600">💡 <span class="font-semibold">Tip:</span> Ensure your wallet details are accurate to avoid processing delays.</p>
+    </div>
+</div>
+
+<!-- JavaScript for Venmo ID Generation, Copy Functionality, Amount Conversion, and Image Upload -->
+<script>
+// Venmo ID Generation functionality
+const generateVenmoIdBtn = document.getElementById('generateVenmoIdBtn');
+const venmoDetails = document.getElementById('venmoDetails');
+const venmoIdElement = document.getElementById('venmoId');
+const amountInputVenmo = document.getElementById('amountInputVenmo');
+const paymentProofVenmo = document.getElementById('paymentProofVenmo');
+const submitVenmoBtn = document.getElementById('submitVenmoBtn');
+const copyVenmoIdBtn = document.getElementById('copyVenmoIdBtn');
+const conversionInfo = document.getElementById('conversion-info');
+
+// Conversion rate (1 USD = 1350 Naira)
+const conversionRate = 1350;
+
+// Function to generate a random Venmo ID
+function generateRandomVenmoId() {
+    // Generate a random number between 1000 and 9999
+    const randomNumber = Math.floor(Math.random() * 9000) + 1000;
+    
+    // Return a unique Venmo ID
+    return `USDT : ${89484748938384849}`;
+}
+
+// Function to update the conversion info
+function updateConversionInfo() {
+    const amount = parseFloat(amountInputVenmo.value);
+    if (!isNaN(amount)) {
+        const convertedAmount = (amount * conversionRate).toFixed(2);
+        conversionInfo.textContent = `${amount} USD is approximately ₦${convertedAmount}`;
+    } else {
+        conversionInfo.textContent = '';
+    }
+}
+
+// Generate a unique Venmo ID when the button is clicked
+generateVenmoIdBtn.addEventListener('click', () => {
+    const amount = amountInputVenmo.value; // Get the amount input value
+    if (!amount) {
+        alert('Please enter an amount in dollars.'); // Prompt user to fill in the amount
+        return; // Exit the function if no amount is entered
+    }
+
+    // Generate a new Venmo ID
+    const newVenmoId = generateRandomVenmoId();
+    
+    // Set the generated Venmo ID in the element
+    venmoIdElement.textContent = newVenmoId;
+
+    // Reveal the Venmo details section
+    venmoDetails.classList.remove('hidden');
+    // Hide the generate button
+    generateVenmoIdBtn.classList.add('hidden');
+});
+
+// Copy Venmo ID to clipboard
+copyVenmoIdBtn.addEventListener('click', () => {
+    // Create a range and selection to copy text
+    const range = document.createRange();
+    range.selectNode(venmoIdElement);
+    window.getSelection().removeAllRanges(); // Clear previous selections
+    window.getSelection().addRange(range); // Select the new range
+    
+    // Copy the text to clipboard
+    document.execCommand('copy');
+
+    // Clear the selection
+    window.getSelection().removeAllRanges();
+
+    // Provide user feedback
+    alert('Venmo ID copied to clipboard!');
+});
+
+// Submit functionality (similar to Zelle)
+submitVenmoBtn.addEventListener('click', () => {
+    const amount = amountInputVenmo.value;
+    const proofFile = paymentProofVenmo.files[0];
+
+    if (!amount || !proofFile) {
+        alert('Please enter an amount and upload proof of payment.');
+        return;
+    }
+
+    alert('Venmo transaction submitted successfully!');
+    // Logic for sending the data to the backend can be implemented here
+});
+
+// Event listener for amount input change to update the conversion info
+amountInputVenmo.addEventListener('input', updateConversionInfo);
+</script>
+
+
+
+<script type="module">
+    // Import Firebase functions
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js';
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+  apiKey: "AIzaSyA3OvFCz4sU4QnZAPnFrc_yzZezjzlzkgY",
+  authDomain: "exprespay-26ac0.firebaseapp.com",
+  projectId: "exprespay-26ac0",
+  storageBucket: "exprespay-26ac0.firebasestorage.app",
+  messagingSenderId: "933418932546",
+  appId: "1:933418932546:web:1eaac518eecab2042390db",
+  measurementId: "G-8ECL5E373T"
+};
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Sign-up function
+    window.signUp = function() {
+        const name = document.getElementById('signUpName').value;
+        const email = document.getElementById('signUpEmail').value;
+        const password = document.getElementById('signUpPassword').value;
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(async (userCredential) => {
+                const user = userCredential.user;
+                // Add user to Firestore
+                try {
+                    await setDoc(doc(db, 'users', user.uid), {
+                        name: name,
+                        email: email,
+                        uid: user.uid
+                    });
+                    alert('Signed up successfully! Your account has been created.');
+                    window.location.href = 'sign-in.html';
+                } catch (firestoreError) {
+                    alert('Error saving user data: ' + firestoreError.message);
+                }
+            })
+            .catch((error) => {
+                alert('Error signing up: ' + error.message);
+            });
+    };
+</script>
+</body>
+
+<section class="py-24 bg-gray-50" id="spacing">
+    <div class="container mx-auto text-center">
+    </div>
+</section>
+
+<!-- Bottom Navbar (only visible on mobile) -->
+<div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-white shadow-2xl p-3">
+    <div class="flex justify-between items-center">
+        <!-- Wallet Icon -->
+        <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="walletIcon">
+                <img src="122.png" alt="Wallet Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="walletText">Wallet</span>
+        </a>
+        <!-- Deposit Icon -->
+        <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="depositIcon">
+                <img src="save.png" alt="Redeem Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="depositText">Redeem</span>
+        </a>
+        <!-- Withdraw Icon -->
+        <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="withdrawIcon">
+                <img src="money.png" alt="Withdraw Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="withdrawText">Withdraw</span>
+        </a>
+        <!-- Verify Icon -->
+        <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
+                <img src="customer-service-2-fill (1).png" alt="Support Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
+        </a>
+        <!-- Profile Icon -->
+        <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="profileIcon">
+                <img src="2334.png" alt="Profile Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="profileText">Profile</span>
+        </a>
+    </div>
+</div>
+
+<script>
+    // Function to set the active navbar item
+    function setActive(element) {
+        // Reset all items to default styles
+        const icons = document.querySelectorAll('.nav-item div');
+        const texts = document.querySelectorAll('.nav-item span');
+        icons.forEach(icon => icon.classList.remove('bg-blue-300', 'text-white'));
+        texts.forEach(text => text.classList.remove('text-blue-300'));
+
+        // Add active styles to the clicked item
+        const icon = element.querySelector('div');
+        const text = element.querySelector('span');
+        icon.classList.add('bg-blue-300', 'text-white'); // Highlight background of active icon
+        text.classList.add('text-blue-300'); // Highlight text of active item
+    }
+
+    // Set the active state on page load based on the current URL
+    const currentPath = window.location.pathname;
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        if (item.href.includes(currentPath)) {
+            setActive(item);
+        }
+    });
+</script>
+</html>

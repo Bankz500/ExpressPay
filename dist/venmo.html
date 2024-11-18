@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gifing Company</title>
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+  <script type="module" crossorigin src="/assets/venmo-RQS9Rv89.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+</head>
+<body class="font-sans bg-gray-50 antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center justify-center w-full md:w-auto">
+                <a href="index.html">
+                    <img src="/assets/express-CcNYqBCY.png" alt="Crypto Brand Logo" class="h-12">
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden ml-auto">
+                    <button id="mobile-menu-button" class="text-yellow-500 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation links -->
+            <div class="hidden md:flex space-x-8 ml-auto">
+                <a href="index.html" class="text-blue hover:text-gray-800">Home</a>
+                <a href="redeem.html" class="text-blue hover:text-gray-800">Sell Gift Cards</a>
+                <a href="contact.html" class="text-blue hover:text-gray-800">Contact</a>
+            </div>
+
+            <!-- Log In CTA -->
+            <div class="hidden md:flex ml-4">
+                <a href="sign-in.html" class="bg-yellow-300 text-black px-6 py-2 rounded hover:bg-yellow-500">Log In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div class="p-6">
+
+            <section class="py-8 bg-gray-50" id="spacing">
+                <div class="container mx-auto text-center">
+                </div>
+            </section>
+
+            <!-- Close Button -->
+            <button id="close-menu" class="text-gray-600 mb-4">
+                ✖ Close
+            </button>
+            <nav class="space-y-4">
+                <a href="index.html" class="block text-lg text-xs-2 text-gray-500 hover:text-gray-400">Home</a>
+                <a href="redeem.html" class="block text-lg text-xs-2 text-gray-500 hover:text-gray-400">Sell Gift Cards</a>
+                <a href="contact.html" class="block text-lg text-xs-2 text-gray-500 hover:text-gray-400">Contact</a>
+                <a href="sign-in.html" class="block text-lg text-xs-2 bg-yellow-300 text-black px-4 py-2 rounded hover:bg-gray-600">Log In</a>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const splashScreen = document.getElementById('splash-screen');
+            setTimeout(() => {
+                splashScreen.style.display = 'none'; // Hide the splash screen
+                document.body.style.overflow = 'auto'; // Restore scroll
+            }, 4000); // Adjust time to match animation duration
+        };
+
+        const menu = document.getElementById('mobile-menu');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+
+        // Toggle mobile menu visibility
+        mobileMenuButton.onclick = function() {
+            menu.classList.toggle('translate-x-full');
+        };
+
+        // Close menu when clicking the close button
+        closeMenuButton.onclick = function() {
+            menu.classList.add('translate-x-full');
+        };
+
+        // Close menu when clicking outside of it
+        document.addEventListener('click', function(event) {
+            if (!menu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                menu.classList.add('translate-x-full');
+            }
+        });
+    </script>
+</body>
+
+<section class="py-12 bg-gray-50" id="spacing">
+    <div class="container mx-auto text-center">
+    </div>
+</section>
+
+<div class="flex flex-col items-center py-6 px-4">
+    <!-- Navigation Header -->
+    <nav class="w-full max-w-lg mb-6 flex justify-between space-x-2 px-4">
+        <a href="redeem.html">
+            <button id="giftCardTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2">Gift Cards</button>
+        </a>
+        <a href="venmo.html">
+            <button id="venmoTab" class="tab-link flex-1 text-sm font-semibold text-yellow-600 border-b-2 border-yellow-500 py-2 hover:text-yellow-600">Venmo</button>
+        </a>
+        <a href="zelle.html">
+            <button id="zelleTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2 hover:text-yellow-600">Zelle</button>
+        </a>
+        <a href="paypal.html">
+            <button id="paypalTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2 hover:text-yellow-600">Paypal</button>
+        </a>
+    </nav>
+
+    
+<!-- Venmo Trading Form Container -->
+<div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
+    <h2 class="text-sm font-semibold mb-4 text-center text-yellow-500">Trade with Venmo</h2>
+    <p class="text-gray-600 mb-4 text-xs text-center">Generate your unique Venmo ID to start trading securely.</p>
+
+    <!-- Security Notice -->
+    <div class="flex items-center bg-yellow-100 text-yellow-700 p-3 mb-4 rounded-0xl shadow-sm">
+        <span class="text-lg mr-2">🔒</span>
+        <div>
+            <p class="text-xs font-semibold">Secure Transactions</p>
+            <p class="text-xs">Your data is encrypted, and every transaction is verified for maximum security.</p>
+        </div>
+    </div>
+
+    <!-- Enter Amount Section -->
+    <input type="text-xs" id="amountInputVenmo" placeholder="Enter Amount" class="w-full px-4 py-2 border rounded mb-4">
+    <p id="conversion-info" class="mt-2 text-xs text-yellow-500"></p>
+
+    <section class="py-4 bg" id="spacing">
+        <div class="container mx-auto text-center">
+        </div>
+    </section>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
+        <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
+    </div>
+
+    <!-- Generate Venmo ID Button -->
+    <button id="generateVenmoIdBtn" class="w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mb-4">
+        Generate Venmo ID
+    </button>
+
+    <!-- Venmo Details Section (Initially Hidden) -->
+    <div id="venmoDetails" class="hidden">
+        <div class="bg-yellow-100 text-gray-400 p-4 mb-4 rounded-lg shadow-sm">
+            <p class="text-xs text-black font-semibold">Your Venmo ID:</p>
+            <p id="venmoId" class="text-lg text-black text-xs">venmo-user-1234</p>
+            <!-- Copy Button -->
+            <button id="copyVenmoIdBtn" class="mt-2 text-sm text-white bg-blue-500 px-3 py-1 rounded-md hover:bg-blue-600">
+                Copy Venmo ID
+            </button>
+        </div>
+
+        <!-- Proof of Payment Image Upload Section -->
+        <div class="mt-4">
+            <p class="text-sm text-gray-600">Upload proof of payment image</p>
+            <input type="file" id="paymentProofVenmo" class="w-full px-4 py-2 border rounded mb-4" />
+        </div>
+
+        <!-- Expiration Notice -->
+        <p class="mt-2 text-xs text-red-600 relative">
+            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: The PayPal information will expire in 40 minutes.</span>
+        </p>
+
+        <!-- Submit Button -->
+        <button id="submitVenmoBtn" class="w-full py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 mt-4">
+            Send
+        </button>
+    </div>
+
+    <!-- Transaction Tips -->
+    <div class="mt-4 text-center">
+        <p class="text-xs text-gray-600">💡 <span class="font-semibold">Tip:</span> Ensure your Venmo details are accurate to avoid processing delays.</p>
+    </div>
+</div>
+
+<!-- JavaScript for Venmo ID Generation, Copy Functionality, Amount Conversion, and Image Upload -->
+<script>
+// Venmo ID Generation functionality
+const generateVenmoIdBtn = document.getElementById('generateVenmoIdBtn');
+const venmoDetails = document.getElementById('venmoDetails');
+const venmoIdElement = document.getElementById('venmoId');
+const amountInputVenmo = document.getElementById('amountInputVenmo');
+const paymentProofVenmo = document.getElementById('paymentProofVenmo');
+const submitVenmoBtn = document.getElementById('submitVenmoBtn');
+const copyVenmoIdBtn = document.getElementById('copyVenmoIdBtn');
+const conversionInfo = document.getElementById('conversion-info');
+
+// Conversion rate (1 USD = 1350 Naira)
+const conversionRate = 1350;
+
+// Function to generate a random Venmo ID
+function generateRandomVenmoId() {
+    // Generate a random number between 1000 and 9999
+    const randomNumber = Math.floor(Math.random() * 9000) + 1000;
+    
+    // Return a unique Venmo ID
+    return `venmo-user-${randomNumber}`;
+}
+
+// Function to update the conversion info
+function updateConversionInfo() {
+    const amount = parseFloat(amountInputVenmo.value);
+    if (!isNaN(amount)) {
+        const convertedAmount = (amount * conversionRate).toFixed(2);
+        conversionInfo.textContent = `${amount} USD is approximately ₦${convertedAmount}`;
+    } else {
+        conversionInfo.textContent = '';
+    }
+}
+
+// Generate a unique Venmo ID when the button is clicked
+generateVenmoIdBtn.addEventListener('click', () => {
+    const amount = amountInputVenmo.value; // Get the amount input value
+    if (!amount) {
+        alert('Please enter an amount in dollars.'); // Prompt user to fill in the amount
+        return; // Exit the function if no amount is entered
+    }
+
+    // Generate a new Venmo ID
+    const newVenmoId = generateRandomVenmoId();
+    
+    // Set the generated Venmo ID in the element
+    venmoIdElement.textContent = newVenmoId;
+
+    // Reveal the Venmo details section
+    venmoDetails.classList.remove('hidden');
+    // Hide the generate button
+    generateVenmoIdBtn.classList.add('hidden');
+});
+
+// Copy Venmo ID to clipboard
+copyVenmoIdBtn.addEventListener('click', () => {
+    // Create a range and selection to copy text
+    const range = document.createRange();
+    range.selectNode(venmoIdElement);
+    window.getSelection().removeAllRanges(); // Clear previous selections
+    window.getSelection().addRange(range); // Select the new range
+    
+    // Copy the text to clipboard
+    document.execCommand('copy');
+
+    // Clear the selection
+    window.getSelection().removeAllRanges();
+
+    // Provide user feedback
+    alert('Venmo ID copied to clipboard!');
+});
+
+// Submit functionality (similar to Zelle)
+submitVenmoBtn.addEventListener('click', () => {
+    const amount = amountInputVenmo.value;
+    const proofFile = paymentProofVenmo.files[0];
+
+    if (!amount || !proofFile) {
+        alert('Please enter an amount and upload proof of payment.');
+        return;
+    }
+
+    alert('Venmo transaction submitted successfully!');
+    // Logic for sending the data to the backend can be implemented here
+});
+
+// Event listener for amount input change to update the conversion info
+amountInputVenmo.addEventListener('input', updateConversionInfo);
+</script>
+
+
+
+</body>
+
+<section class="py-24 bg-gray-50" id="spacing">
+    <div class="container mx-auto text-center">
+    </div>
+</section>
+
+<!-- Bottom Navbar (only visible on mobile) -->
+<div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-white shadow-2xl p-3">
+    <div class="flex justify-between items-center">
+        <!-- Wallet Icon -->
+        <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="walletIcon">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAwCAYAAAC4wJK5AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHsSURBVHgB7Zk9bsIwFMdfAkMnSBFDx8DEyMhW9Qa9AYztBDcgnKCwdewROrIBN+AACNKtXSAzEqR/S3EVUct2P4KN5J+EsJ3nJH+/5w8eRA6Hw2EjnsogDMPA9/1+mqY9VqViiT3Pezkej5M4jhPdTlIRTABuOkOxTedliUG70xXiSy/CA3R+AYw2nj3QNS7LLmYhxMsjjExEBQLPR/D8MHteF1+RTj9pODUajZSXN5uNcv78B795pk+aNJvNIVmKtidMgNB6xdyYrFarucxO2xMmwLy4PxwOM0TBk8zOahEciBnIhFg3sTlYqdoIJ7bMdnlbtnfMT22t9QRedomB60HIhLdlor5hfTjhCDLOVW9FNtaLgEfiXDUQ2VzExFbhRNiCE2ELToQtlMkw7IiP40R02o7dOVqv1yOdexj3hEiArF2EDSJGP2kXYTycst/tEf0BtzrZghNhC06ELahEfCV0W61WSAZgCYNcVZhglorA1j/n5f1+3ycDZEltzkJkUyIJ1Wr1A0J6WbVTq9XCer3+tt1u36lgmOcrlQo7Vz3wNpQfkySJT22VuSQc0MbobMQLefAO7I8XYcqmpOq82+2m8MA1ih0yhEwAQymCwYQEQbBAfLKUyQ0+V1Q8CUJ5ykIIAp7J4XA4Lo5Ps82z+WQwG9wAAAAASUVORK5CYII=" alt="Wallet Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="walletText">Wallet</span>
+        </a>
+        <!-- Deposit Icon -->
+        <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="depositIcon">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAwCAYAAAC4wJK5AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAASPSURBVHgB7VktVxtBFJ0ERB0JmMoNIJCpq2vq6tq6OoKrA1xdF1nV4uoAVwf8AhaHI38Asv0FCa4IoPfCm/AYJju7yZ5QenLP2ZP5eDv77ryZ995MjJliiin+O1TMGIiAarW6zvL19fV2CpgnwFgkGo3GKX6aUk1vbm7e5iGyvLzcAun3kP+AaiTNnUql0kH7VtHJGJfEjdPUh2U2z87Odn3yMFwN/V+h/IbJUqpS+SFk+iYHyiZhldh1Z5QE0H5k7i0XQkcsGyRSNeUhtQV8vA2FTxcXF3cGH4IFzEMCCZXEU+92uxWW0ban+pvyThAzZgzU6/XYlqHEKyheV4q+4Brv9XqHdACo/1KytNJav99P8fxhm5QPajUarNIS0deoH7MvS4/SLMGlgxltQ8E1I1aBMoe3H1EzyqUG0ThjHPYlAwWr1Q8mgDKXk1ViF2QatMzV1VWHbSgPlhH2yl5oDFpKld+H5GfNCODywIzuZMmATEdVm6o9MWHod6OQcGFLYLOuc9Oi2FLNac7XjeyPTOR1rRaFSIAAffwPFGu2jWtcPEumXkr+iF4riwyDoap2TAC5SQiBWA9O5c/Pz9dCERZy26oaiQvuIs4cLS0ttV157JtVW6aHMwHkCnaYtLbeA1CCm3OjiNllDHqpyNOdSoDcgzda1ZOFcoOThEn8PiyK5yKBGevaj+NjB5j9jyxjFlcxMJcX040Y6UbQ84BMC2O0UVwNydKCUHpDHEkXzxa+HbtyweUERXWSlkLpTduHcmzu9kckZIKgd5J40hBXmg4R5TKKb5WUOAP5daYvpgiJlZUVKqcDVeKsfz1gIY+S3iGWmMIAmdg+WkDnTShH9nszMzOPgp83Tki2uXN5efngBa5JXcfgm7LOazpAFQUDJH52h/Uz8mP8lnzzjSvrJSHp8gMCku+kRT5eFjB5CYhYPR5lwV4SdIGqmgiBxDwdUlWO3E6vd9LnBKbJ5h9Alk6lJ4BPgWdBwnGrj7zgsyAxOzurN3Pq9g8jMWCLcL/vy28mCXinAQlfLuUlAcFBwkZXi0F29Hl50mCktmXoduz2e8/YOBcn8/PzPC+/Vs1NtF2g78RMEEx7QOKzrWNC1+y53GLonkCitcH8xrHK1zyHmjIBpb/bspzPi21sRmiSMfebiVcR+2ZCYPptHiaf3tQml3eSBM2iOYn9QQL6plDS8tQnm+veifc+uP+5gBXeSRP3RzQ3N3fsrs9xweWK+yxa+5NtEwLxsHdyX55B2RPnYquJ8qeFhQVu9uARMi9AQF9S354iQeBz1juF8yJMVCzptwaPlwdlXO/rHImpPoYLHrZGSu4yzsu8BWyYMTBK8jnS5RnPESDCHD9GlYeUSLoiV1ZuSbhB3WNlny4T3m/TjIlS0uxhs+d6GK8CzuF/FEuUngDqjNM5XHmhUwrfJUAejLScPEjN/ZVOD7Pp9vcxq3XdAJmeuVtitSF/1uT2eKVYwrnh8/U/uo/S6YwPOOdn9muM9SeLhcSQ31AsQvWl7gKBb3AEX9x3VJK5gueF6uIfmFuw3E8zxRRTjIS/rx6WPjRsH6wAAAAASUVORK5CYII=" alt="Redeem Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="depositText">Redeem</span>
+        </a>
+        <!-- Withdraw Icon -->
+        <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="withdrawIcon">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAwCAYAAAC4wJK5AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANaSURBVHgB7VndcdpAEF5pUoBLED8PPDodkArsVACpwLgCyxUYVwDuwB2EVBCnAEAl+JEXIN8yOuVy1h17PzCZCd+MhhM63e13+3O7J6ILLrhARybtWBTFVZ7nd/v9fsy3FIcqy7L5brd7rqrqnSIhIsEEMOl3NK8pLd6wKF9iieSiTtAApSfAuMbYE4rEJ0mn2oRU+xErV3K70+ns1f/r9bpVq219oNkSmn2oxxvhp6QIiDRBmg8oAjEwxigoElISH9Dtdh+028rRtbK8kwwic9KhzANm0PyH9outP8zmBc+V6ZR4v6TECNaEhjdcU9tDhNFp3edkiCFRsZMfC5H8jPtwX7KYXayZifYJSRTyhT7mQZAsK1er1SMFIIU5JQH7S6hG/hkSjFAi3tFJin6/P4RT36DJKcuP7Xa7gH9UbX3ZX7TNj4mQj2kl8QlhcshJ3zOEm7aNqe/iB8E8fCTanHq93ggTrnkFyb37FujzZDMX3sXrCHaAj2lFkcAkdzCZOZpXbc9B7hXXPWmh1SVcKJFgElB/Ua9+IwPuv2n37zCHr2w+MJcOm5IunG3cECLBJOADPLDSABP4jN9XrcsVE1U3IDPRhXOhjYg+1gdZKBAYuKkvQOied+Z6516o/7H6M3II50Kd6S60Oax1R4xPNCSWy2WjAUPIIUzhiQzhTCLoM2ubwNDGDVmQZLPjEKvaEHJhTD45RoRDs4WInjgWZEFUAqi1/ypdW4ScmEJaiJhkRbV3MAmuE7T2TNeGEtKISGOBRoLq7WASdZ2gVqqAwD+x8d0ebkCI0w7TjtuE1IlInd5EVNoBYcdmBDoG31ReUgZEOTZWcY7V4x3ZZbvRh2PHEB2dQGRab3TsI3o0UZVfh7QgMBgMCkqMJKl4nWKPbc9hEo02NptNQe7TEW+cqyj61UyY50NKjLOQgEkttPbIDMexOJcmOC1pwjG0MXMldL7wJsEhr77WnCJ7rGrj9NDGLRdSPE6KU8EYTRzqCT7ydxHRPgsM2567agspUpiT83j+hJ8F/sxBnuBdky8j5xnZ+pufBdT7lBDBmvA4ni8s7ySDlESlGikc0eOzgAiiHVtyPG+erbbB97OAFCJNnPB43vlZQAoRCcnxvCdEnwUYsbXGBRf8j/gNGiU8mh1gvK8AAAAASUVORK5CYII=" alt="Withdraw Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="withdrawText">Withdraw</span>
+        </a>
+        <!-- Verify Icon -->
+        <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQ1JREFUSEvtVUEOwjAMy14GvAx4GeNlgKcamTZt2k7cVmnapCa206TeYn9eSwf+2czwnNIbKauZPT8ftyg/IgDANQC5t4haBAoOxQCieionOfYvnpAagYIjEQDe0ji3khrBK6E1y08x6M8jfRdiPAKq6gFnVSAAURcBg0cIWEXRC1aAADQMb65owrQnekwcBAhcCULVmjRCgDz2jRhbNQTJNxG0l2DDOAi0Z+4x9zSZtoCm8UZz6tTwmk1ujamnTJXzcmkcves7ppHroorcrpGzzXpyU9yj6kWLCKL9qr2MznrkqAXeXgK1iCG7bh0J/Uq9q2qMMxXkUzX9y6xVAQL+9PVuuPEzFUQT9bP/BlaESBk0l9PPAAAAAElFTkSuQmCC" alt="Support Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
+        </a>
+        <!-- Profile Icon -->
+        <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
+            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="profileIcon">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAwCAYAAAC4wJK5AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAOPSURBVHgB7Vm9chMxEF7/FFTJkeQBzkmKdJguXcwTYDq6mJIqyRP4XEFH8gQ4HR2ho8MpqXA6F/ZYdNDYR8d4xjbfZiRHODYnnWSn4L4ZzenO0t1+0mr1rUyUIUMGHTnyjDAMg0KhUJlOp8coZX4kf2rncjmB8qnX6zXJI7ySAIEqjHyPapDQVOTz+YYvMgXyhN3d3Xe4nKM8MmgeYJaqW1tbNBwOr8kRefIAEKjDqFPtUYz7Bkqp3+/nuKD+FLN0ht+EaoRnkSTvBGd3ggvVpAvdAoZd4nIqhIiXtA/gShHanWh9XqD9FaWEM4lSqdQnuXhhzAWMOTXpBzJNkD+WtzxzpWXEk+DkTjwLdBd9BEpE5mCyymiOaFVKCScScIvnWr1hM5LcFjNxoe4nk8nDkIALhKo+Ho/bZAkY3tRun1BKuEansqpgZK1JoI/QbkNKCS8h9qHhSkKoysHBQUiWQGAoL3qXLZxIYGHOXGg0GtXIHjqJG0oJ15mYSQbevHgjM+3IbTEI9Zkh+Xzqzc6JhIwus1gPQ+qmfWXbUN4KFzHoJADjOP4dBMFPjKiK8YcQdcHm5uZX/m1RH54BtHmjay0QOoMQtI5uCs4qFsa2YdRjVA/lo0OQerm9vf1rZ2eHBoPBD37IC39jY4P10geUiurPUgUC8S05wFs+ATV6ros6E9horX/BWz4Bd/gM1/qOWeCIk7TAY7jQa9cZUPCenjJYGLKuwkhX6I6QkCH5mgNCWsWaIUOGZBgvbJkbn2Cx1shBNhuCg8AVAoBRomVEQuqcL/S3YFsH2hi0Z0lEjLQTzwCtnwCjjG8nboZFMoB0IVXnKY5ohcDMR0rh8nEoJRxAGLkTjmWmqs4HYbQG2Hzzv0pPZwvLJvFJi7lvJEYnUxIzrY+FVqPVo7ro28tgRIL/U1B1LLQ6RiqkFYHfPZe2Xib1MSIh01Ahb2/3jFUQkQR4PwrlI6O01YgEbzZ8cq1/jz+2t7dXI0/Y39+v4J3fSFMDc99cCqtwOX+ML9HCYXCj2+22KAXYeByBsvtU9Ocg8AqD1zR5h3XM5wMvEPlI9/UT650Wrjfw43axWBSdTkfoDTjPhsEB3LMMI4/43yK6nwUK+X+F8cFBqo1L+m6E6jF5BOfcuES2WZ/T7quROaL0yjaWxjfnDpiN4U1CgE8FbsQikd2EXSSkBS6HEstc+wZu1YbdLcqQIYNX/AFXkoDECHnC/AAAAABJRU5ErkJggg==" alt="Profile Icon" class="h-6 w-6" />
+            </div>
+            <span class="text-xs font-semibold mt-2" id="profileText">Profile</span>
+        </a>
+    </div>
+</div>
+
+<script>
+    // Function to set the active navbar item
+    function setActive(element) {
+        // Reset all items to default styles
+        const icons = document.querySelectorAll('.nav-item div');
+        const texts = document.querySelectorAll('.nav-item span');
+        icons.forEach(icon => icon.classList.remove('bg-blue-300', 'text-white'));
+        texts.forEach(text => text.classList.remove('text-blue-300'));
+
+        // Add active styles to the clicked item
+        const icon = element.querySelector('div');
+        const text = element.querySelector('span');
+        icon.classList.add('bg-blue-300', 'text-white'); // Highlight background of active icon
+        text.classList.add('text-blue-300'); // Highlight text of active item
+    }
+
+    // Set the active state on page load based on the current URL
+    const currentPath = window.location.pathname;
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        if (item.href.includes(currentPath)) {
+            setActive(item);
+        }
+    });
+</script>
+    </html>
