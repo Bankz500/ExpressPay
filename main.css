@@ -1,0 +1,44 @@
+/* General Select Styling */
+select {
+    font-size: 0.875rem; /* Matches text-xs */
+    padding: 0.75rem 1rem; /* Matches input fields */
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    color: #374151; /* Matches Text-gray-700 */
+    -webkit-appearance: none;  /* Removes default styles */
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+}
+
+/* Ensure the placeholder text remains visible */
+select option[disabled] {
+    color: #6b7280; /* Text-gray-500 for better contrast */
+    font-weight: normal;
+}
+
+/* Mobile-Specific Adjustments */
+@media (max-width: 768px) {
+    select {
+        font-size: 1rem; /* Slightly larger font for better readability */
+        padding: 0.625rem 0.875rem; /* Adjust padding to fit mobile UI */
+        width: 100%;  /* Ensures full width */
+        line-height: 1.5; /* Prevent shrinking */
+    }
+
+    /* Fix placeholder issue on mobile */
+    select:focus {
+        text-indent: 0; /* Remove any indentation on focus */
+    }
+
+    /* Placeholder styling for smaller screens */
+    select::placeholder {
+        color: #6b7280; /* Make placeholder visible */
+    }
+
+    /* Ensure that the select element occupies full width on mobile */
+    select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gifing Company</title>
+    <link rel="manifest" href="/assets/manifest-C2jTqfdY.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/express%20(3)-C7KXCrZy.png">
+    <link rel="icon" href="/assets/express%20(3)-C7KXCrZy.png" type="image/png">
     <!-- Include Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Include Email.js -->
@@ -15,8 +18,9 @@
             emailjs.init("uEd3R25mqCi5tk0te"); // <-- Replace with your actual EmailJS user ID
         })();
     </script>
-  <script type="module" crossorigin src="/assets/redeem-RQS9Rv89.js"></script>
+  <script type="module" crossorigin src="/assets/redeem-C4JghIRW.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-BkiMx7eT.css">
 </head>
 <body class="font-sans bg-gray-50 antialiased">
 
@@ -24,7 +28,6 @@
     <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
         <div class="container mx-auto flex items-center justify-between">
             <div class="flex items-center justify-center w-full md:w-auto">
-                <a href="index.html">
                     <img src="/assets/express-CcNYqBCY.png" alt="Crypto Brand Logo" class="h-12">
                 </a>
 
@@ -156,57 +159,78 @@
                 </div>
             </div>
 
-            <!-- Gift Card Trade Form -->
-            <form id="giftCardTradeForm">
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium text-xs mb-2">Gift Card Type</label>
-                    <select id="card-type" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
-                        <option value="" disabled selected>Select gift card type</option>
-                        <option value="Apple">Apple Gift Card</option>
-                        <option value="Amazon">Amazon Gift Card</option>
-                        <option value="Google Play">Google Play Gift Card</option>
-                        <option value="Steam">Steam wallet</option>
-                        <option value="Vanilla">Vanilla</option>
-                        <option value="Ebay">Ebay</option>
-                        <option value="American express">American express</option>
-                        <option value="wallmart">wallmart</option>
-                        <option value="Visa">visa gift card</option>
-                        <option value="Nordstorm">Nordstorm</option>
-                        <option value="Razor Gold">Razor Gold</option>
-                    </select>
-                </div>
-                
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium text-xs">Gift Card Amount</label>
-                    <select id="amount" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
-                        <option value="" disabled selected>Select amount</option>
-                        <option value="10">$10</option>
-                        <option value="25">$25</option>
-                        <option value="50">$50</option>
-                        <option value="100">$100</option>
-                        <option value="200">$200</option>
-                        <option value="500">$500</option>
-                        <option value="1000">$1000</option>
-                    </select>
-                    <p id="conversion-info" class="mt-2 text-xs text-yellow-500"></p>
-                </div>
+           <!-- Gift Card Trade Form -->
+<form id="giftCardTradeForm">
+    <div class="mb-4">
+        <label class="block text-gray-700 font-medium text-xs mb-2">Gift Card Type</label>
+        <select 
+            id="card-type" 
+            class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs placeholder-gray-500"
+        >
+            <option value="" disabled selected>Select gift card type</option>
+            <option value="Apple">Apple Gift Card</option>
+            <option value="Amazon">Amazon Gift Card</option>
+            <option value="Google Play">Google Play Gift Card</option>
+            <option value="Steam">Steam Wallet</option>
+            <option value="Vanilla">Vanilla</option>
+            <option value="Ebay">Ebay</option>
+            <option value="American express">American Express</option>
+            <option value="wallmart">Wallmart</option>
+            <option value="Visa">Visa Gift Card</option>
+            <option value="Nordstorm">Nordstorm</option>
+            <option value="Razor Gold">Razor Gold</option>
+        </select>
+    </div>
 
-                <div id="selected-card-info" class="mb-4 text-sm text-gray-500"></div>
+    <div class="mb-4">
+        <label class="block text-gray-700 font-medium text-xs">Gift Card Amount</label>
+        <select 
+            id="amount" 
+            class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs placeholder-gray-500"
+        >
+            <option value="" disabled selected>Select amount</option>
+            <option value="10">$10</option>
+            <option value="25">$25</option>
+            <option value="50">$50</option>
+            <option value="100">$100</option>
+            <option value="200">$200</option>
+            <option value="500">$500</option>
+            <option value="1000">$1000</option>
+        </select>
+        <p id="conversion-info" class="mt-2 text-xs text-yellow-500"></p>
+    </div>
 
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium text-xs mb-2">Gift Card Front Image</label>
-                    <input type="file" id="front-image" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
-                </div>
+    <div id="selected-card-info" class="mb-4 text-xs text-yellow-500"></div>
 
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium text-xs mb-2">Gift Card Back Image</label>
-                    <input type="file" id="back-image" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
-                </div>
-                
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
-                    <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
-                </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 font-medium text-xs mb-2">Gift Card Front Image</label>
+        <input 
+            type="file" 
+            id="front-image" 
+            class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs"
+        >
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 font-medium text-xs mb-2">Gift Card Back Image</label>
+        <input 
+            type="file" 
+            id="back-image" 
+            class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs"
+        >
+    </div>
+
+    <div class="mb-4">
+        <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
+        <input 
+            type="email" 
+            id="registered-email" 
+            placeholder="E.g XYZ@gmail.com" 
+            class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs"
+        >
+    </div>
+</form>
+
 
                 <button type="submit" id="redeem-button" class="w-full py-4 bg-yellow-500 text-white font-semibold rounded shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-xs">
                     Redeem Gift Card
@@ -402,4 +426,3 @@
     })();
 </script>
     </html>
-

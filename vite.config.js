@@ -4,7 +4,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: './index.html',
+        index: './index.html',
         contact: './contact.html',
         redeem: './redeem.html',
         zelle: './zelle.html',
@@ -17,6 +17,8 @@ export default defineConfig({
         venmo: './venmo.html',
         support: './support.html',
         requestwallet: './request-wallet.html',
+        profile: './profile.html',
+        main: './main.css',
       },
     },
   },

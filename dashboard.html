@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Online banking</title>
+    <title>Dashboard - Online wallet</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="express (3).png">
+    <link rel="icon" href="express (3).png" type="image/png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js Library -->
@@ -127,7 +130,6 @@
 <!-- Navbar -->
 <nav class="bg-white p-4 shadow">
     <div class="container mx-auto flex items-center justify-between">
-        <a href="index.html">
             <img src="express.png" alt="Gift card Brand Logo" class="h-12">
         </a>
 
@@ -213,16 +215,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6"> <!-- Added mt-6 for spacing -->
                     <!-- Deposit Account Card -->
                     <div class="bg-white shadow-xl rounded-lg p-6 flex flex-col justify-between h-48 striped-bg">
-                        <label for="Deposit-account" class="block text-sm font-medium text-gray-700 text-center">Personal wallet</label>
+                        <label for="Deposit-account" class="block text-sm font-medium text-gray-700 text-center">Deposit wallet</label>
                         <p id="Deposit-account" class="mt-2 text-2xl font-bold text-gray-900 text-center">$0.00</p>
                     </div>
-                    
-                    <!-- Profit Wallet Card -->
-                    <div class="bg-gradient-to-r from-blue-500 to-blue-900 shadow-xl rounded-lg p-6 flex flex-col justify-between h-48">
-                        <label for="Profit-wallet" class="block text-sm font-medium text-white text-center">Profit Wallet</label>
-                        <p id="Profit-wallet" class="mt-2 text-2xl font-bold text-white text-center">$0.00</p>
-                    </div>
-                    
 
                     <!-- Include FontAwesome for icons -->
                      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -232,7 +227,7 @@
 
                     <!-- Unlocked Padlock Icon -->
                     <i class="fas fa-lock absolute top-2 right-2 text-white text-sm"></i>
-                    <label for="wallet" class="block text-sm font-medium text-white text-center">Total Wallet</label>
+                    <label for="wallet" class="block text-sm font-medium text-white text-center">Withdrawal Wallet</label>
                     <p id="wallet" class="mt-2 text-2xl font-bold text-white text-center">$0.00</p>
                 </div>
                 </div>
@@ -245,13 +240,14 @@
                 <!-- Add a horizontal line here -->
                 <hr class="my-4 border-gray-300"> <!-- Added line -->
 
-                <!-- History Section -->
-                <section class="mt-2 bg-gray-200 p-4 rounded-lg">
-                    <h2 class="text-xl font-bold text-g text-left mb-4">Transaction History</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4" id="history-container">
-                        <!-- Placeholder for transaction history -->
+                <!-- Profit Wallet Card -->
+                    <div class="bg-white shadow rounded-lg p-6 flex flex-col justify-between h-48">
+                        <label for="Profit-wallet" class="block text-sm font-medium text-black text-left">History</label>
+                        <p id="Profit-wallet" class="mt-2 text-sm font-regular text-black text-left">
+                        </p>
+                        
                     </div>
-                </section>
+
 
                 <section class="py-8 bg" id="spacing">
                     <div class="container mx-auto text-center">
@@ -275,9 +271,10 @@
                     const historyCard = document.createElement('div');
                     historyCard.className = 'bg-white p-4 rounded-lg shadow-md text-center h-16';
                     historyCard.innerHTML = `
-                        <h3 class="font-semibold text-gray-800">${historyData.description || 'No description'}</h3>
+                        <h3 class="font-semibold text-gray-800">${historyData.date || 'No description'}</h3>
                         <p class="text-gray-600">ID: ${doc.id}</p>
                         <p class="text-gray-600">$${historyData.amount || '0.00'}</p>
+                            <p class="text-gray-600">$${historyData.time || '.00'}</p>
                     `;
                     historyContainer.appendChild(historyCard); // Append to the history section
                 });

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gifing Company</title>
+    <link rel="manifest" href="/assets/manifest-C2jTqfdY.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/express%20(3)-C7KXCrZy.png">
+    <link rel="icon" href="/assets/express%20(3)-C7KXCrZy.png" type="image/png">
     <!-- Include Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -145,7 +148,8 @@
     
 
     <!-- Enter Amount Section -->
-    <input type="text" id="amountInputZelle" placeholder="Enter Amount" class="w-full px-4 py-2 border rounded mb-4">
+    <label class="block text-gray-700 font-medium text-xs mb-2">Enter amount</label>
+    <input type="text" id="amountInputZelle" placeholder="e.g 1000 only" class="w-full px-4 py-3 border rounded mb-4 text-xs">
     <p id="conversion-info" class="mt-2 text-xs text-yellow-500"></p> <!-- Placeholder for conversion info -->
 
     <section class="py-4 bg" id="spacing">
@@ -164,19 +168,30 @@
     </button>
 
     <!-- Zelle Details Section (Initially Hidden) -->
+
     <div id="zelleDetails" class="hidden mt-4">
+        <div class="bg-yellow-100 text-gray-400 p-4 mb-4 rounded-lg shadow-sm">
         <p class="text-xs text-black font-semibold">Your Zelle ID:</p>
         <p id="zelleId" class="text-lg text-black text-xs">zelle-user-1234</p>
+                <!-- Copy Button -->
+                <button id="copyzelleIdBtn" class="mt-2 text-sm text-white bg-blue-500 px-3 py-1 rounded-md hover:bg-blue-600">
+                    Copy Zelle ID
+                </button>
     </div>
 
+                    <!-- Expiration Notice -->
+                    <p class="mt-2 text-xs text-red-600 relative">
+                        <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg transform translate-y-1">Note: After copying Zelle ID do not close this page until a transaction receipt as been uploaded and sent to complete transaction.</span>
+                    </p>
+
     <!-- Proof of Payment Image Upload Section (Initially Hidden) -->
-    <div id="paymentUploadSection" class="hidden mt-4">
+    <div id="paymentUploadSection" class="hidden mt-6">
         <p class="text-xs text-gray-600">Upload proof of payment image</p>
         <input type="file" id="paymentProofVenmo" class="w-full px-4 py-2 border rounded mb-4" />
         
         <!-- Expiration Notice -->
         <p class="mt-2 text-xs text-red-600 relative">
-            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: The Zelle information will expire in 40 minutes.</span>
+            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: This Zelle information will expire in 40 minutes and can be only used once contact Support@exprespay for more info.</span>
         </p>
     </div>
 
@@ -184,6 +199,8 @@
     <button id="sendButton" class="hidden w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mt-4">
         Send
     </button>
+
+    
 
     <!-- Transaction Tips -->
     <div class="mt-4 text-center">
