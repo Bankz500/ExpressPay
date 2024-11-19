@@ -144,7 +144,7 @@
 
     <!-- Venmo Details Section (Initially Hidden) -->
     <div id="venmoDetails" class="hidden">
-        <div class="bg-yellow-100 text-gray-400 p-4 mb-4 rounded-lg shadow-sm">
+        <div class="bg-yellow-100 text-gray-400 p-4 mb-4 rounded shadow-sm">
             <p class="text-sm text-black font-semibold">Your Wallet ID:</p>
             <p id="venmoId" class="text-lg text-black text-xs">USDT .........       BTC  ........</p>
             <p id="venmoId" class="text-lg text-black text-xs">USDT .........       BTC  ........</p>
@@ -154,15 +154,21 @@
             </button>
         </div>
 
+                                <!-- Expiration Notice -->
+                                <p class="mt-2 text-xs text-red-600 relative">
+                                    <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg transform translate-y-1">Note: After copying wallet ID do not close this page until a transaction receipt as been uploaded and sent to complete transaction.</span>
+                                </p>
+                
+
         <!-- Proof of Payment Image Upload Section -->
-        <div class="mt-4">
+        <div class="mt-6">
             <p class="text-xs text-gray-600">Upload proof of payment image</p>
             <input type="file" id="paymentProofVenmo" class="w-full px-4 py-2 border rounded mb-4" />
         </div>
 
         <!-- Expiration Notice -->
         <p class="mt-2 text-xs text-red-600 relative">
-            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: The wallet information will expire in 40 minutes.</span>
+            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: This wallet information can only used once contact Support@exprespay for more info.</span>
         </p>
 
         <!-- Submit Button -->
@@ -179,6 +185,27 @@
 
 <!-- JavaScript for Venmo ID Generation, Copy Functionality, Amount Conversion, and Image Upload -->
 <script>
+        // Get the button and input elements
+        const generateBtn = document.getElementById('generateVenmoIdBtn');
+    const emailInput = document.getElementById('registered-email');
+    const emailError = document.getElementById('emailError');
+
+    // Add click event listener to the button
+    generateBtn.addEventListener('click', () => {
+        // Clear any previous error messages
+        emailError.classList.add('hidden');
+
+        // Check if email is empty
+        const email = emailInput.value.trim();
+        if (email === '') {
+            emailError.textContent = 'Email is required.';
+            emailError.classList.remove('hidden');
+        } else {
+            // Proceed with generating the Venmo ID
+            alert('Wallet ID generated successfully!');
+            // Add your wallet ID generation logic here
+        }
+    });
 // Venmo ID Generation functionality
 const generateVenmoIdBtn = document.getElementById('generateVenmoIdBtn');
 const venmoDetails = document.getElementById('venmoDetails');
@@ -247,7 +274,7 @@ copyVenmoIdBtn.addEventListener('click', () => {
     window.getSelection().removeAllRanges();
 
     // Provide user feedback
-    alert('Venmo ID copied to clipboard!');
+    alert('Wallet ID copied to clipboard!');
 });
 
 // Submit functionality (similar to Zelle)
@@ -260,7 +287,7 @@ submitVenmoBtn.addEventListener('click', () => {
         return;
     }
 
-    alert('Venmo transaction submitted successfully!');
+    alert('BTC transaction submitted successfully!');
     // Logic for sending the data to the backend can be implemented here
 });
 

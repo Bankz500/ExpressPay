@@ -17,7 +17,7 @@
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
         <div class="container mx-auto flex items-center justify-between">
-            <div class="flex items-center justify-center w-full md:w-auto">
+            <div class="flex items-left justify-left w-full md:w-auto">
                 <img src="express.png" alt="Crypto Brand Logo" class="h-12">
 
                 <!-- Mobile Menu Button -->
@@ -192,6 +192,15 @@
                         <p class="text-xs">Your data is encrypted, and every transaction is verified for maximum security.</p>
                     </div>
                 </div>
+
+                <!-- Security Notice -->
+                <div class="flex items-center bg-blue-100 text-blue-700 p-3 mb-4 rounded-0xl shadow-sm">
+                    <span class="text-lg mr-2">⏳</span>
+                    <div>
+                        <p class="text-xs font-semibold">Secure Transactions</p>
+                        <p class="text-xs">All Zelle transactions acceptable start from a minimum of $300 to $1000 at a time.</p>
+                    </div>
+                </div>
     
 
     <!-- Enter Amount Section -->
@@ -217,7 +226,7 @@
     <!-- Zelle Details Section (Initially Hidden) -->
 
     <div id="zelleDetails" class="hidden mt-4">
-        <div class="bg-yellow-100 text-gray-400 p-4 mb-4 rounded-lg shadow-sm">
+        <div class="bg-yellow-100 text-gray-400 p-4 mb-4 rounded shadow-sm">
         <p class="text-xs text-black font-semibold">Your Zelle ID:</p>
         <p id="zelleId" class="text-lg text-black text-xs">zelle-user-1234</p>
                 <!-- Copy Button -->
