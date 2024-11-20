@@ -107,26 +107,28 @@
     </div>
 </section>
 
-<div class="flex flex-col items-center py-4 px-2">
+<div class="flex flex-col items-center py-6 px-4">
     <!-- Navigation Header -->
     <nav class="w-full max-w-lg mb-6 flex justify-between space-x-2 px-4">
         <a href="request-wallet.html">
-            <button id="giftCardTab" class="tab-link flex-1 text-sm font-semibold text-yellow-600 border-b-2 border-yellow-500 py-2">
+            <button id="giftCardTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2">
                 Bitcoin
             </button>
         </a>
 
+        
         <a href="usdt.html">
-            <button id="venmoTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2 hover:text-yellow-600">
+            <button id="venmoTab" class="tab-link flex-1 text-sm font-semibold text-yellow-600 border-b-2 border-yellow-500 py-2 hover:text-yellow-600">
                 USDT
             </button>
         </a>
     </nav>
 
+
 <div class="flex flex-col items-center py-6 px-4">
 <!-- Venmo Trading Form Container -->
 <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
-    <h2 class="text-sm font-semibold mb-4 text-center text-yellow-500">Convert your BTC to cash</h2>
+    <h2 class="text-sm font-semibold mb-4 text-center text-yellow-500">Convert your USDT to cash</h2>
     <p class="text-gray-600 mb-4 text-center text-xs">Generate your unique Wallet ID to start trading securely.</p>
 
     <!-- Security Notice -->
@@ -140,7 +142,7 @@
 
     <!-- Enter Amount Section -->
     <input type="text-xs" id="amountInputVenmo" placeholder="Enter Amount" class="w-full px-4 py-2 border rounded mb-4">
-    <p id="conversion-info" class="mt-2 text-xs text-yellow-500"></p>
+    <p id="conversion-info" class="mt-2 text-xs text-yellow-500 text-xs"></p>
 
     <section class="py-4 bg" id="spacing">
         <div class="container mx-auto text-center">
@@ -239,7 +241,7 @@ function generateRandomVenmoId() {
     const randomNumber = Math.floor(Math.random() * 9000) + 1000;
     
     // Return a unique Venmo ID
-    return `BTC : ${89484748938384849}`;
+    return `USDT : ${89484748938384849}`;
 }
 
 // Function to update the conversion info
