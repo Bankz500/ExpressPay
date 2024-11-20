@@ -119,22 +119,44 @@
 
 
 
-<div class="flex flex-col items-center py-6 px-4">
+<div class="flex flex-col items-center py-6 px-4 bg-gray-50">
     <!-- Navigation Header -->
-    <nav class="w-full max-w-lg mb-6 flex justify-between space-x-2 px-4">
-        <a href="redeem.html">
-            <button id="giftCardTab" class="tab-link flex-1 text-sm font-semibold text-yellow-600 border-b-2 border-yellow-500 py-2">Gift Cards</button>
+    <nav class="w-full max-w-lg mb-6 flex justify-between bg-white shadow-md rounded-lg p-2">
+        <a href="redeem.html" class="flex-1 text-center">
+            <button 
+                id="giftCardTab" 
+                class="tab-link w-full text-sm font-semibold text-yellow-600 py-2 rounded bg-yellow-100 border-b-2 border-yellow-500 transition duration-200">
+                Gift Cards
+            </button>
         </a>
-        <a href="venmo.html">
-            <button id="venmoTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2 hover:text-yellow-600">Venmo</button>
+        <a href="venmo.html" class="flex-1 text-center">
+            <button 
+                id="venmoTab" 
+                class="tab-link w-full text-sm font-semibold text-gray-600 py-2 rounded hover:bg-gray-100 hover:text-yellow-600 transition duration-200">
+                Venmo
+            </button>
         </a>
-        <a href="zelle.html">
-            <button id="zelleTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2 hover:text-yellow-600">Zelle</button>
+        <a href="zelle.html" class="flex-1 text-center">
+            <button 
+                id="zelleTab" 
+                class="tab-link w-full text-sm font-semibold text-gray-600 py-2 rounded hover:bg-gray-100 hover:text-yellow-600 transition duration-200">
+                Zelle
+            </button>
         </a>
-        <a href="paypal.html">
-            <button id="paypalTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2 hover:text-yellow-600">Paypal</button>
+        <a href="paypal.html" class="flex-1 text-center">
+            <button 
+                id="paypalTab" 
+                class="tab-link w-full text-sm font-semibold text-gray-600 py-2 rounded hover:bg-gray-100 hover:text-yellow-600 transition duration-200">
+                PayPal
+            </button>
         </a>
     </nav>
+</div>
+
+
+
+
+<div class="flex flex-col items-center py-6 px-4 bg-gray-50">
     <!-- Content Card -->
     <div class="w-full max-w-lg bg-white p-5 rounded-3xl shadow-md">
         <!-- Gift Cards Form -->

@@ -17,8 +17,9 @@
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
         <div class="container mx-auto flex items-center justify-between">
-            <div class="flex items-left justify-left w-full md:w-auto">
-                <img src="express.png" alt="Crypto Brand Logo" class="h-12">
+            <div class="flex items-center justify-center w-full md:w-auto">
+                    <img src="express.png" alt="Crypto Brand Logo" class="h-12">
+                </a>
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden ml-auto">
@@ -106,22 +107,40 @@
     </div>
 </section>
 
-<div class="flex flex-col items-center py-6 px-4">
+<div class="flex flex-col items-center py-6 px-4 bg-gray-50">
     <!-- Navigation Header -->
-    <nav class="w-full max-w-lg mb-6 flex justify-between space-x-2 px-4">
-        <a href="redeem.html">
-            <button id="giftCardTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2">Gift Cards</button>
+    <nav class="w-full max-w-lg mb-6 bg-white shadow-md rounded-lg p-2 flex justify-between">
+        <a href="redeem.html" class="flex-1 text-center">
+            <button 
+                id="giftCardTab" 
+                class="tab-link w-full text-sm font-semibold text-gray-600 py-2 rounded hover:bg-gray-100 hover:text-yellow-600 transition duration-200">
+                Gift Cards
+            </button>
         </a>
-        <a href="venmo.html">
-            <button id="venmoTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2 hover:text-yellow-600">Venmo</button>
+        <a href="venmo.html" class="flex-1 text-center">
+            <button 
+                id="venmoTab" 
+                class="tab-link w-full text-sm font-semibold text-gray-600 py-2 rounded hover:bg-gray-100 hover:text-yellow-600 transition duration-200">
+                Venmo
+            </button>
         </a>
-        <a href="zelle.html">
-            <button id="zelleTab" class="tab-link flex-1 text-sm font-semibold text-yellow-600 border-b-2 border-yellow-500 py-2 hover:text-yellow-600">Zelle</button>
+        <a href="zelle.html" class="flex-1 text-center">
+            <button 
+                id="zelleTab" 
+                class="tab-link w-full text-sm font-semibold text-yellow-600 py-2 rounded bg-yellow-100 border-b-2 border-yellow-500 transition duration-200">
+                Zelle
+            </button>
         </a>
-        <a href="paypal.html">
-            <button id="paypalTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2 hover:text-yellow-600">Paypal</button>
+        <a href="paypal.html" class="flex-1 text-center">
+            <button 
+                id="paypalTab" 
+                class="tab-link w-full text-sm font-semibold text-gray-600 py-2 rounded hover:bg-gray-100 hover:text-yellow-600 transition duration-200">
+                Paypal
+            </button>
         </a>
     </nav>
+</div>
+
 
 
     <script type="module">
@@ -177,8 +196,10 @@
 
 
 
+    <div class="flex flex-col items-center py-6 px-4 bg-gray-50">
+
    <!-- Zelle Trading Form Container -->
-<div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+<div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
     <h2 class="text-sm font-bold mb-4 text-center text-yellow-500">Trade with Zelle</h2>
     <p class="text-gray-700 mb-4 text-xs text-center">Generate your unique Zelle ID to start trading securely.</p>
 
@@ -223,6 +244,11 @@
         Generate Zelle ID
     </button>
 
+        <!-- Transaction Tips -->
+        <div class="mt-4 text-center">
+            <p class="text-xs text-gray-600">💡 <span class="font-semibold">Tip:</span> Ensure your Zelle details are accurate to avoid processing delays.</p>
+        </div>
+    </div>
     <!-- Zelle Details Section (Initially Hidden) -->
 
     <div id="zelleDetails" class="hidden mt-4">
@@ -255,8 +281,6 @@
     <button id="sendButton" class="hidden w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mt-4">
         Send
     </button>
-
-    
 
     <!-- Transaction Tips -->
     <div class="mt-4 text-center">

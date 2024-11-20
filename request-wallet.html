@@ -102,26 +102,31 @@
     </script>
 </body>
 
-<section class="py-16 bg-gray-50" id="spacing">
+<section class="py-8 bg-gray-50" id="spacing">
     <div class="container mx-auto text-center">
     </div>
 </section>
 
-<div class="flex flex-col items-center py-4 px-2">
+<div class="flex flex-col items-center py-6 px-4 bg-gray-50">
     <!-- Navigation Header -->
-    <nav class="w-full max-w-lg mb-6 flex justify-between space-x-2 px-4">
-        <a href="request-wallet.html">
-            <button id="giftCardTab" class="tab-link flex-1 text-sm font-semibold text-yellow-600 border-b-2 border-yellow-500 py-2">
+    <nav class="w-full max-w-lg mb-6 flex justify-around bg-white shadow-md rounded-lg p-2">
+        <a href="request-wallet.html" class="flex-1 text-center">
+            <button 
+                id="giftCardTab" 
+                class="tab-link w-full text-sm font-semibold text-yellow-600 py-2 rounded bg-yellow-100 border-b-2 border-yellow-500 transition duration-200">
                 Bitcoin
             </button>
         </a>
-
-        <a href="usdt.html">
-            <button id="venmoTab" class="tab-link flex-1 text-sm font-semibold text-gray-600 py-2 hover:text-yellow-600">
+        <a href="usdt.html" class="flex-1 text-center">
+            <button 
+                id="venmoTab" 
+                class="tab-link w-full text-sm font-semibold text-gray-600 py-2 rounded hover:bg-gray-100 hover:text-yellow-600 transition duration-200">
                 USDT
             </button>
         </a>
     </nav>
+</div>
+
 
 <div class="flex flex-col items-center py-6 px-4">
 <!-- Venmo Trading Form Container -->
