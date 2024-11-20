@@ -16,10 +16,10 @@
             overflow: auto; /* Ensures scrolling is enabled */
         }
     </style>
-  <script type="module" crossorigin src="/assets/dashboard-CLEWKPW0.js"></script>
+  <script type="module" crossorigin src="/assets/dashboard-DiI1I97L.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
 </head>
-<body class="font-sans antialiased bg-gray-100">
+<body class="font-sans antialiased bg-white">
 
 <!-- Navbar -->
 <nav class="bg-white p-4 shadow">
@@ -77,40 +77,41 @@
             <div class="flex-1 p-2 bg-gray-100">
                 <h1 id="welcome-message" class="text-xl font-semibold mb-6 rounded-lg text-gray-800">Welcome back</h1>
                 
-                <!-- Generate Wallet Address Feature -->
-                <div class="bg-white shadow-lg rounded-lg p-4 mb-6 flex items-center space-x-4"> <!-- Card-like design -->
-                    <span class="text-gray-700 text-sm">Request a personalized wallet address for USDT and BTC transactions</span> <!-- Updated text -->
-                    <button id="request-button" onclick="window.location.href='request-wallet.html'" class="bg-blue-700 text-white px-4 py-2 border rounded-full hover:bg-blue-900 transition duration-200 text-xs">Request</button> <!-- Updated button -->
-                </div>
+<!-- Include FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-                <!-- Add a horizontal line here -->
-                <hr class="my-4 border-gray-300"> <!-- Added line -->
-                
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6"> <!-- Added mt-6 for spacing -->
-                    <!-- Deposit Account Card -->
-                    <div class="bg-white shadow-xl rounded-lg p-6 flex flex-col justify-between h-48 striped-bg">
-                        <label for="Deposit-account" class="block text-sm font-medium text-gray-700 text-center">Deposit wallet</label>
-                        <p id="Deposit-account" class="mt-2 text-2xl font-bold text-gray-900 text-center">$0.00</p>
-                    </div>
+<div class="flex justify-between items-stretch space-x-4 mt-6">
+    <!-- Deposit Account Card -->
+    <div class="bg-white shadow-xl rounded-lg p-6 flex flex-col justify-between h-48 w-1/3">
+        <label for="Deposit-account" class="block text-sm font-medium text-gray-700 text-center">Deposit Wallet</label>
+        <p id="Deposit-account" class="mt-2 text-0xl font-bold text-gray-900 text-center">$0.00</p>
+    </div>
 
-                    <!-- Include FontAwesome for icons -->
-                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Wallet Card -->
+    <div class="relative bg-yellow-600 shadow-xl rounded-lg p-6 flex flex-col justify-between h-48 w-1/3">
+        <i class="fas fa-lock absolute top-2 right-2 text-white text-sm"></i> <!-- Unlocked Padlock Icon -->
+        <label for="wallet" class="block text-sm font-medium text-white text-center">Withdrawal Wallet</label>
+        <p id="wallet" class="mt-2 text-0xl font-bold text-white text-center">$0.00</p>
+    </div>
 
-                    <!-- Wallet Card -->
-                    <div class="relative bg-yellow-600 shadow-xl rounded-lg p-6 flex flex-col justify-between h-48 striped-bg-gray-100"> <!-- Add the striped-bg class -->
+    <!-- Signup Offer Card -->
+    <div class="relative bg-blue-600 shadow-xl rounded-lg p-6 flex flex-col justify-between h-48 w-1/3">
+        <label for="referal-wallet" class="block text-sm font-medium text-white text-center">Referel Wallet</label>
+        <p id="referal-wallet" class="mt-2 text-0xl font-bold text-white text-center">$0.00</p>
+    </div>
+</div>
 
-                    <!-- Unlocked Padlock Icon -->
-                    <i class="fas fa-lock absolute top-2 right-2 text-white text-sm"></i>
-                    <label for="wallet" class="block text-sm font-medium text-white text-center">Withdrawal Wallet</label>
-                    <p id="wallet" class="mt-2 text-2xl font-bold text-white text-center">$0.00</p>
-                </div>
-                </div>
-                
-                <section class="py-5 bg-gray-100" id="spacing">
-                    <div class="container mx-auto text-center">
-                    </div>
-                </section>
+<!-- Generate Wallet Address Feature -->
+<div class="bg-white shadow-lg rounded-lg p-4 mt-6 flex items-center justify-between space-x-4">
+    <span class="text-gray-700 text-sm">Request a personalized wallet address for USDT and BTC transactions</span>
+    <button id="request-button" onclick="window.location.href='request-wallet.html'" 
+            class="bg-blue-700 text-white px-4 py-2 border rounded-full hover:bg-blue-900 transition duration-200 text-xs">
+        Request
+    </button>
+</div>
+
+<!-- Divider -->
+<hr class="my-4 border-gray-100">
 
                 <!-- Add a horizontal line here -->
                 <hr class="my-4 border-gray-300"> <!-- Added line -->
@@ -118,7 +119,7 @@
                 <!-- Profit Wallet Card -->
                     <div class="bg-white shadow rounded p-6 flex flex-col justify-between h-40">
                         <label for="Profit-wallet" class="block text-sm font-medium text-black text-left">History</label>
-                        <p id="Profit-wallet" class="mt-2 text-sm font-regular text-black text-left">
+                        <p id="Profit-wallet" class="mt-2 text-sm font-regular text-black text-left">No history</p>
                         </p>
                         
                     </div>
