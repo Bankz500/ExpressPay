@@ -151,87 +151,128 @@
 
     <div class="flex flex-col items-center py-6 px-4 bg-gray-50">
 
-   <!-- Zelle Trading Form Container -->
+<!-- Zelle Trading Form Container -->
 <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
+    <!-- Title and Description -->
     <h2 class="text-sm font-bold mb-4 text-center text-yellow-500">Trade with Zelle</h2>
     <p class="text-gray-700 mb-4 text-xs text-center">Generate your unique Zelle ID to start trading securely.</p>
 
+    <!-- Security Notices -->
+    <div class="flex items-center bg-yellow-100 text-yellow-700 p-3 mb-4 rounded shadow-sm">
+        <span class="text-lg mr-2">🔒</span>
+        <div>
+            <p class="text-xs font-semibold">Secure Transactions</p>
+            <p class="text-xs">Your data is encrypted, and every transaction is verified for maximum security.</p>
+        </div>
+    </div>
 
-
-                <!-- Security Notice -->
-                <div class="flex items-center bg-yellow-100 text-yellow-700 p-3 mb-4 rounded-0xl shadow-sm">
-                    <span class="text-lg mr-2">🔒</span>
-                    <div>
-                        <p class="text-xs font-semibold">Secure Transactions</p>
-                        <p class="text-xs">Your data is encrypted, and every transaction is verified for maximum security.</p>
-                    </div>
-                </div>
-
-                <!-- Security Notice -->
-                <div class="flex items-center bg-blue-100 text-blue-700 p-3 mb-4 rounded-0xl shadow-sm">
-                    <span class="text-lg mr-2">⏳</span>
-                    <div>
-                        <p class="text-xs font-semibold">Secure Transactions</p>
-                        <p class="text-xs">All Zelle transactions acceptable start from a minimum of $300 to $1000 at a time.</p>
-                    </div>
-                </div>
-    
+    <div class="flex items-center bg-blue-100 text-blue-700 p-3 mb-4 rounded shadow-sm">
+        <span class="text-lg mr-2">⏳</span>
+        <div>
+            <p class="text-xs font-semibold">Transaction Limits</p>
+            <p class="text-xs">All Zelle transactions are acceptable starting from $300 to $1000 at a time.</p>
+        </div>
+    </div>
 
     <!-- Enter Amount Section -->
-    <label class="block text-gray-700 font-medium text-xs mb-2">Enter amount</label>
-    <input type="text" id="amountInputZelle" placeholder="e.g 1000 only" class="w-full px-4 py-3 border rounded mb-4 text-xs">
-    <p id="conversion-info" class="mt-2 text-xs text-yellow-500"></p> <!-- Placeholder for conversion info -->
+    <label class="block text-gray-700 font-medium text-xs mb-2">Enter Amount</label>
+    <input 
+        type="text" 
+        id="amountInputZelle" 
+        placeholder="e.g. 1000 only" 
+        class="w-full px-4 py-3 border rounded mb-4 text-xs"
+    >
+    <p id="conversion-info" class="text-xs text-yellow-500"></p>
 
-    <section class="py-4 bg" id="spacing">
+    <section class="py-4 bg-gray-50" id="spacing">
         <div class="container mx-auto text-center">
         </div>
     </section>
+    
 
+    <!-- Registered Email Input -->
     <div class="mb-4">
         <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
-        <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
+        <input 
+            type="email" 
+            id="registered-email" 
+            placeholder="E.g. XYZ@gmail.com" 
+            class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs"
+        >
     </div>
 
     <!-- Generate Zelle ID Button -->
-    <button id="generateZelleIdBtn" class="w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mb-4">
+    <button 
+        id="generateZelleIdBtn" 
+        class="w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mb-4"
+    >
         Generate Zelle ID
     </button>
 
-        <!-- Transaction Tips -->
-        <div class="mt-4 text-center">
-            <p class="text-xs text-gray-600">💡 <span class="font-semibold">Tip:</span> Ensure your Zelle details are accurate to avoid processing delays.</p>
-        </div>
-    </div>
     <!-- Zelle Details Section (Initially Hidden) -->
-
     <div id="zelleDetails" class="hidden mt-4">
-        <div class="bg-yellow-100 text-gray-400 p-4 mb-4 rounded shadow-sm">
-        <p class="text-xs text-black font-semibold">Your Zelle ID:</p>
-        <p id="zelleId" class="text-lg text-black text-xs">zelle-user-1234</p>
-                <!-- Copy Button -->
-                <button id="copyzelleIdBtn" class="mt-2 text-sm text-white bg-blue-500 px-3 py-1 rounded-md hover:bg-blue-600">
-                    Copy Zelle ID
-                </button>
+        <div class="bg-yellow-100 text-gray-800 p-4 mb-4 rounded shadow-sm">
+            <p class="text-xs font-semibold">Your Zelle ID:</p>
+            <p id="zelleId" class="text-xs">zelle-user-1234</p>
+            <button 
+                id="copyzelleIdBtn" 
+                class="mt-2 text-sm text-white bg-blue-500 px-3 py-1 rounded-md hover:bg-blue-600"
+            >
+                Copy Zelle ID
+            </button>
+        </div>
+        <p class="mt-2 text-xs text-red-600">
+            <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg">
+                Note: After copying the Zelle ID, do not close this page until a transaction receipt has been uploaded and sent to complete the transaction.
+            </span>
+        </p>
     </div>
 
-                    <!-- Expiration Notice -->
-                    <p class="mt-2 text-xs text-red-600 relative">
-                        <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg transform translate-y-1">Note: After copying Zelle ID do not close this page until a transaction receipt as been uploaded and sent to complete transaction.</span>
-                    </p>
-
-    <!-- Proof of Payment Image Upload Section (Initially Hidden) -->
+    <!-- Proof of Payment Upload Section (Initially Hidden) -->
     <div id="paymentUploadSection" class="hidden mt-6">
         <p class="text-xs text-gray-600">Upload proof of payment image</p>
-        <input type="file" id="paymentProofVenmo" class="w-full px-4 py-2 border rounded mb-4" />
-        
+        <input 
+            type="file" 
+            id="paymentProofVenmo" 
+            class="w-full px-4 py-2 border rounded mb-4"
+        >
+
+        <!-- Terms and Conditions -->
+        <div class="mb-4 bg-gray-50 p-4 border border-gray-300 rounded">
+            <p class="text-xs text-gray-700 mb-2">
+                Please carefully review and agree to the following terms and conditions before proceeding with this Zelle transaction:
+            </p>
+            <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
+                <li>You confirm that the Zelle account details (email or phone number) provided are accurate and belong to you.</li>
+                <li>Zelle payments are typically instant and irreversible once processed. Double-check all details before submitting.</li>
+                <li>You agree to comply with Zelle’s <a href="https://www.zellepay.com/legal" target="_blank" class="text-yellow-500 underline hover:text-yellow-600">Terms of Use</a>.</li>
+                <li>Expres Pay is not responsible for failed transactions caused by incorrect details, insufficient funds, or Zelle system outages.</li>
+                <li>By using this service, you acknowledge that this transaction is final and non-refundable unless explicitly stated in our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Refund Policy</a>.</li>
+                <li>Your information will be securely processed in accordance with our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Privacy Policy</a>.</li>
+            </ul>
+            <label class="flex items-center text-xs text-gray-700">
+                <input 
+                    type="checkbox" 
+                    id="accept-terms" 
+                    class="mr-2 rounded border-gray-300 text-yellow-500 focus:ring-2 focus:ring-yellow-300"
+                >
+                I have read and agree to the <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Terms and Conditions</a>.
+            </label>
+        </div>
+
         <!-- Expiration Notice -->
-        <p class="mt-2 text-xs text-red-600 relative">
-            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: This Zelle information will expire in 40 minutes and can be only used once contact Support@exprespay for more info.</span>
+        <p class="mt-2 text-xs text-red-600">
+            <span class="block bg-red-600 text-white p-2 rounded shadow-lg">
+                Note: This Zelle information will expire in 40 minutes and can only be used once. Contact Support@exprespay for more info.
+            </span>
         </p>
     </div>
 
     <!-- Send Button (Initially Hidden) -->
-    <button id="sendButton" class="hidden w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mt-4">
+    <button 
+        id="sendButton" 
+        class="hidden w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mt-4"
+    >
         Send
     </button>
 
@@ -240,6 +281,7 @@
         <p class="text-xs text-gray-600">💡 <span class="font-semibold">Tip:</span> Ensure your Zelle details are accurate to avoid processing delays.</p>
     </div>
 </div>
+
 
 <!-- JavaScript for Zelle ID Generation, Copy Function, and Image Upload -->
 <script>
