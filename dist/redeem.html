@@ -11,7 +11,7 @@
     <!-- Include Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Include Email.js -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <!-- Initialize EmailJS -->
     <script>
         (function(){
@@ -112,11 +112,22 @@
     </script>
 </body>
 
+
 <section class="py-12 bg-gray-50" id="spacing">
     <div class="container mx-auto text-center">
     </div>
 </section>
 
+<!-- Return to Dashboard Link -->
+<div class="flex justify-left mt-4 px-10">
+    <a href="dashboard.html" 
+       class="flex items-center text-black font-medium text-sm hover:text-yellow-600 hover:underline transition duration-200">
+        <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        Return to Dashboard
+    </a>
+</div>
 
 
 <div class="flex flex-col items-center py-6 px-4 bg-gray-50">
@@ -277,6 +288,8 @@
     </label>
 </div>
 
+
+
 <script>
     document.getElementById('accept-terms').addEventListener('change', function () {
     const redeemButton = document.getElementById('redeem-button');
@@ -367,12 +380,53 @@
             return;
         }
 
-        try {
-            // Convert images to Base64
-            const frontImageBase64 = await convertToBase64(frontImageInput);
-            const backImageBase64 = await convertToBase64(backImageInput);
+    //     try {
+    //         // Convert images to Base64
+    //         const frontImageBase64 = await convertToBase64(frontImageInput);
+    //         const backImageBase64 = await convertToBase64(backImageInput);
 
-            // Prepare email parameters
+    //         // Prepare email parameters
+    //         const emailParams = {
+    //             to_email: registeredEmail,
+    //             message: 'Gift card images uploaded successfully.',
+    //             front_image: frontImageBase64,
+    //             back_image: backImageBase64,
+    //         };
+
+    //         // Send email
+    //         emailjs.send('service_f2x5e1i', 'template_d0igltm', emailParams)
+    //             .then((response) => {
+    //                 console.log('Email sent successfully!', response.status, response.text);
+    //                 alert('Gift card images sent successfully!');
+    //             })
+    //             .catch((error) => {
+    //                 console.error('Error sending email:', error);
+    //                 alert('Failed to send email. Please try again.');
+    //             });
+    //     } catch (error) {
+    //         console.error('Error processing images:', error);
+    //         alert('Failed to process images. Please try again.');
+    //     }
+    // });
+
+    // // Helper function to convert file to Base64
+    // function convertToBase64(file) {
+    //     return new Promise((resolve, reject) => {
+    //         const reader = new FileReader();
+    //         reader.onload = () => resolve(reader.result.split(',')[1]); // Get Base64 string without prefix
+    //         reader.onerror = (error) => reject(error);
+    //         reader.readAsDataURL(file);
+    //     });
+    // }
+    try {
+            const frontImageBase64 = await resizeImage(frontImageInput, 300, 300, 0.5);
+            const backImageBase64 = await resizeImage(backImageInput, 300, 300, 0.5);
+
+            if (frontImageBase64.length > 50000 || backImageBase64.length > 50000) {
+                alert('Compressed image size exceeds 50KB. Please use smaller images.');
+                return;
+            }
+
             const emailParams = {
                 to_email: registeredEmail,
                 message: 'Gift card images uploaded successfully.',
@@ -380,8 +434,7 @@
                 back_image: backImageBase64,
             };
 
-            // Send email
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', emailParams)
+            emailjs.send('service_f2x5e1i', 'template_d0igltm', emailParams)
                 .then((response) => {
                     console.log('Email sent successfully!', response.status, response.text);
                     alert('Gift card images sent successfully!');
@@ -396,12 +449,37 @@
         }
     });
 
-    // Helper function to convert file to Base64
-    function convertToBase64(file) {
+    function resizeImage(file, maxWidth = 300, maxHeight = 300, quality = 0.5) {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
-            reader.onload = () => resolve(reader.result.split(',')[1]); // Get Base64 string without prefix
-            reader.onerror = (error) => reject(error);
+            reader.onload = (event) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+
+                    let { width, height } = img;
+
+                    if (width > maxWidth || height > maxHeight) {
+                        if (width > height) {
+                            height = Math.round((height * maxWidth) / width);
+                            width = maxWidth;
+                        } else {
+                            width = Math.round((width * maxHeight) / height);
+                            height = maxHeight;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    resolve(canvas.toDataURL('image/jpeg', quality).split(',')[1]); // Further compression
+                };
+                img.onerror = reject;
+                img.src = event.target.result;
+            };
+            reader.onerror = reject;
             reader.readAsDataURL(file);
         });
     }
@@ -457,6 +535,8 @@
 
 </body>
 
+
+
 <section class="py-16 bg" id="spacing"></section>
     <div class="container mx-auto text-center">
     </div>
@@ -464,7 +544,7 @@
 
 
 <!-- Bottom Navbar (only visible on mobile) -->
-<div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-white shadow-2xl p-3">
+<div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-gray-200 shadow-2xl p-3">
     <div class="flex justify-between items-center">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
@@ -516,8 +596,8 @@
         // Add active styles to the clicked item
         const icon = element.querySelector('div');
         const text = element.querySelector('span');
-        icon.classList.add('bg-blue-300', 'text-white'); // Highlight background of active icon
-        text.classList.add('text-blue-300'); // Highlight text of active item
+        icon.classList.add('bg-yellow-300', 'text-white'); // Highlight background of active icon
+        text.classList.add('text-black'); // Highlight text of active item
     }
 
     // Set the active state on page load based on the current URL

@@ -94,3 +94,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Subtle Shadow for Icons */
+.drop-shadow-md {
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Stroke Effect for Transparent Icons */
+.icon-stroke {
+  stroke: #000;
+  stroke-width: 0.5;
+}

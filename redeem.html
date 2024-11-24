@@ -110,11 +110,22 @@
     </script>
 </body>
 
+
 <section class="py-12 bg-gray-50" id="spacing">
     <div class="container mx-auto text-center">
     </div>
 </section>
 
+<!-- Return to Dashboard Link -->
+<div class="flex justify-left mt-4 px-10">
+    <a href="dashboard.html" 
+       class="flex items-center text-black font-medium text-sm hover:text-yellow-600 hover:underline transition duration-200">
+        <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        Return to Dashboard
+    </a>
+</div>
 
 
 <div class="flex flex-col items-center py-6 px-4 bg-gray-50">
@@ -274,6 +285,8 @@
         I have read and agree to the <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Terms and Conditions</a>.
     </label>
 </div>
+
+
 
 <script>
     document.getElementById('accept-terms').addEventListener('change', function () {
@@ -569,6 +582,8 @@
     </script>
 </body>
 
+
+
 <section class="py-16 bg" id="spacing"></section>
     <div class="container mx-auto text-center">
     </div>
@@ -576,7 +591,7 @@
 
 
 <!-- Bottom Navbar (only visible on mobile) -->
-<div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-white shadow-2xl p-3">
+<div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-gray-200 shadow-2xl p-3">
     <div class="flex justify-between items-center">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
@@ -628,8 +643,8 @@
         // Add active styles to the clicked item
         const icon = element.querySelector('div');
         const text = element.querySelector('span');
-        icon.classList.add('bg-blue-300', 'text-white'); // Highlight background of active icon
-        text.classList.add('text-blue-300'); // Highlight text of active item
+        icon.classList.add('bg-yellow-300', 'text-white'); // Highlight background of active icon
+        text.classList.add('text-black'); // Highlight text of active item
     }
 
     // Set the active state on page load based on the current URL
