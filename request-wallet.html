@@ -185,11 +185,10 @@
             </button>
         </div>
 
-                                <!-- Expiration Notice -->
-                                <p class="mt-2 text-xs text-red-600 relative">
-                                    <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg transform translate-y-1">Note: After copying wallet ID do not close this page until a transaction receipt as been uploaded and sent to complete transaction.</span>
-                                </p>
-                
+        <!-- Expiration Notice -->
+        <p class="mt-2 text-xs text-red-600 relative">
+            <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg transform translate-y-1">Note: After copying wallet ID do not close this page until a transaction receipt has been uploaded and sent to complete the transaction.</span>
+        </p>
 
         <!-- Proof of Payment Image Upload Section -->
         <div class="mt-6">
@@ -199,7 +198,7 @@
 
         <!-- Expiration Notice -->
         <p class="mt-2 text-xs text-red-600 relative">
-            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: This wallet information can only used once contact Support@exprespay for more info.</span>
+            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: This wallet information can only be used once. Contact Support@exprespay for more info.</span>
         </p>
 
         <section class="py-4 bg" id="spacing">
@@ -207,31 +206,29 @@
             </div>
         </section>
 
-
-<!-- Terms and Conditions -->
-<div class="mb-4 bg-gray-50 p-4 border border-gray-300 rounded">
-    <p class="text-xs text-gray-700 mb-2">
-        Please carefully review and agree to the following terms and conditions before proceeding with this Bitcoin (BTC) transaction:
-    </p>
-    <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
-        <li>Bitcoin transactions are decentralized and cannot be reversed once initiated. Ensure the wallet address provided is accurate and belongs to you.</li>
-        <li>The exchange rate for Bitcoin will be based on the prevailing market rate at the time of the transaction. Rates may fluctuate rapidly due to market volatility.</li>
-        <li>You agree to confirm the exact BTC amount required for this transaction and transfer it within the specified time frame to avoid delays or cancellations.</li>
-        <li>Ensure that the network fee (miner’s fee) is appropriately included when sending Bitcoin to guarantee timely processing.</li>
-        <li>Expres Pay is not liable for losses or delays caused by incorrect wallet addresses, network congestion, or blockchain-related issues.</li>
-        <li>This transaction is final and non-refundable unless explicitly stated in our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Refund Policy</a>.</li>
-        <li>All personal and transaction information will be securely processed and stored in compliance with our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Privacy Policy</a>.</li>
-    </ul>
-    <label class="flex items-center text-xs text-gray-700">
-        <input 
-            type="checkbox" 
-            id="accept-terms-btc" 
-            class="mr-2 rounded border-gray-300 text-yellow-500 focus:ring-2 focus:ring-yellow-300"
-        >
-        I have read and agree to the <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Terms and Conditions</a> for Bitcoin transactions.
-    </label>
-</div>
-
+        <!-- Terms and Conditions -->
+        <div class="mb-4 bg-gray-50 p-4 border border-gray-300 rounded">
+            <p class="text-xs text-gray-700 mb-2">
+                Please carefully review and agree to the following terms and conditions before proceeding with this Bitcoin (BTC) transaction:
+            </p>
+            <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
+                <li>Bitcoin transactions are decentralized and cannot be reversed once initiated. Ensure the wallet address provided is accurate and belongs to you.</li>
+                <li>The exchange rate for Bitcoin will be based on the prevailing market rate at the time of the transaction. Rates may fluctuate rapidly due to market volatility.</li>
+                <li>You agree to confirm the exact BTC amount required for this transaction and transfer it within the specified time frame to avoid delays or cancellations.</li>
+                <li>Ensure that the network fee (miner’s fee) is appropriately included when sending Bitcoin to guarantee timely processing.</li>
+                <li>Expres Pay is not liable for losses or delays caused by incorrect wallet addresses, network congestion, or blockchain-related issues.</li>
+                <li>This transaction is final and non-refundable unless explicitly stated in our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Refund Policy</a>.</li>
+                <li>All personal and transaction information will be securely processed and stored in compliance with our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Privacy Policy</a>.</li>
+            </ul>
+            <label class="flex items-center text-xs text-gray-700">
+                <input 
+                    type="checkbox" 
+                    id="accept-terms-btc" 
+                    class="mr-2 rounded border-gray-300 text-yellow-500 focus:ring-2 focus:ring-yellow-300"
+                >
+                I have read and agree to the <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Terms and Conditions</a> for Bitcoin transactions.
+            </label>
+        </div>
 
         <!-- Submit Button -->
         <button id="submitVenmoBtn" class="w-full py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 mt-4">
@@ -245,117 +242,112 @@
     </div>
 </div>
 
-<!-- JavaScript for Venmo ID Generation, Copy Functionality, Amount Conversion, and Image Upload -->
+<!-- JavaScript for Venmo ID Generation, Cloudinary Upload, and Email Sending -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-        // Get the button and input elements
-        const generateBtn = document.getElementById('generateVenmoIdBtn');
+    // Initialize EmailJS
+    emailjs.init("uEd3R25mqCi5tk0te");
+
+    // Get DOM elements
+    const generateBtn = document.getElementById('generateVenmoIdBtn');
     const emailInput = document.getElementById('registered-email');
-    const emailError = document.getElementById('emailError');
+    const paymentProofVenmo = document.getElementById('paymentProofVenmo');
+    const submitVenmoBtn = document.getElementById('submitVenmoBtn');
+    const venmoDetails = document.getElementById('venmoDetails');
+    const venmoIdElement = document.getElementById('venmoId');
+    const amountInputVenmo = document.getElementById('amountInputVenmo');
+    const conversionInfo = document.getElementById('conversion-info');
+    const termsCheckbox = document.getElementById('accept-terms-btc');
 
-    // Add click event listener to the button
-    generateBtn.addEventListener('click', () => {
-        // Clear any previous error messages
-        emailError.classList.add('hidden');
+    // Conversion rate (1 USD = 1350 Naira)
+    const conversionRate = 1350;
 
-        // Check if email is empty
-        const email = emailInput.value.trim();
-        if (email === '') {
-            emailError.textContent = 'Email is required.';
-            emailError.classList.remove('hidden');
+    // Generate Venmo ID
+    function generateRandomVenmoId() {
+        const randomNumber = Math.floor(Math.random() * 9000) + 1000;
+        return `BTC : ${89484748938384849}`;
+    }
+
+    // Function to update conversion info
+    function updateConversionInfo() {
+        const amount = parseFloat(amountInputVenmo.value);
+        if (!isNaN(amount)) {
+            const convertedAmount = (amount * conversionRate).toFixed(2);
+            conversionInfo.textContent = `${amount} USD is approximately ₦${convertedAmount}`;
         } else {
-            // Proceed with generating the Venmo ID
-            alert('Wallet ID generated successfully!');
-            // Add your wallet ID generation logic here
+            conversionInfo.textContent = '';
         }
+    }
+
+    // Generate a new Venmo ID when the button is clicked
+    generateBtn.addEventListener('click', () => {
+        const amount = amountInputVenmo.value;
+        if (!amount) {
+            alert('Please enter an amount in dollars.');
+            return;
+        }
+        // Generate a new Venmo ID
+        const newVenmoId = generateRandomVenmoId();
+        venmoIdElement.textContent = newVenmoId;
+
+        // Show Venmo details section
+        venmoDetails.classList.remove('hidden');
+        generateBtn.classList.add('hidden');
     });
-// Venmo ID Generation functionality
-const generateVenmoIdBtn = document.getElementById('generateVenmoIdBtn');
-const venmoDetails = document.getElementById('venmoDetails');
-const venmoIdElement = document.getElementById('venmoId');
-const amountInputVenmo = document.getElementById('amountInputVenmo');
-const paymentProofVenmo = document.getElementById('paymentProofVenmo');
-const submitVenmoBtn = document.getElementById('submitVenmoBtn');
-const copyVenmoIdBtn = document.getElementById('copyVenmoIdBtn');
-const conversionInfo = document.getElementById('conversion-info');
 
-// Conversion rate (1 USD = 1350 Naira)
-const conversionRate = 1350;
-
-// Function to generate a random Venmo ID
-function generateRandomVenmoId() {
-    // Generate a random number between 1000 and 9999
-    const randomNumber = Math.floor(Math.random() * 9000) + 1000;
-    
-    // Return a unique Venmo ID
-    return `BTC : ${89484748938384849}`;
-}
-
-// Function to update the conversion info
-function updateConversionInfo() {
-    const amount = parseFloat(amountInputVenmo.value);
-    if (!isNaN(amount)) {
-        const convertedAmount = (amount * conversionRate).toFixed(2);
-        conversionInfo.textContent = `${amount} USD is approximately ₦${convertedAmount}`;
-    } else {
-        conversionInfo.textContent = '';
-    }
-}
-
-// Generate a unique Venmo ID when the button is clicked
-generateVenmoIdBtn.addEventListener('click', () => {
-    const amount = amountInputVenmo.value; // Get the amount input value
-    if (!amount) {
-        alert('Please enter an amount in dollars.'); // Prompt user to fill in the amount
-        return; // Exit the function if no amount is entered
+    // Upload image to Cloudinary
+    function uploadImageToCloudinary(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'gift_card');
+        
+        return fetch('https://api.cloudinary.com/v1_1/dkir5njcy/image/upload', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())
+        .then(data => data.secure_url);
     }
 
-    // Generate a new Venmo ID
-    const newVenmoId = generateRandomVenmoId();
-    
-    // Set the generated Venmo ID in the element
-    venmoIdElement.textContent = newVenmoId;
+    // Handle Submit button click
+    submitVenmoBtn.addEventListener('click', async (event) => {
+        if (!termsCheckbox.checked) {
+            alert('Please agree to the terms and conditions.');
+            return;
+        }
 
-    // Reveal the Venmo details section
-    venmoDetails.classList.remove('hidden');
-    // Hide the generate button
-    generateVenmoIdBtn.classList.add('hidden');
-});
+        const paymentProofFile = paymentProofVenmo.files[0];
+        if (!paymentProofFile) {
+            alert('Please upload proof of payment.');
+            return;
+        }
 
-// Copy Venmo ID to clipboard
-copyVenmoIdBtn.addEventListener('click', () => {
-    // Create a range and selection to copy text
-    const range = document.createRange();
-    range.selectNode(venmoIdElement);
-    window.getSelection().removeAllRanges(); // Clear previous selections
-    window.getSelection().addRange(range); // Select the new range
-    
-    // Copy the text to clipboard
-    document.execCommand('copy');
+        const paymentProofUrl = await uploadImageToCloudinary(paymentProofFile);
 
-    // Clear the selection
-    window.getSelection().removeAllRanges();
+        // Send email via Email.js
+        const templateParams = {
+            to_email: emailInput.value,
+            venmo_id: venmoIdElement.textContent,
+            payment_proof_url: paymentProofUrl,
+            amount_usd: amountInputVenmo.value,
+        };
 
-    // Provide user feedback
-    alert('Wallet ID copied to clipboard!');
-});
+        console.log("Email.js templateParams:", templateParams); // Debugging: Ensure parameters are correct
+       await emailjs.send('service_f2x5e1i', 'template_d0igltm', templateParams)
+            .then((response) => {
+                alert('Transaction details sent successfully!');
+                console.log('Email sent successfully', response);
+            })
+            .catch((error) => {
+                alert('Failed to send email. Please try again later.');
+                console.error('Email sending error:', error);
+            });
+    });
 
-// Submit functionality (similar to Zelle)
-submitVenmoBtn.addEventListener('click', () => {
-    const amount = amountInputVenmo.value;
-    const proofFile = paymentProofVenmo.files[0];
-
-    if (!amount || !proofFile) {
-        alert('Please enter an amount and upload proof of payment.');
-        return;
-    }
-
-    alert('BTC transaction submitted successfully!');
-    // Logic for sending the data to the backend can be implemented here
-});
-
-// Event listener for amount input change to update the conversion info
-amountInputVenmo.addEventListener('input', updateConversionInfo);
+    // Update conversion info on amount change
+    amountInputVenmo.addEventListener('input', updateConversionInfo);
 </script>
+
 
 
 

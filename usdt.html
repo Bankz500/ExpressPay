@@ -164,6 +164,7 @@
         </div>
     </section>
 
+    <!-- Registered Email Input -->
     <div class="mb-4">
         <label class="block text-gray-700 font-medium text-sm mb-2">Enter Registered Email</label>
         <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
@@ -185,11 +186,10 @@
             </button>
         </div>
 
-                                <!-- Expiration Notice -->
-                                <p class="mt-2 text-xs text-red-600 relative">
-                                    <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg transform translate-y-1">Note: After copying wallet ID do not close this page until a transaction receipt as been uploaded and sent to complete transaction.</span>
-                                </p>
-                
+        <!-- Expiration Notice -->
+        <p class="mt-2 text-xs text-red-600 relative">
+            <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg transform translate-y-1">Note: After copying wallet ID do not close this page until a transaction receipt has been uploaded and sent to complete transaction.</span>
+        </p>
 
         <!-- Proof of Payment Image Upload Section -->
         <div class="mt-6">
@@ -199,7 +199,7 @@
 
         <!-- Expiration Notice -->
         <p class="mt-2 text-xs text-red-600 relative">
-            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: This wallet information can only used once contact Support@exprespay for more info.</span>
+            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: This wallet information can only be used once. Contact Support@exprespay for more info.</span>
         </p>
 
         <section class="py-4 bg" id="spacing">
@@ -207,30 +207,29 @@
             </div>
         </section>
 
-
-<!-- Terms and Conditions -->
-<div class="mb-4 bg-gray-50 p-4 border border-gray-300 rounded">
-    <p class="text-xs text-gray-700 mb-2">
-        Please carefully review and agree to the following terms and conditions before proceeding with this USDT (Tether) transaction:
-    </p>
-    <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
-        <li>USDT transactions are conducted on blockchain networks and are irreversible once completed. Double-check the wallet address to ensure it is accurate and corresponds to the correct network (e.g., TRC-20, ERC-20, or BEP-20).</li>
-        <li>The exchange rate for USDT will be based on the prevailing market rate at the time of the transaction. Rates may vary due to market conditions.</li>
-        <li>You are responsible for selecting the correct blockchain network for the transaction. Sending USDT to an incompatible network may result in permanent loss of funds.</li>
-        <li>Ensure that the transaction amount and any applicable network fees are correctly calculated and covered to guarantee timely processing.</li>
-        <li>Expres Pay is not liable for issues caused by incorrect wallet addresses, incompatible networks, or delays resulting from blockchain congestion.</li>
-        <li>All transactions are final and non-refundable unless explicitly stated in our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Refund Policy</a>.</li>
-        <li>Your information will be securely processed and protected in accordance with our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Privacy Policy</a>.</li>
-    </ul>
-    <label class="flex items-center text-xs text-gray-700">
-        <input 
-            type="checkbox" 
-            id="accept-terms-usdt" 
-            class="mr-2 rounded border-gray-300 text-yellow-500 focus:ring-2 focus:ring-yellow-300"
-        >
-        I have read and agree to the <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Terms and Conditions</a> for USDT transactions.
-    </label>
-</div>
+        <!-- Terms and Conditions -->
+        <div class="mb-4 bg-gray-50 p-4 border border-gray-300 rounded">
+            <p class="text-xs text-gray-700 mb-2">
+                Please carefully review and agree to the following terms and conditions before proceeding with this USDT (Tether) transaction:
+            </p>
+            <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
+                <li>USDT transactions are conducted on blockchain networks and are irreversible once completed. Double-check the wallet address to ensure it is accurate and corresponds to the correct network (e.g., TRC-20, ERC-20, or BEP-20).</li>
+                <li>The exchange rate for USDT will be based on the prevailing market rate at the time of the transaction. Rates may vary due to market conditions.</li>
+                <li>You are responsible for selecting the correct blockchain network for the transaction. Sending USDT to an incompatible network may result in permanent loss of funds.</li>
+                <li>Ensure that the transaction amount and any applicable network fees are correctly calculated and covered to guarantee timely processing.</li>
+                <li>Expres Pay is not liable for issues caused by incorrect wallet addresses, incompatible networks, or delays resulting from blockchain congestion.</li>
+                <li>All transactions are final and non-refundable unless explicitly stated in our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Refund Policy</a>.</li>
+                <li>Your information will be securely processed and protected in accordance with our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Privacy Policy</a>.</li>
+            </ul>
+            <label class="flex items-center text-xs text-gray-700">
+                <input 
+                    type="checkbox" 
+                    id="accept-terms-usdt" 
+                    class="mr-2 rounded border-gray-300 text-yellow-500 focus:ring-2 focus:ring-yellow-300"
+                >
+                I have read and agree to the <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Terms and Conditions</a> for USDT transactions.
+            </label>
+        </div>
 
         <!-- Submit Button -->
         <button id="submitVenmoBtn" class="w-full py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 mt-4">
@@ -244,116 +243,110 @@
     </div>
 </div>
 
-<!-- JavaScript for Venmo ID Generation, Copy Functionality, Amount Conversion, and Image Upload -->
+<!-- JavaScript for Venmo ID Generation, Cloudinary Upload, and Email Sending -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-        // Get the button and input elements
-        const generateBtn = document.getElementById('generateVenmoIdBtn');
-    const emailInput = document.getElementById('registered-email');
-    const emailError = document.getElementById('emailError');
+    // Initialize EmailJS
+    emailjs.init("uEd3R25mqCi5tk0te");
 
-    // Add click event listener to the button
-    generateBtn.addEventListener('click', () => {
-        // Clear any previous error messages
-        emailError.classList.add('hidden');
+    // Get DOM elements
+    const generateVenmoIdBtn = document.getElementById('generateVenmoIdBtn');
+    const registeredEmailInput = document.getElementById('registered-email');
+    const paymentProofVenmo = document.getElementById('paymentProofVenmo');
+    const submitVenmoBtn = document.getElementById('submitVenmoBtn');
+    const venmoDetails = document.getElementById('venmoDetails');
+    const venmoIdElement = document.getElementById('venmoId');
+    const amountInputVenmo = document.getElementById('amountInputVenmo');
+    const conversionInfo = document.getElementById('conversion-info');
+    const termsCheckbox = document.getElementById('accept-terms-usdt');
 
-        // Check if email is empty
-        const email = emailInput.value.trim();
-        if (email === '') {
-            emailError.textContent = 'Email is required.';
-            emailError.classList.remove('hidden');
+    // Conversion rate (1 USD = 1350 Naira)
+    const conversionRate = 1350;
+
+    // Generate Venmo Wallet ID
+    function generateRandomVenmoId() {
+        const randomNumber = Math.floor(Math.random() * 9000) + 1000;
+        return `venmo-wallet-${randomNumber}`;
+    }
+
+    // Function to update conversion info
+    function updateConversionInfo() {
+        const amount = parseFloat(amountInputVenmo.value);
+        if (!isNaN(amount)) {
+            const convertedAmount = (amount * conversionRate).toFixed(2);
+            conversionInfo.textContent = `${amount} USD is approximately ₦${convertedAmount}`;
         } else {
-            // Proceed with generating the Venmo ID
-            alert('Wallet ID generated successfully!');
-            // Add your wallet ID generation logic here
+            conversionInfo.textContent = '';
         }
+    }
+
+    // Generate a new Venmo Wallet ID when the button is clicked
+    generateVenmoIdBtn.addEventListener('click', () => {
+        const amount = amountInputVenmo.value;
+        if (!amount) {
+            alert('Please enter an amount.');
+            return;
+        }
+        // Generate a new Venmo Wallet ID
+        const newVenmoId = generateRandomVenmoId();
+        venmoIdElement.textContent = newVenmoId;
+
+        // Show Venmo details section
+        venmoDetails.classList.remove('hidden');
+        generateVenmoIdBtn.classList.add('hidden');
     });
-// Venmo ID Generation functionality
-const generateVenmoIdBtn = document.getElementById('generateVenmoIdBtn');
-const venmoDetails = document.getElementById('venmoDetails');
-const venmoIdElement = document.getElementById('venmoId');
-const amountInputVenmo = document.getElementById('amountInputVenmo');
-const paymentProofVenmo = document.getElementById('paymentProofVenmo');
-const submitVenmoBtn = document.getElementById('submitVenmoBtn');
-const copyVenmoIdBtn = document.getElementById('copyVenmoIdBtn');
-const conversionInfo = document.getElementById('conversion-info');
 
-// Conversion rate (1 USD = 1350 Naira)
-const conversionRate = 1350;
-
-// Function to generate a random Venmo ID
-function generateRandomVenmoId() {
-    // Generate a random number between 1000 and 9999
-    const randomNumber = Math.floor(Math.random() * 9000) + 1000;
-    
-    // Return a unique Venmo ID
-    return `USDT : ${89484748938384849}`;
-}
-
-// Function to update the conversion info
-function updateConversionInfo() {
-    const amount = parseFloat(amountInputVenmo.value);
-    if (!isNaN(amount)) {
-        const convertedAmount = (amount * conversionRate).toFixed(2);
-        conversionInfo.textContent = `${amount} USD is approximately ₦${convertedAmount}`;
-    } else {
-        conversionInfo.textContent = '';
-    }
-}
-
-// Generate a unique Venmo ID when the button is clicked
-generateVenmoIdBtn.addEventListener('click', () => {
-    const amount = amountInputVenmo.value; // Get the amount input value
-    if (!amount) {
-        alert('Please enter an amount in dollars.'); // Prompt user to fill in the amount
-        return; // Exit the function if no amount is entered
+    // Upload the image to Cloudinary
+    async function uploadImageToCloudinary(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'gift_card');
+        
+        const response = await fetch('https://api.cloudinary.com/v1_1/dkir5njcy/image/upload', {
+            method: 'POST',
+            body: formData,
+        });
+        const data = await response.json();
+        return data.secure_url;
     }
 
-    // Generate a new Venmo ID
-    const newVenmoId = generateRandomVenmoId();
-    
-    // Set the generated Venmo ID in the element
-    venmoIdElement.textContent = newVenmoId;
+    // Send the email when the submit button is clicked
+    submitVenmoBtn.addEventListener('click', async () => {
+        if (!termsCheckbox.checked) {
+            alert('Please agree to the terms and conditions.');
+            return;
+        }
 
-    // Reveal the Venmo details section
-    venmoDetails.classList.remove('hidden');
-    // Hide the generate button
-    generateVenmoIdBtn.classList.add('hidden');
-});
+        const paymentProofFile = paymentProofVenmo.files[0];
+        if (!paymentProofFile) {
+            alert('Please upload proof of payment.');
+            return;
+        }
 
-// Copy Venmo ID to clipboard
-copyVenmoIdBtn.addEventListener('click', () => {
-    // Create a range and selection to copy text
-    const range = document.createRange();
-    range.selectNode(venmoIdElement);
-    window.getSelection().removeAllRanges(); // Clear previous selections
-    window.getSelection().addRange(range); // Select the new range
-    
-    // Copy the text to clipboard
-    document.execCommand('copy');
+        const paymentProofUrl = await uploadImageToCloudinary(paymentProofFile);
 
-    // Clear the selection
-    window.getSelection().removeAllRanges();
+        const templateParams = {
+            to_email: registeredEmailInput.value,
+            venmo_id: venmoIdElement.textContent,
+            payment_proof_url: paymentProofUrl,
+            amount_usd: amountInputVenmo.value,
+        };
 
-    // Provide user feedback
-    alert('Wallet ID copied to clipboard!');
-});
+        // Send email via Email.js
+        console.log("Email.js templateParams:", templateParams); // Debugging: Ensure parameters are correct
+        await emailjs.send('service_f2x5e1i', 'template_d0igltm', templateParams)
+            .then((response) => {
+                alert('Transaction details sent successfully!');
+                console.log('Email sent successfully', response);
+            })
+            .catch((error) => {
+                alert('Failed to send email. Please try again later.');
+                console.error('Email sending error:', error);
+            });
+    });
 
-// Submit functionality (similar to Zelle)
-submitVenmoBtn.addEventListener('click', () => {
-    const amount = amountInputVenmo.value;
-    const proofFile = paymentProofVenmo.files[0];
-
-    if (!amount || !proofFile) {
-        alert('Please enter an amount and upload proof of payment.');
-        return;
-    }
-
-    alert('BTC transaction submitted successfully!');
-    // Logic for sending the data to the backend can be implemented here
-});
-
-// Event listener for amount input change to update the conversion info
-amountInputVenmo.addEventListener('input', updateConversionInfo);
+    // Update conversion info on amount change
+    amountInputVenmo.addEventListener('input', updateConversionInfo);
 </script>
 
 

@@ -118,7 +118,6 @@
     </a>
 </div>
 
-
 <div class="flex flex-col items-center py-6 px-4 bg-gray-50">
     <!-- Navigation Header -->
     <nav class="w-full max-w-lg mb-6 bg-white shadow-md rounded-lg p-2 flex justify-between">
@@ -443,7 +442,7 @@ function showGeneratingEffect() {
     
         
 <!-- Bottom Navbar (only visible on mobile) -->
-<div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-gray-200 shadow-2xl p-3">
+<div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-white shadow-2xl p-3">
     <div class="flex justify-between items-center">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
@@ -495,8 +494,8 @@ function showGeneratingEffect() {
         // Add active styles to the clicked item
         const icon = element.querySelector('div');
         const text = element.querySelector('span');
-        icon.classList.add('bg-yellow-300', 'text-white'); // Highlight background of active icon
-        text.classList.add('text-black'); // Highlight text of active item
+        icon.classList.add('bg-blue-300', 'text-white'); // Highlight background of active icon
+        text.classList.add('text-blue-300'); // Highlight text of active item
     }
 
     // Set the active state on page load based on the current URL
