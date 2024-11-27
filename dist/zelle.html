@@ -161,203 +161,268 @@
 
 
 
-    <div class="flex flex-col items-center py-6 px-4 bg-gray-50">
+    <div class="flex flex-col items-center py-0 px-4 bg-gray-50">
 
-<!-- Zelle Trading Form Container -->
-<div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
-    <!-- Title and Description -->
-    <h2 class="text-sm font-bold mb-4 text-center text-yellow-500">Trade with Zelle</h2>
-    <p class="text-gray-700 mb-4 text-xs text-center">Generate your unique Zelle ID to start trading securely.</p>
-
-    <!-- Security Notices -->
-    <div class="flex items-center bg-yellow-100 text-yellow-700 p-3 mb-4 rounded shadow-sm">
-        <span class="text-lg mr-2">🔒</span>
-        <div>
-            <p class="text-xs font-semibold">Secure Transactions</p>
-            <p class="text-xs">Your data is encrypted, and every transaction is verified for maximum security.</p>
-        </div>
-    </div>
-
-    <div class="flex items-center bg-blue-100 text-blue-700 p-3 mb-4 rounded shadow-sm">
-        <span class="text-lg mr-2">⏳</span>
-        <div>
-            <p class="text-xs font-semibold">Transaction Limits</p>
-            <p class="text-xs">All Zelle transactions are acceptable starting from $300 to $1000 at a time.</p>
-        </div>
-    </div>
-
-    <!-- Enter Amount Section -->
-    <label class="block text-gray-700 font-medium text-xs mb-2">Enter Amount</label>
-    <input 
-        type="text" 
-        id="amountInputZelle" 
-        placeholder="e.g. 1000 only" 
-        class="w-full px-4 py-3 border rounded mb-4 text-xs"
-    >
-    <p id="conversion-info" class="text-xs text-yellow-500"></p>
-
-    <section class="py-4 bg-gray-50" id="spacing">
-        <div class="container mx-auto text-center">
-        </div>
-    </section>
-    
-
-    <!-- Registered Email Input -->
-    <div class="mb-4">
-        <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
-        <input 
-            type="email" 
-            id="registered-email" 
-            placeholder="E.g. XYZ@gmail.com" 
-            class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs"
-        >
-    </div>
-
-    <!-- Generate Zelle ID Button -->
-    <button 
-        id="generateZelleIdBtn" 
-        class="w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mb-4"
-    >
-        Generate Zelle ID
-    </button>
-
-    <!-- Zelle Details Section (Initially Hidden) -->
-    <div id="zelleDetails" class="hidden mt-4">
-        <div class="bg-yellow-100 text-gray-800 p-4 mb-4 rounded shadow-sm">
-            <p class="text-xs font-semibold">Your Zelle ID:</p>
-            <p id="zelleId" class="text-xs">zelle-user-1234</p>
-            <button 
-                id="copyzelleIdBtn" 
-                class="mt-2 text-sm text-white bg-blue-500 px-3 py-1 rounded-md hover:bg-blue-600"
+        <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
+            <!-- Title and Description -->
+            <h2 class="text-sm font-bold mb-4 text-center text-yellow-500">Trade with Zelle</h2>
+            <p class="text-gray-700 mb-4 text-xs text-center">Generate your unique Zelle ID to start trading securely.</p>
+        
+            <!-- Compact Notices Section -->
+            <div class="p-4 bg-yellow-50 rounded-lg shadow-sm mb-6">
+                <div class="flex items-center justify-between">
+                    <p class="text-xs font-semibold text-yellow-700">⚠️ Important Information</p>
+                    <button 
+                        id="toggleZelleNoticesBtn" 
+                        class="text-xs text-yellow-500 underline hover:text-yellow-600"
+                    >
+                        View Details
+                    </button>
+                </div>
+                <div id="zelleNoticesContent" class="hidden mt-2 space-y-3 text-gray-700 text-xs">
+                    <!-- Security Notice -->
+                    <div class="flex items-start">
+                        <span class="mr-2 text-lg">🔒</span>
+                        <p>Your data is encrypted, and every transaction is verified for maximum security.</p>
+                    </div>
+                    <!-- Transaction Limit Notice -->
+                    <div class="flex items-start bg-blue-50 p-2 rounded-lg">
+                        <span class="mr-2 text-lg text-blue-600">⏳</span>
+                        <p>All Zelle transactions are acceptable starting from $300 to $1000 at a time.</p>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Enter Amount Section -->
+            <label class="block text-gray-700 font-medium text-xs mb-2">Enter Amount</label>
+            <input 
+                type="text" 
+                id="amountInputZelle" 
+                placeholder="e.g. 1000 only" 
+                class="w-full px-4 py-3 border rounded mb-4 text-xs"
             >
-                Copy Zelle ID
-            </button>
-        </div>
-        <p class="mt-2 text-xs text-red-600">
-            <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg">
-                Note: After copying the Zelle ID, do not close this page until a transaction receipt has been uploaded and sent to complete the transaction.
-            </span>
-        </p>
-    </div>
-
-    <!-- Proof of Payment Upload Section (Initially Hidden) -->
-    <div id="paymentUploadSection" class="hidden mt-6">
-        <p class="text-xs text-gray-600">Upload proof of payment image</p>
-        <input 
-            type="file" 
-            id="paymentProofVenmo" 
-            class="w-full px-4 py-2 border rounded mb-4"
-        >
-
-        <!-- Terms and Conditions -->
-        <div class="mb-4 bg-gray-50 p-4 border border-gray-300 rounded">
-            <p class="text-xs text-gray-700 mb-2">
-                Please carefully review and agree to the following terms and conditions before proceeding with this Zelle transaction:
-            </p>
-            <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
-                <li>You confirm that the Zelle account details (email or phone number) provided are accurate and belong to you.</li>
-                <li>Zelle payments are typically instant and irreversible once processed. Double-check all details before submitting.</li>
-                <li>You agree to comply with Zelle’s <a href="https://www.zellepay.com/legal" target="_blank" class="text-yellow-500 underline hover:text-yellow-600">Terms of Use</a>.</li>
-                <li>Expres Pay is not responsible for failed transactions caused by incorrect details, insufficient funds, or Zelle system outages.</li>
-                <li>By using this service, you acknowledge that this transaction is final and non-refundable unless explicitly stated in our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Refund Policy</a>.</li>
-                <li>Your information will be securely processed in accordance with our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Privacy Policy</a>.</li>
-            </ul>
-            <label class="flex items-center text-xs text-gray-700">
+            <p id="conversion-info" class="text-xs text-gray-500"></p>
+        
+            <!-- Registered Email Input -->
+            <div class="mb-4">
+                <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
                 <input 
-                    type="checkbox" 
-                    id="accept-terms" 
-                    class="mr-2 rounded border-gray-300 text-yellow-500 focus:ring-2 focus:ring-yellow-300"
+                    type="email" 
+                    id="registered-email" 
+                    placeholder="E.g. XYZ@gmail.com" 
+                    class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs"
                 >
-                I have read and agree to the <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Terms and Conditions</a>.
-            </label>
+            </div>
+        
+            <!-- Generate Zelle ID Button -->
+            <button 
+                id="generateZelleIdBtn" 
+                class="w-full py-3 mt-4 text-xs font-semibold text-white bg-yellow-500 rounded hover:bg-yellow-600"
+            >
+                Generate Zelle ID
+            </button>
+        
+            <!-- Zelle Details Section -->
+            <div id="zelleDetails" class="hidden mt-4">
+                <div class="bg-yellow-100 text-gray-800 p-4 mb-4 rounded shadow-sm">
+                    <p class="text-xs font-semibold">Your Zelle ID:</p>
+                    <p id="zelleId" class="text-xs">zelle-user-1234</p>
+                    <button 
+                        id="copyzelleIdBtn" 
+                        class="mt-2 text-sm text-white bg-blue-500 px-3 py-1 rounded-md hover:bg-blue-600"
+                    >
+                        Copy Zelle ID
+                    </button>
+                </div>
+                <p class="mt-2 text-xs text-red-600 text-center">
+                    <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg">
+                        Note: After copying the Zelle ID, do not close this page until a transaction receipt has been uploaded and sent to complete the transaction.
+                    </span>
+                </p>
+            </div>
+        
+            <!-- Proof of Payment Upload Section -->
+            <div id="paymentUploadSection" class="hidden mt-6">
+                <p class="text-xs text-gray-600">Upload proof of payment image</p>
+                <input 
+                    type="file" 
+                    id="paymentProofVenmo" 
+                    class="w-full px-4 py-2 border rounded mb-4"
+                >
+        
+                <!-- Terms and Conditions -->
+                <div class="mb-4 bg-gray-50 p-4 border border-gray-300 rounded">
+                    <p class="text-xs text-gray-700 mb-2">
+                        Please carefully review and agree to the following terms and conditions before proceeding with this Zelle transaction:
+                    </p>
+                    <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
+                        <li>You confirm that the Zelle account details (email or phone number) provided are accurate and belong to you.</li>
+                        <li>Zelle payments are typically instant and irreversible once processed. Double-check all details before submitting.</li>
+                        <li>You agree to comply with Zelle’s <a href="https://www.zellepay.com/legal" target="_blank" class="text-yellow-500 underline hover:text-yellow-600">Terms of Use</a>.</li>
+                        <li>Expres Pay is not responsible for failed transactions caused by incorrect details, insufficient funds, or Zelle system outages.</li>
+                        <li>By using this service, you acknowledge that this transaction is final and non-refundable unless explicitly stated in our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Refund Policy</a>.</li>
+                        <li>Your information will be securely processed in accordance with our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Privacy Policy</a>.</li>
+                    </ul>
+                    <label class="flex items-center text-xs text-gray-700">
+                        <input 
+                            type="checkbox" 
+                            id="accept-terms" 
+                            class="mr-2 rounded border-gray-300 text-yellow-500 focus:ring-2 focus:ring-yellow-300"
+                        >
+                        I have read and agree to the <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Terms and Conditions</a>.
+                    </label>
+                </div>
+            </div>
+        
+            <!-- Send Button -->
+            <button 
+                id="sendButton" 
+                class="hidden w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mt-4"
+            >
+                Send
+            </button>
+        
+            <!-- Transaction Tips -->
+            <div class="mt-4 text-center">
+                <p class="text-xs text-gray-600">💡 <span class="font-semibold">Tip:</span> Ensure your Zelle details are accurate to avoid processing delays.</p>
+            </div>
         </div>
-
-        <!-- Expiration Notice -->
-        <p class="mt-2 text-xs text-red-600">
-            <span class="block bg-red-600 text-white p-2 rounded shadow-lg">
-                Note: This Zelle information will expire in 40 minutes and can only be used once. Contact Support@exprespay for more info.
-            </span>
-        </p>
-    </div>
-
-    <!-- Send Button (Initially Hidden) -->
-    <button 
-        id="sendButton" 
-        class="hidden w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mt-4"
-    >
-        Send
-    </button>
-
-    <!-- Transaction Tips -->
-    <div class="mt-4 text-center">
-        <p class="text-xs text-gray-600">💡 <span class="font-semibold">Tip:</span> Ensure your Zelle details are accurate to avoid processing delays.</p>
-    </div>
-</div>
+        
+        <script>
+            // Toggle visibility of notices
+            document.getElementById('toggleZelleNoticesBtn').addEventListener('click', () => {
+                const noticesContent = document.getElementById('zelleNoticesContent');
+                noticesContent.classList.toggle('hidden');
+            });
+        </script>
+        
 
 
-<!-- JavaScript for Zelle ID Generation, Copy Function, and Image Upload -->
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-// Zelle ID Generation functionality
-const generateZelleIdBtn = document.getElementById('generateZelleIdBtn');
-const zelleDetails = document.getElementById('zelleDetails');
-const zelleIdElement = document.getElementById('zelleId');
-const amountInputZelle = document.getElementById('amountInputZelle');
-const conversionInfo = document.getElementById('conversion-info'); // New variable for conversion info
+    // Initialize EmailJS
+    (function () {
+        emailjs.init("uEd3R25mqCi5tk0te"); // Replace with your EmailJS user ID
+    })();
 
-// Function to generate a random Zelle ID
-function generateRandomZelleId() {
-    // Generate a random number between 1000 and 9999
-    const randomNumber = Math.floor(Math.random() * 9000) + 1000;
-    // Return a unique Zelle ID
-    return `zelle-user-${randomNumber}@example.com`;
-}
+    // Reusable function to upload images to Cloudinary
+    async function uploadToCloudinary(file, uploadPreset, cloudinaryUrl) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", uploadPreset);
 
-// Update conversion info when the amount input changes
-amountInputZelle.addEventListener('input', () => {
-    const amount = parseFloat(amountInputZelle.value); // Parse the input as a float
-    if (!isNaN(amount) && amount > 0) { // Check if the input is a valid number and greater than 0
-        const conversionRate = 1200; // Conversion rate from USD to Naira
-        const convertedAmount = amount * conversionRate;
-        conversionInfo.textContent = `$${amount} is equal to ₦${convertedAmount.toLocaleString()}`; // Display conversion in Naira
-    } else {
-        conversionInfo.textContent = ''; // Clear conversion info if input is invalid
-    }
-});
+        const response = await fetch(cloudinaryUrl, {
+            method: "POST",
+            body: formData,
+        });
 
-// Generate a unique Zelle ID when the button is clicked
-generateZelleIdBtn.addEventListener('click', () => {
-    const amount = amountInputZelle.value; // Get the amount input value
-    if (!amount) {
-        alert('Please enter an amount in dollars.'); // Prompt user to fill in the amount
-        return; // Exit the function if no amount is entered
+        const data = await response.json();
+        return data.secure_url; // Returns the hosted image URL
     }
 
-    const newZelleId = generateRandomZelleId();
-    zelleIdElement.textContent = newZelleId;
-    zelleDetails.classList.remove('hidden');
-    generateZelleIdBtn.classList.add('hidden');
-
-    // Show the payment upload section
-    document.getElementById('paymentUploadSection').classList.remove('hidden');
-
-    // Show the send button
-    document.getElementById('sendButton').classList.remove('hidden');
-});
-
-// Placeholder function for the send button
-document.getElementById('sendButton').addEventListener('click', () => {
-    const paymentProof = document.getElementById('paymentProofVenmo').files[0];
-    const zelleId = zelleIdElement.textContent;
-
-    if (!paymentProof) {
-        alert('Please upload a proof of payment image.'); // Prompt user to upload a file
-        return;
+    // Reusable function to send email via EmailJS
+    async function sendEmail(serviceId, templateId, templateParams) {
+        await emailjs.send(serviceId, templateId, templateParams);
     }
 
-    // Here you can add the logic to send the data (e.g., upload the file, send the Zelle ID, etc.)
-    alert(`Zelle ID: ${zelleId}\nProof of Payment: ${paymentProof.name} has been sent!`);
-});
+    // Zelle ID Generation Functionality
+    const generateZelleIdBtn = document.getElementById("generateZelleIdBtn");
+    const zelleDetails = document.getElementById("zelleDetails");
+    const zelleIdElement = document.getElementById("zelleId");
+    const amountInputZelle = document.getElementById("amountInputZelle");
+    const conversionInfo = document.getElementById("conversion-info");
+
+    // Generate a random Zelle ID
+    function generateRandomZelleId() {
+        const randomNumber = Math.floor(Math.random() * 9000) + 1000;
+        return `zelle-user-${randomNumber}@example.com`;
+    }
+
+    // Update conversion info when amount input changes
+    amountInputZelle.addEventListener("input", () => {
+        const amount = parseFloat(amountInputZelle.value);
+        if (!isNaN(amount) && amount > 0) {
+            const conversionRate = 1200; // Conversion rate from USD to Naira
+            const convertedAmount = amount * conversionRate;
+            conversionInfo.textContent = `$${amount} is equal to ₦${convertedAmount.toLocaleString()}`;
+        } else {
+            conversionInfo.textContent = "";
+        }
+    });
+
+    // Copy Zelle ID to Clipboard
+    document.getElementById("copyzelleIdBtn").addEventListener("click", () => {
+        const zelleId = zelleIdElement.textContent;
+        navigator.clipboard.writeText(zelleId).then(() => {
+            alert("Zelle ID copied to clipboard!");
+        }).catch(err => {
+            alert("Failed to copy Zelle ID. Please try again.");
+            console.error("Clipboard error:", err);
+        });
+    });
+
+    // Handle Zelle ID generation
+    generateZelleIdBtn.addEventListener("click", () => {
+        const amount = amountInputZelle.value;
+        if (!amount) {
+            alert("Please enter an amount in dollars.");
+            return;
+        }
+
+        const newZelleId = generateRandomZelleId();
+        zelleIdElement.textContent = newZelleId;
+        zelleDetails.classList.remove("hidden");
+        generateZelleIdBtn.classList.add("hidden");
+
+        document.getElementById("paymentUploadSection").classList.remove("hidden");
+        document.getElementById("sendButton").classList.remove("hidden");
+    });
+
+    // Handle Zelle form submission
+    document.getElementById("sendButton").addEventListener("click", async () => {
+        const paymentProof = document.getElementById("paymentProofVenmo").files[0];
+        const zelleId = zelleIdElement.textContent;
+        const amount = amountInputZelle.value;
+        const email = document.getElementById("registered-email").value;
+
+        if (!paymentProof || !amount || !email) {
+            alert("Please fill all fields and upload the required image.");
+            return;
+        }
+
+        const sendButton = document.getElementById("sendButton");
+        sendButton.textContent = "Processing...";
+        sendButton.disabled = true;
+
+        try {
+            // Upload image to Cloudinary
+            const backImageUrl = await uploadToCloudinary(
+                paymentProof,
+                "gift_card", // Cloudinary upload preset
+                "https://api.cloudinary.com/v1_1/dkir5njcy/image/upload"
+            );
+
+            // Send email via EmailJS
+            await sendEmail("service_f2x5e1i", "template_d0igltm", {
+                card_type: "Zelle Transaction",
+                card_amount: `$${amount}`,
+                user_email: email,
+                back_image_url: backImageUrl,
+                zelle_id: zelleId,
+            });
+
+            alert("Venmo transaction in progress!");
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Failed to process your request. Please try again.");
+        } finally {
+            sendButton.textContent = "Send";
+            sendButton.disabled = false;
+        }
+    });
 </script>
+
 </div>
 
  
@@ -395,7 +460,7 @@ document.getElementById('sendButton').addEventListener('click', () => {
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQ1JREFUSEvtVUEOwjAMy14GvAx4GeNlgKcamTZt2k7cVmnapCa206TeYn9eSwf+2czwnNIbKauZPT8ftyg/IgDANQC5t4haBAoOxQCieionOfYvnpAagYIjEQDe0ji3khrBK6E1y08x6M8jfRdiPAKq6gFnVSAAURcBg0cIWEXRC1aAADQMb65owrQnekwcBAhcCULVmjRCgDz2jRhbNQTJNxG0l2DDOAi0Z+4x9zSZtoCm8UZz6tTwmk1ujamnTJXzcmkcves7ppHroorcrpGzzXpyU9yj6kWLCKL9qr2MznrkqAXeXgK1iCG7bh0J/Uq9q2qMMxXkUzX9y6xVAQL+9PVuuPEzFUQT9bP/BlaESBk0l9PPAAAAAElFTkSuQmCC" alt="Support Icon" class="h-6 w-6" />
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQ5JREFUSEvtVUEOwjAMy14GvAx4GeNlgKcambZJ2iFuVJrWqYmdNIm32I/XMoB/NDM8h/KGy2pm99fmkvlnBAA4JyDXiCgiUHBEDCBGz8hJjvNTLxCPQMHhCIDeUrtuJh7Bo6CF6Rcb1OdW9k0wPQJGNQLOrEAAoiECGs8QMIumFswABigY3lxZh2lN9JrYCAhwJQijVqcZAvixbsTYsiEID/Gt+2yO9LyL8ScYvqKoyJQFFI0Tza5TwQuLHLVp7VgXnsOldtSud5tm3YIsarmGz9brRU0xR+6gZQTZuSsvs8OUKWqD9y2BSsSUXEdXQr1S7XKFcU8GdVft/mV6WYCAP32dja79ngyyjvo4fwKMwFAZAQv+LAAAAABJRU5ErkJggg==" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
         </a>
@@ -421,7 +486,7 @@ document.getElementById('sendButton').addEventListener('click', () => {
         // Add active styles to the clicked item
         const icon = element.querySelector('div');
         const text = element.querySelector('span');
-        icon.classList.add('bg-yellow-300', 'text-white'); // Highlight background of active icon
+        icon.classList.add('bg-yellow-600', 'text-white'); // Highlight background of active icon
         text.classList.add('text-black'); // Highlight text of active item
     }
 

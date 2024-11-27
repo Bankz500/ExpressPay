@@ -205,234 +205,245 @@
     </body>
     
 
-    <div class="flex flex-col items-center py-6 px-4 bg-gray-50">
-    <!-- PayPal Trading Form Container -->
-<div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg mt-2">
-    <h2 class="text-sm font-semibold mb-4 text-center text-yellow-500">Trade with PayPal</h2>
-    <p class="text-gray-600 mb-4 text-xs text-center">Generate your unique PayPal ID to start trading securely.</p>
-
-                <!-- Security Notice -->
-                <div class="flex items-center bg-yellow-100 text-yellow-700 p-3 mb-4 rounded-0xl shadow-sm">
-                    <span class="text-lg mr-2">🔒</span>
-                    <div>
-                        <p class="text-xs font-semibold">Secure Transactions</p>
-                        <p class="text-xs">Your data is encrypted, and every transaction is verified for maximum security.</p>
+    <div class="flex flex-col items-center py-0 px-4 bg-gray-50">
+        <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
+            <!-- Title and Description -->
+            <h2 class="text-sm font-bold mb-4 text-center text-blue-500">Trade with PayPal</h2>
+            <p class="text-gray-700 mb-4 text-xs text-center">Generate your unique PayPal ID to start trading securely.</p>
+        
+            <!-- Compact Notices Section -->
+            <div class="p-4 bg-blue-50 rounded-lg shadow-sm mb-6">
+                <div class="flex items-center justify-between">
+                    <p class="text-xs font-semibold text-blue-700">⚠️ Important Information</p>
+                    <button 
+                        id="togglePayPalNoticesBtn" 
+                        class="text-xs text-blue-500 underline hover:text-blue-600"
+                    >
+                        View Details
+                    </button>
+                </div>
+                <div id="paypalNoticesContent" class="hidden mt-2 space-y-3 text-gray-700 text-xs">
+                    <!-- Security Notice -->
+                    <div class="flex items-start">
+                        <span class="mr-2 text-lg">🔒</span>
+                        <p>Your data is encrypted, and every transaction is verified for maximum security.</p>
+                    </div>
+                    <!-- Transaction Limit Notice -->
+                    <div class="flex items-start bg-blue-50 p-2 rounded-lg">
+                        <span class="mr-2 text-lg text-blue-600">⏳</span>
+                        <p>All PayPal transactions are acceptable starting from $300 to $1000 at a time.</p>
                     </div>
                 </div>
-
-                                <!-- Security Notice -->
-                                <div class="flex items-center bg-blue-100 text-blue-700 p-3 mb-4 rounded-0xl shadow-sm">
-                                    <span class="text-lg mr-2">⏳</span>
-                                    <div>
-                                        <p class="text-xs font-semibold">Secure Transactions</p>
-                                        <p class="text-xs">All Paypal transactions acceptable start from a minimum of $400 to $1500 at a time.</p>
-                                    </div>
-                                </div>
-    
-    <!-- Enter Amount Section -->
-    <label class="block text-gray-700 font-medium text-xs mb-2">Enter amount</label>
-    <input type="text" id="amountInputPayPal" placeholder="e.g 1000 only" class="w-full px-4 py-3 border rounded mb-4 text-xs">
-    <p id="conversion-info" class="mt-2 text-xs text-yellow-500"></p>
-
-    <section class="py-4 bg" id="spacing">
-        <div class="container mx-auto text-center">
-        </div>
-    </section>
-
-    <div class="mb-4">
-        <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
-        <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
-    </div>
-
-
-    <!-- Generate PayPal ID Button -->
-    <button id="generatePayPalIdBtn" class="w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mb-4" onclick="showGeneratingEffect()">
-        Generate PayPal ID
-    </button>
-
-    <!-- PayPal Details Section (Initially Hidden) -->
-    <div id="paypalDetails" class="hidden">
-        <div class="bg-blue-100 text-yellow-500 p-4 mb-4 rounded-lg shadow-sm">
-            <p class="text-xs text-black">Your PayPal ID:</p>
-            <p id="paypalId" class="text-lg text-black text-xs">paypal-user-1234</p>
-            <!-- Copy Button -->
-            <button id="copyPayPalIdBtn" class="mt-2 text-sm text-white bg-blue-500 px-3 py-1 rounded-md hover:bg-blue-600">
-                Copy PayPal ID
+            </div>
+        
+            <!-- Enter Amount Section -->
+            <label class="block text-gray-700 font-medium text-xs mb-2">Enter Amount</label>
+            <input 
+                type="text" 
+                id="amountInputPayPal" 
+                placeholder="e.g. 1000 only" 
+                class="w-full px-4 py-3 border rounded mb-4 text-xs"
+            >
+            <p id="paypal-conversion-info" class="text-xs text-gray-500"></p>
+        
+            <!-- Registered Email Input -->
+            <div class="mb-4">
+                <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
+                <input 
+                    type="email" 
+                    id="registered-email-paypal" 
+                    placeholder="E.g. XYZ@gmail.com" 
+                    class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-blue-300 text-xs"
+                >
+            </div>
+        
+            <!-- Generate PayPal ID Button -->
+            <button 
+                id="generatePayPalIdBtn" 
+                class="w-full py-3 mt-4 text-xs font-semibold text-white bg-yellow-500 rounded hover:bg-yellow-600"
+            >
+                Generate PayPal ID
             </button>
+        
+            <!-- PayPal Details Section -->
+            <div id="paypalDetails" class="hidden mt-4">
+                <div class="bg-blue-100 text-gray-800 p-4 mb-4 rounded shadow-sm">
+                    <p class="text-xs font-semibold">Your PayPal ID:</p>
+                    <p id="paypalId" class="text-xs">paypal-user-1234</p>
+                    <button 
+                        id="copypaypalIdBtn" 
+                        class="mt-2 text-sm text-white bg-blue-500 px-3 py-1 rounded-md hover:bg-blue-600"
+                    >
+                        Copy PayPal ID
+                    </button>
+                </div>
+                <p class="mt-2 text-xs text-red-600 text-center">
+                    <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg">
+                        Note: After copying the PayPal ID, do not close this page until a transaction receipt has been uploaded and sent to complete the transaction.
+                    </span>
+                </p>
+            </div>
+        
+            <!-- Proof of Payment Upload Section -->
+            <div id="paymentUploadSectionPaypal" class="hidden mt-6">
+                <p class="text-xs text-gray-600">Upload proof of payment image</p>
+                <input 
+                    type="file" 
+                    id="paymentProofPayPal" 
+                    class="w-full px-4 py-2 border rounded mb-4"
+                >
+        
+                <!-- Terms and Conditions -->
+                <div class="mb-4 bg-gray-50 p-4 border border-gray-300 rounded">
+                    <p class="text-xs text-gray-700 mb-2">
+                        Please carefully review and agree to the following terms and conditions before proceeding with this PayPal transaction:
+                    </p>
+                    <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
+                        <li>You confirm that the PayPal account details (email) provided are accurate and belong to you.</li>
+                        <li>PayPal payments are typically instant and irreversible once processed. Double-check all details before submitting.</li>
+                        <li>Expres Pay is not responsible for failed transactions caused by incorrect details, insufficient funds, or PayPal system outages.</li>
+                        <li>By using this service, you acknowledge that this transaction is final and non-refundable unless explicitly stated in our <a href="#" class="text-blue-500 underline hover:text-blue-600">Refund Policy</a>.</li>
+                        <li>Your information will be securely processed in accordance with our <a href="#" class="text-blue-500 underline hover:text-blue-600">Privacy Policy</a>.</li>
+                    </ul>
+                    <label class="flex items-center text-xs text-gray-700">
+                        <input 
+                            type="checkbox" 
+                            id="accept-terms-paypal" 
+                            class="mr-2 rounded border-gray-300 text-blue-500 focus:ring-2 focus:ring-blue-300"
+                        >
+                        I have read and agree to the <a href="#" class="text-blue-500 underline hover:text-blue-600">Terms and Conditions</a>.
+                    </label>
+                </div>
+            </div>
+        
+            <!-- Send Button -->
+            <button 
+                id="sendButtonPaypal" 
+                class="hidden w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mt-4"
+            >
+                Send
+            </button>
+        
+            <!-- Transaction Tips -->
+            <div class="mt-4 text-center">
+                <p class="text-xs text-gray-600">💡 <span class="font-semibold">Tip:</span> Ensure your PayPal details are accurate to avoid processing delays.</p>
+            </div>
         </div>
-
-                        <!-- Expiration Notice -->
-                        <p class="mt-2 text-xs text-red-600 relative">
-                            <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg transform translate-y-1">Note: After copying Paypal ID do not close this page until a transaction receipt as been uploaded and sent to complete transaction.</span>
-                        </p>
         
 
-        <!-- Proof of Payment Image Upload Section -->
-        <div class="mt-6">
-            <p class="text-xs text-gray-600">Upload proof of payment image</p>
-            <input type="file" id="paymentProofPayPal" class="w-full px-4 py-2 border rounded mb-4" />
-        </div>
-
-        <!-- Expiration Notice -->
-        <p class="mt-2 text-xs text-red-600 relative">
-            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: This PayPal information will expire in 40 minutes and can be only used once contact Support@exprespay for more info.</span>
-        </p>
-
-        <section class="py-4 bg" id="spacing">
-            <div class="container mx-auto text-center">
-            </div>
-        </section>
 
 
-<!-- Terms and Conditions -->
-<div class="mb-4 bg-gray-50 p-4 border border-gray-300 rounded">
-    <p class="text-xs text-gray-700 mb-2">
-        Before proceeding with this PayPal transaction, please carefully review and agree to the following terms and conditions:
-    </p>
-    <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
-        <li>You confirm that the PayPal account details provided are accurate and belong to you.</li>
-        <li>Ensure that your PayPal account is verified and active to avoid transaction delays.</li>
-        <li>Payments are processed in accordance with PayPal's <a href="https://www.paypal.com/webapps/mpp/ua/useragreement-full" target="_blank" class="text-yellow-500 underline hover:text-yellow-600">User Agreement</a> and applicable policies.</li>
-        <li>Refunds or adjustments, if applicable, will be subject to our refund policy and may incur processing delays.</li>
-        <li>You acknowledge and accept that Expres Pay is not liable for delays caused by incorrect PayPal details or account restrictions.</li>
-        <li>By submitting this form, you consent to our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Privacy Policy</a> and the secure processing of your PayPal information.</li>
-    </ul>
-    <label class="flex items-center text-xs text-gray-700">
-        <input 
-            type="checkbox" 
-            id="accept-terms" 
-            class="mr-2 rounded border-gray-300 text-yellow-500 focus:ring-2 focus:ring-yellow-300"
-        >
-        I have read and agree to the <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Terms and Conditions</a> for PayPal transactions.
-    </label>
-</div>
-
-
-
-        <!-- Submit Button -->
-        <button id="submitPayPalBtn" class="w-full py-3 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600 mt-4">
-            Send
-        </button>
-    </div>
-
-        <!-- Transaction Tips -->
-        <div class="mt-4 text-center">
-            <p class="text-xs text-gray-600">💡 <span class="font-semibold">NOTICE:</span> Ensure your Paypal payments are made with FAMILY & FRIENDS.</p>
-        </div>
-    </div>
-
-    <!-- Transaction Tips -->
-    <div class="mt-4 text-center">
-        <p class="text-xs text-gray-600"></span> Ensure your PayPal details are accurate to avoid processing delays.</p>
-    </div>
-</div>
-
-
-
-
-<!-- JavaScript for PayPal ID Generation, Copy Functionality, and Image Upload -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-// PayPal ID Generation functionality
-const generatePayPalIdBtn = document.getElementById('generatePayPalIdBtn');
-const paypalDetails = document.getElementById('paypalDetails');
-const paypalIdElement = document.getElementById('paypalId');
-const amountInputPayPal = document.getElementById('amountInputPayPal');
-const paymentProofPayPal = document.getElementById('paymentProofPayPal');
-const submitPayPalBtn = document.getElementById('submitPayPalBtn');
-const copyPayPalIdBtn = document.getElementById('copyPayPalIdBtn');
-const conversionInfo = document.getElementById('conversion-info');
+    (function () {
+        emailjs.init("uEd3R25mqCi5tk0te");
+    })();
 
-// Function to generate a random PayPal ID
+    // // Toggle visibility of notices
+document.getElementById('togglePayPalNoticesBtn').addEventListener('click', () => {
+    const noticesContent = document.getElementById('paypalNoticesContent');
+    noticesContent.classList.toggle('hidden');
+});
+
+// PayPal ID Generation Functionality
+const generatePayPalIdBtn = document.getElementById("generatePayPalIdBtn");
+const paypalDetails = document.getElementById("paypalDetails");
+const paypalIdElement = document.getElementById("paypalId");
+const amountInputPayPal = document.getElementById("amountInputPayPal");
+const conversionInfoPayPal = document.getElementById("paypal-conversion-info");
+
+// Generate a random PayPal ID
 function generateRandomPayPalId() {
-    // Generate a random number between 1000 and 9999
     const randomNumber = Math.floor(Math.random() * 9000) + 1000;
-    
-    // Return a unique PayPal ID
-    return `paypal-user-${randomNumber}`;
+    return `paypal-user-${randomNumber}@example.com`;
 }
 
-// Update conversion info when the amount input changes
-amountInputPayPal.addEventListener('input', () => {
+// Update conversion info when amount input changes
+amountInputPayPal.addEventListener("input", () => {
     const amount = parseFloat(amountInputPayPal.value);
     if (!isNaN(amount) && amount > 0) {
-        const conversionRate = 1300;
+        const conversionRate = 1200; // Conversion rate from USD to Naira
         const convertedAmount = amount * conversionRate;
-        conversionInfo.textContent = `$${amount} is equal to ₦${convertedAmount.toLocaleString()}`;
+        conversionInfoPayPal.textContent = `$${amount} is equal to ₦${convertedAmount.toLocaleString()}`;
     } else {
-        conversionInfo.textContent = '';
+        conversionInfoPayPal.textContent = "";
     }
 });
 
-// Generate a unique PayPal ID when the button is clicked
-generatePayPalIdBtn.addEventListener('click', () => {
-    const amount = amountInputPayPal.value; // Get the amount input value
-    if (!amount) {
-        alert('Please enter an amount in dollars.'); // Prompt user to fill in the amount
-        return; // Exit the function if no amount is entered
-    }
-
-    // Generate a new PayPal ID
-    const newPayPalId = generateRandomPayPalId();
-    
-    // Set the generated PayPal ID in the element
-    paypalIdElement.textContent = newPayPalId;
-
-    // Reveal the PayPal details section
-    paypalDetails.classList.remove('hidden');
-    // Hide the generate button
-    generatePayPalIdBtn.classList.add('hidden');
+// Copy PayPal ID to Clipboard
+document.getElementById("copypaypalIdBtn").addEventListener("click", () => {
+    const paypalId = paypalIdElement.textContent;
+    navigator.clipboard.writeText(paypalId).then(() => {
+        alert("PayPal ID copied to clipboard!");
+    }).catch(err => {
+        alert("Failed to copy PayPal ID. Please try again.");
+        console.error("Clipboard error:", err);
+    });
 });
 
-// Copy PayPal ID to clipboard
-copyPayPalIdBtn.addEventListener('click', () => {
-    // Create a range and selection to copy text
-    const range = document.createRange();
-    range.selectNode(paypalIdElement);
-    window.getSelection().removeAllRanges(); // Clear previous selections
-    window.getSelection().addRange(range); // Select the new range
-    
-    // Copy the text to clipboard
-    document.execCommand('copy');
-
-    // Clear the selection
-    window.getSelection().removeAllRanges();
-
-    // Provide user feedback
-    alert('PayPal ID copied to clipboard!');
-});
-
-// Submit functionality (similar to Zelle and Venmo)
-submitPayPalBtn.addEventListener('click', () => {
+// Handle PayPal ID generation
+generatePayPalIdBtn.addEventListener("click", () => {
     const amount = amountInputPayPal.value;
-    const proofFile = paymentProofPayPal.files[0];
-
-    if (!amount || !proofFile) {
-        alert('Please enter an amount and upload proof of payment.');
+    if (!amount) {
+        alert("Please enter an amount in dollars.");
         return;
     }
 
-    alert('PayPal transaction submitted successfully!');
-    // Logic for sending the data to the backend can be implemented here
+    const newPayPalId = generateRandomPayPalId();
+    paypalIdElement.textContent = newPayPalId;
+    paypalDetails.classList.remove("hidden");
+    generatePayPalIdBtn.classList.add("hidden");
+
+    document.getElementById("paymentUploadSectionPaypal").classList.remove("hidden");
+    document.getElementById("sendButtonPaypal").classList.remove("hidden");
 });
 
-function showGeneratingEffect() {
-    const button = document.getElementById('generatePayPalIdBtn');
-    button.textContent = 'Generating PayPal ID...'; // Change button text
-    button.disabled = true; // Disable the button to prevent multiple clicks
-    button.classList.add('bg-gray-400'); // Change button color to indicate loading
+// Handle PayPal form submission
+document.getElementById("sendButtonPaypal").addEventListener("click", async () => {
+    const paymentProof = document.getElementById("paymentProofPayPal").files[0];
+    const paypalId = paypalIdElement.textContent;
+    const amount = amountInputPayPal.value;
+    const email = document.getElementById("registered-email-paypal").value;
 
-    // Simulate a delay for generating PayPal ID (replace this with actual logic)
-    setTimeout(() => {
-        // Call the existing logic to generate PayPal ID here
-        // For example: generatePayPalId();
+    if (!paymentProof || !amount || !email) {
+        alert("Please fill all fields and upload the required image.");
+        return;
+    }
 
-        // Reset button after the process is done
-        button.textContent = 'Generate PayPal ID'; // Reset button text
-        button.disabled = false; // Re-enable the button
-        button.classList.remove('bg-gray-400'); // Reset button color
-    }, 2000); // Adjust the timeout duration as needed
-}
+    const sendButton = document.getElementById("sendButtonPaypal");
+    sendButton.textContent = "Processing...";
+    sendButton.disabled = true;
+
+    try {
+        // Upload image to Cloudinary
+        const backImageUrl = await uploadToCloudinary(
+            paymentProof,
+            "gift_card", // Cloudinary upload preset
+            "https://api.cloudinary.com/v1_1/dkir5njcy/image/upload"
+        );
+
+        // Send email via EmailJS
+        await sendEmail("service_f2x5e1i", "template_d0igltm", {
+            card_type: "PayPal Transaction",
+            card_amount: `$${amount}`,
+            user_email: email,
+            back_image_url: backImageUrl,
+            paypal_id: paypalId,
+        });
+
+        alert("Paypal transaction in progress!");
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Failed to process your request. Please try again.");
+    } finally {
+        sendButton.textContent = "Send";
+        sendButton.disabled = false;
+    }
+});
+    // Event listener for amount input change to update the conversion info
+    amountInputVenmo.addEventListener('input', updateConversionInfo);
 </script>
+
 
     
     <section class="py-24 bg-gray-50" id="spacing">
@@ -468,7 +479,7 @@ function showGeneratingEffect() {
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
-                <img src="customer-service-2-fill (1).png" alt="Support Icon" class="h-6 w-6" />
+                <img src="customer-service-2-line (1).png" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
         </a>

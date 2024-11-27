@@ -140,7 +140,7 @@
 </div>
 
 
-<div class="flex flex-col items-center py-6 px-4">
+<div class="flex flex-col items-center py-0 px-4">
 <!-- Venmo Trading Form Container -->
 <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
     <h2 class="text-sm font-semibold mb-4 text-center text-yellow-500">Convert your USDT to cash</h2>
@@ -157,7 +157,7 @@
 
     <!-- Enter Amount Section -->
     <input type="text-xs" id="amountInputVenmo" placeholder="Enter Amount" class="w-full px-4 py-2 border rounded mb-4">
-    <p id="conversion-info" class="mt-2 text-xs text-yellow-500 text-xs"></p>
+    <p id="conversion-info" class="mt-2 text-xs text-gray-500 text-xs"></p>
 
     <section class="py-4 bg" id="spacing">
         <div class="container mx-auto text-center">
@@ -336,7 +336,7 @@
         console.log("Email.js templateParams:", templateParams); // Debugging: Ensure parameters are correct
         await emailjs.send('service_f2x5e1i', 'template_d0igltm', templateParams)
             .then((response) => {
-                alert('Transaction details sent successfully!');
+                alert('USDT transaction in progress!');
                 console.log('Email sent successfully', response);
             })
             .catch((error) => {
@@ -433,7 +433,7 @@
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
-                <img src="customer-service-2-fill (1).png" alt="Support Icon" class="h-6 w-6" />
+                <img src="customer-service-2-line (1).png" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
         </a>

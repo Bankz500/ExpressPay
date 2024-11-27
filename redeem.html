@@ -165,139 +165,192 @@
 
 
 
-<div class="flex flex-col items-center py-6 px-4 bg-gray-50">
+<div class="flex flex-col items-center py-0 px-4 bg-gray-50">
 
     <!-- Gift Card Trade Form -->
-<div class="w-full max-w-lg bg-white p-5 rounded-3xl shadow-md">
-    <div id="giftCardForm" class="tab-content">
-        <h2 class="text-sm font-semibold mb-4 text-center text-yellow-500">Trade Your Gift Card</h2>
-
-        <!-- Security Notice -->
-        <div class="flex items-center bg-yellow-100 text-yellow-700 p-3 mb-4 rounded shadow-sm">
-            <span class="text-lg mr-2">🔒</span>
-            <div>
-                <p class="text-xs font-semibold">Secure Transactions</p>
-                <p class="text-xs">Your data is encrypted, and every transaction is verified for maximum security.</p>
+    <div class="w-full max-w-lg bg-white p-5 rounded-3xl shadow-md">
+        <div id="giftCardForm" class="tab-content">
+            <h2 class="text-sm font-semibold mb-4 text-center text-yellow-500">Trade Your Gift Card</h2>
+    
+            <!-- Compact Notices Section -->
+            <div class="p-4 bg-yellow-50 rounded-lg shadow-sm mb-6">
+                <div class="flex items-center justify-between">
+                    <p class="text-xs font-semibold text-yellow-700">⚠️ Important Information</p>
+                    <button
+                        id="toggleNoticesBtn"
+                        class="text-xs text-yellow-500 underline hover:text-yellow-600"
+                    >
+                        View Details
+                    </button>
+                </div>
+                <div id="noticesContent" class="hidden mt-2 space-y-3 text-gray-700 text-xs">
+                    <!-- Security Notice -->
+                    <div class="flex items-start">
+                        <span class="mr-2 text-lg">🔒</span>
+                        <p>
+                            Your data is encrypted, and every transaction is verified for maximum security.
+                        </p>
+                    </div>
+                    <!-- Transaction Notice -->
+                    <div class="flex items-start bg-red-50 p-2 rounded-lg">
+                        <span class="mr-2 text-lg text-red-600">⏳</span>
+                        <p>
+                            All gift card transactions are non-refundable and must comply with the terms and conditions.
+                        </p>
+                    </div>
+                </div>
             </div>
+    
+            <form id="giftCardTradeForm">
+                <!-- Gift Card Type -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium text-xs mb-2">Gift Card Type</label>
+                    <select id="card-type" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs placeholder-gray-500">
+                        <option value="" disabled selected>Select gift card type</option>
+                        <option value="Apple">Apple Gift Card</option>
+                        <option value="Amazon">Amazon Gift Card</option>
+                        <option value="Google Play">Google Play Gift Card</option>
+                        <option value="Steam">Steam Wallet</option>
+                        <option value="Vanilla">Vanilla</option>
+                        <option value="Ebay">Ebay</option>
+                        <option value="American express">American Express</option>
+                        <option value="wallmart">Wallmart</option>
+                        <option value="Visa">Visa Gift Card</option>
+                        <option value="Nordstorm">Nordstorm</option>
+                        <option value="Razor Gold">Razor Gold</option>
+                        <!-- Add other options as necessary -->
+                    </select>
+                </div>
+    
+                <!-- Gift Card Amount -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium text-xs mb-2">Gift Card Amount</label>
+                    <select id="amount" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs placeholder-gray-500">
+                        <option value="" disabled selected>Select amount</option>
+                        <option value="10">$10</option>
+                        <option value="25">$25</option>
+                        <option value="50">$50</option>
+                        <option value="100">$100</option>
+                        <option value="200">$200</option>
+                        <option value="500">$500</option>
+                        <option value="1000">$1000</option>
+                        <!-- Add other options as necessary -->
+                    </select>
+                </div>
+    
+                <!-- Gift Card Back Image -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium text-xs mb-2">Gift Card Back Image</label>
+                    <input type="file" id="back-image" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs" accept="image/*">
+                </div>
+    
+                <!-- Registered Email -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
+                    <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
+                </div>
+    
+                <!-- Submit Button -->
+                <button type="submit" id="redeem-button" class="w-full py-4 bg-yellow-500 text-white font-semibold rounded shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-xs">
+                    Redeem Gift Card
+                </button>
+            </form>
         </div>
-
-        <form id="giftCardTradeForm">
-            <div class="mb-4">
-                <label class="block text-gray-700 font-medium text-xs mb-2">Gift Card Type</label>
-                <select id="card-type" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs placeholder-gray-500">
-                    <option value="" disabled selected>Select gift card type</option>
-                    <option value="Apple">Apple Gift Card</option>
-                    <option value="Amazon">Amazon Gift Card</option>
-                    <option value="Google Play">Google Play Gift Card</option>
-                    <option value="Steam">Steam Wallet</option>
-                    <option value="Vanilla">Vanilla</option>
-                    <option value="Ebay">Ebay</option>
-                    <option value="American express">American Express</option>
-                    <option value="wallmart">Wallmart</option>
-                    <option value="Visa">Visa Gift Card</option>
-                    <option value="Nordstorm">Nordstorm</option>
-                    <option value="Razor Gold">Razor Gold</option>
-                    <!-- Add other options as necessary -->
-                </select>
-            </div>
-
-            <div class="mb-4">
-                <label class="block text-gray-700 font-medium text-xs mb-2">Gift Card Amount</label>
-                <select id="amount" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs placeholder-gray-500">
-                    <option value="" disabled selected>Select amount</option>
-            <option value="10">$10</option>
-            <option value="25">$25</option>
-            <option value="50">$50</option>
-            <option value="100">$100</option>
-            <option value="200">$200</option>
-            <option value="500">$500</option>
-            <option value="1000">$1000</option>
-                    <!-- Add other options as necessary -->
-                </select>
-            </div>
-
-            <div class="mb-4">
-                <label class="block text-gray-700 font-medium text-xs mb-2">Gift Card Back Image</label>
-                <input type="file" id="back-image" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs" accept="image/*">
-            </div>
-
-            <div class="mb-4">
-                <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
-                <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
-            </div>
-
-            <button type="submit" id="redeem-button" class="w-full py-4 bg-yellow-500 text-white font-semibold rounded shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-300 text-xs">
-                Redeem Gift Card
-            </button>
-        </form>
     </div>
-</div>
+    
+    <script>
+        // Toggle visibility of notices
+        document.getElementById('toggleNoticesBtn').addEventListener('click', () => {
+            const noticesContent = document.getElementById('noticesContent');
+            noticesContent.classList.toggle('hidden');
+        });
+    </script>
+    
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-    (function() {
+    (function () {
         emailjs.init("uEd3R25mqCi5tk0te");
     })();
 
     const form = document.getElementById("giftCardTradeForm");
     const backImageInput = document.getElementById("back-image");
+    const amountDropdown = document.getElementById("amount");
+    const conversionInfo = document.createElement("div");
+    conversionInfo.id = "conversion-info";
+    conversionInfo.className = "text-xs text-gray-500 mt-2";
+    amountDropdown.parentElement.appendChild(conversionInfo); // Append conversion info below the amount dropdown
+
+    // Function to update conversion info when the amount changes
+    amountDropdown.addEventListener("change", () => {
+        const amount = parseFloat(amountDropdown.value);
+        if (!isNaN(amount) && amount > 0) {
+            const conversionRate = 1200; // Conversion rate from USD to Naira
+            const convertedAmount = amount * conversionRate;
+            conversionInfo.textContent = `$${amount} is equal to ₦${convertedAmount.toLocaleString()}`;
+        } else {
+            conversionInfo.textContent = "";
+        }
+    });
 
     form.addEventListener("submit", async function (event) {
-    event.preventDefault();
+        event.preventDefault();
 
-    const cardType = document.getElementById("card-type").value;
-    const amount = document.getElementById("amount").value;
-    const email = document.getElementById("registered-email").value;
-    const backImageFile = backImageInput.files[0];
-    const redeemButton = document.getElementById("redeem-button");
+        const cardType = document.getElementById("card-type").value;
+        const amount = amountDropdown.value;
+        const email = document.getElementById("registered-email").value;
+        const backImageFile = backImageInput.files[0];
+        const redeemButton = document.getElementById("redeem-button");
 
-    if (!cardType || !amount || !email || !backImageFile) {
-        alert("Please fill in all fields and upload the required image.");
-        return;
-    }
-
-    redeemButton.textContent = "Processing...";
-    redeemButton.disabled = true;
-
-    try {
-        let backImageUrl = "";
-        if (backImageFile) {
-            const formData = new FormData();
-            formData.append("file", backImageFile);
-            formData.append("upload_preset", "gift_card");
-
-            const response = await fetch("https://api.cloudinary.com/v1_1/dkir5njcy/image/upload", {
-                method: "POST",
-                body: formData,
-            });
-
-            const data = await response.json();
-            console.log(data); // Debugging: Check full Cloudinary response
-            backImageUrl = data.secure_url; // Should provide the hosted URL
-            console.log("Back Image URL:", backImageUrl); // Debugging: Confirm URL
+        if (!cardType || !amount || !email || !backImageFile) {
+            alert("Please fill in all fields and upload the required image.");
+            return;
         }
 
-        const templateParams = {
-            card_type: cardType,
-            card_amount: amount,
-            user_email: email,
-            back_image_url: backImageUrl,
-        };
+        redeemButton.textContent = "Processing...";
+        redeemButton.disabled = true;
 
-        console.log("Email.js templateParams:", templateParams); // Debugging: Ensure parameters are correct
+        try {
+            let backImageUrl = "";
+            if (backImageFile) {
+                const formData = new FormData();
+                formData.append("file", backImageFile);
+                formData.append("upload_preset", "gift_card");
 
-        await emailjs.send("service_f2x5e1i", "template_d0igltm", templateParams);
-        alert("Gift card information sent successfully!");
-        form.reset();
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Failed to process your request. Please try again.");
-    } finally {
-        redeemButton.textContent = "Redeem Gift Card";
-        redeemButton.disabled = false;
-    }
-});
+                const response = await fetch("https://api.cloudinary.com/v1_1/dkir5njcy/image/upload", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const data = await response.json();
+                console.log(data); // Debugging: Check full Cloudinary response
+                backImageUrl = data.secure_url; // Should provide the hosted URL
+                console.log("Back Image URL:", backImageUrl); // Debugging: Confirm URL
+            }
+
+            const templateParams = {
+                card_type: cardType,
+                card_amount: `$${amount}`,
+                user_email: email,
+                back_image_url: backImageUrl,
+            };
+
+            console.log("Email.js templateParams:", templateParams); // Debugging: Ensure parameters are correct
+
+            await emailjs.send("service_f2x5e1i", "template_d0igltm", templateParams);
+            alert("Gift card transaction in progress");
+            form.reset();
+            conversionInfo.textContent = ""; // Clear conversion info after successful submission
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Failed to process your request. Please try again.");
+        } finally {
+            redeemButton.textContent = "Redeem Gift Card";
+            redeemButton.disabled = false;
+        }
+    });
 </script>
+
 
     <!-- Content Card -->
     <!-- <div class="w-full max-w-lg bg-white p-5 rounded-3xl shadow-md"> -->
@@ -838,7 +891,7 @@
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
-                <img src="customer-service-2-fill (1).png" alt="Support Icon" class="h-6 w-6" />
+                <img src="customer-service-2-line (1).png" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
         </a>
