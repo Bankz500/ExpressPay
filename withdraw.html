@@ -203,21 +203,11 @@
                                placeholder="Enter registered email">
                         <p id="registeredEmailError" class="text-red-500 text-xs hidden">Registered Email is required</p>
                     </div>
-                    <div>
-                        <label for="phoneNumber" class="block text-xs text-black">Phone Number</label>
-                        <input type="text" id="phoneNumber" 
-                               class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
-                               placeholder="Enter phone number">
-                        <p id="phoneNumberError" class="text-red-500 text-xs hidden">Phone Number is required</p>
-                    </div>
-                    <div>
-                        <label for="amount" class="block text-xs text-black">Amount</label>
-                        <input type="text" id="amount" 
-                               class="w-full bg-white border border-gray-300 rounded p-4 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
-                               placeholder="Enter amount">
-                        <p id="amountError" class="text-red-500 text-xs hidden">Amount is required</p>
-                        <p id="balance" class="text-green-500 text-xs mt-1 hidden">Current Balance: $0.00</p>
-                    </div>
+                    <label for="withdrawCash" class="block text-xs text-black">Withdrawal Amount</label>
+                    <input type="text" id="withdrawCash" 
+                           class="w-full bg-white border border-gray-300 rounded p-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-xs" 
+                           placeholder="Enter amount">
+                    <p id="withdrawCashError" class="text-red-500 text-xs hidden">Amount is required</p>                    
                     <div class="col-span-1 flex justify-center md:col-span-2">
                         <button type="button" onclick="submitCashWithdrawal()" id="cashWithdrawButton"
                                 class="bg-yellow-500 text-white px-4 border rounded-lg py-2 w-full hover:bg-yellow-600">Submit</button>
@@ -231,81 +221,84 @@
         
         
         
-<script>
-    function submitCashWithdrawal() {
-    const bankName = document.getElementById('bankName').value.trim();
-    const registeredEmail = document.getElementById('registeredEmail').value.trim();
-    const phoneNumber = document.getElementById('phoneNumber').value.trim();
-    const accountName = document.getElementById('accountName').value.trim();
-    const amount = document.getElementById('amount').value.trim();
-    const cashMessage = document.getElementById('cashMessage');
-    const cashWithdrawButton = document.getElementById('cashWithdrawButton');
-
-    cashMessage.textContent = ''; // Clear previous messages
-
-    // Clear all error messages
-    document.getElementById('bankNameError').classList.add('hidden');
-    document.getElementById('registeredEmailError').classList.add('hidden');
-    document.getElementById('phoneNumberError').classList.add('hidden');
-    document.getElementById('accountNameError').classList.add('hidden');
-    document.getElementById('amountError').classList.add('hidden');
-
-    let isValid = true;
-
-    if (bankName === '') {
-        document.getElementById('bankNameError').classList.remove('hidden');
-        isValid = false;
-    }
-
-    if (registeredEmail === '') {
-        document.getElementById('registeredEmailError').classList.remove('hidden');
-        isValid = false;
-    }
-
-    if (phoneNumber === '' || !/^\d{11}$/.test(phoneNumber)) {
-        document.getElementById('phoneNumberError').classList.remove('hidden');
-        isValid = false;
-    }
-
-    if (accountName === '') {
-        document.getElementById('accountNameError').classList.remove('hidden');
-        isValid = false;
-    }
-
-    if (amount === '') {
-        document.getElementById('amountError').classList.remove('hidden');
-        isValid = false;
-    }
-
-    if (isValid) {
-        cashWithdrawButton.textContent = "Please wait...";
-
-        // Send email using Email.js
-        const emailParams = {
-            bank_name: bankName,
-            account_name: accountName,
-            account_number: phoneNumber,
-            registered_email: registeredEmail,
-            amount: amount,
-        };
-
-        emailjs.send("service_f2x5e1i", "template_d0igltm", emailParams)
-            .then((response) => {
-                cashMessage.textContent = "Withdrawal request submitted successfully.";
-                cashMessage.classList.remove("text-red-500");
-                cashMessage.classList.add("text-green-500");
-                cashWithdrawButton.textContent = "Submit";
-                console.log("SUCCESS!", response.status, response.text);
-            })
-            .catch((error) => {
-                cashMessage.textContent = "Error submitting request. Please try again.";
-                cashWithdrawButton.textContent = "Submit";
-                console.error("FAILED...", error);
-            });
-    }
-}
-</script>
-</body>
+        <script>
+            function submitCashWithdrawal() {
+                const bankName = document.getElementById('bankName').value.trim();
+                const registeredEmail = document.getElementById('registeredEmail').value.trim();
+                const accountName = document.getElementById('accountName').value.trim();
+                const accountNumber = document.getElementById('accountNumber').value.trim(); // Account number field
+                const withdrawCash = document.getElementById('withdrawCash').value.trim(); // Changed to withdrawCash
+                const cashMessage = document.getElementById('cashMessage');
+                const cashWithdrawButton = document.getElementById('cashWithdrawButton');
+            
+                cashMessage.textContent = ''; // Clear previous messages
+            
+                // Clear all error messages
+                document.getElementById('bankNameError').classList.add('hidden');
+                document.getElementById('registeredEmailError').classList.add('hidden');
+                document.getElementById('accountNameError').classList.add('hidden');
+                document.getElementById('accountNumberError').classList.add('hidden'); // Clear error for account number
+                document.getElementById('withdrawCashError').classList.add('hidden');
+            
+                let isValid = true;
+            
+                // Validate inputs
+                if (bankName === '') {
+                    document.getElementById('bankNameError').classList.remove('hidden');
+                    isValid = false;
+                }
+            
+                if (registeredEmail === '') {
+                    document.getElementById('registeredEmailError').classList.remove('hidden');
+                    isValid = false;
+                }
+            
+                if (accountName === '') {
+                    document.getElementById('accountNameError').classList.remove('hidden');
+                    isValid = false;
+                }
+            
+                if (accountNumber === '' || isNaN(accountNumber) || accountNumber.length !== 10) {
+                    document.getElementById('accountNumberError').textContent = "Please enter a valid 10-digit account number.";
+                    document.getElementById('accountNumberError').classList.remove('hidden');
+                    isValid = false;
+                }
+            
+                if (withdrawCash === '' || isNaN(withdrawCash) || withdrawCash <= 0) {
+                    document.getElementById('withdrawCashError').textContent = "Please enter a valid withdrawal amount.";
+                    document.getElementById('withdrawCashError').classList.remove('hidden');
+                    isValid = false;
+                }
+            
+                if (isValid) {
+                    cashWithdrawButton.textContent = "Please wait...";
+            
+                    // Send email using Email.js
+                    const emailParams = {
+                        bank_name: bankName,
+                        account_name: accountName,
+                        account_number: accountNumber, // Included account number in email parameters
+                        registered_email: registeredEmail,
+                        withdraw_cash: withdrawCash, // Updated to use "withdrawCash"
+                    };
+            
+                    emailjs.send("service_f2x5e1i", "template_d0igltm", emailParams)
+                        .then((response) => {
+                            cashMessage.textContent = "Withdrawal request submitted successfully.";
+                            cashMessage.classList.remove("text-red-500");
+                            cashMessage.classList.add("text-green-500");
+                            cashWithdrawButton.textContent = "Submit";
+                            console.log("SUCCESS!", response.status, response.text);
+                        })
+                        .catch((error) => {
+                            cashMessage.textContent = "Error submitting request. Please try again.";
+                            cashWithdrawButton.textContent = "Submit";
+                            console.error("FAILED...", error);
+                        });
+                }
+            }
+            </script>
+             
 
 <!-- Bottom Navbar (only visible on mobile) -->
 <div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-gray-200 shadow-2xl p-3">
