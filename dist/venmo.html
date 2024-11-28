@@ -1,6 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"], input[type="email"], input[type="file"], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .copy-button {
+            font-size: 14px;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .terms {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .terms a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -159,299 +235,392 @@
 
 
 <div class="flex flex-col items-center py-0 px-4 bg-gray-50">  
-<!-- Venmo Trading Form Container -->
-<div class="w-full max-w-md bg-white p-4 rounded-lg shadow-lg">
-    <!-- Header Section -->
-    <h2 class="text-sm font-semibold text-center text-yellow-500 mb-2">Trade with Venmo</h2>
-    <p class="text-xs text-center text-gray-600 mb-4">
-        Securely generate your unique Venmo ID to start trading.
-    </p>
-
-    <!-- Step 1: Security Notices -->
-    <!-- <div class="space-y-2">
-        <div class="flex items-start bg-yellow-50 text-yellow-700 p-3 rounded-lg shadow-sm">
-            <span class="text-lg mr-2">🔒</span>
-            <div>
-                <p class="text-xs font-semibold">Secure Transactions</p>
-                <p class="text-xs">
-                    Your data is encrypted, and every transaction is verified.
-                </p>
-            </div>
-        </div>
-        <div class="flex items-start bg-blue-50 text-blue-700 p-3 rounded-lg shadow-sm">
-            <span class="text-lg mr-2">⏳</span>
-            <div>
-                <p class="text-xs font-semibold">Transaction Limits</p>
-                <p class="text-xs">
-                    Acceptable Venmo amounts range from $200 to $1000.
-                </p>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- Step 2: Enter Amount -->
-
-                    <!-- Compact Notices Section -->
-<div class="p-4 bg-yellow-50 rounded-lg shadow-sm mb-4">
-    <div class="flex items-center justify-between">
-        <p class="text-xs font-semibold text-yellow-700">⚠️ Important Information</p>
-        <button
+<!-- Venmo Transaction Form -->
+<div class="w-full max-w-lg bg-white p-8 rounded-3xl shadow-md">
+    <div id="venmoForm" class="tab-content">
+      <h2 class="text-lg font-semibold mb-8 text-center text-yellow-500">Process Your Venmo Transaction</h2>
+  
+      <!-- Compact Notices Section -->
+      <div class="p-4 bg-yellow-50 rounded-lg shadow-sm mb-8">
+        <div class="flex items-center justify-between">
+          <p class="text-sm font-semibold text-yellow-700">⚠️ Important Information</p>
+          <button
             id="toggleNoticesBtn"
-            class="text-xs text-yellow-500 underline hover:text-yellow-600"
-        >
+            class="text-sm text-yellow-500 underline hover:text-yellow-600"
+          >
             View Details
-        </button>
-    </div>
-    <div id="noticesContent" class="hidden mt-2 space-y-3 text-gray-700 text-xs">
-        <!-- Security Notice -->
-        <div class="flex items-start">
+          </button>
+        </div>
+        <div id="noticesContent" class="hidden mt-4 space-y-3 text-gray-700 text-xs">
+          <!-- Security Notice -->
+          <div class="flex items-start">
             <span class="mr-2 text-lg">🔒</span>
             <p>
-                Your data is encrypted, and every transaction is verified for maximum security.
+              Your data is encrypted, and every transaction is verified for maximum security.
             </p>
-        </div>
-        <div class="flex items-start">
-            <span class="mr-2 text-lg">⏳</span>
+          </div>
+          <!-- Transaction Notice -->
+          <div class="flex items-start bg-red-50 p-3 rounded-lg">
+            <span class="mr-2 text-lg text-red-600">⏳</span>
             <p>
-                Venmo transactions are only accepted within $200 to $1000 per session.
+              All transactions are non-refundable and must comply with the terms and conditions.
             </p>
+          </div>
         </div>
-        <!-- Expiration Notice -->
-        <div class="flex items-start bg-red-50 p-2 rounded-lg">
-            <span class="mr-2 text-lg text-red-600">⏰</span>
-            <p>
-                This Venmo information expires in <strong>40 minutes</strong>. 
-                Complete your transaction promptly to avoid issues.
-            </p>
+      </div>
+  
+      <form id="venmoTradeForm">
+        <!-- Amount Selection -->
+        <div class="mb-8">
+          <label class="block text-gray-700 font-medium text-sm mb-2">Select Amount</label>
+          <select id="amount" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-sm placeholder-gray-500">
+            <option value="" disabled selected>Select amount</option>
+            <option value="10">$10</option>
+            <option value="25">$25</option>
+            <option value="50">$50</option>
+            <option value="100">$100</option>
+            <option value="200">$200</option>
+            <option value="500">$500</option>
+            <option value="1000">$1000</option>
+          </select>
+          <p id="conversion-info" class="text-xs text-gray-500 mt-2"></p>
         </div>
-    </div>
-</div>
-
-<script>
-    // Toggle visibility of notices
-    document.getElementById('toggleNoticesBtn').addEventListener('click', () => {
-        const noticesContent = document.getElementById('noticesContent');
-        noticesContent.classList.toggle('hidden');
-    });
-</script>
-
-    <div class="mt-4">
-        <label class="block text-xs font-medium text-gray-700 mb-1">Enter Amount ($)</label>
-        <input
-            type="text"
-            id="amountInputVenmo"
-            placeholder="e.g., 1000"
-            class="w-full px-4 py-3 text-xs border rounded"
-        />
-        <p id="conversion-info" class="text-xs text-gray-500 mt-2"></p>
-    </div>
-
-    <!-- Step 3: Enter Email -->
-    <div class="mt-4">
-        <label class="block text-xs font-medium text-gray-700 mb-1">Enter Registered Email</label>
-        <input
-            type="email"
-            id="registered-email"
-            placeholder="e.g., example@gmail.com"
-            class="w-full px-4 py-3 text-xs border rounded"
-        />
-    </div>
-
-    <!-- Generate Button -->
-    <button
-        id="generateVenmoIdBtn"
-        class="w-full py-3 mt-4 text-xs font-semibold text-white bg-yellow-500 rounded hover:bg-yellow-600"
-    >
-        Generate Venmo ID
-    </button>
-
-    <!-- Venmo Details Section -->
-    <div id="venmoDetails" class="hidden mt-4 space-y-4">
-        <div class="p-4 bg-yellow-50 rounded-lg shadow-sm">
-            <p class="text-xs font-semibold text-gray-700">Your Venmo ID:</p>
-            <p id="venmoId" class="text-xs font-medium text-black">venmo-user-1234</p>
-            <button
-                id="copyVenmoIdBtn"
-                class="mt-2 px-3 py-1 text-xs font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600"
-            >
-                Copy Venmo ID
-            </button>
-        </div>
-
-        <!-- Upload Proof -->
-        <div>
-            <label class="block text-xs text-gray-600 mb-1">Upload Proof of Payment</label>
-            <input
-                type="file"
-                id="paymentProofVenmo"
-                class="w-full px-4 py-3 text-xs border rounded"
+  
+        <!-- Venmo ID -->
+        <div class="mb-8">
+          <label for="venmoId" class="block text-gray-700 font-medium text-sm mb-2">Venmo ID</label>
+          <div class="flex items-center gap-4">
+            <input 
+              type="text" 
+              id="venmoId" 
+              value="tupacnwa500" 
+              placeholder="Venmo ID: username" 
+              readonly 
+              class="flex-grow h-10 px-3 border rounded text-sm text-gray-700 focus:ring-2 focus:ring-yellow-300"
             />
+            <button 
+              class="copy-button px-4 py-2 border bg-gray-100 rounded text-sm text-gray-700 hover:bg-gray-200"
+              onclick="copyVenmoId()"
+            >
+              Copy
+            </button>
+          </div>
         </div>
-        <!-- Expiration Notice -->
-        <!-- <div class="p-3 text-xs text-white bg-red-600 rounded-lg shadow-sm">
-            Note: Venmo details will expire in 40 minutes. Complete your transaction promptly.
-        </div> -->
-
-
-
-        <!-- Terms & Conditions -->
-        <div class="p-3 bg-gray-50 rounded border text-xs text-gray-700">
-            <p class="mb-2">Please review and agree to the following terms:</p>
-            <ul class="list-disc list-inside mb-2">
-                <li>Ensure accurate Venmo details to avoid delays.</li>
-                <li>Transactions are final unless otherwise stated.</li>
-                <li>See our <a href="#" class="text-yellow-500 underline">Privacy Policy</a>.</li>
+  
+        <!-- Email -->
+        <div class="mb-8">
+          <label for="email" class="block text-gray-700 font-medium text-sm mb-2">Enter Registered Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            placeholder="Enter your email" 
+            required 
+            class="w-full h-10 px-3 border rounded text-sm text-gray-700 focus:ring-2 focus:ring-yellow-300"
+          />
+        </div>
+  
+        <!-- Upload Receipt -->
+        <div class="mb-8">
+          <label for="receipt" class="block text-gray-700 font-medium text-sm mb-2">Upload Receipt</label>
+          <input 
+            type="file" 
+            id="receipt" 
+            required 
+            class="w-full text-sm text-gray-500 border rounded file:mr-4 file:py-2 file:px-4 file:border-0 file:rounded file:bg-yellow-50 file:text-yellow-600 hover:file:bg-yellow-100"
+          />
+        </div>
+  
+        <!-- Terms and Conditions Section -->
+        <div class="terms-container mb-8">
+          <input type="checkbox" id="accept-terms" required>
+          <label for="accept-terms" class="block text-sm text-gray-700">
+            I accept the following Terms and Conditions:
+            <ul class="mt-2 list-inside text-xs text-gray-600">
+              <li><strong>1. Eligibility:</strong> To use this service, you must be 18 years or older...</li>
+              <li><strong>2. Payments:</strong> All payments are processed securely. By completing the transaction, you acknowledge that the payment is non-refundable...</li>
+              <li><strong>3. Refund Policy:</strong> No refunds will be issued after the transaction is completed unless specified by the terms of the agreement...</li>
+              <li><strong>4. Privacy:</strong> We respect your privacy and will not share your information with third parties...</li>
+              <li><strong>5. Liability:</strong> The company is not responsible for any damages or losses resulting from the use of the service...</li>
+              <li><strong>6. Changes to Terms:</strong> We reserve the right to modify or update these terms at any time without prior notice...</li>
             </ul>
-            <label class="flex items-center">
-                <input
-                    type="checkbox"
-                    id="accept-terms"
-                    class="mr-2 rounded border-gray-300 text-yellow-500 focus:ring-2 focus:ring-yellow-300"
-                />
-                I agree to the Terms & Conditions.
-            </label>
+            By clicking "I Accept", you agree to these terms.
+          </label>
         </div>
-
+  
         <!-- Submit Button -->
         <button
-            id="submitVenmoBtn"
-            class="w-full py-3 mt-4 text-xs font-semibold text-white bg-yellow-500 rounded-lg hover:bg-yellow-600"
+          id="submitVenmoBtn"
+          class="w-full py-3 text-sm font-semibold text-white bg-yellow-500 rounded hover:bg-yellow-600"
         >
-            Submit
+          Complete Transaction
         </button>
-    </div>
-
-    <!-- Transaction Tip -->
-    <p class="mt-4 text-xs text-center text-gray-600">
+      </form>
+  
+      <!-- Transaction Tip -->
+      <p class="mt-8 text-xs text-center text-gray-600">
         💡 <span class="font-semibold">Tip:</span> Double-check your Venmo details to avoid delays.
-    </p>
-</div>
+      </p>
+    </div>
+  </div>
+  
+  
 
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script>
+  window.onload = function () {
+    // Initialize Email.js once the page is loaded
+    emailjs.init('uEd3R25mqCi5tk0te'); // Replace with your Email.js public key
+    
+    // Toggle notices visibility
+    document.getElementById('toggleNoticesBtn').addEventListener('click', () => {
+      const noticesContent = document.getElementById('noticesContent');
+      noticesContent.classList.toggle('hidden');
+    });
+
+    // Copy Venmo ID to clipboard
+    function copyVenmoId() {
+      const venmoIdInput = document.getElementById('venmoId');
+      const venmoIdValue = venmoIdInput.value;
+
+      if (venmoIdValue) {
+        navigator.clipboard.writeText(venmoIdValue)
+          .then(() => {
+            alert('Venmo ID copied to clipboard!');
+          })
+          .catch(err => {
+            console.error('Failed to copy text: ', err);
+            alert('Failed to copy the Venmo ID. Please try again.');
+          });
+      } else {
+        alert('No Venmo ID available to copy!');
+      }
+    }
+
+    // Currency conversion (1 USD = 1350 NGN)
+    const conversionRate = 1350; // 1 USD = 1350 NGN
+    const conversionInfo = document.createElement("div");
+    conversionInfo.id = "conversion-info";
+    conversionInfo.className = "text-xs text-gray-500 mt-2";
+    const amountDropdown = document.getElementById("amount");
+    amountDropdown.parentElement.appendChild(conversionInfo); // Append conversion info below the amount dropdown
+
+    document.getElementById('amount').addEventListener('change', (event) => {
+      const selectedAmount = event.target.value;
+      if (selectedAmount) {
+        const convertedAmount = selectedAmount * conversionRate;
+        conversionInfo.textContent = `Equivalent in Naira: ₦${convertedAmount.toLocaleString()}`;
+      } else {
+        conversionInfo.textContent = '';
+      }
+    });
+
+    // Handle form submission
+    document.getElementById('submitVenmoBtn').addEventListener('click', async (event) => {
+      event.preventDefault();
+      const submitButton = document.getElementById('submitVenmoBtn');
+      const email = document.getElementById('email').value;
+      const amount = document.getElementById('amount').value;
+      const receipt = document.getElementById('receipt').files[0];
+      const termsAccepted = document.getElementById('accept-terms')?.checked;
+
+      // Validate input fields
+      if (!email || !amount || !receipt || !termsAccepted) {
+        alert('Please complete all fields and agree to the terms.');
+        return;
+      }
+
+      // Show processing message
+      submitButton.textContent = 'Processing...';
+      submitButton.disabled = true;
+
+      try {
+        // Upload receipt to Cloudinary
+        const formData = new FormData();
+        formData.append('file', receipt);
+        formData.append('upload_preset', 'gift_card'); // Replace with your Cloudinary upload preset
+
+        const cloudinaryResponse = await fetch('https://api.cloudinary.com/v1_1/dkir5njcy/image/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        const cloudinaryData = await cloudinaryResponse.json();
+
+        if (!cloudinaryData.secure_url) {
+          throw new Error('Failed to upload receipt');
+        }
+
+        // Prepare email parameters
+        const emailParams = {
+          email: email,
+          amount: amount,
+          naira_equivalent: (amount * conversionRate).toLocaleString(),
+          _url: cloudinaryData.secure_url
+        };
+
+        // Send email via Email.js
+        await emailjs.send('service_f2x5e1i', 'template_d0igltm', emailParams); // Replace with your Email.js service ID and template ID
+
+        alert('Transaction submitted successfully!');
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while processing your transaction. Please try again.');
+      } finally {
+        // Reset button text and state
+        submitButton.textContent = 'Complete Transaction';
+        submitButton.disabled = false;
+      }
+    });
+  }
+</script>
+
+  
+  
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
     (function () {
         emailjs.init("uEd3R25mqCi5tk0te");
     })();
 
-    // Venmo ID Generation functionality
-    const generateVenmoIdBtn = document.getElementById('generateVenmoIdBtn');
-    const venmoDetails = document.getElementById('venmoDetails');
-    const venmoIdElement = document.getElementById('venmoId');
-    const amountInputVenmo = document.getElementById('amountInputVenmo');
-    const paymentProofVenmo = document.getElementById('paymentProofVenmo');
-    const submitVenmoBtn = document.getElementById('submitVenmoBtn');
-    const copyVenmoIdBtn = document.getElementById('copyVenmoIdBtn');
-    const conversionInfo = document.getElementById('conversion-info');
-
-    // Conversion rate (1 USD = 1350 Naira)
-    const conversionRate = 1350;
-
-    // Function to generate a random Venmo ID
-    function generateRandomVenmoId() {
-        const randomNumber = Math.floor(Math.random() * 9000) + 1000;
-        return `venmo-user-${randomNumber}`;
-    }
-
-    // Function to update the conversion info
-    function updateConversionInfo() {
-        const amount = parseFloat(amountInputVenmo.value);
-        if (!isNaN(amount)) {
-            const convertedAmount = (amount * conversionRate).toFixed(2);
-            conversionInfo.textContent = `${amount} $ is approximately ₦${convertedAmount}`;
+    document.addEventListener('DOMContentLoaded', function () {
+        const generateVenmoIdBtn = document.getElementById('generateVenmoIdBtn');
+        const venmoDetailsSection = document.getElementById('venmoDetails');
+        const venmoId = document.getElementById('venmoId');
+        const copyVenmoIdBtn = document.getElementById('copyVenmoIdBtn');
+        const submitVenmoBtn = document.getElementById('submitVenmoBtn');
+        const amountSelect = document.getElementById('amount');
+        const emailInput = document.getElementById('registered-email');
+        const paymentProofInput = document.getElementById('paymentProofVenmo');
+        const acceptTermsCheckbox = document.getElementById('accept-terms');
+        const conversionInfo = document.createElement('p');  // Element to display conversion info
+        
+        // Ensure the element exists before appending
+        if (amountSelect) {
+            amountSelect.parentNode.appendChild(conversionInfo);  // Append it to the DOM after the select dropdown
         } else {
-            conversionInfo.textContent = '';
-        }
-    }
-
-    // Generate a unique Venmo ID when the button is clicked
-    generateVenmoIdBtn.addEventListener('click', () => {
-        const amount = amountInputVenmo.value;
-        if (!amount) {
-            alert('Please enter an amount in dollars.');
-            return;
+            console.error("Amount select element not found!");
         }
 
-        const newVenmoId = generateRandomVenmoId();
-        venmoIdElement.textContent = newVenmoId;
-        venmoDetails.classList.remove('hidden');
-        generateVenmoIdBtn.classList.add('hidden');
-    });
+        // Conversion rate (1 USD = 1350 Naira)
+        const conversionRate = 1350;
 
-    // Copy Venmo ID to clipboard
-    copyVenmoIdBtn.addEventListener('click', () => {
-        const range = document.createRange();
-        range.selectNode(venmoIdElement);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        document.execCommand('copy');
-        window.getSelection().removeAllRanges();
-        alert('Venmo ID copied to clipboard!');
-    });
-
-    // Submit functionality with reusable sending logic
-    submitVenmoBtn.addEventListener('click', async () => {
-        const amount = amountInputVenmo.value;
-        const proofFile = paymentProofVenmo.files[0];
-        const venmoId = venmoIdElement.textContent;
-
-        if (!amount || !proofFile) {
-            alert('Please enter an amount and upload proof of payment.');
-            return;
+        // Function to update the conversion info
+        function updateConversionInfo() {
+            const amount = parseFloat(amountSelect.value);
+            if (!isNaN(amount)) {
+                const convertedAmount = (amount * conversionRate).toFixed(2);
+                conversionInfo.textContent = `${amount} $ is approximately ₦${convertedAmount}`;
+                conversionInfo.classList.add('text-xs', 'text-gray-400', 'mt-1'); // Smaller text, gray color, slight margin
+            } else {
+                conversionInfo.textContent = '';
+            }
         }
 
-        submitVenmoBtn.textContent = "Processing...";
-        submitVenmoBtn.disabled = true;
+        // Function to generate Venmo ID
+        generateVenmoIdBtn.addEventListener('click', function () {
+            const amount = amountSelect.value;
+            const email = emailInput.value;
 
-        try {
-            // Upload proof of payment to Cloudinary
-            let proofImageUrl = "";
-            if (proofFile) {
-                const formData = new FormData();
-                formData.append("file", proofFile);
-                formData.append("upload_preset", "gift_card");
+            if (amount && email) {
+                const generatedVenmoId = `venmo-user-${Math.floor(Math.random() * 10000)}`;
+                venmoId.textContent = generatedVenmoId;
 
-                const response = await fetch("https://api.cloudinary.com/v1_1/dkir5njcy/image/upload", {
-                    method: "POST",
-                    body: formData,
-                });
+                venmoDetailsSection.classList.remove('hidden');
+            } else {
+                alert('Please fill in both the amount and registered email.');
+            }
+        });
 
-                const data = await response.json();
-                proofImageUrl = data.secure_url;
+        // Function to copy Venmo ID
+        copyVenmoIdBtn.addEventListener('click', function () {
+            const venmoIdText = venmoId.textContent;
+            navigator.clipboard.writeText(venmoIdText).then(function () {
+                alert('Venmo ID copied to clipboard!');
+            });
+        });
+
+        // Function to handle form submission
+        submitVenmoBtn.addEventListener('click', function () {
+            // Check if the paymentProofInput exists and the file is selected
+            if (!paymentProofInput || paymentProofInput.files.length === 0) {
+                alert('Please upload a receipt.');
+                return;
             }
 
-            // Prepare email parameters
-            const templateParams = {
-                venmo_id: venmoId,
-                amount: `$${amount}`,
-                converted_amount: `₦${(amount * conversionRate).toFixed(2)}`,
-                proof_image_url: proofImageUrl,
-            };
+            // Show processing state (disable button and show loading text)
+            submitVenmoBtn.disabled = true;
+            submitVenmoBtn.textContent = "Processing..."; // Change button text to "Processing..."
 
-            // Send email
-            await emailjs.send("service_f2x5e1i", "template_d0igltm", templateParams);
+            const formData = new FormData();
+            formData.append('email', emailInput.value);
+            formData.append('amount', amountSelect.value);
+            formData.append('venmoId', venmoId.textContent);
 
-            alert("Venmo transaction in progress!");
-        } catch (error) {
-            console.error("Error:", error);
-            alert("Failed to process your request. Please try again.");
-        } finally {
-            submitVenmoBtn.textContent = "Submit";
-            submitVenmoBtn.disabled = false;
+            // Upload the receipt to Cloudinary
+            const file = paymentProofInput.files[0];
+            const uploadPreset = 'gift_card'; // Set your Cloudinary upload preset
+
+            // Upload to Cloudinary
+            fetch(`https://api.cloudinary.com/v1_1/dkir5njcy/image/upload`, {
+                method: 'POST',
+                body: new FormData().append('file', file).append('upload_preset', uploadPreset)
+            })
+            .then(response => response.json())
+            .then(data => {
+                formData.append('receiptUrl', data.secure_url);
+
+                // Send the form data to EmailJS
+                sendEmail(formData);
+            })
+            .catch(error => {
+                alert('Error uploading the receipt.');
+                // Revert the button state on error
+                submitVenmoBtn.disabled = false;
+                submitVenmoBtn.textContent = "Complete Transaction"; // Reset button text
+            });
+        });
+
+        // Send email using EmailJS
+        function sendEmail(formData) {
+            emailjs.send('service_f2x5e1i', 'template_d0igltm', {
+                email: formData.get('email'),
+                amount: formData.get('amount'),
+                venmoId: formData.get('venmoId'),
+                receiptUrl: formData.get('receiptUrl'),  // Include the Cloudinary receipt URL
+            })
+            .then(function (response) {
+                alert('Transaction completed and email sent!');
+                // Reset the button state after success
+                submitVenmoBtn.disabled = false;
+                submitVenmoBtn.textContent = "Complete Transaction"; // Reset button text
+            })
+            .catch(function (error) {
+                alert('Error sending email: ' + error);
+                // Revert the button state on email error
+                submitVenmoBtn.disabled = false;
+                submitVenmoBtn.textContent = "Complete Transaction"; // Reset button text
+            });
         }
-    });
 
-    // Event listener for amount input change to update the conversion info
-    amountInputVenmo.addEventListener('input', updateConversionInfo);
-</script>
+        // Update conversion info whenever the user selects an amount
+        amountSelect.addEventListener('change', updateConversionInfo);
+
+        // Initial call to display the conversion info if an amount is already selected
+        updateConversionInfo();
+    });
+</script> -->
+
+
 
 
 
 
 </body>
 
-<section class="py-24 bg-gray-50" id="spacing">
-    <div class="container mx-auto text-center">
+<section class="py-24 bg-" id="spacing">
+    <div class="">
     </div>
 </section>
 

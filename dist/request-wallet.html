@@ -1,6 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"], input[type="email"], input[type="file"], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .copy-button {
+            font-size: 14px;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .terms {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .terms a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -142,221 +218,225 @@
 </div>
 
 
-<div class="flex flex-col items-center py-6 px-4">
-<!-- Venmo Trading Form Container -->
-<div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
-    <h2 class="text-sm font-semibold mb-4 text-center text-yellow-500">Convert your BTC to cash</h2>
-    <p class="text-gray-600 mb-4 text-center text-xs">Generate your unique Wallet ID to start trading securely.</p>
-
-    <!-- Security Notice -->
-    <div class="flex items-center bg-yellow-100 text-yellow-700 p-3 mb-4 rounded-0xl shadow-sm">
-        <span class="text-lg mr-2">🔒</span>
-        <div>
-            <p class="text-xs font-semibold">Secure Transactions</p>
-            <p class="text-xs">Your data is encrypted, and every transaction is verified for maximum security.</p>
-        </div>
-    </div>
-
-    <!-- Enter Amount Section -->
-    <input type="text-xs" id="amountInputVenmo" placeholder="Enter Amount" class="w-full px-4 py-2 border rounded mb-4">
-    <p id="conversion-info" class="mt-2 text-xs text-gray-500"></p>
-
-    <section class="py-4 bg" id="spacing">
-        <div class="container mx-auto text-center">
-        </div>
-    </section>
-
-    <div class="mb-4">
-        <label class="block text-gray-700 font-medium text-sm mb-2">Enter Registered Email</label>
-        <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
-    </div>
-
-    <!-- Generate Venmo ID Button -->
-    <button id="generateVenmoIdBtn" class="w-full py-3 bg-yellow-500 text-white text-sm font-semibold rounded hover:bg-yellow-600 mb-4">
-        Generate Wallet ID
-    </button>
-
-    <!-- Venmo Details Section (Initially Hidden) -->
-    <div id="venmoDetails" class="hidden">
-        <div class="bg-yellow-100 text-gray-400 p-4 mb-4 rounded shadow-sm">
-            <p class="text-sm text-black font-semibold">Your Wallet ID:</p>
-            <p id="venmoId" class="text-lg text-black text-xs">BTC  ........</p>
-            <!-- Copy Button -->
-            <button id="copyVenmoIdBtn" class="mt-2 text-sm text-white bg-blue-500 px-3 py-1 rounded-md hover:bg-blue-600">
-                Copy Wallet ID
-            </button>
-        </div>
-
-        <!-- Expiration Notice -->
-        <p class="mt-2 text-xs text-red-600 relative">
-            <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg transform translate-y-1">Note: After copying wallet ID do not close this page until a transaction receipt has been uploaded and sent to complete the transaction.</span>
+<div class="flex flex-col items-center py-0 px-4">
+    <div class="w-full max-w-md bg-white p-6 rounded-3xl shadow-lg">
+        <!-- Title and Description -->
+        <h2 class="text-sm font-bold mb-4 text-center text-yellow-500">Transact with BTC</h2>
+        <p class="text-gray-700 mb-4 text-xs text-center">
+            Generate your unique BTC payment address, upload a receipt, and send details securely to get paid.
         </p>
 
-        <!-- Proof of Payment Image Upload Section -->
-        <div class="mt-6">
-            <p class="text-xs text-gray-600">Upload proof of payment image</p>
-            <input type="file" id="paymentProofVenmo" class="w-full px-4 py-2 border rounded mb-4" />
-        </div>
-
-        <!-- Expiration Notice -->
-        <p class="mt-2 text-xs text-red-600 relative">
-            <span class="block bg-red-600 text-white p-2 rounded shadow-lg transform translate-y-1">Note: This wallet information can only be used once. Contact Support@exprespay for more info.</span>
-        </p>
-
-        <section class="py-4 bg" id="spacing">
-            <div class="container mx-auto text-center">
-            </div>
-        </section>
-
-        <!-- Terms and Conditions -->
-        <div class="mb-4 bg-gray-50 p-4 border border-gray-300 rounded">
-            <p class="text-xs text-gray-700 mb-2">
-                Please carefully review and agree to the following terms and conditions before proceeding with this Bitcoin (BTC) transaction:
-            </p>
-            <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
-                <li>Bitcoin transactions are decentralized and cannot be reversed once initiated. Ensure the wallet address provided is accurate and belongs to you.</li>
-                <li>The exchange rate for Bitcoin will be based on the prevailing market rate at the time of the transaction. Rates may fluctuate rapidly due to market volatility.</li>
-                <li>You agree to confirm the exact BTC amount required for this transaction and transfer it within the specified time frame to avoid delays or cancellations.</li>
-                <li>Ensure that the network fee (miner’s fee) is appropriately included when sending Bitcoin to guarantee timely processing.</li>
-                <li>Expres Pay is not liable for losses or delays caused by incorrect wallet addresses, network congestion, or blockchain-related issues.</li>
-                <li>This transaction is final and non-refundable unless explicitly stated in our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Refund Policy</a>.</li>
-                <li>All personal and transaction information will be securely processed and stored in compliance with our <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Privacy Policy</a>.</li>
-            </ul>
-            <label class="flex items-center text-xs text-gray-700">
-                <input 
-                    type="checkbox" 
-                    id="accept-terms-btc" 
-                    class="mr-2 rounded border-gray-300 text-yellow-500 focus:ring-2 focus:ring-yellow-300"
+        <!-- Compact Notices Section -->
+        <div class="p-4 bg-yellow-50 rounded-lg shadow-sm mb-8">
+            <div class="flex items-center justify-between">
+                <p class="text-sm font-semibold text-yellow-700">⚠️ Important Information</p>
+                <button
+                    id="toggleNoticesBtn"
+                    class="text-sm text-yellow-500 underline hover:text-yellow-600"
                 >
-                I have read and agree to the <a href="#" class="text-yellow-500 underline hover:text-yellow-600">Terms and Conditions</a> for Bitcoin transactions.
-            </label>
+                    View Details
+                </button>
+            </div>
+            <div id="noticesContent" class="hidden mt-4 space-y-3 text-gray-700 text-xs">
+                <!-- Security Notice -->
+                <div class="flex items-start">
+                    <span class="mr-2 text-lg">🔒</span>
+                    <p>Your data is encrypted, and every transaction is verified for maximum security.</p>
+                </div>
+                <!-- Transaction Notice -->
+                <div class="flex items-start bg-red-50 p-3 rounded-lg">
+                    <span class="mr-2 text-lg text-red-600">⏳</span>
+                    <p>
+                        All transactions are non-refundable and must comply with the terms and conditions.
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <!-- Submit Button -->
-        <button id="submitVenmoBtn" class="w-full py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 mt-4">
-            Send
-        </button>
-    </div>
+        <!-- Transaction Form -->
+        <form id="zelleTransactionForm">
+            <!-- Amount Selection -->
+            <div class="mb-8">
+                <label class="block text-gray-700 font-medium text-sm mb-2">Select Amount</label>
+                <select id="amount" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-sm placeholder-gray-500">
+                    <option value="" disabled selected>Select amount</option>
+                    <option value="10">$10</option>
+                    <option value="25">$25</option>
+                    <option value="50">$50</option>
+                    <option value="100">$100</option>
+                    <option value="200">$200</option>
+                    <option value="500">$500</option>
+                    <option value="1000">$1000</option>
+                </select>
+                <p id="conversion-info" class="text-xs text-gray-500 mt-2"></p>
+            </div>
 
-    <!-- Transaction Tips -->
-    <div class="mt-4 text-center">
-        <p class="text-sm text-gray-600">💡 <span class="font-semibold">Tip:</span> Ensure your wallet details are accurate to avoid processing delays.</p>
+            <!-- Zelle ID -->
+            <div class="mb-8">
+                <label for="zelleId" class="block text-gray-700 font-medium text-sm mb-2">BTC Wallet Address</label>
+                <div class="flex items-center gap-4">
+                    <input 
+                        type="text" 
+                        id="zelleId" 
+                        value="tupacnwa500" 
+                        readonly 
+                        class="flex-grow h-10 px-3 border rounded text-sm text-gray-700 focus:ring-2 focus:ring-yellow-300"
+                    />
+                    <button 
+                        class="copy-button px-4 py-2 border bg-gray-100 rounded text-sm text-gray-700 hover:bg-gray-200"
+                        onclick="copyZelleId(event)"
+                    >
+                        Copy
+                    </button>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-8">
+                <label for="email" class="block text-gray-700 font-medium text-sm mb-2">Enter Registered Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    placeholder="Enter your email" 
+                    required 
+                    class="w-full h-10 px-3 border rounded text-sm text-gray-700 focus:ring-2 focus:ring-yellow-300"
+                />
+            </div>
+
+            <!-- Upload Receipt -->
+            <div class="mb-8">
+                <label for="receipt" class="block text-gray-700 font-medium text-sm mb-2">Upload Receipt</label>
+                <input 
+                    type="file" 
+                    id="receipt" 
+                    required 
+                    class="w-full text-sm text-gray-500 border rounded file:mr-4 file:py-2 file:px-4 file:border-0 file:rounded file:bg-yellow-50 file:text-yellow-600 hover:file:bg-yellow-100"
+                />
+            </div>
+
+            <!-- Terms -->
+            <div class="mb-8">
+                <input type="checkbox" id="accept-terms" required>
+                <label for="accept-terms" class="text-sm text-gray-700">
+                    I accept the following Terms and Conditions:
+                    <ul class="mt-2 list-inside text-xs text-gray-600">
+                        <li><strong>1. Eligibility:</strong> You must be at least 18 years old to use this service.</li>
+                        <li><strong>2. Payment Processing:</strong> Payments are processed securely, and delays may occur if incorrect information is provided.</li>
+                        <li><strong>3. Non-Refundable Transactions:</strong> All transactions are final and non-refundable once processed.</li>
+                        <li><strong>4. Privacy Policy:</strong> Your information will not be shared with third parties without consent.</li>
+                        <li><strong>5. Receipt Requirements:</strong> A valid receipt is mandatory for verification.</li>
+                        <li><strong>6. Fraud Prevention:</strong> Transactions flagged as suspicious may be canceled without prior notice.</li>
+                        <li><strong>7. Currency Conversion:</strong> Amounts displayed in NGN are based on the current exchange rate of 1 USD = 1350 NGN and are subject to change.</li>
+                        <li><strong>8. Liability:</strong> The company is not liable for losses resulting from misuse of the platform.</li>
+                        <li><strong>9. Updates:</strong> We reserve the right to update these terms without prior notice.</li>
+                        <li><strong>10. Dispute Resolution:</strong> In case of disputes, our decision is final and binding.</li>
+                    </ul>
+                </label>
+            </div>
+
+            <!-- Submit -->
+            <button
+                id="submitZelleBtn"
+                class="w-full py-3 text-sm font-semibold text-white bg-yellow-500 rounded hover:bg-yellow-600"
+            >
+                Complete Transaction
+            </button>
+        </form>
     </div>
 </div>
-
-<!-- JavaScript for Venmo ID Generation, Cloudinary Upload, and Email Sending -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+      
 <script>
-    // Initialize EmailJS
-    emailjs.init("uEd3R25mqCi5tk0te");
-
-    // Get DOM elements
-    const generateBtn = document.getElementById('generateVenmoIdBtn');
-    const emailInput = document.getElementById('registered-email');
-    const paymentProofVenmo = document.getElementById('paymentProofVenmo');
-    const submitVenmoBtn = document.getElementById('submitVenmoBtn');
-    const venmoDetails = document.getElementById('venmoDetails');
-    const venmoIdElement = document.getElementById('venmoId');
-    const amountInputVenmo = document.getElementById('amountInputVenmo');
-    const conversionInfo = document.getElementById('conversion-info');
-    const termsCheckbox = document.getElementById('accept-terms-btc');
-
-    // Conversion rate (1 USD = 1350 Naira)
-    const conversionRate = 1350;
-
-    // Generate Venmo ID
-    function generateRandomVenmoId() {
-        const randomNumber = Math.floor(Math.random() * 9000) + 1000;
-        return `BTC : ${89484748938384849}`;
-    }
-
-    // Function to update conversion info
-    function updateConversionInfo() {
-        const amount = parseFloat(amountInputVenmo.value);
-        if (!isNaN(amount)) {
-            const convertedAmount = (amount * conversionRate).toFixed(2);
-            conversionInfo.textContent = `${amount} USD is approximately ₦${convertedAmount}`;
-        } else {
-            conversionInfo.textContent = '';
-        }
-    }
-
-    // Generate a new Venmo ID when the button is clicked
-    generateBtn.addEventListener('click', () => {
-        const amount = amountInputVenmo.value;
-        if (!amount) {
-            alert('Please enter an amount in dollars.');
-            return;
-        }
-        // Generate a new Venmo ID
-        const newVenmoId = generateRandomVenmoId();
-        venmoIdElement.textContent = newVenmoId;
-
-        // Show Venmo details section
-        venmoDetails.classList.remove('hidden');
-        generateBtn.classList.add('hidden');
+    // Toggle visibility of notices
+    document.getElementById('toggleNoticesBtn').addEventListener('click', () => {
+        const noticesContent = document.getElementById('noticesContent'); // Corrected the ID
+        noticesContent.classList.toggle('hidden'); // Toggles the "hidden" class
     });
-
-    // Upload image to Cloudinary
-    function uploadImageToCloudinary(file) {
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('upload_preset', 'gift_card');
-        
-        return fetch('https://api.cloudinary.com/v1_1/dkir5njcy/image/upload', {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => response.json())
-        .then(data => data.secure_url);
-    }
-
-    // Handle Submit button click
-    submitVenmoBtn.addEventListener('click', async (event) => {
-        if (!termsCheckbox.checked) {
-            alert('Please agree to the terms and conditions.');
-            return;
-        }
-
-        const paymentProofFile = paymentProofVenmo.files[0];
-        if (!paymentProofFile) {
-            alert('Please upload proof of payment.');
-            return;
-        }
-
-        const paymentProofUrl = await uploadImageToCloudinary(paymentProofFile);
-
-        // Send email via Email.js
-        const templateParams = {
-            to_email: emailInput.value,
-            venmo_id: venmoIdElement.textContent,
-            payment_proof_url: paymentProofUrl,
-            amount_usd: amountInputVenmo.value,
-        };
-
-        console.log("Email.js templateParams:", templateParams); // Debugging: Ensure parameters are correct
-       await emailjs.send('service_f2x5e1i', 'template_d0igltm', templateParams)
-            .then((response) => {
-                alert('BTC transaction in progress!');
-                console.log('Email sent successfully', response);
-            })
-            .catch((error) => {
-                alert('Failed to send email. Please try again later.');
-                console.error('Email sending error:', error);
-            });
-    });
-
-    // Update conversion info on amount change
-    amountInputVenmo.addEventListener('input', updateConversionInfo);
 </script>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+    // Initialize Email.js
+    emailjs.init('uEd3R25mqCi5tk0te');
+
+        // Conversion logic for amount
+document.getElementById('amount').addEventListener('change', (event) => {
+const conversionRate = 1350; // 1 USD = 1350 NGN
+const selectedAmount = event.target.value;
+const conversionInfo = document.getElementById('conversion-info');
+if (selectedAmount) {
+    const convertedAmount = selectedAmount * conversionRate;
+    conversionInfo.textContent = `Equivalent in Naira: ₦${convertedAmount.toLocaleString()}`;
+} else {
+    conversionInfo.textContent = '';
+}
+});
+
+    document.getElementById('submitZelleBtn').addEventListener('click', async (event) => {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const amount = document.getElementById('amount').value;
+        const receipt = document.getElementById('receipt').files[0];
+        const termsAccepted = document.getElementById('accept-terms').checked;
+
+        if (!email || !amount || !receipt || !termsAccepted) {
+            alert('Please complete all fields and accept the terms.');
+            return;
+        }
+
+        const submitButton = event.target;
+        submitButton.textContent = 'Processing...';
+        submitButton.disabled = true;
+
+        try {
+            // Upload receipt to Cloudinary
+            const formData = new FormData();
+            formData.append('file', receipt);
+            formData.append('upload_preset', 'gift_card');
+
+            const cloudinaryResponse = await fetch('https://api.cloudinary.com/v1_1/dkir5njcy/image/upload', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const cloudinaryData = await cloudinaryResponse.json();
+            const receiptUrl = cloudinaryData.secure_url;
+
+            // Send transaction details via Email.js
+            const emailParams = {
+                email,
+                amount,
+                receipt_url: receiptUrl,
+                naira_equivalent: (amount * 1350).toLocaleString(), // Example conversion rate
+            };
+
+            await emailjs.send('service_f2x5e1i', 'template_d0igltm', emailParams);
+
+            alert('Transaction successfully completed!');
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        } finally {
+            submitButton.textContent = 'Complete Transaction';
+            submitButton.disabled = false;
+        }
+    });
+
+    // Copy Zelle ID
+    function copyZelleId(event) {
+        event.preventDefault();
+        navigator.clipboard.writeText(document.getElementById('zelleId').value).then(() => {
+            alert('Zelle ID copied!');
+        });
+    }
+</script>
 
 
 </body>
 
 <section class="py-24 bg-gray-50" id="spacing">
-    <div class="container mx-auto text-center">
+    <div class="">
     </div>
 </section>
 
@@ -427,3 +507,4 @@
     });
 </script>
 </html>
+
