@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Online wallet</title>
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" sizes="180x180" href="express (3).png">
-    <link rel="icon" href="express (3).png" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="express (4).png">
+    <link rel="icon" href="express (4).png" type="image/png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js Library -->
@@ -373,13 +373,13 @@
         // Reset all items to default styles
         const icons = document.querySelectorAll('.nav-item div');
         const texts = document.querySelectorAll('.nav-item span');
-        icons.forEach(icon => icon.classList.remove('bg-blue-300', 'text-white'));
-        texts.forEach(text => text.classList.remove('text-blue-300'));
+        icons.forEach(icon => icon.classList.remove('bg-purple-300', 'text-white'));
+        texts.forEach(text => text.classList.remove('text-black-300'));
 
         // Add active styles to the clicked item
         const icon = element.querySelector('div');
         const text = element.querySelector('span');
-        icon.classList.add('bg-blue-300', 'text-white'); // Highlight background of active icon
+        icon.classList.add('bg-purple-300', 'text-white'); // Highlight background of active icon
         text.classList.add('text-blue-300'); // Highlight text of active item
     }
 

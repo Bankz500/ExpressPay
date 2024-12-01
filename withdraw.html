@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Online wallet</title>
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" sizes="180x180" href="express (3).png">
-    <link rel="icon" href="express (3).png" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="express (4).png">
+    <link rel="icon" href="express (4).png" type="image/png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js Library -->
@@ -88,11 +88,11 @@
 <!-- Navbar -->
 <nav class="bg-white p-4 shadow">
     <div class="container mx-auto flex items-center justify-between">
-            <img src="express.png" alt="Crypto Brand Logo" class="h-12">
+        <img src="express (6).png" alt="Gift card Brand Logo" class="h-14">
         </a>
 
             <!-- Sign out button for mobile and desktop -->
-            <button onclick="signOut()" class="bg-white border-b-2 text-black px-6 py-2 rounded-lg hover:bg-white border">Sign Out</button>
+            <button onclick="signOut()" class="bg-white border-b-2 text-black text-xs px-6 py-2 rounded hover:bg-white border">Sign Out</button>
         </div>
     </div>
 </nav>
@@ -102,59 +102,69 @@
 <!-- Sidebar (hidden on mobile, visible on desktop) -->
 <div id="sidebar" class="md:w-64 bg-gray-900 shadow-xl h-screen hidden md:block rounded-r-lg">
     <div class="p-6 bg-gray-800 rounded-tl-lg">
-        <h2 class="text-2xl font-bold text-yellow-400 pb-4 tracking-wide">Dashboard</h2>
+        <h2 class="text-2xl font-bold text-purple-300 pb-4 tracking-wide">Dashboard</h2>
     </div>
     <nav class="mt-4">
         <ul>
             <!-- Wallet -->
             <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
                 <img src="wallet 1.png" alt="Wallet Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="dashboard.html" class="flex-1 text-lg font-medium text-yellow-400">Wallet</a>
+                <a href="dashboard.html" class="flex-1 text-lg font-medium text-white">Wallet</a>
             </li>
             <!-- Redeem -->
             <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
                 <img src="piggy 1.png" alt="Deposit Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="redeem.html" class="flex-1 text-lg font-medium text-yellow-400">Redeem</a>
+                <a href="redeem.html" class="flex-1 text-lg font-medium text-white">Redeem</a>
             </li>
             <!-- Withdrawal -->
             <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
                 <img src="money 2.png" alt="Withdrawal Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="withdraw.html" class="flex-1 text-lg font-medium text-yellow-400">Withdrawal</a>
+                <a href="withdraw.html" class="flex-1 text-lg font-medium text-white">Withdrawal</a>
             </li>
             <!-- Support -->
             <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
                 <img src="secure 1.png" alt="Verification Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="support.html" class="flex-1 text-lg font-medium text-yellow-400">Support</a>
+                <a href="support.html" class="flex-1 text-lg font-medium text-white">Support</a>
             </li>
             <!-- Profile -->
             <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center transition duration-200">
                 <img src="user 1.png" alt="Profile Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="profile.html" class="flex-1 text-lg font-medium text-yellow-400">Profile</a>
+                <a href="profile.html" class="flex-1 text-lg font-medium text-white">Profile</a>
             </li>
         </ul>
     </nav>
 </div>
 
 <!-- Main Content -->
-<div class="flex-1 p-6 bg-gray-100 pb-28 md:pb-0"> <!-- Added navy background -->
+<div class="flex-1 p-6 bg-gray-100 pb-28 md:pb-0"> 
     <div class="flex-1 p-6 bg-white rounded-lg text-black">
         <h1 class="text-xl font-semibold mb-6 text-black">Withdrawal</h1>
 
-        <!-- Tabs for Cash Withdrawal and BTC Withdrawal -->
-        <div class="flex mb-4 gap-3">
-            <button onclick="toggleWithdrawal('cash')" id="cashButton" class="flex-1 text-center text-xs md:text-lg text-black bg-white rounded-lg px-3 py-4 border border-gray-300">Cash Withdrawal</button>
+        <!-- Tabs for Cash Withdrawal -->
+        <div class="flex mb-6 gap-3">
+            <button 
+                onclick="toggleWithdrawal('cash')" 
+                id="cashButton" 
+                class="flex-1 text-center text-xs md:text-lg text-black bg-white rounded-lg px-3 py-4 border border-gray-300"
+            >
+                Cash Withdrawal
+            </button>
         </div>
-        
+
         <!-- Cash Withdrawal Form -->
         <div id="cashWithdrawal" class="block">
-            <p class="mb-4 text-black text-xs">Withdrawal costs ₦10.00, input your details to complete your withdrawal.</p>
+            <p class="mb-6 text-black text-xs">Withdrawal costs ₦10.00, input your details to complete your withdrawal.</p>
             <form id="withdrawalForm">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Bank Name -->
                     <div>
-                        <label for="bankName" class="block text-xs text-black">Bank Name</label>
-                        <select id="bankName" 
-                                class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs">
+                        <label for="bankName" class="block text-xs text-black mb-2">Bank Name</label>
+                        <select 
+                            id="bankName" 
+                            class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs"
+                        >
                             <option value="" disabled selected>Select your bank</option>
+                            <!-- Bank Options -->
                             <option value="Access Bank">Access Bank</option>
                             <option value="First Bank">First Bank</option>
                             <option value="GTBank">GTBank</option>
@@ -180,47 +190,78 @@
                             <option value="MoniPoint">MoniPoint</option>
                             <!-- Add more banks as needed -->
                         </select>
-                        <p id="bankNameError" class="text-red-500 text-xs hidden">Bank Name is required</p>
+                        <p id="bankNameError" class="text-red-500 text-xs hidden mt-2">Bank Name is required</p>
                     </div>
+
+                    <!-- Account Number -->
                     <div>
-                        <label for="accountNumber" class="block text-xs text-black">Account Number</label>
-                        <input type="text" id="accountNumber" 
-                               class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
-                               placeholder="Enter account number">
-                        <p id="accountNumberError" class="text-red-500 text-xs hidden">Account Number is required</p>
+                        <label for="accountNumber" class="block text-xs text-black mb-2">Account Number</label>
+                        <input 
+                            type="text" 
+                            id="accountNumber" 
+                            class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                            placeholder="Enter account number"
+                        >
+                        <p id="accountNumberError" class="text-red-500 text-xs hidden mt-2">Account Number is required</p>
                     </div>
-                                        <div>
-                        <label for="accountName" class="block text-xs text-black">Account Name</label>
-                        <input type="text" id="accountName" 
-                               class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
-                               placeholder="Enter account name">
-                        <p id="accountNameError" class="text-red-500 text-xs hidden">Account Name is required</p>
-                    </div>
+
+                    <!-- Account Name -->
                     <div>
-                        <label for="registeredEmail" class="block text-xs text-black">Enter registered Email</label>
-                        <input type="email" id="registeredEmail" 
-                               class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
-                               placeholder="Enter registered email">
-                        <p id="registeredEmailError" class="text-red-500 text-xs hidden">Registered Email is required</p>
+                        <label for="accountName" class="block text-xs text-black mb-2">Account Name</label>
+                        <input 
+                            type="text" 
+                            id="accountName" 
+                            class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                            placeholder="Enter account name"
+                        >
+                        <p id="accountNameError" class="text-red-500 text-xs hidden mt-2">Account Name is required</p>
                     </div>
-                    
-                    </div>
-                    <label for="withdrawCash" class="block text-xs text-black">Withdrawal Amount</label>
-                    <input type="text" id="withdrawCash" 
-                           class="w-full bg-white border border-gray-300 rounded p-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-xs" 
-                           placeholder="Enter amount">
-                    <p id="withdrawCashError" class="text-red-500 text-xs hidden">Amount is required</p>                    
-                    <div class="col-span-1 flex justify-center md:col-span-2">
-                        <button type="button" onclick="submitCashWithdrawal()" id="cashWithdrawButton"
-                                class="bg-yellow-500 text-white px-4 border rounded-lg py-2 w-full hover:bg-yellow-600">Submit</button>
+
+                    <!-- Registered Email -->
+                    <div>
+                        <label for="registeredEmail" class="block text-xs text-black mb-2">Enter Registered Email</label>
+                        <input 
+                            type="email" 
+                            id="registeredEmail" 
+                            class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                            placeholder="Enter registered email"
+                        >
+                        <p id="registeredEmailError" class="text-red-500 text-xs hidden mt-2">Registered Email is required</p>
                     </div>
                 </div>
-            </form>
-            <!-- Message Display for Cash Withdrawal -->
-            <div id="cashMessage" class="text-red-500 text-xs mt-2 text-center p-4 rounded-lg"></div>
-        </div>
 
-        
+                <!-- Withdrawal Amount -->
+                <div class="mt-6">
+                    <label for="withdrawCash" class="block text-xs text-black mb-2">Withdrawal Amount</label>
+                    <input 
+                        type="text" 
+                        id="withdrawCash" 
+                        class="w-full bg-white border border-gray-300 rounded p-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs" 
+                        placeholder="Enter amount"
+                    >
+                    <p id="withdrawCashError" class="text-red-500 text-xs hidden mt-2">Amount is required</p>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="mb-4 py-10">
+                <div class="mt-6 flex justify-center py-18">
+                    <button 
+                        type="button" 
+                        onclick="submitCashWithdrawal()" 
+                        id="cashWithdrawButton"
+                        class="bg-purple-500 text-white px-4 border rounded py-3 w-full md:w-auto hover:bg-purple-800"
+                    >
+                        Submit
+                    </button>
+                </div>
+            </form>
+
+            <!-- Message Display for Cash Withdrawal -->
+            <div id="cashMessage" class="text-red-500 text-xs mt-6 text-center p-4 rounded-lg"></div>
+        </div>
+    </div>
+</div>
+
         
         
         <script>
@@ -349,13 +390,13 @@
         // Reset all items to default styles
         const icons = document.querySelectorAll('.nav-item div');
         const texts = document.querySelectorAll('.nav-item span');
-        icons.forEach(icon => icon.classList.remove('bg-blue-300', 'text-white'));
-        texts.forEach(text => text.classList.remove('text-blue-300'));
+        icons.forEach(icon => icon.classList.remove('bg-purle-300', 'text-white'));
+        texts.forEach(text => text.classList.remove('text-black'));
 
         // Add active styles to the clicked item
         const icon = element.querySelector('div');
         const text = element.querySelector('span');
-        icon.classList.add('bg-yellow-300', 'text-white'); // Highlight background of active icon
+        icon.classList.add('bg-purple-300', 'text-white'); // Highlight background of active icon
         text.classList.add('text-black'); // Highlight text of active item
     }
 

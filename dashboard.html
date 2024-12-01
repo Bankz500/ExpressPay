@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Online wallet</title>
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" sizes="180x180" href="express (3).png">
-    <link rel="icon" href="express (3).png" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="express (4).png">
+    <link rel="icon" href="express (4).png" type="image/png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js Library -->
@@ -133,11 +133,11 @@
 <!-- Navbar -->
 <nav class="bg-white p-4 shadow">
     <div class="container mx-auto flex items-center justify-between">
-            <img src="express.png" alt="Gift card Brand Logo" class="h-12">
+        <img src="express (6).png" alt="Gift card Brand Logo" class="h-14">
         </a>
 
             <!-- Sign out button for mobile and desktop -->
-            <button onclick="signOut()" class="bg-white border-b-2 text-black px-6 py-2 rounded-lg hover:bg-white border">Sign Out</button>
+            <button onclick="signOut()" class="bg-white border-b-2 text-black text-xs px-6 py-2 rounded hover:bg-white border">Sign Out</button>
         </div>
     </div>
 </nav>
@@ -147,38 +147,39 @@
 <!-- Sidebar (hidden on mobile, visible on desktop) -->
 <div id="sidebar" class="md:w-64 bg-gray-900 shadow-xl h-screen hidden md:block rounded-r-lg">
     <div class="p-6 bg-gray-800 rounded-tl-lg">
-        <h2 class="text-2xl font-bold text-yellow-400 pb-4 tracking-wide">Dashboard</h2>
+        <h2 class="text-2xl font-bold text-purple-300 pb-4 tracking-wide">Dashboard</h2>
     </div>
     <nav class="mt-4">
         <ul>
             <!-- Wallet -->
             <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
                 <img src="wallet 1.png" alt="Wallet Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="dashboard.html" class="flex-1 text-lg font-medium text-yellow-400">Wallet</a>
+                <a href="dashboard.html" class="flex-1 text-lg font-medium text-white">Wallet</a>
             </li>
             <!-- Redeem -->
             <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
                 <img src="piggy 1.png" alt="Deposit Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="redeem.html" class="flex-1 text-lg font-medium text-yellow-400">Redeem</a>
+                <a href="redeem.html" class="flex-1 text-lg font-medium text-white">Redeem</a>
             </li>
             <!-- Withdrawal -->
             <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
                 <img src="money 2.png" alt="Withdrawal Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="withdraw.html" class="flex-1 text-lg font-medium text-yellow-400">Withdrawal</a>
+                <a href="withdraw.html" class="flex-1 text-lg font-medium text-white">Withdrawal</a>
             </li>
             <!-- Support -->
             <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
                 <img src="secure 1.png" alt="Verification Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="support.html" class="flex-1 text-lg font-medium text-yellow-400">Support</a>
+                <a href="support.html" class="flex-1 text-lg font-medium text-white">Support</a>
             </li>
             <!-- Profile -->
             <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center transition duration-200">
                 <img src="user 1.png" alt="Profile Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="profile.html" class="flex-1 text-lg font-medium text-yellow-400">Profile</a>
+                <a href="profile.html" class="flex-1 text-lg font-medium text-white">Profile</a>
             </li>
         </ul>
     </nav>
 </div>
+
 
 <!-- Main Content -->
 <div class="flex-1 p-2 bg-white">
@@ -201,10 +202,10 @@
     </div>
 
     <!-- Wallet Card -->
-    <div class="relative bg-yellow-400 shadow-xl rounded-lg p-6 flex flex-col justify-between h-48 w-1/3">
+    <div class="relative bg-purple-800 shadow-xl rounded-lg p-6 flex flex-col justify-between h-48 w-1/3">
         <!-- <i class="fas fa-lock absolute top-2 right-2 text-black text-sm"></i> Unlocked Padlock Icon -->
-        <label for="wallet" class="block text-sm font-regular text-black text-center">Withdrawal Wallet</label>
-        <p id="wallet" class="mt-2 text-xs font-bold text-black text-center">$0.00</p>
+        <label for="wallet" class="block text-sm font-regular text-white text-center">Withdrawal Wallet</label>
+        <p id="wallet" class="mt-2 text-xs font-bold text-white text-center">$0.00</p>
     </div>
 
     <!-- Signup Offer Card -->
@@ -361,13 +362,13 @@
         // Reset all items to default styles
         const icons = document.querySelectorAll('.nav-item div');
         const texts = document.querySelectorAll('.nav-item span');
-        icons.forEach(icon => icon.classList.remove('bg-yellow-300', 'text-white'));
-        texts.forEach(text => text.classList.remove('text-yellow-300'));
+        icons.forEach(icon => icon.classList.remove('bg-purple-300', 'text-white'));
+        texts.forEach(text => text.classList.remove('text-purple-300'));
 
         // Add active styles to the clicked item
         const icon = element.querySelector('div');
         const text = element.querySelector('span');
-        icon.classList.add('bg-yellow-300', 'text-white'); // Highlight background of active icon
+        icon.classList.add('bg-purple-300', 'text-white'); // Highlight background of active icon
         text.classList.add('text-black'); // Highlight text of active item
     }
 
