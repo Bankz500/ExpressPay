@@ -28,7 +28,7 @@
         </a>
 
             <!-- Sign out button for mobile and desktop -->
-            <button onclick="signOut()" class="bg-white border-b-2 text-black text-xs px-6 py-2 rounded hover:bg-white border">Sign Out</button>
+            <button onclick="signOut()" class="bg-white border-b-2 text-xs text-black px-6 py-2 rounded hover:bg-white border">Sign Out</button>
         </div>
     </div>
 </nav>
@@ -76,10 +76,10 @@
 <div class="flex-1 p-6 bg-gray-100">
         <div class="w-full bg-white px-2 py-2 rounded-lg shadow-md">
 <!-- Profile Header -->
-<div class="flex items-left mb-4">
+<div class="flex items-left-2 mb-4">
     <input type="file" id="profileImageInput" accept="image/*" class="hidden" onchange="uploadProfilePicture(event)">
-    <img id="profilePic" src="https://via.placeholder.com/100" alt="Profile Picture" class="w-16 h-16 rounded-full border border-gray-300 cursor-pointer" onclick="document.getElementById('profileImageInput').click();">    
-    <div class="ml-4">
+    <img id="profilePic" src="https://via.placeholder.com/100" alt="Profile Picture" class="w-16 h-16 rounded-full border-gray-200 ml-4 mt-4" onclick="document.getElementById('profileImageInput').click();">    
+    <div class="ml-4 mt-4">
         <h1 id="profileUsername" class="text-sm font-bold">@user299d4</h1>
         <span class="inline-block bg-purple-500 text-white text-xs font-semibold px-2 py-1 rounded-full">Fresher 🐾</span>
     </div>
@@ -87,7 +87,7 @@
 
 
     <!-- Profile Sections -->
-        <h2 class="text-sm font-semibold mb-4">Profile</h2>
+        <h2 class="text-sm font-semibold mb-4"></h2>
         <ul class="space-y-4">
             <li class="flex items-center text-xs justify-between p-4 border-b">
                 <span>Profile details</span>
@@ -158,120 +158,88 @@ async function showUserInfo() {
 </script>
 
 
-<!-- Profile Information Card -->
 <div id="profileInfoCard" class="max-w-full bg-white shadow-0 rounded-lg p-6 mt-8 hidden">
     <h2 class="text-sm font-semibold text-gray-800 mb-6">Profile Information</h2>
     <form class="space-y-6" onsubmit="event.preventDefault(); updateProfile();">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label for="firstName" class="block text-xs font-medium text-gray-700">Full Name</label>
-                        <input type="text" id="firstName" name="firstName" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2">
-                    </div>
-
-                    <div>
-                        <label for="lastName" class="block text-xs font-medium text-gray-700">Username</label>
-                        <input type="text" id="lastName" name="lastName" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2">
-                    </div>
-                </div>
+            <div>
+                <label for="firstName" class="block text-xs font-medium text-gray-700">Full Name</label>
+                <input type="text" id="firstName" name="firstName" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 text-xs">
+            </div>
+            <div>
+                <label for="lastName" class="block text-xs font-medium text-gray-700">Username</label>
+                <input type="text" id="lastName" name="lastName" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2 text-xs">
+            </div>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
                 <label for="email" class="text-xs">Email address</label>
                 <input type="email" id="email" class="border rounded w-full p-2 text-xs" readonly placeholder="Loading email...">
             </div>
         </div>
-
-        <script>
-            onAuthStateChanged(auth, async (user) => {
-                if (user) {
-                    const emailField = document.getElementById('email');
-                    if (emailField) {
-                        emailField.placeholder = user.email; // Update placeholder
-                        emailField.value = user.email; // Optional: Set as value
-                    }
-                } else {
-                    console.log('No user signed in.');
-                    window.location.href = 'sign-in.html';
-                }
-            });
-        </script>
         <div class="flex justify-end">
-            <button type="submit" class="px-6 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 transition duration-200 w-full">Save Changes</button>
+            <button id="saveChangesButton" type="submit" class="px-6 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 transition duration-200 w-full">Save Changes</button>
         </div>
     </form>
 </div>
 
 <script>
-    // Function to upload and preview the profile picture
-    function uploadProfilePicture(event) {
-        const input = event.target;
-        const reader = new FileReader();
+    // Function to update the full name locally with a delay for processing state
+    function updateProfile() {
+        const saveButton = document.getElementById("saveChangesButton");
+        const originalButtonText = saveButton.textContent;
 
-        reader.onload = function () {
-            const dataURL = reader.result;
-            document.getElementById('profilePic').src = dataURL;
+        // Show processing state
+        saveButton.disabled = true;
+        saveButton.textContent = "Processing...";
 
-            // Store the image in localStorage
-            localStorage.setItem('profilePic', dataURL);
-        };
+        // Delay the actual update by 2 seconds (you can adjust this duration)
+        setTimeout(function() {
+            try {
+                const newFullName = document.getElementById('firstName').value.trim();
 
-        if (input.files && input.files[0]) {
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+                if (!newFullName) {
+                    alert('Please enter a valid full name.');
+                    return;
+                }
 
-    // Function to update profile information
-    async function updateProfile() {
-        const user = getAuth().currentUser; // Get the current Firebase user
-        if (user) {
-            const usernameField = document.getElementById('lastName');
-            const newUsername = usernameField.value.trim();
+                // Store the full name in localStorage
+                localStorage.setItem('fullName', newFullName);
 
-            if (newUsername) {
-                const userDocRef = doc(db, 'users', user.uid); // Reference to the user's Firestore document
-                await updateDoc(userDocRef, { name: newUsername }); // Update the Firestore document
+                // Update the displayed full name (You can also update other parts of the UI if needed)
+                document.getElementById('profileUsername').textContent = newFullName;
 
-                // Update the displayed username
-                document.getElementById('profileUsername').textContent = newUsername;
-
-                alert('Username updated successfully!');
-            } else {
-                alert('Please enter a valid username.');
+                // Show success message
+                alert('Full name updated successfully!');
+            } catch (error) {
+                console.error('Error updating full name:', error);
+                alert('An error occurred while updating your full name. Please try again.');
+            } finally {
+                // Revert button to original state after the operation
+                saveButton.disabled = false;
+                saveButton.textContent = originalButtonText;
             }
-        } else {
-            alert('No user is currently signed in.');
-        }
+        }, 2000);  // This is where we delay the actual change, 2000ms = 2 seconds
     }
 
-    // Load the user's profile data on page load
-    window.onload = async function () {
+    // Load the stored full name on page load
+    window.onload = function () {
+        // Check if there's a stored full name in localStorage
+        const storedFullName = localStorage.getItem('fullName');
+        if (storedFullName) {
+            // Populate the full name field and the profile display with the stored value
+            document.getElementById('firstName').value = storedFullName;
+            document.getElementById('profileUsername').textContent = storedFullName;
+        }
+
         const user = getAuth().currentUser; // Get the current user
         if (user) {
-            const userDocRef = doc(db, 'users', user.uid); // Reference to user's document
-            const userDoc = await getDoc(userDocRef);
-
-            if (userDoc.exists()) {
-                const userData = userDoc.data();
-
-                // Populate the username field and header
-                document.getElementById('profileUsername').textContent = userData.name || '@syndicate';
-                document.getElementById('lastName').value = userData.name || '';
-            } else {
-                console.log('No user document found in Firestore.');
-            }
-        } else {
-            console.log('No user is currently signed in.');
-            window.location.href = 'sign-in.html';
-        }
-
-        // Load stored profile picture
-        const storedImage = localStorage.getItem('profilePic');
-        if (storedImage) {
-            document.getElementById('profilePic').src = storedImage;
+            const emailField = document.getElementById('email');
+            emailField.placeholder = user.email; // Email is read-only and cannot be changed
+            emailField.value = user.email; // Optional: Set email as the value
         }
     };
 </script>
-</body>
-
 
 <section class="py-10" id="spacing"></section>
     <div class="container mx-auto text-center">

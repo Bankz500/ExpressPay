@@ -110,7 +110,7 @@
 <!-- Return to Dashboard Button -->
 <div class="w-full flex justify-left mt-6 px-4">
     <a href="dashboard.html" 
-       class="flex items-center px-3 py-1 bg-gray-200 rounded-full text-black font-medium text-sm hover:bg-purple-200 hover:text-purple-700 shadow-md transition-all duration-300">
+       class="flex items-center px-1 py-1 bg-white rounded-full text-black font-medium text-xs hover:bg-purple-200 hover:text-purple-700 shadow-md transition-all duration-300">
         <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
@@ -160,7 +160,7 @@
                         View Details
                     </button>
                 </div>
-                <div id="noticesContent" class="hidden mt-2 space-y-3 text-gray-700 text-xs">
+                <div id="noticesContent" class="hidden mt-6 space-y-3 text-gray-700 text-xs">
                     <!-- Security Notice -->
                     <div class="flex items-start">
                         <span class="mr-2 text-lg">🔒</span>
@@ -168,11 +168,13 @@
                             Your data is encrypted, and every transaction is verified for maximum security.
                         </p>
                     </div>
+
+                    <div id="noticesContent" class="hidden mt-6 space-y-3 text-gray-700 text-xs"></div>
                     <!-- Transaction Notice -->
-                    <div class="flex items-start bg-red-50 p-2 rounded-lg">
-                        <span class="mr-2 text-lg text-red-600">⏳</span>
+                    <div class="flex items-start bg-purple-600 p-2 rounded">
+                        <span class="mr-2 text-lg text-white">⏳</span>
                         <p>
-                            All BTC transactions are non-refundable and must comply with the terms and conditions.
+                        <p class="text-xs font-regular text-white"> All BTC transactions are non-refundable and must comply with the terms and conditions.
                         </p>
                     </div>
                 </div>
