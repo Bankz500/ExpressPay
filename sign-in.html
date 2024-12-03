@@ -106,28 +106,30 @@
     </div>
 </section>
 
-    <!-- Sign In Section -->
-    <section class="py-16 bg-gray-100">
-        <div class="container mx-auto text-center">
-            <h2 class="text-2xl font-bold text-black mb-6">Welcome Back</h2>
-            <p class="text-sm text-gray-500 mb-10">Please sign in to continue.</p>
+<!-- Sign In Section -->
+<section class="py-16 bg-gray-100">
+    <div class="container mx-auto text-center">
+        <h2 class="text-2xl font-bold text-black mb-6">Welcome Back</h2>
+        <p class="text-sm text-gray-500 mb-10">Please sign in to continue.</p>
 
-            <!-- Sign In Form -->
-            <div class="bg-white shadow-lg rounded-lg p-8 mx-auto w-full max-w-md">
-                <h3 class="text-xl font-semibold text-gray-800 mb-6">Sign In</h3>
-                <div class="mb-4">
-                    <label for="signInEmail" class="block text-sm font-medium text-gray-700 text-left">Email</label>
-                    <input type="email" id="signInEmail" required class="mt-1 block w-full border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email">
-                </div>
-                <div class="mb-4">
-                    <label for="signInPassword" class="block text-sm font-medium text-gray-700 text-left">Password</label>
-                    <input type="password" id="signInPassword" required class="mt-1 block w-full border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password">
-                </div>
-                <button type="button" onclick="signIn()" class="w-full bg-purple-500 text-white py-3 rounded hover:bg-purple-800 transition duration-200">Sign In</button>
-                <p class="mt-4 text-sm text-gray-600 text-center">Don't have an account? <a href="sign-up.html" class="text-blue-600">Sign Up</a></p>
+        <!-- Sign In Form -->
+        <div class="bg-white shadow-lg rounded-lg p-8 mx-auto w-full max-w-md">
+            <h3 class="text-xl font-semibold text-gray-800 mb-6">Sign In</h3>
+            <div class="mb-4">
+                <label for="signInEmail" class="block text-sm font-medium text-gray-700 text-left">Email</label>
+                <input type="email" id="signInEmail" required class="mt-1 block w-full border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email">
             </div>
+            <div class="mb-4">
+                <label for="signInPassword" class="block text-sm font-medium text-gray-700 text-left">Password</label>
+                <input type="password" id="signInPassword" required class="mt-1 block w-full border border-gray-300 rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your password">
+            </div>
+            <button type="button" onclick="signIn()" id="signInButton" class="w-full bg-purple-500 text-white py-3 rounded hover:bg-purple-800 transition duration-200">
+                Sign In
+            </button>
+            <p class="mt-4 text-sm text-gray-600 text-center">Don't have an account? <a href="sign-up.html" class="text-blue-600">Sign Up</a></p>
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="py-16 bg-gray-100" id="spacing">
         <div class="container mx-auto text-center">
@@ -164,28 +166,41 @@
   measurementId: "G-8ECL5E373T"
 };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-        // Sign-In function
-        window.signIn = function() {
-            const email = document.getElementById('signInEmail').value;
-            const password = document.getElementById('signInPassword').value;
+    // Sign-In function with after state
+    window.signIn = function () {
+        const signInButton = document.getElementById('signInButton');
+        const email = document.getElementById('signInEmail').value;
+        const password = document.getElementById('signInPassword').value;
 
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // Sign-in successful
-                    alert('Welcome Back!');
-                    window.location.href = 'dashboard.html'; // Redirect to dashboard after sign-in
-                })
-                .catch((error) => {
-                    // Handle sign-in errors
-                    alert('Error signing in: ' + error.message);
-                    console.error(error);
-                });
-        };
-    </script>
+        // Show "Signing in..." state
+        signInButton.textContent = "Signing in...";
+        signInButton.disabled = true;
+        signInButton.classList.add("opacity-70", "cursor-not-allowed");
+
+        // Proceed with Firebase authentication
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Sign-in successful
+                alert('Welcome Back!');
+                window.location.href = 'dashboard.html'; // Redirect to dashboard after sign-in
+            })
+            .catch((error) => {
+                // Handle sign-in errors
+                alert('Error signing in: ' + error.message);
+                console.error(error);
+            })
+            .finally(() => {
+                // Revert button state
+                signInButton.textContent = "Sign In";
+                signInButton.disabled = false;
+                signInButton.classList.remove("opacity-70", "cursor-not-allowed");
+            });
+    };
+</script>
 </body>
 
 <!-- Telegram Chat Button -->

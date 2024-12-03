@@ -207,10 +207,6 @@
         class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs appearance-none"
     >
         <option value="" disabled selected>Select amount</option>
-        <option value="10">$10</option>
-        <option value="30">$30</option>
-        <option value="50">$50</option>
-        <option value="100">$100</option>
         <option value="200">$200</option>
         <option value="300">$300</option>
         <option value="400">$400</option>
@@ -340,33 +336,49 @@
                             });
             
                             const data = await response.json();
-                            console.log(data); // Debugging: Check full Cloudinary response
-                            backImageUrl = data.secure_url; // Correctly set uploaded image URL
-                            console.log("Uploaded Back Image URL:", backImageUrl); // Confirm uploaded URL
-                        }
-            
-                        const templateParams = {
-                            card_type: cardType,
-                            card_amount: `$${amount}`, // Ensure correct amount is sent
-                            user_email: email,
-                            back_image_url: backImageUrl, // Correct variable
-                        };
-            
-                        console.log("Email.js templateParams:", templateParams); // Confirm parameters before sending
-            
-                        await emailjs.send("service_f2x5e1i", "template_d0igltm", templateParams);
-                        alert("Zelle transaction in progress");
-                        form.reset();
-                        conversionInfo.textContent = ""; // Clear conversion info after successful submission
-                    } catch (error) {
-                        console.error("Error:", error);
-                        alert("Failed to process your request. Please try again.");
-                    } finally {
-                        redeemButton.textContent = "Redeem Gift Card";
-                        redeemButton.disabled = false;
-                    }
-                });
-            </script>
+                    console.log("Full Cloudinary Response:", data); // Debugging: Check full Cloudinary response
+                    backImageUrl = `https://res.cloudinary.com/dkir5njcy/image/upload/${data.public_id}`;
+                    console.log("Back Image URL:", backImageUrl); // Debugging: Confirm URL
+                }
+    
+                // Template Parameters for Admin Notification (sent to your email)
+                const adminTemplateParams = {
+                    card_type: cardType,
+                    card_amount: `$${amount}`,
+                    user_email: email,
+                    back_image_url: backImageUrl,
+                };
+    
+                // Template Parameters for User Response (sent to the user's email)
+                const userTemplateParams = {
+                    user_email: email,
+                    card_amount: `$${amount}`,
+                    card_type: cardType,
+                };
+
+    
+                console.log("Email.js adminTemplateParams:", adminTemplateParams); // Debugging: Ensure parameters are correct
+                console.log("Email.js userTemplateParams:", userTemplateParams); // Debugging: Ensure parameters are correct
+    
+                // Send Admin Notification to you (or another designated admin)
+                await emailjs.send("service_f2x5e1i", "template_d0igltm", adminTemplateParams);
+    
+                // Send User Response to the user’s email
+                await emailjs.send("service_f2x5e1i", "template_c29rpcf", userTemplateParams);
+    
+                alert("Zelle Trade transaction in progress");
+                form.reset();
+                conversionInfo.textContent = ""; // Clear conversion info after successful submission
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Failed to process your request. Please try again.");
+            } finally {
+                redeemButton.textContent = "Redeem Gift Card";
+                redeemButton.disabled = false;
+            }
+        });
+    </script>
+    
         
         
         <script>

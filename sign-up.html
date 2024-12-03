@@ -107,52 +107,53 @@
 </section>
 
 
-    <!-- Sign-Up Section -->
-    <section class="min-h-screen bg-white flex items-center justify-center">
-        <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Create Your Account</h2>
-            <p class="text-sm text-gray-600 text-center mb-4">Join our community and start redeeming with confidence.</p>
-            <p class="text-sm text-gray-500 text-center mb-8">It’s quick and easy to set up your account.</p>
+<!-- Sign-Up Section -->
+<section class="min-h-screen bg-white flex items-center justify-center">
+    <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Create Your Account</h2>
+        <p class="text-sm text-gray-600 text-center mb-4">Join our community and start redeeming with confidence.</p>
+        <p class="text-sm text-gray-500 text-center mb-8">It’s quick and easy to set up your account.</p>
 
-            <!-- Sign-Up Form -->
+        <!-- Sign-Up Form -->
+        <form class="space-y-6">
+            <div>
+                <label for="signUpName" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" id="signUpName" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your name">
+            </div>
 
-            <form class="space-y-6">
-                <div>
-                    <label for="signUpName" class="block text-sm font-medium text-gray-700">Name</label>
-                    <input type="text" id="signUpName" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your name">
-                </div>
+            <div>
+                <label for="signUpEmail" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="signUpEmail" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your email">
+            </div>
 
-                <div>
-                    <label for="signUpEmail" class="block text-sm font-medium text-gray-700">Email</label>
-                    <input type="email" id="signUpEmail" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your email">
-                </div>
+            <div>
+                <label for="signUpPhone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                <input type="tel" id="signUpPhone" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your phone number">
+            </div>
 
-                <div>
-                    <label for="signUpPhone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-                    <input type="tel" id="signUpPhone" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your phone number">
-                </div>
+            <div>
+                <label for="signUpPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" id="signUpPassword" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your password">
+            </div>
 
-                <div>
-                    <label for="signUpPassword" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input type="password" id="signUpPassword" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your password">
-                </div>
+            <div>
+                <label for="signUpReference" class="block text-sm font-medium text-gray-700">Reference code</label>
+                <input type="text" id="signUpReference" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your Reference code">
+            </div>
 
-                <div>
-                    <label for="signUpReference" class="block text-sm font-medium text-gray-700">Reference code</label>
-                    <input type="text" id="signUpReference" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your Reference code">
-                </div>
+            <div>
+                <label for="isVendor" class="block text-sm font-medium text-gray-700">Are you a vendor?</label>
+                <input type="text" id="isVendor" class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Yes or No">
+            </div>
 
-                <div>
-                    <label for="isVendor" class="block text-sm font-medium text-gray-700">Are you a vendor?</label>
-                    <input type="text" id="isVendor" class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Yes or No">
-                </div>
+            <button type="button" onclick="signUp()" id="signUpButton" class="w-full bg-purple-500 text-white py-3 rounded hover:bg-purple-800 transition duration-200">
+                Sign Up
+            </button>
+        </form>
 
-                <button type="button" onclick="signUp()" class="w-full bg-purple-500 text-white py-3 rounded hover:bg-purple-800 transition duration-200">Sign Up</button>
-            </form>
-
-            <p class="mt-4 text-sm text-gray-600 text-center">Already have an account? <a href="sign-in.html" class="text-blue-600 hover:underline">Sign In</a></p>
-        </div>
-    </section>
+        <p class="mt-4 text-sm text-gray-600 text-center">Already have an account? <a href="sign-in.html" class="text-blue-600 hover:underline">Sign In</a></p>
+    </div>
+</section>
 
     <section class="py-8 bg-white" id="spacing">
         <div class="container mx-auto text-center">
@@ -191,39 +192,50 @@
   measurementId: "G-8ECL5E373T"
 };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+       // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-        // Sign-up function
-        window.signUp = function() {
-            const name = document.getElementById('signUpName').value;
-            const email = document.getElementById('signUpEmail').value;
-            const password = document.getElementById('signUpPassword').value;
+    // Sign-up function with "Signing up..." state
+    window.signUp = function () {
+        const signUpButton = document.getElementById('signUpButton');
+        const name = document.getElementById('signUpName').value;
+        const email = document.getElementById('signUpEmail').value;
+        const password = document.getElementById('signUpPassword').value;
 
-            createUserWithEmailAndPassword(auth, email, password)
-                .then(async (userCredential) => {
-                    const user = userCredential.user;
-                    // Add user to Firestore
-                    try {
-                        await setDoc(doc(db, 'users', user.uid), {
-                            name: name,
-                            email: email,
-                            uid: user.uid
-                        });
-                        alert('Signed up successfully! Your account has been created.');
-                        window.location.href = 'sign-in.html';
-                    } catch (firestoreError) {
-                        alert('Error saving user data: ' + firestoreError.message);
-                    }
-                })
-                .catch((error) => {
-                    alert('Error signing up: ' + error.message);
-                });
-        };
-    </script>
+        // Show "Signing up..." state
+        signUpButton.textContent = "Signing up...";
+        signUpButton.disabled = true;
+        signUpButton.classList.add("opacity-70", "cursor-not-allowed");
 
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(async (userCredential) => {
+                const user = userCredential.user;
+                try {
+                    // Save user data in Firestore
+                    await setDoc(doc(db, 'users', user.uid), {
+                        name: name,
+                        email: email,
+                        uid: user.uid
+                    });
+                    alert('Signed up successfully! Your account has been created.');
+                    window.location.href = 'sign-in.html';
+                } catch (firestoreError) {
+                    alert('Error saving user data: ' + firestoreError.message);
+                }
+            })
+            .catch((error) => {
+                alert('Error signing up: ' + error.message);
+            })
+            .finally(() => {
+                // Revert button state
+                signUpButton.textContent = "Sign Up";
+                signUpButton.disabled = false;
+                signUpButton.classList.remove("opacity-70", "cursor-not-allowed");
+            });
+    };
+</script>
 </body>
 
 <!-- Telegram Chat Button -->

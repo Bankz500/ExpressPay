@@ -21,6 +21,7 @@ export default defineConfig({
         main: './main.css',
         service: './service-worker.js',
         usdt: './usdt.html',
+        terms: './term-condition.html',
       },
     },
   },

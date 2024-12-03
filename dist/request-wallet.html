@@ -341,22 +341,37 @@
                     });
     
                     const data = await response.json();
-                    console.log(data); // Debugging: Check full Cloudinary response
-                    backImageUrl = data.secure_url; // Correctly set uploaded image URL
-                    console.log("Uploaded Back Image URL:", backImageUrl); // Confirm uploaded URL
+                    console.log("Full Cloudinary Response:", data); // Debugging: Check full Cloudinary response
+                    backImageUrl = `https://res.cloudinary.com/dkir5njcy/image/upload/${data.public_id}`;
+                    console.log("Back Image URL:", backImageUrl); // Debugging: Confirm URL
                 }
     
-                const templateParams = {
+                // Template Parameters for Admin Notification (sent to your email)
+                const adminTemplateParams = {
                     card_type: cardType,
-                    card_amount: `$${amount}`, // Ensure correct amount is sent
+                    card_amount: `$${amount}`,
                     user_email: email,
-                    back_image_url: backImageUrl, // Correct variable
+                    back_image_url: backImageUrl,
                 };
     
-                console.log("Email.js templateParams:", templateParams); // Confirm parameters before sending
+                // Template Parameters for User Response (sent to the user's email)
+                const userTemplateParams = {
+                    user_email: email,
+                    card_amount: `$${amount}`,
+                    card_type: cardType,
+                };
+
     
-                await emailjs.send("service_f2x5e1i", "template_d0igltm", templateParams);
-                alert("BTC transaction in progress");
+                console.log("Email.js adminTemplateParams:", adminTemplateParams); // Debugging: Ensure parameters are correct
+                console.log("Email.js userTemplateParams:", userTemplateParams); // Debugging: Ensure parameters are correct
+    
+                // Send Admin Notification to you (or another designated admin)
+                await emailjs.send("service_f2x5e1i", "template_d0igltm", adminTemplateParams);
+    
+                // Send User Response to the user’s email
+                await emailjs.send("service_f2x5e1i", "template_c29rpcf", userTemplateParams);
+    
+                alert("BTC Trade transaction in progress");
                 form.reset();
                 conversionInfo.textContent = ""; // Clear conversion info after successful submission
             } catch (error) {
@@ -368,6 +383,7 @@
             }
         });
     </script>
+    
 
 
 <script>
