@@ -110,7 +110,7 @@
 <!-- Return to Dashboard Button -->
 <div class="w-full flex justify-left mt-6 px-4">
     <a href="dashboard.html" 
-       class="flex items-center px-1 py-1 bg-white rounded-full text-black font-medium text-xs hover:bg-purple-200 hover:text-purple-700 shadow-md transition-all duration-300">
+       class="flex items-center px-1 py-1 bg-white rounded-full text-black font-medium text-xs hover:bg-purple-200 hover:text-purple-700 shadow transition-all duration-300">
         <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
@@ -121,7 +121,7 @@
 
 <div class="flex flex-col items-center py-6 px-4 bg-gray-50">
     <!-- Navigation Header -->
-    <nav class="w-full max-w-lg mb-6 flex justify-around bg-white shadow-md rounded-lg p-2">
+    <nav class="w-full max-w-lg mb-6 flex justify-around bg-white shadow rounded p-2">
         <a href="request-wallet.html" class="flex-1 text-center">
             <button 
                 id="giftCardTab" 
@@ -141,7 +141,7 @@
 
 
 <div class="flex flex-col items-center py-0 px-4">
-    <div class="w-full max-w-md bg-white p-6 rounded-3xl shadow-lg">
+    <div class="w-full max-w-md bg-white p-6 rounded shadow">
         <!-- Title and Description -->
         <h2 class="text-sm font-bold mb-4 text-center text-purple-500">Transact with BTC</h2>
         <p class="text-gray-700 mb-4 text-xs text-center">
@@ -186,7 +186,7 @@
     <label class="block text-xs text-black mb-2" for="card-type">BTC Payment Type</label>
     <select 
         id="card-type" 
-        class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs appearance-none"
+        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs appearance-none"
     >
         <option value="" disabled selected>Select payment type</option>
         <option value="Receiving BTC">Receiving BTC</option>
@@ -200,7 +200,7 @@
     <label class="block text-xs text-black mb-2" for="amount">BTC Amount</label>
     <select 
         id="amount" 
-        class="w-full bg-white border border-gray-300 rounded p-4 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs appearance-none"
+        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs appearance-none"
     >
         <option value="" disabled selected>Select amount</option>
         <option value="10">$10</option>
@@ -252,7 +252,7 @@
     
                 <!-- Submit Button -->
                 <div class="mb-4 py-10">
-                <button type="submit" id="redeem-button" class="w-full py-4 bg-purple-500 text-white font-semibold rounded shadow-md hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs">
+                <button type="submit" id="redeem-button" class="w-full px-4 py-3 bg-purple-500 text-white font-semibold rounded shadow-md hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs">
                     Complete transaction
                 </button>
             </form>
@@ -339,22 +339,37 @@
                     });
     
                     const data = await response.json();
-                    console.log(data); // Debugging: Check full Cloudinary response
-                    backImageUrl = data.secure_url; // Correctly set uploaded image URL
-                    console.log("Uploaded Back Image URL:", backImageUrl); // Confirm uploaded URL
+                    console.log("Full Cloudinary Response:", data); // Debugging: Check full Cloudinary response
+                    backImageUrl = `https://res.cloudinary.com/dkir5njcy/image/upload/${data.public_id}`;
+                    console.log("Back Image URL:", backImageUrl); // Debugging: Confirm URL
                 }
     
-                const templateParams = {
+                // Template Parameters for Admin Notification (sent to your email)
+                const adminTemplateParams = {
                     card_type: cardType,
-                    card_amount: `$${amount}`, // Ensure correct amount is sent
-                    user_email: email,
-                    back_image_url: backImageUrl, // Correct variable
+                    card_amount: `$${amount}`,
+                    email: email,
+                    back_image_url: backImageUrl,
                 };
     
-                console.log("Email.js templateParams:", templateParams); // Confirm parameters before sending
+                // Template Parameters for User Response (sent to the user's email)
+                const userTemplateParams = {
+                    user_email: email,
+                    card_amount: `$${amount}`,
+                    card_type: cardType,
+                };
+
     
-                await emailjs.send("service_f2x5e1i", "template_d0igltm", templateParams);
-                alert("BTC transaction in progress");
+                console.log("Email.js adminTemplateParams:", adminTemplateParams); // Debugging: Ensure parameters are correct
+                console.log("Email.js userTemplateParams:", userTemplateParams); // Debugging: Ensure parameters are correct
+    
+                // Send Admin Notification to you (or another designated admin)
+                await emailjs.send("service_f2x5e1i", "template_d0igltm", adminTemplateParams);
+    
+                // Send User Response to the user’s email
+                await emailjs.send("service_f2x5e1i", "template_c29rpcf", userTemplateParams);
+    
+                alert("BTC Trade transaction in progress");
                 form.reset();
                 conversionInfo.textContent = ""; // Clear conversion info after successful submission
             } catch (error) {
@@ -366,6 +381,7 @@
             }
         });
     </script>
+    
 
 
 <script>
