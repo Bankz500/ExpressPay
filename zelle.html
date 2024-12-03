@@ -254,10 +254,6 @@
         class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs appearance-none"
     >
         <option value="" disabled selected>Select amount</option>
-        <option value="10">$10</option>
-        <option value="30">$30</option>
-        <option value="50">$50</option>
-        <option value="100">$100</option>
         <option value="200">$200</option>
         <option value="300">$300</option>
         <option value="400">$400</option>
@@ -396,7 +392,7 @@
                 const adminTemplateParams = {
                     card_type: cardType,
                     card_amount: `$${amount}`,
-                    email: email,
+                    user_email: email,
                     back_image_url: backImageUrl,
                 };
     
