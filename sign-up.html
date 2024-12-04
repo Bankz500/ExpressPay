@@ -219,14 +219,14 @@
                         email: email,
                         uid: user.uid
                     });
-                    alert('Signed up successfully! Your account has been created.');
+                    alert('Welcome onboard my Chief, your account was created successfully. Now proceed to sign in');
                     window.location.href = 'sign-in.html';
                 } catch (firestoreError) {
                     alert('Error saving user data: ' + firestoreError.message);
                 }
             })
             .catch((error) => {
-                alert('Error signing up: ' + error.message);
+                alert('Ehhh.... my Chief there was an error signing up: ' + error.message);
             })
             .finally(() => {
                 // Revert button state

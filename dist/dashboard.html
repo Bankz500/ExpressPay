@@ -17,7 +17,7 @@
             overflow: auto; /* Ensures scrolling is enabled */
         }
     </style>
-  <script type="module" crossorigin src="/assets/dashboard-j_3Lm57Q.js"></script>
+  <script type="module" crossorigin src="/assets/dashboard-CS2FAV2h.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
 </head>
 <body class="font-sans antialiased bg-white">
@@ -81,7 +81,7 @@
         <div class="flex justify-between items-center mb-6">
             <!-- Welcome Message -->
             <div class="flex-1 p-2 bg-gray-100">
-                <h1 id="welcome-message" class="text-xl font-semibold mb-6 rounded-lg text-gray-800">Welcome back</h1>
+                <h1 id="welcome-name" class="text-sm font-semibold mb-6 rounded-lg text-gray-800">Welcome back</h1>
                 
 <!-- Include FontAwesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -119,8 +119,8 @@
 <!-- Divider -->
 <hr class="my-4 border-gray-100">
 
-                <!-- Add a horizontal line here -->
-                <hr class="my-4 border-gray-300"> <!-- Added line -->
+<!-- Add a horizontal line here -->
+<hr class="my-4 border-gray-300"> <!-- Added line -->
 
 <!-- Profit Wallet Card -->
 <div class="bg-white shadow rounded p-6 w-full">
@@ -133,7 +133,11 @@
     <hr class="border-gray-300 mb-4">
     <!-- History Content -->
     <div class="text-gray-600 text-sm">
-        <p id="Profit-wallet" class="italic">No history available</p>
+        <p id="history1" class="italic text-xs">No history available</p>
+        <hr class="border-white mb-4">
+        <p id="history2" class="italic text-xs"></p>
+        <hr class="border-white mb-4">
+        <p id="history3" class="italic text-xs"></p>
     </div>
 </div>
 
@@ -155,7 +159,11 @@
     <hr class="border-gray-300 mb-4">
     <!-- Content Section -->
     <div class="text-gray-600 text-sm">
-        <p id="pending-wallet" class="italic">No pending transactions</p>
+        <p id="pending1" class="italic text-xs">No pending transactions</p>
+        <hr class="border-white mb-4">
+        <p id="pending2" class="italic text-xs"></p>
+        <hr class="border-white mb-4">
+        <p id="pending3" class="italic text-xs"></p>
     </div>
 </div>
 
@@ -234,7 +242,7 @@
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQ5JREFUSEvtVUEOwjAMy14GvAx4GeNlgKcambZJ2iFuVJrWqYmdNIm32I/XMoB/NDM8h/KGy2pm99fmkvlnBAA4JyDXiCgiUHBEDCBGz8hJjvNTLxCPQMHhCIDeUrtuJh7Bo6CF6Rcb1OdW9k0wPQJGNQLOrEAAoiECGs8QMIumFswABigY3lxZh2lN9JrYCAhwJQijVqcZAvixbsTYsiEID/Gt+2yO9LyL8ScYvqKoyJQFFI0Tza5TwQuLHLVp7VgXnsOldtSud5tm3YIsarmGz9brRU0xR+6gZQTZuSsvs8OUKWqD9y2BSsSUXEdXQr1S7XKFcU8GdVft/mV6WYCAP32dja79ngyyjvo4fwKMwFAZAQv+LAAAAABJRU5ErkJggg==" alt="Support Icon" class="h-6 w-6" />
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAQYSURBVHgB7Zo7VttAFIavbBcuFaqUMociHUqXUqwAsoJAl1TACoAuHbACTJkKKFMhOrp4A2DRpbPSpeCR/8LYZzyRFM1LCUTfOTq2ZkaPX3PvzJ0HUUtLS8szIiDPRFEUdjqddfxdfnh4SPAbioPJcWRBEPBxdnd3l2aAPOJN8NLSUgIBO/ibkB4pPtDx1dXVkDzgXLCFUJUMFrHiusa75JDFxcWd+/v7If5GJUXYhL/jGOHIxPnrkrIhzHxrYWGBJpPJBTnCWQ1D7BFqZL0gK0f6IX7ZP9Oia+HnMfs5yq1SwceC8OH19fUGOcCJ4BKxOURs6/oixK9DILtEJKe7Em1t0hC7D7Ef5TS83Cn733g8viRN8jwfhWF4ho8V4fSNlBXDvEOY91eywEow1wZ+PstpELoHoZ/w4j/JEFybQ9gXCMe3CxIp6x1E/0Ce9oecYmzSEBvhZc5JMj32VfjpFjkEFnSA+25KSdwmDPCcnAzokCEwOdXPMtdiGfgt33MkJXEgY/wcI8Fcu2ojxT5LnsC9N5TzTY7gyADTGk7kE25BfYaEuDXX8LGUNA1XtTESDIEf5HMEG4fkGdTqUDlfJQO0Gy02JQieSEkZWuUBNcBgMBjTfCP5Srfx0q7hXq8Xy+c8yqGGKHhWTJpoC769vY2UpIwaAq4jt9bU7XYj0kRbsIiASl/CJxA4Z74w6Yg0Me6H/wYwaaNgQ+ZZCXbBfye4R5ZwPI3uoix7BD97XzcoEfH5EZXMlmAmhWzxXcOxEFALlD0h+6mhSpow6USjrHa/qou1SdPTSEZtPfnFjYJ7iZzmR0kk7mn1UawFw0e31bkq+DSPkxOyY4SQdW4EJmZEz8mCtlt66bSCXzqt4H+ZgqGpNi5Cy310Q0X9sC2x6N6m/NYHY2iakiYuAg9f0RELTCrys7K1qiqaMGmdCYK0ZrnMdFrYt+CUR0t1C4v556oPxEL3cLw1nRZ2EVqumJhWEULEW/KISQ3PNVCYZ7IdJDSKdg3zBhTU6uxcbFQ5rXs9DwDQuibiXiOsH9e+1gUuJuLzOj4lRjo8GRApWZkYcTUiXNukxUx/KiXxBzipWtxC3poY1kVF2eL6NWoAo1ZatKayL/NUzjeuRbWssIh9+gM8FWS6IqiDzYL4VokQdaZCjZAeTfjx4U/XR7OXCYJtrAcfkEeMuyWY9oGovR0lqzJCYuuYdmO4Phe7CKYsk2esAg+8+K4w76zuNf1+Xy5rvZKgi/UuHt51g+MwDMMbrDtxEm8065eVR+MVo+wFDl6nYpOe7dRBbR/bbFipQyObS5VurBSxWSUjj3gfPHA3Nm2kquAY2bdYxuleyzJg8pcFe65mCLG71ADeTVqG1454yxEELoulzxuEmaeuBh8tLS0tLc+dX3zd0aoo/ZR3AAAAAElFTkSuQmCC" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
         </a>

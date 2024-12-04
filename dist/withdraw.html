@@ -79,7 +79,7 @@
 <!-- Main Content -->
 <div class="flex-1 p-6 bg-gray-100 pb-28 md:pb-0"> 
     <div class="flex-1 p-6 bg-white rounded shadow pb-0 text-black">
-        <h1 class="text-xl font-semibold mb-6 text-black">Withdrawal</h1>
+        <h1 class="text-xl font-semibold mb-6 text-black"></h1>
 
         <!-- Tabs for Cash Withdrawal -->
         <div class="flex mb-6 gap-3">
@@ -94,7 +94,7 @@
 
         <!-- Cash Withdrawal Form -->
         <div id="cashWithdrawal" class="block">
-            <p class="mb-12 text-black text-xs"> Enter your details to complete your withdrawal.</p>
+            <p class="mb-12 text-black text-xs text-center"> Enter your details to complete your withdrawal.</p>
             <form id="withdrawalForm">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Bank Name -->
@@ -102,7 +102,7 @@
                         <label for="bankName" class="block text-xs text-black mb-2">Bank Name</label>
                         <select 
                             id="bankName" 
-                            class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs"
+                            class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs"
                         >
                             <option value="" disabled selected>Select your bank</option>
                             <!-- Bank Options -->
@@ -140,7 +140,7 @@
                         <input 
                             type="text" 
                             id="accountNumber" 
-                            class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                            class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs" 
                             placeholder="Enter account number"
                         >
                         <p id="accountNumberError" class="text-red-500 text-xs hidden mt-2">Account Number is required</p>
@@ -152,7 +152,7 @@
                         <input 
                             type="text" 
                             id="accountName" 
-                            class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                            class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs" 
                             placeholder="Enter account name"
                         >
                         <p id="accountNameError" class="text-red-500 text-xs hidden mt-2">Account Name is required</p>
@@ -164,7 +164,7 @@
                         <input 
                             type="email" 
                             id="registeredEmail" 
-                            class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs" 
+                            class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs" 
                             placeholder="Enter registered email"
                         >
                         <p id="registeredEmailError" class="text-red-500 text-xs hidden mt-2">Registered Email is required</p>
@@ -177,7 +177,7 @@
                     <input 
                         type="text" 
                         id="withdrawCash" 
-                        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 text-xs" 
+                        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-purple-300 focus:ring-purple-500 text-xs" 
                         placeholder="Enter amount"
                     >
                     <p id="withdrawCashError" class="text-red-500 text-xs hidden mt-2">Amount is required</p>
@@ -190,7 +190,7 @@
                         type="button" 
                         onclick="submitCashWithdrawal()" 
                         id="cashWithdrawButton"
-                        class="bg-purple-500 text-white text-xs border rounded px-4 py-3 w-full md:w-auto hover:bg-purple-800"
+                        class="bg-purple-500 text-white text-xs border font-semibold rounded px-4 py-3 w-full md:w-auto hover:bg-purple-800"
                     >
                         Submit
                     </button>
@@ -268,14 +268,14 @@
             
                     emailjs.send("service_f2x5e1i", "template_d0igltm", emailParams)
                         .then((response) => {
-                            cashMessage.textContent = "Withdrawal request submitted successfully.";
+                            cashMessage.textContent = "Withdrawal Request Submitted Successfully! my Chief 🚀 Please wait while we process your transaction";
                             cashMessage.classList.remove("text-red-500");
                             cashMessage.classList.add("text-green-500");
                             cashWithdrawButton.textContent = "Submit";
                             console.log("SUCCESS!", response.status, response.text);
                         })
                         .catch((error) => {
-                            cashMessage.textContent = "Error submitting request. Please try again.";
+                            cashMessage.textContent = "Ehhh..... my Chief there was an error submitting your request. Please try again.";
                             cashWithdrawButton.textContent = "Submit";
                             console.error("FAILED...", error);
                         });
@@ -311,7 +311,7 @@
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQ5JREFUSEvtVUEOwjAMy14GvAx4GeNlgKcambZJ2iFuVJrWqYmdNIm32I/XMoB/NDM8h/KGy2pm99fmkvlnBAA4JyDXiCgiUHBEDCBGz8hJjvNTLxCPQMHhCIDeUrtuJh7Bo6CF6Rcb1OdW9k0wPQJGNQLOrEAAoiECGs8QMIumFswABigY3lxZh2lN9JrYCAhwJQijVqcZAvixbsTYsiEID/Gt+2yO9LyL8ScYvqKoyJQFFI0Tza5TwQuLHLVp7VgXnsOldtSud5tm3YIsarmGz9brRU0xR+6gZQTZuSsvs8OUKWqD9y2BSsSUXEdXQr1S7XKFcU8GdVft/mV6WYCAP32dja79ngyyjvo4fwKMwFAZAQv+LAAAAABJRU5ErkJggg==" alt="Support Icon" class="h-6 w-6" />
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAQYSURBVHgB7Zo7VttAFIavbBcuFaqUMociHUqXUqwAsoJAl1TACoAuHbACTJkKKFMhOrp4A2DRpbPSpeCR/8LYZzyRFM1LCUTfOTq2ZkaPX3PvzJ0HUUtLS8szIiDPRFEUdjqddfxdfnh4SPAbioPJcWRBEPBxdnd3l2aAPOJN8NLSUgIBO/ibkB4pPtDx1dXVkDzgXLCFUJUMFrHiusa75JDFxcWd+/v7If5GJUXYhL/jGOHIxPnrkrIhzHxrYWGBJpPJBTnCWQ1D7BFqZL0gK0f6IX7ZP9Oia+HnMfs5yq1SwceC8OH19fUGOcCJ4BKxOURs6/oixK9DILtEJKe7Em1t0hC7D7Ef5TS83Cn733g8viRN8jwfhWF4ho8V4fSNlBXDvEOY91eywEow1wZ+PstpELoHoZ/w4j/JEFybQ9gXCMe3CxIp6x1E/0Ce9oecYmzSEBvhZc5JMj32VfjpFjkEFnSA+25KSdwmDPCcnAzokCEwOdXPMtdiGfgt33MkJXEgY/wcI8Fcu2ojxT5LnsC9N5TzTY7gyADTGk7kE25BfYaEuDXX8LGUNA1XtTESDIEf5HMEG4fkGdTqUDlfJQO0Gy02JQieSEkZWuUBNcBgMBjTfCP5Srfx0q7hXq8Xy+c8yqGGKHhWTJpoC769vY2UpIwaAq4jt9bU7XYj0kRbsIiASl/CJxA4Z74w6Yg0Me6H/wYwaaNgQ+ZZCXbBfye4R5ZwPI3uoix7BD97XzcoEfH5EZXMlmAmhWzxXcOxEFALlD0h+6mhSpow6USjrHa/qou1SdPTSEZtPfnFjYJ7iZzmR0kk7mn1UawFw0e31bkq+DSPkxOyY4SQdW4EJmZEz8mCtlt66bSCXzqt4H+ZgqGpNi5Cy310Q0X9sC2x6N6m/NYHY2iakiYuAg9f0RELTCrys7K1qiqaMGmdCYK0ZrnMdFrYt+CUR0t1C4v556oPxEL3cLw1nRZ2EVqumJhWEULEW/KISQ3PNVCYZ7IdJDSKdg3zBhTU6uxcbFQ5rXs9DwDQuibiXiOsH9e+1gUuJuLzOj4lRjo8GRApWZkYcTUiXNukxUx/KiXxBzipWtxC3poY1kVF2eL6NWoAo1ZatKayL/NUzjeuRbWssIh9+gM8FWS6IqiDzYL4VokQdaZCjZAeTfjx4U/XR7OXCYJtrAcfkEeMuyWY9oGovR0lqzJCYuuYdmO4Phe7CKYsk2esAg+8+K4w76zuNf1+Xy5rvZKgi/UuHt51g+MwDMMbrDtxEm8065eVR+MVo+wFDl6nYpOe7dRBbR/bbFipQyObS5VurBSxWSUjj3gfPHA3Nm2kquAY2bdYxuleyzJg8pcFe65mCLG71ADeTVqG1454yxEELoulzxuEmaeuBh8tLS0tLc+dX3zd0aoo/ZR3AAAAAElFTkSuQmCC" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
         </a>

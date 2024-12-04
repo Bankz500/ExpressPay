@@ -185,12 +185,12 @@ const app = initializeApp(firebaseConfig);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Sign-in successful
-                alert('Welcome Back!');
+                alert('Been a while Cheif Welcome Back!');
                 window.location.href = 'dashboard.html'; // Redirect to dashboard after sign-in
             })
             .catch((error) => {
                 // Handle sign-in errors
-                alert('Error signing in: ' + error.message);
+                alert('Ehh... My Chief there was an error signing in: ' + error.message);
                 console.error(error);
             })
             .finally(() => {

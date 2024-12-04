@@ -34,13 +34,13 @@
   measurementId: "G-8ECL5E373T"
 };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app); // Initialize Firestore
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+                const auth = getAuth(app);
+                const db = getFirestore(app); // Initialize Firestore
 
-        // Check if the user is authenticated
-        onAuthStateChanged(auth, async (user) => {
+                // Check if the user is authenticated
+                onAuthStateChanged(auth, async (user) => {
             if (user) {
                 // Fetch user data from Firestore
                 const userDocRef = doc(db, 'users', user.uid); // Reference to user's document
@@ -52,13 +52,23 @@
                     
                     // Set the amounts directly from user data
                     document.getElementById('Deposit-account').textContent = `${userData.deposit || '₦0.00'}`;
-                    document.getElementById('Profit-wallet').textContent = `${userData.profit || 'No history'}`;
+                    document.getElementById('history1').textContent = `${userData.history1 || 'No history'}`;
+                    document.getElementById('history2').textContent = `${userData.history || ''}`;
+                    document.getElementById('history3').textContent = `${userData.history2 || ''}`;
                     document.getElementById('wallet').textContent = `${userData.wallet || '₦0.00'}`;
-                    document.getElementById('referal-wallet').textContent = `${userData.referal|| '₦0.00'}`;
-                    document.getElementById('pending-wallet').textContent = `${userData.pending|| 'No pending transactions'}`;
+                    document.getElementById('referal-wallet').textContent = `${userData.referal || '₦0.00'}`;
+                    document.getElementById('pending1').textContent = `${userData.pending1 || 'No pending transactions'}`;
+                    document.getElementById('pending2').textContent = `${userData.pending2 || ''}`;
+                    document.getElementById('pending3').textContent = `${userData.pending3 || ''}`;
                     
                     // Set the welcome message
-                    document.getElementById('welcome-message').textContent = `Welcome ${userData.name}`; // Set welcome message
+                    const welcomeName = document.getElementById('welcome-name');
+                    if (userData.name) {
+                        welcomeName.textContent = `Welcome ${userData.name}`; // Set welcome message with user's name
+                    } else {
+                        welcomeName.textContent = 'Welcome User'; // Default if name is not found
+                        console.log('User data does not contain a name field.');
+                    }
                 } else {
                     console.log('No user document found in Firestore.');
                     alert('No user data found.');
@@ -69,6 +79,7 @@
                 window.location.href = 'sign-in.html';
             }
         });
+
 
         // Sign out function
         window.signOut = function() {
@@ -189,7 +200,7 @@
         <div class="flex justify-between items-center mb-6">
             <!-- Welcome Message -->
             <div class="flex-1 p-2 bg-gray-100">
-                <h1 id="welcome-message" class="text-xl font-semibold mb-6 rounded-lg text-gray-800">Welcome back</h1>
+                <h1 id="welcome-name" class="text-sm font-semibold mb-6 rounded-lg text-gray-800">Welcome back</h1>
                 
 <!-- Include FontAwesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -227,8 +238,8 @@
 <!-- Divider -->
 <hr class="my-4 border-gray-100">
 
-                <!-- Add a horizontal line here -->
-                <hr class="my-4 border-gray-300"> <!-- Added line -->
+<!-- Add a horizontal line here -->
+<hr class="my-4 border-gray-300"> <!-- Added line -->
 
 <!-- Profit Wallet Card -->
 <div class="bg-white shadow rounded p-6 w-full">
@@ -241,7 +252,11 @@
     <hr class="border-gray-300 mb-4">
     <!-- History Content -->
     <div class="text-gray-600 text-sm">
-        <p id="Profit-wallet" class="italic">No history available</p>
+        <p id="history1" class="italic text-xs">No history available</p>
+        <hr class="border-white mb-4">
+        <p id="history2" class="italic text-xs"></p>
+        <hr class="border-white mb-4">
+        <p id="history3" class="italic text-xs"></p>
     </div>
 </div>
 
@@ -263,7 +278,11 @@
     <hr class="border-gray-300 mb-4">
     <!-- Content Section -->
     <div class="text-gray-600 text-sm">
-        <p id="pending-wallet" class="italic">No pending transactions</p>
+        <p id="pending1" class="italic text-xs">No pending transactions</p>
+        <hr class="border-white mb-4">
+        <p id="pending2" class="italic text-xs"></p>
+        <hr class="border-white mb-4">
+        <p id="pending3" class="italic text-xs"></p>
     </div>
 </div>
 
@@ -342,7 +361,7 @@
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
-                <img src="customer-service-2-line (1).png" alt="Support Icon" class="h-6 w-6" />
+                <img src="undefined.png" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
         </a>

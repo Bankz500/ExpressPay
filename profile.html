@@ -210,9 +210,9 @@ onAuthStateChanged(auth, async (user) => {
 <!-- Profile Header -->
 <div class="flex items-left-2 mb-4">
     <input type="file" id="profileImageInput" accept="image/*" class="hidden" onchange="uploadProfilePicture(event)">
-    <img id="profilePic" src="https://via.placeholder.com/100" alt="Profile Picture" class="w-16 h-16 rounded-full border-gray-200 ml-4 mt-4" onclick="document.getElementById('profileImageInput').click();">    
+    <img id="profilePic" src="https://via.placeholder.com/100" alt="Profile Picture" class="w-16 h-16 rounded-lg border-gray-200 ml-4 mt-4" onclick="document.getElementById('profileImageInput').click();">    
     <div class="ml-4 mt-4">
-        <h1 id="profileUsername" class="text-sm font-bold">@user299d4</h1>
+        <h1 id="profileUsername" class="text-sm font-bold"></h1>
         <span class="inline-block bg-purple-500 text-white text-xs font-semibold px-2 py-1 rounded-full">Fresher 🐾</span>
     </div>
 </div>
@@ -316,7 +316,7 @@ async function showUserInfo() {
 </div>
 
 <script>
-    // Function to update the full name locally with a delay for processing state
+    // Function to update the full name and username locally with a delay for processing state
     function updateProfile() {
         const saveButton = document.getElementById("saveChangesButton");
         const originalButtonText = saveButton.textContent;
@@ -329,23 +329,25 @@ async function showUserInfo() {
         setTimeout(function() {
             try {
                 const newFullName = document.getElementById('firstName').value.trim();
+                const newUsername = document.getElementById('lastName').value.trim();
 
-                if (!newFullName) {
-                    alert('Please enter a valid full name.');
+                if (!newFullName || !newUsername) {
+                    alert('Please enter valid information for full name and username.');
                     return;
                 }
 
-                // Store the full name in localStorage
+                // Store the full name and username in localStorage
                 localStorage.setItem('fullName', newFullName);
+                localStorage.setItem('username', newUsername);
 
-                // Update the displayed full name (You can also update other parts of the UI if needed)
-                document.getElementById('profileUsername').textContent = newFullName;
+                // Update the displayed full name and username (You can also update other parts of the UI if needed)
+                document.getElementById('profileUsername').textContent = newUsername;
 
                 // Show success message
-                alert('Full name updated successfully!');
+                alert('Profile updated successfully! my Chief');
             } catch (error) {
-                console.error('Error updating full name:', error);
-                alert('An error occurred while updating your full name. Please try again.');
+                console.error('Ehhh... my Chief there was an error updating profile:', error);
+                alert('An error occurred while updating your profile. Please try again.');
             } finally {
                 // Revert button to original state after the operation
                 saveButton.disabled = false;
@@ -354,14 +356,24 @@ async function showUserInfo() {
         }, 2000);  // This is where we delay the actual change, 2000ms = 2 seconds
     }
 
-    // Load the stored full name on page load
+    // Load the stored full name and username on page load
     window.onload = function () {
-        // Check if there's a stored full name in localStorage
+        // Check if there's a stored full name and username in localStorage
         const storedFullName = localStorage.getItem('fullName');
+        const storedUsername = localStorage.getItem('username');
+
         if (storedFullName) {
             // Populate the full name field and the profile display with the stored value
-            document.getElementById('firstName').value = storedFullName;
-            document.getElementById('profileUsername').textContent = storedFullName;
+            const fullNameField = document.getElementById('firstName');
+            fullNameField.value = storedFullName;
+            fullNameField.placeholder = storedFullName;
+        }
+
+        if (storedUsername) {
+            // Populate the username field with the stored value
+            const usernameField = document.getElementById('lastName');
+            usernameField.value = storedUsername;
+            usernameField.placeholder = storedUsername;
         }
 
         const user = getAuth().currentUser; // Get the current user
@@ -369,9 +381,21 @@ async function showUserInfo() {
             const emailField = document.getElementById('email');
             emailField.placeholder = user.email; // Email is read-only and cannot be changed
             emailField.value = user.email; // Optional: Set email as the value
+
+            // Populate the full name from Firebase
+            const fullNameField = document.getElementById('firstName');
+            fullNameField.placeholder = user.displayName || "Enter your full name";
+            fullNameField.value = user.displayName || "";
+
+            // Populate the username (if available from Firebase or set a default)
+            const usernameField = document.getElementById('lastName');
+            usernameField.placeholder = user.displayName?.split(' ')[0] || "Enter your username"; // Example: Derive username from full name
+            usernameField.value = storedUsername || ""; // Optional: Set username if previously saved
         }
     };
 </script>
+
+
 
 <section class="py-10" id="spacing"></section>
     <div class="container mx-auto text-center">
@@ -406,7 +430,7 @@ async function showUserInfo() {
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
-                <img src="customer-service-2-line (1).png" alt="Support Icon" class="h-6 w-6" />
+                <img src="undefined.png" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
         </a>

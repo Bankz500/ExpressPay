@@ -112,8 +112,8 @@
 <!-- Return to Dashboard Button -->
 <div class="w-full flex justify-left mt-6 px-4">
     <a href="dashboard.html" 
-       class="flex items-center px-1 py-1 bg-white rounded-full text-black font-medium text-xs hover:bg-purple-200 hover:text-purple-700 shadow transition-all duration-300">
-        <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+       class="flex items-center px-4 py-1 bg-white rounded-full text-black font-medium text-xs hover:bg-purple-200 hover:text-purple-700 shadow transition-all duration-300">
+        <!-- <svg class="w-4 h-4 mr-2" xmlns="" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> -->
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
         Dashboard
@@ -171,14 +171,15 @@
                                 </div>
             
                                 <div id="noticesContent" class="hidden mt-6 space-y-3 text-gray-700 text-xs"></div>
-                                <!-- Transaction Notice -->
-                                <div class="flex items-start bg-purple-600 p-2 rounded">
-                                    <span class="mr-2 text-lg text-white">⏳</span>
-                                    <p>
-                                    <p class="text-xs font-regular text-white"> All USDT transactions are non-refundable and must comply with the terms and conditions.
-                                    </p>
-                                </div>
+                            <!-- Transaction Notice -->
+                            <div class="flex items-start bg-purple-600 p-2 rounded">
+                                <span class="mr-2 text-lg text-white">⏳</span>
+                                <p class="text-xs font-regular text-white">
+                                    All USDT Trade transactions are non-refundable and must comply with 
+                                    <a href="term-condition.html" class="underline text-white hover:text-gray-300">terms and conditions</a>.
+                                </p>
                             </div>
+                        </div>
                         </div>
     
             <form id="giftCardTradeForm">
@@ -187,7 +188,7 @@
     <label class="block text-xs text-black mb-2" for="card-type">USDT Payment Type</label>
     <select 
         id="card-type" 
-        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs appearance-none"
+        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs appearance-none"
     >
         <option value="" disabled selected>Select payment type</option>
         <option value="Receiving USDT">Receiving USDT</option>
@@ -201,7 +202,7 @@
     <label class="block text-xs text-black mb-2" for="amount">USDT Amount</label>
     <select 
         id="amount" 
-        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-xs appearance-none"
+        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs appearance-none"
     >
         <option value="" disabled selected>Select amount</option>
         <option value="10">$10</option>
@@ -242,13 +243,13 @@
                 <!-- Gift Card Back Image -->
                 <div class="mb-4">
                     <label class="block text-gray-700 font-medium text-xs mb-2">USDT payment receipt</label>
-                    <input type="file" id="back-image" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs" accept="image/*">
+                    <input type="file" id="back-image" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs" accept="image/*">
                 </div>
     
                 <!-- Registered Email -->
                 <div class="mb-4">
                     <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
-                    <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-yellow-300 text-xs">
+                    <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs">
                 </div>
     
                 <!-- Submit Button -->
@@ -369,12 +370,12 @@
                 // Send User Response to the user’s email
                 await emailjs.send("service_f2x5e1i", "template_c29rpcf", userTemplateParams);
     
-                alert("USDT Trade transaction in progress");
+                alert("USDT Trade in Progress! my Chief 🚀 Hang tight while we process your transaction. Don’t have an account? Sign up now with the registered email to get started!");
                 form.reset();
                 conversionInfo.textContent = ""; // Clear conversion info after successful submission
             } catch (error) {
                 console.error("Error:", error);
-                alert("Failed to process your request. Please try again.");
+                alert("Ehhh..... my Chief we failed to process your request. Please try again.");
             } finally {
                 redeemButton.textContent = "Redeem Gift Card";
                 redeemButton.disabled = false;
@@ -442,7 +443,7 @@
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQ5JREFUSEvtVUEOwjAMy14GvAx4GeNlgKcambZJ2iFuVJrWqYmdNIm32I/XMoB/NDM8h/KGy2pm99fmkvlnBAA4JyDXiCgiUHBEDCBGz8hJjvNTLxCPQMHhCIDeUrtuJh7Bo6CF6Rcb1OdW9k0wPQJGNQLOrEAAoiECGs8QMIumFswABigY3lxZh2lN9JrYCAhwJQijVqcZAvixbsTYsiEID/Gt+2yO9LyL8ScYvqKoyJQFFI0Tza5TwQuLHLVp7VgXnsOldtSud5tm3YIsarmGz9brRU0xR+6gZQTZuSsvs8OUKWqD9y2BSsSUXEdXQr1S7XKFcU8GdVft/mV6WYCAP32dja79ngyyjvo4fwKMwFAZAQv+LAAAAABJRU5ErkJggg==" alt="Support Icon" class="h-6 w-6" />
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAQYSURBVHgB7Zo7VttAFIavbBcuFaqUMociHUqXUqwAsoJAl1TACoAuHbACTJkKKFMhOrp4A2DRpbPSpeCR/8LYZzyRFM1LCUTfOTq2ZkaPX3PvzJ0HUUtLS8szIiDPRFEUdjqddfxdfnh4SPAbioPJcWRBEPBxdnd3l2aAPOJN8NLSUgIBO/ibkB4pPtDx1dXVkDzgXLCFUJUMFrHiusa75JDFxcWd+/v7If5GJUXYhL/jGOHIxPnrkrIhzHxrYWGBJpPJBTnCWQ1D7BFqZL0gK0f6IX7ZP9Oia+HnMfs5yq1SwceC8OH19fUGOcCJ4BKxOURs6/oixK9DILtEJKe7Em1t0hC7D7Ef5TS83Cn733g8viRN8jwfhWF4ho8V4fSNlBXDvEOY91eywEow1wZ+PstpELoHoZ/w4j/JEFybQ9gXCMe3CxIp6x1E/0Ce9oecYmzSEBvhZc5JMj32VfjpFjkEFnSA+25KSdwmDPCcnAzokCEwOdXPMtdiGfgt33MkJXEgY/wcI8Fcu2ojxT5LnsC9N5TzTY7gyADTGk7kE25BfYaEuDXX8LGUNA1XtTESDIEf5HMEG4fkGdTqUDlfJQO0Gy02JQieSEkZWuUBNcBgMBjTfCP5Srfx0q7hXq8Xy+c8yqGGKHhWTJpoC769vY2UpIwaAq4jt9bU7XYj0kRbsIiASl/CJxA4Z74w6Yg0Me6H/wYwaaNgQ+ZZCXbBfye4R5ZwPI3uoix7BD97XzcoEfH5EZXMlmAmhWzxXcOxEFALlD0h+6mhSpow6USjrHa/qou1SdPTSEZtPfnFjYJ7iZzmR0kk7mn1UawFw0e31bkq+DSPkxOyY4SQdW4EJmZEz8mCtlt66bSCXzqt4H+ZgqGpNi5Cy310Q0X9sC2x6N6m/NYHY2iakiYuAg9f0RELTCrys7K1qiqaMGmdCYK0ZrnMdFrYt+CUR0t1C4v556oPxEL3cLw1nRZ2EVqumJhWEULEW/KISQ3PNVCYZ7IdJDSKdg3zBhTU6uxcbFQ5rXs9DwDQuibiXiOsH9e+1gUuJuLzOj4lRjo8GRApWZkYcTUiXNukxUx/KiXxBzipWtxC3poY1kVF2eL6NWoAo1ZatKayL/NUzjeuRbWssIh9+gM8FWS6IqiDzYL4VokQdaZCjZAeTfjx4U/XR7OXCYJtrAcfkEeMuyWY9oGovR0lqzJCYuuYdmO4Phe7CKYsk2esAg+8+K4w76zuNf1+Xy5rvZKgi/UuHt51g+MwDMMbrDtxEm8065eVR+MVo+wFDl6nYpOe7dRBbR/bbFipQyObS5VurBSxWSUjj3gfPHA3Nm2kquAY2bdYxuleyzJg8pcFe65mCLG71ADeTVqG1454yxEELoulzxuEmaeuBh8tLS0tLc+dX3zd0aoo/ZR3AAAAAElFTkSuQmCC" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
         </a>
