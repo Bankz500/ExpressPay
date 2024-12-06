@@ -180,3 +180,11 @@ input[type="text"], input[type="email"], input[type="file"], select {
 .btn:hover {
     background-color: #0056b3;
 }
+
+
+#overlay {
+  display: none;
+}
+#overlay.active {
+  display: block;
+}
