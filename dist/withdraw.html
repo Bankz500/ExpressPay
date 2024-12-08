@@ -77,7 +77,7 @@
 </div>
 
 <!-- Main Content -->
-<div class="flex-1 p-6 bg-gray-100 pb-28 md:pb-0"> 
+<div class="flex-1 p-4 bg-gray-100 pb-24 md:pb-0"> 
     <div class="flex-1 p-6 bg-white rounded shadow pb-0 text-black">
         <h1 class="text-xl font-semibold mb-6 text-black"></h1>
 
@@ -183,14 +183,38 @@
                     <p id="withdrawCashError" class="text-red-500 text-xs hidden mt-2">Amount is required</p>
                 </div>
 
+                <!-- Notice of Withdrawal -->
+                <div class="pt-10">
+                <div class="bg-gray-100 border-l-4 border-gray-500 text-gray-700 p-5 rounded mb-4 text-xs text-center">
+                    <p>
+                        Please double-check all your details before submitting your withdrawal request to ensure prompt processing. If you encounter any issues, contact support for assistance.
+                    </p>
+                </div>
+
+                <!-- Confirm Details Section -->
+                <div class="pt-3">
+                <div class="flex items-center mb-4">
+                    <input 
+                        type="checkbox" 
+                        id="confirmDetails" 
+                        class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500"
+                    >
+                    <label for="confirmDetails" class="ml-2 text-xs text-black">
+                        Do you confirm that your details have been filled correctly?
+                    </label>
+                </div>
+                <p id="confirmDetailsError" class="text-red-500 text-xs hidden mt-2">Please confirm your details before proceeding.</p>
+                </div>
+
+
                 <!-- Submit Button -->
-                <div class="mb-4 py-10">
+                <div class="mb-4 py-7">
                 <div class="mt-6 flex justify-center py-18">
                     <button 
                         type="button" 
                         onclick="submitCashWithdrawal()" 
                         id="cashWithdrawButton"
-                        class="bg-purple-500 text-white text-xs border font-semibold rounded px-4 py-3 w-full md:w-auto hover:bg-purple-800"
+                        class="bg-purple-500 text-white text-xs border font-semibold rounded px-16 py-3 w-full md:w-auto hover:bg-purple-800"
                     >
                         Submit
                     </button>

@@ -261,18 +261,22 @@
 <!-- Zelle Amount -->
 <div class="mb-4">
     <label class="block text-xs text-black mb-2" for="amount">Zelle Amount</label>
-    <select 
-        id="amount" 
-        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs appearance-none"
-    >
-        <option value="" disabled selected>Select amount</option>
-        <option value="200">$200</option>
-        <option value="300">$300</option>
-        <option value="400">$400</option>
-        <option value="500">$500</option>
-        <option value="1000">$1000</option>
-        <option value="2000">$2000</option>
-    </select>
+            
+    <!-- Custom amount input with dollar sign -->
+    <div class="relative">
+        <span class="absolute left-4 top-3 text-gray-400 text-xs">$</span>
+        <input 
+            id="amount-input" 
+            type="number" 
+            class="w-full pl-8 bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs text-gray-200"
+            placeholder="Enter amount min $300 max $1000"
+            step="0.01"
+            min="300"
+        />
+    </div>
+
+    <!-- Conversion Info -->
+    <div id="conversion-info" class="text-xs text-gray-500 mt-2"></div>
 </div>
 
                         <!-- BTC Wallet Address -->
@@ -322,121 +326,127 @@
             </section>
         
         
-        </div>
-        <p class="mt-2 text-xs text-red-600 text-center">
-            <span class="block bg-gray-300 text-gray-600 p-2 rounded shadow-lg">
-                Note: After copying the Zelle ID, do not close this page until a transaction receipt has been uploaded and sent to complete the transaction. Zelle ID's expire after 40 minutes.
-            </span>
-        </p>
-        </div>
+ <!-- Notice of Withdrawal -->
+ <div class="pt-3">
+    <div class="bg-gray-100 border-l-4 border-gray-500 text-gray-700 p-5 rounded mb-4 text-xs text-center">
+ <p>
+    Note: After copying the Zelle ID, do not close this page until a transaction receipt has been uploaded and sent to complete the transaction. Zelle ID's expire after 40 minutes.
+</p>
+ </div>
+ 
             
-            <script>
-                // Toggle visibility of notices
-                document.getElementById('toggleNoticesBtn').addEventListener('click', () => {
-                    const noticesContent = document.getElementById('noticesContent');
-                    noticesContent.classList.toggle('hidden');
-                });
-            </script>
-            
-        
-            <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-            <script>
-                (function () {
-                    emailjs.init("uEd3R25mqCi5tk0te");
-                })();
-            
-                const form = document.getElementById("giftCardTradeForm");
-                const backImageInput = document.getElementById("back-image");
-                const amountDropdown = document.getElementById("amount");
-                const conversionInfo = document.createElement("div");
-                conversionInfo.id = "conversion-info";
-                conversionInfo.className = "text-xs text-gray-500 mt-2";
-                amountDropdown.parentElement.appendChild(conversionInfo); // Append conversion info below the amount dropdown
-            
-                // Function to update conversion info when the amount changes
-                amountDropdown.addEventListener("change", () => {
-                    const amount = parseFloat(amountDropdown.value);
-                    if (!isNaN(amount) && amount > 0) {
-                        const conversionRate = 1000; // Conversion rate from USD to Naira
-                        const convertedAmount = amount * conversionRate;
-                        conversionInfo.textContent = `$${amount} is equal to ₦${convertedAmount.toLocaleString()}`;
-                    } else {
-                        conversionInfo.textContent = "";
-                    }
-                });
-            
-                form.addEventListener("submit", async function (event) {
-                    event.preventDefault();
-            
-                    const cardType = document.getElementById("card-type").value;
-                    const amount = amountDropdown.value; // Correctly retrieve the selected amount
-                    const email = document.getElementById("registered-email").value;
-                    const backImageFile = backImageInput.files[0]; // Access the file correctly
-                    const redeemButton = document.getElementById("redeem-button");
-            
-                    if (!cardType || !amount || !email || !backImageFile) {
-                        alert("Please fill in all fields and upload the required image.");
-                        return;
-                    }
-            
-                    redeemButton.textContent = "Processing...";
-                    redeemButton.disabled = true;
-            
-                    try {
-                        let backImageUrl = ""; // Initialize variable for uploaded image URL
-                        if (backImageFile) {
-                            const formData = new FormData();
-                            formData.append("file", backImageFile);
-                            formData.append("upload_preset", "gift_card");
-            
-                            const response = await fetch("https://api.cloudinary.com/v1_1/dkir5njcy/image/upload", {
-                                method: "POST",
-                                body: formData,
-                            });
-            
-                            const data = await response.json();
-                    console.log("Full Cloudinary Response:", data); // Debugging: Check full Cloudinary response
-                    backImageUrl = `https://res.cloudinary.com/dkir5njcy/image/upload/${data.public_id}`;
-                    console.log("Back Image URL:", backImageUrl); // Debugging: Confirm URL
-                }
-    
-                // Template Parameters for Admin Notification (sent to your email)
-                const adminTemplateParams = {
-                    card_type: cardType,
-                    card_amount: `$${amount}`,
-                    user_email: email,
-                    back_image_url: backImageUrl,
-                };
-    
-                // Template Parameters for User Response (sent to the user's email)
-                const userTemplateParams = {
-                    user_email: email,
-                    card_amount: `$${amount}`,
-                    card_type: cardType,
-                };
+ <script>
+    // Toggle visibility of notices
+    document.getElementById('toggleNoticesBtn').addEventListener('click', () => {
+        const noticesContent = document.getElementById('noticesContent');
+        noticesContent.classList.toggle('hidden');
+    });
+</script>
 
-    
-                console.log("Email.js adminTemplateParams:", adminTemplateParams); // Debugging: Ensure parameters are correct
-                console.log("Email.js userTemplateParams:", userTemplateParams); // Debugging: Ensure parameters are correct
-    
-                // Send Admin Notification to you (or another designated admin)
-                await emailjs.send("service_f2x5e1i", "template_d0igltm", adminTemplateParams);
-    
-                // Send User Response to the user’s email
-                await emailjs.send("service_f2x5e1i", "template_c29rpcf", userTemplateParams);
-    
-                alert("Zelle Trade in Progress! my Chief 🚀 Please wait as we process your transaction. Don’t have an account? Sign up now with the registered email to get started!");
-                form.reset();
-                conversionInfo.textContent = ""; // Clear conversion info after successful submission
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Ehhh.... my Chief! we failed to process your request. Please try again.");
-            } finally {
-                redeemButton.textContent = "Redeem Gift Card";
-                redeemButton.disabled = false;
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+    (function () {
+        emailjs.init("uEd3R25mqCi5tk0te");
+    })();
+
+    const form = document.getElementById("giftCardTradeForm");
+    const backImageInput = document.getElementById("back-image");
+    const amountDropdown = document.getElementById("amount");
+    const amountInput = document.getElementById("amount-input"); // Custom amount input field
+    const conversionInfo = document.createElement("div");
+    conversionInfo.id = "conversion-info";
+    conversionInfo.className = "text-xs text-gray-500 mt-2";
+    amountInput.parentElement.appendChild(conversionInfo); // Append conversion info below the custom amount input
+
+    const conversionRate = 1400; // Conversion rate: 1 USD = 1400 Naira
+
+    // Function to update conversion info when the amount changes
+    function updateConversionInfo(amount) {
+        if (amount >= 300) { // Minimum amount for conversion is $300
+            const convertedAmount = amount * conversionRate;
+            conversionInfo.textContent = `$${amount} is equal to ₦${convertedAmount.toLocaleString()}`;
+        } else {
+            conversionInfo.textContent = "No conversion for this amount";
+        }
+    }
+
+    // Update conversion info based on custom input
+    amountInput.addEventListener('input', () => {
+        const amount = parseFloat(amountInput.value);
+        if (!isNaN(amount)) {
+            updateConversionInfo(amount);
+        }
+    });
+
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const cardType = document.getElementById("card-type").value;
+        const amount = parseFloat(amountInput.value); // Get the amount entered by the user
+        const email = document.getElementById("registered-email").value;
+        const backImageFile = backImageInput.files[0]; // Access the file correctly
+        const redeemButton = document.getElementById("redeem-button");
+
+        if (!cardType || !amount || isNaN(amount) || !email || !backImageFile) {
+            alert("Please fill in all fields and upload the required image.");
+            return;
+        }
+
+        redeemButton.textContent = "Processing...";
+        redeemButton.disabled = true;
+
+        try {
+            let backImageUrl = ""; // Initialize variable for uploaded image URL
+            if (backImageFile) {
+                const formData = new FormData();
+                formData.append("file", backImageFile);
+                formData.append("upload_preset", "gift_card");
+
+                const response = await fetch("https://api.cloudinary.com/v1_1/dkir5njcy/image/upload", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const data = await response.json();
+                backImageUrl = `https://res.cloudinary.com/dkir5njcy/image/upload/${data.public_id}`;
             }
-        });
-    </script>
+
+            // Template Parameters for Admin Notification
+            const adminTemplateParams = {
+                card_type: cardType,
+                card_amount: `$${amount}`,
+                user_email: email,
+                back_image_url: backImageUrl,
+            };
+
+            // Template Parameters for User Response
+            const userTemplateParams = {
+                user_email: email,
+                card_amount: `$${amount}`,
+                card_type: cardType,
+            };
+
+            // Send Admin Notification to you (or another designated admin)
+            await emailjs.send("service_f2x5e1i", "template_d0igltm", adminTemplateParams);
+
+            // Send User Response to the user’s email
+            await emailjs.send("service_f2x5e1i", "template_c29rpcf", userTemplateParams);
+
+            alert("Zelle Trade in Progress! my Chief 🚀 Please wait as we process your transaction.");
+            form.reset();
+            conversionInfo.textContent = ""; // Clear conversion info after successful submission
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Ehhh.... my Chief! we failed to process your request. Please try again.");
+        } finally {
+            redeemButton.textContent = "Redeem Gift Card";
+            redeemButton.disabled = false;
+        }
+    });
+</script>
+
+
     
         
         
