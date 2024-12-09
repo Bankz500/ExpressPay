@@ -74,7 +74,7 @@
 
 <!-- Main Profile Content -->
 <div class="flex-1 p-6 bg-gray-100">
-        <div class="w-full bg-white px-2 py-2 rounded shadow">
+        <div class="w-full bg-white px-2 py-2 rounded">
 <!-- Profile Header -->
 <div class="flex items-left-2 mb-4">
     <input type="file" id="profileImageInput" accept="image/*" class="hidden" onchange="uploadProfilePicture(event)">
@@ -158,7 +158,7 @@ async function showUserInfo() {
 </script>
 
 
-<div id="profileInfoCard" class="max-w-full bg-white shadow rounded p-6 mt-8 hidden">
+<div id="profileInfoCard" class="max-w-full bg-white rounded p-6 mt-8 hidden">
     <h2 class="text-sm font-semibold text-gray-800 mb-6">Profile Information</h2>
     <form class="space-y-6" onsubmit="event.preventDefault(); updateProfile();">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

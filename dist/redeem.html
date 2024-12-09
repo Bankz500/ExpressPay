@@ -159,7 +159,7 @@ overlay.onclick = closeMenu;
 
 <div class="flex flex-col items-center py-6 px-4 bg-gray-50">
     <!-- Navigation Header -->
-    <nav class="w-full max-w-lg mb-6 flex justify-between bg-white shadow rounded p-2">
+    <nav class="w-full max-w-lg mb-6 flex justify-between bg-white rounded p-2">
         <a href="redeem.html" class="flex-1 text-center">
             <button 
                 id="giftCardTab" 
@@ -179,10 +179,10 @@ overlay.onclick = closeMenu;
 <div class="flex flex-col items-center py-4 px-4 bg-gray-50">
 
 <!-- Gift Card Form -->
-<form id="giftCardTradeForm" class="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
+<form id="giftCardTradeForm" class="max-w-lg mx-auto p-6 bg-white rounded-lg">
     <!-- Gift Card Type -->
     <div class="mb-4">
-        <label for="card-type" class="block text-gray-700 font-medium text-sm mb-2">Gift Card Type</label>
+        <label for="card-type" class="block text-gray-700 font-medium text-xs mb-2">Gift Card Type</label>
         <select id="card-type" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs placeholder-gray-500">
             <option value="" disabled selected>Select gift card type</option>
             <option value="Apple Gift Card USA $10 - $50 (physical)">Apple Gift Card USA $10 (physical)</option>
@@ -194,25 +194,26 @@ overlay.onclick = closeMenu;
             <option value="Amazon Gift Card $100 - $500 (physical)">Amazon Gift Card $100 - $500 (physical)</option>
             <option value="Google Play Gift Card (physical)">Google Play Gift Card (physical)</option>
             <option value="Steam Wallet (physical)">Steam Wallet (physical)</option>
-            <option value="Vanilla $10 - $50(physical)">Vanilla $10 - $50(physical)</option>
-            <option value="Vanilla $50 - $100(physical)">Vanilla $50 - $100(physical)</option>
-            <option value="Vanila $100 - $500 above (physical)">Vanila $100 - $500 (physical)</option>
+            <option value="PSN $10(physical)">PSN $10(physical)</option>
+            <option value="PSN $25(physical)">PSN $25(physical)</option>
+            <option value="PSN $50 - $100 above (physical)">PSN $50 - $100(physical)</option>
             <option value="Ebay $10 - $50(physical)">Ebay $10 - $50(physical)</option>
             <option value="Ebay $50 - $100(physical)">Ebay $50 - $100(physical)</option>
             <option value="Ebay $100 - $500 above(physical)">Ebay $100 - $500 (physical)</option>
-            <option value="American Express $10 - $50(physical)">American Express $10 - $50(physical)</option>
-            <option value="American Express $50 - $100(physical)">American Express $50 - $100(physical)</option>
-            <option value="American Express $100 - $500 above(physical)">American Express $100 - $500 (physical)</option>
-            <option value="Wallmart (physical)">Wallmart (physical)</option>
-            <option value="Visa Gift Card (physical)">Visa Gift Card (physical)</option>
+            <option value="Xbox $10(physical)">Xbox $10(physical)</option>
+            <option value="Xbox $25 - $50(physical)">Xbox $25 - $50(physical)</option>
+            <option value="Xbox $100 - $500 above(physical)">Xbox $100 - $500 (physical)</option>
+            <option value="Nintendo $10 - $25 (physical)">Nintendo $10 - $25(physical)</option>
+            <option value="Nintendo $50 - $100 above (physical)">Nintendo $50 - $100 above (physical)</option>
             <option value="Nordstorm (physical)">Nordstorm (physical)</option>
+            <option value="Sephora (physical)">Sephora (physical)</option>
             <option value="Razor Gold (physical)">Razor Gold (physical)</option>
         </select>
     </div>
 
     <!-- Gift Card Amount -->
     <div class="mb-4">
-        <label for="amount" class="block text-gray-700 font-medium text-sm mb-2">Gift Card Amount</label>
+        <label for="amount" class="block text-gray-700 font-medium text-xs mb-2">Gift Card Amount</label>
         <select id="amount" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs placeholder-gray-500">
             <option value="" disabled selected>Select amount</option>
             <option value="10">$10 single</option>
@@ -231,17 +232,22 @@ overlay.onclick = closeMenu;
             <option value="500 (multiples of $100)">$500 (multiples of $100)</option>
         </select>
     </div>
+    <!-- Conversion Display -->
+    <div class="mb-4">
+     <p id="conversion-display" class="text-purple-600 text-xs font-medium mt-2 hidden">Equivalent Value: ₦0</p>
+    </div>
+    
 
     <!-- Upload Gift Card Images -->
     <div class="mb-4">
-        <p class="text-xs font-regular mb-4">Upload gift card back images with the PIN visible. <a href="#" id="seeExampleLink" class="text-blue-500 hover:text-blue-700">See Example</a></p>
+        <p class="text-xs font-regular mb-4">Upload gift card back images with the PIN visible. <a href="#" id="seeExampleLink" class="text-blue-500 text-xs hover:text-blue-700">See Example</a></p>
         <input type="file" id="back-images" name="back-images" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs" accept="image/*" multiple />
-        <p class="text-gray-400 text-xs mt-2">Upload 1–5 images if you have multiple cards or the value exceeds $100.</p>
+        <p class="text-gray-400 text-xs mt-2">Upload 1–5 images if you have multiple cards or the value.</p>
     </div>
 
     <!-- Registered Email -->
     <div class="mb-4">
-        <label for="registered-email" class="block text-gray-700 font-medium text-sm mb-2">Enter Registered Email</label>
+        <label for="registered-email" class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
         <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs">
     </div>
 
@@ -276,12 +282,11 @@ overlay.onclick = closeMenu;
     });
 </script>
 
-
 <script>
     // Toggle visibility of notices
-    document.getElementById('toggleNoticesBtn').addEventListener('click', () => {
+    document.getElementById('toggleNoticesBtn')?.addEventListener('click', () => {
         const noticesContent = document.getElementById('noticesContent');
-        noticesContent.classList.toggle('hidden');
+        noticesContent?.classList.toggle('hidden');
     });
 
     (function () {
@@ -308,26 +313,27 @@ overlay.onclick = closeMenu;
         }
 
         const conversionRates = {
-            "Apple Gift Card USA $10 - $50 (physical)": 1500,
-            "Apple Gift Card USA $50 - $100 (physical)": 1500,
-            "Apple Gift Card USA $100 - $500 (physical)": 1500,
-            "Amazon Gift Card $10 - $100 (physical)": 1400,
-            "Amazon Gift Card $100 - $500 (physical)": 1400,
-            "Google Play Gift Card (physical)": 1300,
-            "Steam Wallet (physical)": 1350,
-            "Vanilla $10 - $50(physical)": 1250,
-            "Vanilla $50 - $100(physical)": 1250,
-            "Vanila $100 - $500 above (physical)": 1250,
-            "Ebay $10 - $50(physical)": 1200,
-            "Ebay $50 - $100(physical)": 1200,
-            "Ebay $100 - $500 above(physical)": 1200,
-            "American Express $10 - $50(physical)": 1100,
-            "American Express $50 - $100(physical)": 1100,
-            "American Express $100 - $500 above(physical)": 1100,
-            "Wallmart (physical)": 1150,
-            "Visa Gift Card (physical)": 1400,
-            "Nordstorm (physical)": 1450,
-            "Razor Gold (physical)": 1250,
+            "Apple Gift Card USA $10 - $50 (physical)": 1000,
+            "Apple Gift Card USA $50 - $100 (physical)": 1000,
+            "Apple Gift Card USA $100 - $500 (physical)": 1000,
+            "Amazon Gift Card $10 - $100 (physical)": 652,
+            "Amazon Gift Card $100 - $500 (physical)": 652,
+            "Google Play Gift Card (physical)": 870,
+            "Steam Wallet (physical)": 900,
+            "PSN $10(physical)": 1100,
+            "PSN $25(physical)": 1100,
+            "PSN $50 - $100 above (physical)": 1100,
+            "Ebay $10 - $50(physical)": 720,
+            "Ebay $50 - $100(physical)": 720,
+            "Ebay $100 - $500 above(physical)": 720,
+            "Xbox $10(physical)": 1400,
+            "Xbox $25 - $50(physical)": 1400,
+            "Xbox $100 - $500 above(physical)": 1400,
+            "Nintendo $10 - $25 (physical)": 900,
+            "Nintendo $50 - $100 above (physical)": 900,
+            "Nordstorm (physical)": 900,
+            "Sephora (physical)": 900,
+            "Razor Gold (physical)": 1050,
         };
 
         const conversionRate = conversionRates[selectedCardType] || 0;
@@ -413,7 +419,6 @@ overlay.onclick = closeMenu;
         }
     });
 </script>
-
 
     
     
