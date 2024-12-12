@@ -207,7 +207,7 @@
     >
         <option value="" disabled selected>Select payment type</option>
         <option value="Receiving Zelle Payment">Receiving Zelle</option>
-        <option value="Selling Zelle funds">Selling Zelle</option>
+        <!-- <option value="Selling Zelle funds">Selling Zelle</option> -->
     </select>
 </div>
 
@@ -239,7 +239,7 @@
                 <input 
                     type="text" 
                     id="btcWallet" 
-                    value="@tomhanks" 
+                    value="Launching 10 DAYS..." 
                     readonly 
                     class="flex-grow h-10 px-3 border rounded text-sm text-gray-700 focus:ring-2 focus:ring-purple-300"
                 />
@@ -281,7 +281,7 @@
         
  <!-- Notice of Withdrawal -->
  <div class="pt-3">
-    <div class="bg-gray-100 border-l-4 border-gray-500 text-gray-700 p-5 rounded mb-4 text-xs text-center">
+    <div class="bg-gray-100 border-l-4 border-purple-600 text-purple-700 p-5 rounded mb-4 text-xs text-center">
  <p>
     Note: After copying the Zelle ID, do not close this page until a transaction receipt has been uploaded and sent to complete the transaction. Zelle ID's expire after 40 minutes.
 </p>
@@ -312,7 +312,7 @@
     conversionInfo.className = "text-xs text-gray-500 mt-2";
     amountInput.parentElement.appendChild(conversionInfo); // Append conversion info below the custom amount input
 
-    const conversionRate = 1400; // Conversion rate: 1 USD = 1400 Naira
+    const conversionRate = 1200; // Conversion rate: 1 USD = 1400 Naira
 
     // Function to update conversion info when the amount changes
     function updateConversionInfo(amount) {
