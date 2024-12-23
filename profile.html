@@ -156,7 +156,7 @@ onAuthStateChanged(auth, async (user) => {
 <!-- Navbar -->
 <nav class="bg-white p-4 shadow">
     <div class="container mx-auto flex items-center justify-between">
-        <img src="express (10).png" alt="Gift card Brand Logo" class="h-14">
+        <img src="express (4).png" alt="Gift card Brand Logo" class="h-14">
         </a>
 
             <!-- Sign out button for mobile and desktop -->
@@ -167,41 +167,7 @@ onAuthStateChanged(auth, async (user) => {
 
 
     <div class="flex">
-<!-- Sidebar (hidden on mobile, visible on desktop) -->
-<div id="sidebar" class="md:w-64 bg-gray-900 shadow-xl h-screen hidden md:block rounded-r-lg">
-    <div class="p-6 bg-gray-800 rounded-tl-lg">
-        <h2 class="text-2xl font-bold text-purple-300 pb-4 tracking-wide">Dashboard</h2>
-    </div>
-    <nav class="mt-4">
-        <ul>
-            <!-- Wallet -->
-            <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
-                <img src="wallet 1.png" alt="Wallet Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="dashboard.html" class="flex-1 text-lg font-medium text-white">Wallet</a>
-            </li>
-            <!-- Redeem -->
-            <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
-                <img src="piggy 1.png" alt="Deposit Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="redeem.html" class="flex-1 text-lg font-medium text-white">Redeem</a>
-            </li>
-            <!-- Withdrawal -->
-            <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
-                <img src="money 2.png" alt="Withdrawal Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="withdraw.html" class="flex-1 text-lg font-medium text-white">Withdrawal</a>
-            </li>
-            <!-- Support -->
-            <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
-                <img src="secure 1.png" alt="Verification Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="support.html" class="flex-1 text-lg font-medium text-white">Support</a>
-            </li>
-            <!-- Profile -->
-            <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center transition duration-200">
-                <img src="user 1.png" alt="Profile Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="profile.html" class="flex-1 text-lg font-medium text-white">Profile</a>
-            </li>
-        </ul>
-    </nav>
-</div>
+
 
 
 <!-- Main Profile Content -->
@@ -403,47 +369,49 @@ async function showUserInfo() {
 </section>
 
 
-<!-- Bottom Navbar (only visible on mobile) -->
-<div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-gray-200 shadow-2xl p-3">
-    <div class="flex justify-between items-center">
+<!-- Bottom Navbar (Mobile Friendly) -->
+<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t p-3" style="height: 100px;">
+    <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="walletIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="122.png" alt="Wallet Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="walletText">Wallet</span>
+            <span class="text-xs font-medium mt-2">Wallet</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="depositIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="save.png" alt="Redeem Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="depositText">Redeem</span>
+            <span class="text-xs font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="withdrawIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="money.png" alt="Withdraw Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="withdrawText">Withdraw</span>
+            <span class="text-xs font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="undefined.png" alt="Support Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
+            <span class="text-xs font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="profileIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="2334.png" alt="Profile Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="profileText">Profile</span>
+            <span class="text-xs font-medium mt-2">Profile</span>
         </a>
     </div>
 </div>
 
+
+<!-- Script -->
 <script>
     // Function to set the active navbar item
     function setActive(element) {

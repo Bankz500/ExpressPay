@@ -81,9 +81,9 @@
 <body class="font-sans antialiased bg-gray-100">
 
 <!-- Navbar -->
-<nav class="bg-white p-4 shadow">
+<nav class="bg-white p-4">
     <div class="container mx-auto flex items-center justify-between">
-        <img src="express (10).png" alt="Gift card Brand Logo" class="h-14">
+        <img src="express (4).png" alt="Gift card Brand Logo" class="h-14">
         </a>
 
             <!-- Sign out button for mobile and desktop -->
@@ -94,84 +94,53 @@
 
 
     <div class="flex">
-<!-- Sidebar (hidden on mobile, visible on desktop) -->
-<div id="sidebar" class="md:w-64 bg-gray-900 shadow-xl h-screen hidden md:block rounded-r-lg">
-    <div class="p-6 bg-gray-800 rounded-tl-lg">
-        <h2 class="text-2xl font-bold text-purple-300 pb-4 tracking-wide">Dashboard</h2>
-    </div>
-    <nav class="mt-4">
-        <ul>
-            <!-- Wallet -->
-            <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
-                <img src="wallet 1.png" alt="Wallet Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="dashboard.html" class="flex-1 text-lg font-medium text-white">Wallet</a>
-            </li>
-            <!-- Redeem -->
-            <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
-                <img src="piggy 1.png" alt="Deposit Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="redeem.html" class="flex-1 text-lg font-medium text-white">Redeem</a>
-            </li>
-            <!-- Withdrawal -->
-            <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
-                <img src="money 2.png" alt="Withdrawal Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="withdraw.html" class="flex-1 text-lg font-medium text-white">Withdrawal</a>
-            </li>
-            <!-- Support -->
-            <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center border-b border-gray-700 transition duration-200">
-                <img src="secure 1.png" alt="Verification Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="support.html" class="flex-1 text-lg font-medium text-white">Support</a>
-            </li>
-            <!-- Profile -->
-            <li class="p-4 bg-gray-900 hover:bg-gray-800 hover:scale-105 rounded-lg flex items-center transition duration-200">
-                <img src="user 1.png" alt="Profile Icon" class="w-8 h-8 mr-4 text-yellow-400"> 
-                <a href="profile.html" class="flex-1 text-lg font-medium text-white">Profile</a>
-            </li>
-        </ul>
-    </nav>
-</div>
 
 
-<!-- Bottom Navbar (only visible on mobile) -->
-<div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-gray-200 shadow-2xl p-3">
-    <div class="flex justify-between items-center">
+
+
+<!-- Bottom Navbar (Mobile Friendly) -->
+<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t p-3" style="height: 100px;">
+    <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="walletIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="122.png" alt="Wallet Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="walletText">Wallet</span>
+            <span class="text-xs font-medium mt-2">Wallet</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="depositIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="save.png" alt="Redeem Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="depositText">Redeem</span>
+            <span class="text-xs font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="withdrawIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="money.png" alt="Withdraw Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="withdrawText">Withdraw</span>
+            <span class="text-xs font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="undefined.png" alt="Support Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
+            <span class="text-xs font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="profileIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="2334.png" alt="Profile Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="profileText">Profile</span>
+            <span class="text-xs font-medium mt-2">Profile</span>
         </a>
     </div>
 </div>
 
+
+<!-- Script -->
 <script>
     // Function to set the active navbar item
     function setActive(element) {
@@ -179,7 +148,7 @@
         const icons = document.querySelectorAll('.nav-item div');
         const texts = document.querySelectorAll('.nav-item span');
         icons.forEach(icon => icon.classList.remove('bg-purple-300', 'text-white'));
-        texts.forEach(text => text.classList.remove('text-blue-300'));
+        texts.forEach(text => text.classList.remove('text-black'));
 
         // Add active styles to the clicked item
         const icon = element.querySelector('div');
@@ -199,14 +168,14 @@
 </script>
 
 <!-- Contact Card -->
-<div class="w-full Center p-8 bg-white shadow-lg border border">
+<div class="w-full Center p-8 bg-white mt-4">
     <h2 class="text-xl font-bold text-center text-gray-800 mb-4">Support</h2>
     <p class="text-center text-xs text-gray-600 mb-4">Visit the chat Center</p>
-    <p class="text-center text-purple-600 mb-4"><a href="https://wa.me/46735630986" class="hover:underline">Exprespay.live/helpcenter</a></p>
+    <p class="text-center text-purple-600 mb-4"><a href="https://t.me/Exprespaytradings" class="hover:underline">Exprespay.live/helpcenter</a></p>
 
     <div class="border-t border-gray-200 mt-4 pt-4">
         <h3 class="text-sm font-semibold text-gray-800 mb-2">Support & Inquiries</h3>
-        <p class="text-gray-600 text-xs mb-2"><a href="https://wa.me/46735630986" class="text-purple-600 hover:underline">Chat-bot</a></p>
+        <p class="text-gray-600 text-xs mb-2"><a href="https://t.me/Exprespaytradings" class="text-purple-600 hover:underline">Chat-bot</a></p>
     </div>
 
     <div class="border-t border-gray-200 mt-4 pt-4">
@@ -221,7 +190,7 @@
 
     <div class="border-t border-gray-200 mt-4 pt-4">
         <h3 class="text-sm font-semibold text-gray-800 mb-2">Contact</h3>
-        <p class="text-gray-600 text-xs"><a href="#" class="text-purple-600 hover:underline">‪+46 73 563 09 86‬</a></p>
+        <p class="text-gray-600 text-xs"><a href="#" class="text-purple-600 hover:underline">‪+234 704 290 0691‬</a></p>
     </div>
     <div class="border-t border-gray-200 mt-4 pt-4">
         <h3 class="text-sm font-semibold text-gray-800 mb-2">Terms & Conditions</h3>

@@ -18,7 +18,7 @@
     <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
         <div class="container mx-auto flex items-center justify-between">
             <div class="flex items-center justify-center w-full md:w-auto">
-                <img src="express (10).png" alt="Gift card Brand Logo" class="h-14">
+                <img src="express (4).png" alt="Gift card Brand Logo" class="h-14">
                 </a>
 
                 <!-- Mobile Menu Button -->
@@ -134,16 +134,6 @@ overlay.onclick = closeMenu;
     </div>
 </section>
 
-<!-- Return to Dashboard Button -->
-<div class="w-full flex justify-left mt-6 px-4">
-    <a href="dashboard.html" 
-       class="flex items-center px-4 py-1 bg-white rounded-full text-black font-medium text-xs hover:bg-purple-200 hover:text-purple-700 transition-all duration-300">
-        <!-- <svg class="w-4 h-4 mr-2" xmlns="" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> -->
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-        </svg>
-        Dashboard
-    </a>
-</div>
 
 <div class="flex flex-col items-center py-6 px-4 bg-gray-50">
     <!-- Navigation Header -->
@@ -495,47 +485,49 @@ overlay.onclick = closeMenu;
     </div>
 </section>
 
-<!-- Bottom Navbar (only visible on mobile) -->
-<div class="md:hidden fixed bottom-2 left-2 right-2 rounded-lg bg-gray-200 shadow-2xl p-3">
-    <div class="flex justify-between items-center">
+<!-- Bottom Navbar (Mobile Friendly) -->
+<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t p-3" style="height: 100px;">
+    <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="walletIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="122.png" alt="Wallet Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="walletText">Wallet</span>
+            <span class="text-xs font-medium mt-2">Wallet</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="depositIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="save.png" alt="Redeem Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="depositText">Redeem</span>
+            <span class="text-xs font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="withdrawIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="money.png" alt="Withdraw Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="withdrawText">Withdraw</span>
+            <span class="text-xs font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="verifyIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="undefined.png" alt="Support Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="verifyText">Support</span>
+            <span class="text-xs font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2 transition-transform transform hover:scale-110 active:scale-95 active:shadow-xl" id="profileIcon">
+            <div class="bg-white rounded-full shadow-lg p-2">
                 <img src="2334.png" alt="Profile Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-semibold mt-2" id="profileText">Profile</span>
+            <span class="text-xs font-medium mt-2">Profile</span>
         </a>
     </div>
 </div>
 
+
+<!-- Script -->
 <script>
     // Function to set the active navbar item
     function setActive(element) {
