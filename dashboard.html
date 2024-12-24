@@ -202,8 +202,8 @@
 
 
 <!-- Main Content -->
-<div class="flex-1 p-2 bg-white ">
-    <div class="flex-1 py-2 bg-gray-100 rounded-lg text-black mt-6">
+<div class="flex-1 p-2 bg-gray-100 ">
+    <div class="flex-1 py-2 bg-white rounded-lg text-black mt-6">
 
         <!-- Flex container to align Welcome Message and Generate Wallet Address -->
         <div class="flex justify-between items-center mb-6">
@@ -222,15 +222,21 @@
         <p id="Deposit-account" class="mt-2 text-xs font-bold text-green-50 text-center">₦0.00</p>
     </div>
 
-    <!-- Wallet Card -->
-    <div class="relative bg-white rounded-lg p-6 flex flex-col justify-between h-48 w-1/3">
-        <!-- <i class="fas fa-lock absolute top-2 right-2 text-black text-sm"></i> Unlocked Padlock Icon -->
-        <label for="wallet" class="block text-sm font-regular text-black text-center">Withdrawal Wallet</label>
-        <p id="wallet" class="mt-2 text-xs font-bold text-black text-center">₦0.00</p>
-    </div>
+<!-- Wallet Card -->
+<div class="relative bg-white rounded-lg p-6 flex flex-col justify-between h-48 w-1/3">
+    <!-- <i class="fas fa-lock absolute top-2 right-2 text-black text-sm"></i> Unlocked Padlock Icon -->
+    <label for="wallet" class="block text-sm font-regular text-black text-center">Account Balance</label>
+    <p id="wallet" class="mt-2 text-xs font-bold text-black text-center">₦0.00</p>
+    <button 
+        id="toggle-balance" 
+        class="absolute top-2 right-2 text-black text-sm flex items-center"
+        onclick="toggleBalance()">
+        <i id="toggle-icon" class="fas fa-eye"></i> <!-- Font Awesome eye icon -->
+    </button>
+</div>
 
     <!-- Signup Offer Card -->
-    <div class="relative bg-gradient-to-r from-gray-500 to-gray-400 shadow rounded-lg p-6 flex flex-col justify-between h-48 w-1/3">
+    <div class="relative bg-gradient-to-r from-gray-500 to-gray-500 shadow rounded-lg p-6 flex flex-col justify-between h-48 w-1/3">
         <label for="bonus-wallet" class="block text-sm font-regular text-white text-center">Bonus Wallet</label>
         <p id="bonus-wallet" class="mt-2 text-xs font-bold text-white text-center">₦0.00</p>
     </div>
@@ -355,6 +361,25 @@
                     <div class="container mx-auto text-center">
                     </div>
                 </section>
+
+                <script>
+                    let originalBalance = '₦0.00'; // Initialize with the actual wallet value
+                    
+                    function toggleBalance() {
+                        const wallet = document.getElementById('wallet');
+                        const toggleIcon = document.getElementById('toggle-icon');
+                    
+                        if (wallet.textContent === '****') {
+                            wallet.textContent = originalBalance; // Restore original balance
+                            toggleIcon.className = 'fas fa-eye'; // Eye icon
+                        } else {
+                            originalBalance = wallet.textContent; // Store the current balance
+                            wallet.textContent = '****'; // Mask the balance
+                            toggleIcon.className = 'fas fa-eye-slash'; // Eye-slash icon
+                        }
+                    }
+                    </script>
+                    
 
 <script>
     // Ensure the script runs after the DOM is fully loaded

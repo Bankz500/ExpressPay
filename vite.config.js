@@ -22,6 +22,7 @@ export default defineConfig({
         service: './service-worker.js',
         usdt: './usdt.html',
         terms: './term-condition.html',
+        ratecalculator: './rate-calculator.html',
       },
     },
   },

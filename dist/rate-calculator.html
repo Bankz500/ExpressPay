@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gift Card Trading</title>
+    <style>
+        /* Ensure the body and html take full height */
+        html, body {
+            height: 100%;  /* Ensures the body takes full height */
+            margin: 0;
+            display: flex;
+            flex-direction: column;  /* Allows the footer to be pushed to the bottom */
+        }
+
+        /* Footer stays at the bottom */
+        footer {
+            margin-top: auto;  /* Pushes the footer to the bottom of the page */
+            background-color: #000;  /* Make sure your footer has a background */
+            color: #fff;  /* Set the text color of the footer */
+            padding: 2rem;  /* You can adjust this as needed */
+            text-align: center;
+        }
+    </style>
+        <style>
+            /* Remove the dropdown icon and maintain placeholder integrity */
+            #gift-card-type {
+                -webkit-appearance: none;  /* Removes the default dropdown icon in WebKit browsers */
+                -moz-appearance: none;     /* Removes the default dropdown icon in Firefox */
+                appearance: none;          /* Standard syntax to remove the dropdown icon */
+                padding-right: 20px;       /* Space for the removed icon */
+                background-image: none;    /* Ensures no icon is shown */
+            }
+    
+            #gift-card-type::-ms-expand {
+                display: none;  /* Removes the dropdown icon in Internet Explorer */
+            }
+        </style>
+        <style>
+                /* Remove dropdown icon from select elements */
+                #gift-card-type, #crypto-type {
+                    -webkit-appearance: none;  /* Removes the default dropdown icon in WebKit browsers */
+                    -moz-appearance: none;     /* Removes the default dropdown icon in Firefox */
+                    appearance: none;          /* Standard syntax to remove the dropdown icon */
+                    padding-right: 20px;       /* Space for the removed icon */
+                    background-image: none;    /* Ensures no icon is shown */
+                }
+        
+                #gift-card-type::-ms-expand, #crypto-type::-ms-expand {
+                    display: none;  /* Removes the dropdown icon in Internet Explorer */
+                }
+        </style>
+    <link rel="manifest" href="/assets/manifest-BsYFUlnB.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/express%20(4)-BGXBmpnR.png">
+    <link rel="icon" href="/assets/express%20(4)-BGXBmpnR.png" type="image/png">
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Include Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"></script>
+
+    
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center justify-center w-full md:w-auto">
+                <img src="/assets/express%20(10)-B7dsekmP.png" alt="Gift card Brand Logo" class="h-14 pl">
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden ml-auto">
+                    <button id="mobile-menu-button" class="text-purple-500 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation links -->
+            <div class="hidden md:flex space-x-8 ml-auto">
+                <a href="index.html" class="text-blue text-sm hover:text-gray-800">Home</a>
+                <a href="sign-in.html" class="text-blue text-sm hover:text-gray-800">Sell Gift Cards</a>
+                <a href="contact.html" class="text-blue text-sm hover:text-gray-800">Contact</a>
+            </div>
+
+            <!-- Log In CTA -->
+            <div class="hidden md:flex ml-4">
+                <a href="sign-in.html" class="bg-purple-500 text-white text-sm px-6 py-2 rounded hover:bg-purple-800">Log In</a>
+            </div>
+        </div>
+    </nav>
+
+    
+
+<!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-gray-900 opacity-90 hidden z-40"></div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+    <div class="p-6">
+        <!-- Close Button -->
+        <button id="close-menu" class="absolute top-4 right-4 text-2xl text-gray-600">
+            ✖
+        </button>
+
+        <!-- Navigation Links -->
+        <nav class="w-full flex flex-col items-center space-y-6 mt-8">
+            <a href="index.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-regular bg-white rounded hover:bg-purple-300 transition ">
+                Home
+            </a>
+            <a href="sign-in.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
+                Sell Gift Cards
+            </a>
+            <a href="contact.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
+                Contact
+            </a>
+            <a href="sign-in.html" class="w-4/5 py-3 text-center text-lg text-white bg-purple-600 rounded-lg hover:bg-purple-500 transition">
+                Log In
+            </a>
+        </nav>
+    </div>
+</div>
+
+<script>
+window.onload = function () {
+    const splashScreen = document.getElementById('splash-screen');
+    setTimeout(() => {
+        splashScreen.style.display = 'none'; // Hide the splash screen
+        document.body.style.overflow = 'auto'; // Restore scroll
+    }, 4000); // Adjust time to match animation duration
+};
+
+const menu = document.getElementById('mobile-menu');
+const overlay = document.getElementById('overlay');
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const closeMenuButton = document.getElementById('close-menu');
+
+// Function to open the menu
+function openMenu() {
+    menu.classList.remove('translate-x-full');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Disable scrolling
+}
+
+// Function to close the menu
+function closeMenu() {
+    menu.classList.add('translate-x-full');
+    overlay.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Toggle mobile menu visibility
+mobileMenuButton.onclick = openMenu;
+closeMenuButton.onclick = closeMenu;
+
+// Close menu when clicking the overlay
+overlay.onclick = closeMenu;
+</script>
+
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA3OvFCz4sU4QnZAPnFrc_yzZezjzlzkgY",
+            authDomain: "exprespay-26ac0.firebaseapp.com",
+            projectId: "exprespay-26ac0",
+            storageBucket: "exprespay-26ac0.firebasestorage.app",
+            messagingSenderId: "933418932546",
+            appId: "1:933418932546:web:1eaac518eecab2042390db",
+            measurementId: "G-8ECL5E373T"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const analytics = firebase.getAnalytics(app);
+    </script>
+    
+</body>
+
+<section class="py-4 bg-" id="spacing"></section>
+    <div class="">
+    </div>
+</section>
+
+
+<div class="calculator-container bg-white p-10 rounded-xl shadow-lg max-w-3xl mx-auto mt-12">
+    <h1 class="text-2xl font-bold text-center mb-10 text-purple-500">Expres ~ Pay Rate Checker</h1>
+    <h1 class="text-xs font-medium text-center mb-10 text-gray-800">Calculate your cash payout for your Gift cards, Btc ,Usdt and Zelle transactions</h1>
+
+    <!-- Navigation tabs -->
+    <div class="flex justify-between border-b-2 border-gray-300 mb-8">
+        <button id="gift-card-btn" class="tab-btn py-2 px-6 border-b-4 text-purple-500 hover:text-purple-700 hover:border-purple-500 transition">
+            Gift Cards
+        </button>
+        <button id="zelle-btn" class="tab-btn py-2 px-6 border-b-4 text-gray-500 hover:text-purple-700 hover:border-purple-500 transition">
+            Zelle
+        </button>
+        <button id="crypto-btn" class="tab-btn py-2 px-6 border-b-4 text-gray-500 hover:text-purple-700 hover:border-purple-500 transition">
+            BTC/USDT
+        </button>
+    </div>
+
+    <!-- Gift Cards Calculator -->
+    <div id="gift-card-calculator" class="hidden">
+        <label for="gift-card-type" class="block text-gray-700 font-medium text-xs mb-2">Select Gift Card Type</label>
+        <select id="gift-card-type" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs placeholder-gray-500">
+            <option value="" disabled selected>Select gift card type</option>
+            <option value="1000">Apple Gift Card</option>
+            <option value="652">Amazon Gift Card</option>
+            <option value="870">Google Play Gift Card</option>
+            <option value="1000">Razor Gold</option>
+            <option value="840">Sephora</option>
+            <option value="840">Nordstorm</option>
+            <option value="840">Nintendo</option>
+            <option value="1300">Xbox</option>
+            <option value="720">Ebay</option>
+            <option value="1000">PSN</option>
+            <option value="900">Steam Wallet</option>
+        </select>
+
+        <label for="gift-card-amount" class="block text-xs font-medium mb-2 mt-6">Enter Gift Card Amount ($)</label>
+        <input type="number" id="gift-card-amount" class="w-full px-4 py-3 text-xs border rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Amount in $">
+
+        <button id="calculate-gift-card" class="w-full py-3 bg-purple-500 text-white rounded font-semibold hover:bg-purple-600 transition mt-8">
+            Calculate
+        </button>
+        <div id="gift-card-output" class="mt-8 text-lg text-sm text-gray-800 font-regular text-center"></div>
+    </div>
+
+    <!-- Zelle Calculator -->
+    <div id="zelle-calculator" class="hidden">
+        <label for="zelle-amount" class="block text-xs font-medium mb-2 text-gray-700">Enter Zelle Transaction Amount ($)</label>
+        <input type="number" id="zelle-amount" class="w-full px-4 py-3 border text-xs rounded mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Min $100">
+
+        <button id="calculate-zelle" class="w-full py-3 bg-purple-500 mt-6 text-white rounded font-semibold hover:bg-purple-700 transition">
+            Calculate
+        </button>
+        <div id="zelle-output" class="mt-8 text-sm text-gray-800 text-center font-regular"></div>
+    </div>
+
+    <!-- Crypto Calculator -->
+    <div id="crypto-calculator" class="hidden">
+        <label for="crypto-type" class="block text-xs font-medium mb-2 text-gray-700">Select Cryptocurrency</label>
+        <select id="crypto-type" class="w-full px-4 py-3 border text-xs rounded mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <option value="" disabled selected>Select crypto</option>
+            <option value="1590">BTC</option>
+            <option value="1400">USDT</option>
+        </select>
+
+        <label for="crypto-amount" class="block text-xs font-medium mb-2 text-gray-700">Enter Crypto Amount ($)</label>
+        <input type="number" id="crypto-amount" class="w-full px-4 py-3 text-xs border rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Amount in $">
+
+        <button id="calculate-crypto" class="w-full py-3 mt-6 bg-purple-500 text-white rounded font-semibold hover:bg-purple-700 transition">
+            Calculate
+        </button>
+        <div id="crypto-output" class="mt-8 text-lg text-gray-800 text-xs text-center font-regular"></div>
+    </div>
+</div>
+
+<script>
+    // Conversion Rates
+    const zelleRate = 1200;
+    const cryptoRates = { BTC: 1590, USDT: 1400 };
+
+    // Toggle calculators
+    document.querySelectorAll(".tab-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            document.querySelectorAll("#gift-card-calculator, #zelle-calculator, #crypto-calculator").forEach(section => {
+                section.classList.add("hidden");
+            });
+
+            if (button.id === "gift-card-btn") {
+                document.getElementById("gift-card-calculator").classList.remove("hidden");
+            } else if (button.id === "zelle-btn") {
+                document.getElementById("zelle-calculator").classList.remove("hidden");
+            } else if (button.id === "crypto-btn") {
+                document.getElementById("crypto-calculator").classList.remove("hidden");
+            }
+        });
+    });
+
+    // Gift Card Calculator
+    document.getElementById("calculate-gift-card").addEventListener("click", () => {
+        const typeRate = parseFloat(document.getElementById("gift-card-type").value);
+        const amount = parseFloat(document.getElementById("gift-card-amount").value);
+        const output = document.getElementById("gift-card-output");
+
+        if (typeRate && amount) {
+            const naira = typeRate * amount;
+            output.textContent = `₦${naira.toLocaleString()}`;
+        } else {
+            output.textContent = "Please select a gift card type and enter a valid amount.";
+        }
+    });
+
+    // Zelle Calculator
+    document.getElementById("calculate-zelle").addEventListener("click", () => {
+        const amount = parseFloat(document.getElementById("zelle-amount").value);
+        const output = document.getElementById("zelle-output");
+
+        if (amount && amount >= 100) {
+            const naira = zelleRate * amount;
+            output.textContent = `₦${naira.toLocaleString()}`;
+        } else {
+            output.textContent = "Enter a valid amount (minimum $100).";
+        }
+    });
+
+    // Crypto Calculator
+    document.getElementById("calculate-crypto").addEventListener("click", () => {
+        const cryptoType = document.getElementById("crypto-type");
+        const rate = parseFloat(cryptoType.value);
+        const amount = parseFloat(document.getElementById("crypto-amount").value);
+        const output = document.getElementById("crypto-output");
+
+        if (rate && amount && amount >= 10) {
+            const naira = rate * amount;
+            output.textContent = `₦${naira.toLocaleString()}`;
+        } else {
+            output.textContent = "Select a cryptocurrency and enter a valid amount (minimum $10).";
+        }
+    });
+</script>
+
+<section class="py-10 bg-" id="spacing"></section>
+    <div class="">
+    </div>
+</section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8">
+        <div class="container mx-auto text-center">
+            <h4 class="text-lg font-semibold">Expresspay</h4>
+            <p class="text-gray-200">Empowering your decentralized journey.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-200 hover:text-white"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-200 hover:text-white"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-gray-200 hover:text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="text-gray-200 text-sm mt-4">&copy; 2024 Expresspay. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- <script>
+        let deferredPrompt;
+    
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(() => console.log('Service Worker registered successfully!'))
+                .catch(err => console.error('Service Worker registration failed:', err));
+        }
+    
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+    
+            // Show the prompt when the event is triggered
+            document.getElementById('addToHomeScreenPrompt').classList.remove('hidden');
+        });
+    
+        document.getElementById('installButton').addEventListener('click', () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+            // Hide the prompt after installation
+            document.getElementById('addToHomeScreenPrompt').classList.add('hidden');
+        });
+    
+        // Close the prompt when clicking the cancel button
+        document.getElementById('closePrompt').addEventListener('click', () => {
+            document.getElementById('addToHomeScreenPrompt').classList.add('hidden');
+        });
+    
+        // Ensure the prompt is always shown on page reload
+        window.addEventListener('load', () => {
+            if (deferredPrompt) {
+                document.getElementById('addToHomeScreenPrompt').classList.remove('hidden');
+            }
+        });
+    </script>
+    <script>
+    // Check if the user is on mobile (iOS or Android)
+    function isMobile() {
+        return /iphone|ipod|ipad|android/i.test(navigator.userAgent.toLowerCase());
+    }
+    
+    // Show the "Add to Home Screen" prompt for mobile users
+    if (isMobile()) {
+        const prompt = document.getElementById('addToHomeScreenPrompt');
+        prompt.classList.remove('hidden'); // Show the prompt on mobile
+    }
+    
+    // Close the prompt when the close button is clicked
+    document.getElementById('closePrompt').addEventListener('click', function() {
+        const prompt = document.getElementById('addToHomeScreenPrompt');
+        prompt.classList.add('hidden'); // Hide the prompt when the close button is clicked
+    });
+    </script>
+
+    <script>
+
+document.getElementById('closePrompt').addEventListener('click', function () {
+    const prompt = document.getElementById('addToHomeScreenPrompt');
+    prompt.classList.remove('show');
+    setTimeout(() => {
+        prompt.classList.add('hidden');
+    }, 300); // Matches CSS transition duration
+});
+
+// To show the prompt
+document.getElementById('addToHomeScreenPrompt').classList.remove('hidden');
+setTimeout(() => {
+    document.getElementById('addToHomeScreenPrompt').classList.add('show');
+}, 10);
+
+    </script> -->
+</body>
+
+<!-- Telegram Chat Button -->
+<a href="https://t.me/Exprespaytradings" target="_blank" class="fixed bottom-16 right-6">
+    <img src="/assets/Chat%20bot-BBhF4JVC.png" alt="Chat with us on Telegram" class="w-16 h-18">
+</a>
+</body>
+</html>
