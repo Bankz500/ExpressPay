@@ -94,7 +94,7 @@
         </a>
 
         <!-- Right Logo -->
-        <a href="https://t.me/Exprespaytradings" class="flex items-center">
+        <a href="https://wa.me/message/YAZLKCAO5JF7E1" class="flex items-center">
             <img src="chat icon.png" alt="Gift Card Brand Logo" class="h-8 w-8">
         </a>
     </div>
@@ -163,6 +163,45 @@
                             <option value="Kuda">Kuda</option>
                             <option value="Opay">Opay</option>
                             <option value="MoniPoint">MoniPoint</option>
+                            <option value="Providus Bank">Providus Bank</option>
+                            <option value="Unity Bank">Unity Bank</option>
+                            <option value="Titan Trust Bank">Titan Trust Bank</option>
+                            <option value="Globus Bank">Globus Bank</option>
+                            <option value="Rubies Bank">Rubies Bank</option>
+                            <option value="Sparkle Microfinance Bank">Sparkle Microfinance Bank</option>
+                            <option value="VFD Microfinance Bank">VFD Microfinance Bank</option>
+                            <option value="ALAT by Wema">ALAT by Wema</option>
+                            <option value="Greenwich Merchant Bank">Greenwich Merchant Bank</option>
+                            <option value="Nova Merchant Bank">Nova Merchant Bank</option>
+                            <option value="Rand Merchant Bank">Rand Merchant Bank</option>
+                            <option value="Paycom">Paycom</option>
+                            <option value="FET Microfinance Bank">FET Microfinance Bank</option>
+                            <option value="Abby Mortgages Bank">Abby Mortgages Bank</option>
+                            <option value="Coronation Merchant Bank">Coronation Merchant Bank</option>
+                            <option value="TCF MFB">TCF MFB</option>
+                            <option value="Lotus Bank">Lotus Bank</option>
+                            <option value="Eyowo MFB">Eyowo MFB</option>
+                            <option value="Abbey Microfinance Bank">Abbey Microfinance Bank</option>
+                            <option value="Crossover Microfinance Bank">Crossover Microfinance Bank</option>
+                            <option value="Microcred Microfinance Bank">Microcred Microfinance Bank</option>
+                            <option value="Mutual Trust Microfinance Bank">Mutual Trust Microfinance Bank</option>
+                            <option value="Imperial Homes Mortgage Bank">Imperial Homes Mortgage Bank</option>
+                            <option value="Infinity Trust Mortgage Bank">Infinity Trust Mortgage Bank</option>
+                            <option value="Resort Savings and Loans">Resort Savings and Loans</option>
+                            <option value="Homebase Mortgage Bank">Homebase Mortgage Bank</option>
+                            <option value="Parralex Microfinance Bank">Parralex Microfinance Bank</option>
+                            <option value="FinaTrust Microfinance Bank">FinaTrust Microfinance Bank</option>
+                            <option value="Mainstreet Bank Microfinance Bank">Mainstreet Bank Microfinance Bank</option>
+                            <option value="First Generation Mortgage Bank">First Generation Mortgage Bank</option>
+                            <option value="Living Trust Mortgage Bank">Living Trust Mortgage Bank</option>
+                            <option value="Nigeria Mortgage Refinance Company">Nigeria Mortgage Refinance Company</option>
+                            <option value="Infinity Microfinance Bank">Infinity Microfinance Bank</option>
+                            <option value="NPF Microfinance Bank">NPF Microfinance Bank</option>
+                            <option value="Bosak Microfinance Bank">Bosak Microfinance Bank</option>
+                            <option value="Rehoboth Microfinance Bank">Rehoboth Microfinance Bank</option>
+                            <option value="Mayfair Microfinance Bank">Mayfair Microfinance Bank</option>
+                            <option value="FirstTrust Mortgage Bank">FirstTrust Mortgage Bank</option>
+                            
                             <!-- Add more banks as needed -->
                         </select>
                         <p id="bankNameError" class="text-red-500 text-xs hidden mt-2">Bank Name is required</p>
@@ -241,105 +280,131 @@
                 </div>
 
 
-                <!-- Submit Button -->
-                <div class="mb-4 py-7">
-                <div class="mt-6 flex justify-center py-18">
-                    <button 
-                        type="button" 
-                        onclick="submitCashWithdrawal()" 
-                        id="cashWithdrawButton"
-                        class="bg-purple-500 text-white text-xs border font-semibold rounded px-16 py-3 w-full md:w-auto hover:bg-purple-800"
-                    >
-                        Submit
-                    </button>
-                </div>
-            </form>
-
-            <!-- Message Display for Cash Withdrawal -->
-            <div id="cashMessage" class="text-red-500 text-xs mt-6 text-center p-4 rounded-lg"></div>
+                <!-- Success Message Modal -->
+<div id="successModal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-3/4 md:w-1/3">
+        <h2 class="text-xs text-center text-green-600 mb-4">Success!</h2>
+        <p class="text-gray-700 text-xs text-center">Withdrawal Request Submitted Successfully! 🚀 Please wait while we process your transaction.</p>
+        <div class="mt-4 flex justify-center">
+            <button 
+                type="button" 
+                onclick="closeSuccessModal()" 
+                class="bg-purple-500 text-white text-xs rounded px-6 py-2 hover:bg-purple-800"
+            >
+                Close
+            </button>
         </div>
     </div>
 </div>
 
-        
-        
-        <script>
-            function submitCashWithdrawal() {
-                const bankName = document.getElementById('bankName').value.trim();
-                const registeredEmail = document.getElementById('registeredEmail').value.trim();
-                const accountName = document.getElementById('accountName').value.trim();
-                const accountNumber = document.getElementById('accountNumber').value.trim(); // Account number field
-                const withdrawCash = document.getElementById('withdrawCash').value.trim(); // Changed to withdrawCash
-                const cashMessage = document.getElementById('cashMessage');
-                const cashWithdrawButton = document.getElementById('cashWithdrawButton');
-            
-                cashMessage.textContent = ''; // Clear previous messages
-            
-                // Clear all error messages
-                document.getElementById('bankNameError').classList.add('hidden');
-                document.getElementById('registeredEmailError').classList.add('hidden');
-                document.getElementById('accountNameError').classList.add('hidden');
-                document.getElementById('accountNumberError').classList.add('hidden'); // Clear error for account number
-                document.getElementById('withdrawCashError').classList.add('hidden');
-            
-                let isValid = true;
-            
-                // Validate inputs
-                if (bankName === '') {
-                    document.getElementById('bankNameError').classList.remove('hidden');
-                    isValid = false;
-                }
-            
-                if (registeredEmail === '') {
-                    document.getElementById('registeredEmailError').classList.remove('hidden');
-                    isValid = false;
-                }
-            
-                if (accountName === '') {
-                    document.getElementById('accountNameError').classList.remove('hidden');
-                    isValid = false;
-                }
-            
-                if (accountNumber === '' || isNaN(accountNumber) || accountNumber.length !== 10) {
-                    document.getElementById('accountNumberError').textContent = "Please enter a valid 10-digit account number.";
-                    document.getElementById('accountNumberError').classList.remove('hidden');
-                    isValid = false;
-                }
-            
-                if (withdrawCash === '' || isNaN(withdrawCash) || withdrawCash <= 0) {
-                    document.getElementById('withdrawCashError').textContent = "Please enter a valid withdrawal amount.";
-                    document.getElementById('withdrawCashError').classList.remove('hidden');
-                    isValid = false;
-                }
-            
-                if (isValid) {
-                    cashWithdrawButton.textContent = "Please wait...";
-            
-                    // Send email using Email.js
-                    const emailParams = {
-                        bank_name: bankName,
-                        account_name: accountName,
-                        account_number: accountNumber, // Included account number in email parameters
-                        registered_email: registeredEmail,
-                        withdraw_cash: withdrawCash, // Updated to use "withdrawCash"
-                    };
-            
-                    emailjs.send("service_f2x5e1i", "template_d0igltm", emailParams)
-                        .then((response) => {
-                            cashMessage.textContent = "Withdrawal Request Submitted Successfully! my Chief 🚀 Please wait while we process your transaction";
-                            cashMessage.classList.remove("text-red-500");
-                            cashMessage.classList.add("text-green-500");
-                            cashWithdrawButton.textContent = "Submit";
-                            console.log("SUCCESS!", response.status, response.text);
-                        })
-                        .catch((error) => {
-                            cashMessage.textContent = "Ehhh..... my Chief there was an error submitting your request. Please try again.";
-                            cashWithdrawButton.textContent = "Submit";
-                            console.error("FAILED...", error);
-                        });
-                }
-            }
-            </script>
+<!-- Submit Button -->
+<div class="mb-2 py-2">
+    <div class="mt-4 flex justify-center py-18">
+        <button 
+            type="button" 
+            onclick="submitCashWithdrawal()" 
+            id="cashWithdrawButton"
+            class="bg-purple-500 text-white text-xs border font-semibold rounded px-16 py-3 w-full md:w-auto hover:bg-purple-800"
+        >
+            Submit
+        </button>
+    </div>
+</form>
+
+<!-- Message Display for Cash Withdrawal -->
+<div id="cashMessage" class="text-red-500 text-xs mt-6 text-center p-4 rounded-lg"></div>
+</div>
+</div>
+</div>
+
+<script>
+function submitCashWithdrawal() {
+    const bankName = document.getElementById('bankName').value.trim();
+    const registeredEmail = document.getElementById('registeredEmail').value.trim();
+    const accountName = document.getElementById('accountName').value.trim();
+    const accountNumber = document.getElementById('accountNumber').value.trim();
+    const withdrawCash = document.getElementById('withdrawCash').value.trim();
+    const cashMessage = document.getElementById('cashMessage');
+    const cashWithdrawButton = document.getElementById('cashWithdrawButton');
+
+    cashMessage.textContent = ''; // Clear previous messages
+
+    // Clear all error messages
+    document.getElementById('bankNameError').classList.add('hidden');
+    document.getElementById('registeredEmailError').classList.add('hidden');
+    document.getElementById('accountNameError').classList.add('hidden');
+    document.getElementById('accountNumberError').classList.add('hidden');
+    document.getElementById('withdrawCashError').classList.add('hidden');
+
+    let isValid = true;
+
+    // Validate inputs
+    if (bankName === '') {
+        document.getElementById('bankNameError').classList.remove('hidden');
+        isValid = false;
+    }
+
+    if (registeredEmail === '') {
+        document.getElementById('registeredEmailError').classList.remove('hidden');
+        isValid = false;
+    }
+
+    if (accountName === '') {
+        document.getElementById('accountNameError').classList.remove('hidden');
+        isValid = false;
+    }
+
+    if (accountNumber === '' || isNaN(accountNumber) || accountNumber.length !== 10) {
+        document.getElementById('accountNumberError').textContent = "Please enter a valid 10-digit account number.";
+        document.getElementById('accountNumberError').classList.remove('hidden');
+        isValid = false;
+    }
+
+    if (withdrawCash === '' || isNaN(withdrawCash) || withdrawCash <= 0) {
+        document.getElementById('withdrawCashError').textContent = "Please enter a valid withdrawal amount.";
+        document.getElementById('withdrawCashError').classList.remove('hidden');
+        isValid = false;
+    }
+
+    if (isValid) {
+        cashWithdrawButton.textContent = "Please wait...";
+
+        // Send email using Email.js
+        const emailParams = {
+            bank_name: bankName,
+            account_name: accountName,
+            account_number: accountNumber,
+            registered_email: registeredEmail,
+            withdraw_cash: withdrawCash,
+        };
+
+        emailjs.send("service_f2x5e1i", "template_d0igltm", emailParams)
+            .then((response) => {
+                openSuccessModal(); // Show the success modal
+                cashWithdrawButton.textContent = "Submit";
+                console.log("SUCCESS!", response.status, response.text);
+            })
+            .catch((error) => {
+                cashMessage.textContent = "Ehhh..... my Chief there was an error submitting your request. Please try again.";
+                cashWithdrawButton.textContent = "Submit";
+                console.error("FAILED...", error);
+            });
+    }
+}
+
+// Function to open the success modal
+function openSuccessModal() {
+    const modal = document.getElementById('successModal');
+    modal.classList.remove('hidden');
+}
+
+// Function to close the success modal
+function closeSuccessModal() {
+    const modal = document.getElementById('successModal');
+    modal.classList.add('hidden');
+}
+</script>
+
              
 
 <!-- Bottom Navbar (Mobile Friendly) -->
@@ -347,35 +412,35 @@
     <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="122.png" alt="Wallet Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Wallet</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="save.png" alt="Redeem Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="money.png" alt="Withdraw Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="undefined.png" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="2334.png" alt="Profile Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Profile</span>

@@ -182,90 +182,114 @@ overlay.onclick = closeMenu;
     
 </body>
 
-<section class="py-4 bg-" id="spacing"></section>
+<section class="py-10 bg-" id="spacing"></section>
     <div class="">
     </div>
 </section>
 
 
-<div class="calculator-container bg-white p-10 rounded-xl shadow-lg max-w-3xl mx-auto mt-12">
-    <h1 class="text-2xl font-bold text-center mb-10 text-purple-500">Expres ~ Pay Rate Checker</h1>
-    <h1 class="text-xs font-medium text-center mb-10 text-gray-800">Calculate your cash payout for your Gift cards, Btc ,Usdt and Zelle transactions</h1>
+<div class="calculator-container bg-purple-600 p-10 border rounded-2xl mx-auto mt-12">
+    <h1 class="text-2xl font-bold text-center mb-10 text-white">Expres ~ Pay Rate Checker</h1>
+    <h1 class="text-xs font-medium text-center mb-10 text-white">Calculate your cash payout for your Gift cards, Btc ,Usdt and Zelle transactions</h1>
 
     <!-- Navigation tabs -->
     <div class="flex justify-between border-b-2 border-gray-300 mb-8">
-        <button id="gift-card-btn" class="tab-btn py-2 px-6 border-b-4 text-purple-500 hover:text-purple-700 hover:border-purple-500 transition">
+        <button id="gift-card-btn" class="tab-btn py-2 px-6 border-b-4 text-white hover:text-white hover:border-purple-500 transition">
             Gift Cards
         </button>
-        <button id="zelle-btn" class="tab-btn py-2 px-6 border-b-4 text-gray-500 hover:text-purple-700 hover:border-purple-500 transition">
+        <button id="zelle-btn" class="tab-btn py-2 px-6 border-b-4 text-white hover:text-white hover:border-purple-500 transition">
             Zelle
         </button>
-        <button id="crypto-btn" class="tab-btn py-2 px-6 border-b-4 text-gray-500 hover:text-purple-700 hover:border-purple-500 transition">
+        <button id="crypto-btn" class="tab-btn py-2 px-6 border-b-4 text-white hover:text-white hover:border-purple-500 transition">
             BTC/USDT
         </button>
     </div>
 
     <!-- Gift Cards Calculator -->
     <div id="gift-card-calculator" class="hidden">
-        <label for="gift-card-type" class="block text-gray-700 font-medium text-xs mb-2">Select Gift Card Type</label>
+        <label for="gift-card-type" class="block text-white font-medium text-xs mb-2">Select Gift Card Type</label>
         <select id="gift-card-type" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs placeholder-gray-500">
             <option value="" disabled selected>Select gift card type</option>
-            <option value="1000">Apple Gift Card</option>
-            <option value="652">Amazon Gift Card</option>
-            <option value="870">Google Play Gift Card</option>
-            <option value="1000">Razor Gold</option>
-            <option value="840">Sephora</option>
-            <option value="840">Nordstorm</option>
-            <option value="840">Nintendo</option>
-            <option value="1300">Xbox</option>
-            <option value="720">Ebay</option>
-            <option value="1000">PSN</option>
-            <option value="900">Steam Wallet</option>
+            <option value="1000">Apple Gift Card USA</option>
+            <option value="652">Amazon Gift Card USA</option>
+            <option value="870">Google Play Gift Card USA</option>
+            <option value="1000">Razor Gold USA</option>
+            <option value="840">Sephora USA</option>
+            <option value="840">Nordstorm USA</option>
+            <option value="840">Nintendo USA</option>
+            <option value="1300">Xbox USA</option>
+            <option value="720">Ebay USA</option>
+            <option value="1000">PSN USA</option>
+            <option value="900">Steam Wallet USA</option>
         </select>
 
-        <label for="gift-card-amount" class="block text-xs font-medium mb-2 mt-6">Enter Gift Card Amount ($)</label>
+        <label for="gift-card-amount" class="block text-xs text-white font-medium mb-2 mt-6">Enter Gift Card Amount ($)</label>
         <input type="number" id="gift-card-amount" class="w-full px-4 py-3 text-xs border rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Amount in $">
 
-        <button id="calculate-gift-card" class="w-full py-3 bg-purple-500 text-white rounded font-semibold hover:bg-purple-600 transition mt-8">
+        <button id="calculate-gift-card" class="w-full py-3 bg-purple-500 text-white rounded font-semibold hover:bg-purple-700 transition mt-8">
             Calculate
         </button>
-        <div id="gift-card-output" class="mt-8 text-lg text-sm text-gray-800 font-regular text-center"></div>
+        <div id="gift-card-output" class="mt-8 text-lg text-sm text-white font-regular text-center"></div>
     </div>
 
     <!-- Zelle Calculator -->
     <div id="zelle-calculator" class="hidden">
-        <label for="zelle-amount" class="block text-xs font-medium mb-2 text-gray-700">Enter Zelle Transaction Amount ($)</label>
+        <label for="zelle-amount" class="block text-xs font-medium mb-2 text-white">Enter Zelle Transaction Amount ($)</label>
         <input type="number" id="zelle-amount" class="w-full px-4 py-3 border text-xs rounded mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Min $100">
 
         <button id="calculate-zelle" class="w-full py-3 bg-purple-500 mt-6 text-white rounded font-semibold hover:bg-purple-700 transition">
             Calculate
         </button>
-        <div id="zelle-output" class="mt-8 text-sm text-gray-800 text-center font-regular"></div>
+        <div id="zelle-output" class="mt-8 text-sm text-white text-center font-regular"></div>
     </div>
 
-    <!-- Crypto Calculator -->
-    <div id="crypto-calculator" class="hidden">
-        <label for="crypto-type" class="block text-xs font-medium mb-2 text-gray-700">Select Cryptocurrency</label>
-        <select id="crypto-type" class="w-full px-4 py-3 border text-xs rounded mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
-            <option value="" disabled selected>Select crypto</option>
-            <option value="1590">BTC</option>
-            <option value="1400">USDT</option>
-        </select>
+<!-- Crypto Calculator -->
+<div id="crypto-calculator" class="hidden">
+    <label for="crypto-type" class="block text-xs font-medium mb-2 text-white">Select Cryptocurrency</label>
+    <select id="crypto-type" class="w-full px-4 py-3 border text-xs rounded mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
+        <option value="" disabled selected>Select crypto</option>
+        <option value="BTC">Bitcoin (BTC)</option> <!-- Updated value -->
+        <option value="USDT">Tether (USDT)</option> <!-- Updated value -->
+    </select>
 
-        <label for="crypto-amount" class="block text-xs font-medium mb-2 text-gray-700">Enter Crypto Amount ($)</label>
-        <input type="number" id="crypto-amount" class="w-full px-4 py-3 text-xs border rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Amount in $">
+    <label for="crypto-amount" class="block text-xs font-medium mb-2 text-white">Enter Crypto Amount ($)</label>
+    <input type="number" id="crypto-amount" class="w-full px-4 py-3 text-xs border rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Amount in $">
 
-        <button id="calculate-crypto" class="w-full py-3 mt-6 bg-purple-500 text-white rounded font-semibold hover:bg-purple-700 transition">
-            Calculate
-        </button>
-        <div id="crypto-output" class="mt-8 text-lg text-gray-800 text-xs text-center font-regular"></div>
-    </div>
+    <button id="calculate-crypto" class="w-full py-3 mt-6 bg-purple-500 text-white rounded font-semibold hover:bg-purple-700 transition">
+        Calculate
+    </button>
+    <div id="crypto-output" class="mt-8 text-lg text-white text-xs text-center font-regular"></div>
 </div>
 
+
+
 <script>
-    // Conversion Rates
-    const zelleRate = 1200;
-    const cryptoRates = { BTC: 1590, USDT: 1400 };
+    // Conversion Rates for each range
+    const cryptoRates = {
+        BTC: { low: 1400, mid: 1450, high: 1520 }, // Different rates for BTC
+        USDT: { low: 1300, mid: 1350, high: 1390 } // Different rates for USDT
+    };
+
+    // Zelle rate (defined as it was missing)
+    const zelleRate = 1200; // Example rate: 1 USD = 750 NGN
+
+    // Helper function to determine rate based on amount
+    const getCryptoRate = (cryptoType, amount) => {
+        // Ensure cryptoType exists in cryptoRates
+        if (!cryptoRates[cryptoType]) {
+            console.error(`Invalid cryptoType: ${cryptoType}`);
+            return null;
+        }
+
+        // Return rate based on amount
+        if (amount < 50) {
+            return cryptoRates[cryptoType].low;
+        } else if (amount <= 500) {
+            return cryptoRates[cryptoType].mid;
+        } else {
+            return cryptoRates[cryptoType].high;
+        }
+    };
 
     // Toggle calculators
     document.querySelectorAll(".tab-btn").forEach(button => {
@@ -313,19 +337,28 @@ overlay.onclick = closeMenu;
 
     // Crypto Calculator
     document.getElementById("calculate-crypto").addEventListener("click", () => {
-        const cryptoType = document.getElementById("crypto-type");
-        const rate = parseFloat(cryptoType.value);
+        const cryptoType = document.getElementById("crypto-type").value.trim(); // BTC or USDT
         const amount = parseFloat(document.getElementById("crypto-amount").value);
         const output = document.getElementById("crypto-output");
 
-        if (rate && amount && amount >= 10) {
-            const naira = rate * amount;
-            output.textContent = `₦${naira.toLocaleString()}`;
+        console.log("Selected Crypto Type:", cryptoType); // Debugging log
+
+        if (cryptoType && amount && amount >= 10) {
+            const rate = getCryptoRate(cryptoType, amount); // Get rate based on amount
+
+            if (rate) {
+                const naira = rate * amount;
+                output.textContent = `₦${naira.toLocaleString()}`;
+            } else {
+                output.textContent = "Invalid cryptocurrency type selected.";
+            }
         } else {
             output.textContent = "Select a cryptocurrency and enter a valid amount (minimum $10).";
         }
     });
 </script>
+
+
 
 <section class="py-10 bg-" id="spacing"></section>
     <div class="">
@@ -335,7 +368,7 @@ overlay.onclick = closeMenu;
 
 
     <!-- Footer -->
-    <footer class="bg-black text-white py-8">
+    <!-- <footer class="bg-black text-white py-8">
         <div class="container mx-auto text-center">
             <h4 class="text-lg font-semibold">Expresspay</h4>
             <p class="text-gray-200">Empowering your decentralized journey.</p>
@@ -346,7 +379,7 @@ overlay.onclick = closeMenu;
             </div>
             <p class="text-gray-200 text-sm mt-4">&copy; 2024 Expresspay. All rights reserved.</p>
         </div>
-    </footer>
+    </footer> -->
 
     <!-- <script>
         let deferredPrompt;
@@ -433,7 +466,7 @@ setTimeout(() => {
 
 <!-- Telegram Chat Button -->
 <a href="https://t.me/Exprespaytradings" target="_blank" class="fixed bottom-16 right-6">
-    <img src="/assets/Chat%20bot-BBhF4JVC.png" alt="Chat with us on Telegram" class="w-16 h-18">
+    <img src="/assets/Chat%20bot%2012-CCHF1lRN.png" alt="Chat with us on Telegram" class="w-16 h-18">
 </a>
 </body>
 </html>

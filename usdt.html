@@ -40,7 +40,7 @@
 
             <!-- Log In CTA -->
             <div class="hidden md:flex ml-4">
-                <a href="sign-in.html" class="bg-white border text-black text-sm px-6 py-2 rounded hover:bg-purple-800">Sign out</a>
+                <a href="sign-in.html" class="bg-white border text-black text-sm px-6 py-2 rounded">Sign out</a>
             </div>
         </div>
     </nav>
@@ -310,20 +310,40 @@ overlay.onclick = closeMenu;
     conversionInfo.className = "text-xs text-gray-500 mt-2";
     usdtAmountInput.parentElement.appendChild(conversionInfo); // Append conversion info below the input
 
-    const conversionRate = 1400; // Conversion rate from USD to Naira (1 USD = 1400 Naira)
+    // Tiered conversion rates (USD to Naira)
+    const conversionRates = {
+        10: 1300, // $10 to $99 => 1 USD = 1250 Naira
+        100: 1350, // $100 to $499 => 1 USD = 1300 Naira
+        500: 1390, // $500 and above => 1 USD = 1350 Naira
+    };
 
-    // Function to update conversion info when the amount changes
-    function updateConversionInfo(amount) {
-        if (amount >= 10) { // Minimum amount for conversion is $300
-            const convertedAmount = amount * conversionRate;
-            conversionInfo.textContent = `$${amount} is equal to ₦${convertedAmount.toLocaleString()}`;
+    // Function to determine the applicable conversion rate based on the input amount
+    function getConversionRate(amount) {
+        if (amount >= 500) {
+            return conversionRates[500];
+        } else if (amount >= 100) {
+            return conversionRates[100];
+        } else if (amount >= 10) {
+            return conversionRates[10];
         } else {
-            conversionInfo.textContent = "No conversion for this amount";
+            return null; // Amount below the minimum threshold
         }
     }
 
-    // Update conversion info based on custom input (USDT amount)
-    usdtAmountInput.addEventListener('input', () => {
+    // Function to update conversion info when the amount changes
+    function updateConversionInfo(amount) {
+        const conversionRate = getConversionRate(amount);
+
+        if (conversionRate) {
+            const convertedAmount = amount * conversionRate;
+            conversionInfo.textContent = `$${amount} is equal to ₦${convertedAmount.toLocaleString()}`;
+        } else {
+            conversionInfo.textContent = "The minimum amount for conversion is $10.";
+        }
+    }
+
+    // Update conversion info dynamically based on user input
+    usdtAmountInput.addEventListener("input", () => {
         const amount = parseFloat(usdtAmountInput.value);
         if (!isNaN(amount)) {
             updateConversionInfo(amount);
@@ -336,13 +356,18 @@ overlay.onclick = closeMenu;
         event.preventDefault();
 
         const cardType = document.getElementById("card-type").value;
-        const amount = usdtAmountInput.value; // Get the custom input amount
+        const amount = parseFloat(usdtAmountInput.value); // Get the custom input amount
         const email = document.getElementById("registered-email").value;
         const backImageFile = backImageInput.files[0]; // Access the file correctly
         const redeemButton = document.getElementById("redeem-button");
 
         if (!cardType || !amount || !email || !backImageFile) {
             alert("Please fill in all fields and upload the required image.");
+            return;
+        }
+
+        if (amount < 10) {
+            alert("The minimum amount for USDT trade is $10.");
             return;
         }
 
@@ -403,6 +428,7 @@ overlay.onclick = closeMenu;
         }
     });
 </script>
+
 
 
 
@@ -480,7 +506,7 @@ overlay.onclick = closeMenu;
 </script>
 </body>
 
-<section class="py-24 bg-gray-50" id="spacing">
+<section class="py-14 bg-gray-50" id="spacing">
     <div class="">
     </div>
 </section>
@@ -490,35 +516,35 @@ overlay.onclick = closeMenu;
     <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="122.png" alt="Wallet Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Wallet</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="save.png" alt="Redeem Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="money.png" alt="Withdraw Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="undefined.png" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="2334.png" alt="Profile Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Profile</span>

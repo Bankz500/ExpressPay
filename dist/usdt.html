@@ -42,7 +42,7 @@
 
             <!-- Log In CTA -->
             <div class="hidden md:flex ml-4">
-                <a href="sign-in.html" class="bg-white border text-black text-sm px-6 py-2 rounded hover:bg-purple-800">Sign out</a>
+                <a href="sign-in.html" class="bg-white border text-black text-sm px-6 py-2 rounded">Sign out</a>
             </div>
         </div>
     </nav>
@@ -312,20 +312,40 @@ overlay.onclick = closeMenu;
     conversionInfo.className = "text-xs text-gray-500 mt-2";
     usdtAmountInput.parentElement.appendChild(conversionInfo); // Append conversion info below the input
 
-    const conversionRate = 1400; // Conversion rate from USD to Naira (1 USD = 1400 Naira)
+    // Tiered conversion rates (USD to Naira)
+    const conversionRates = {
+        10: 1300, // $10 to $99 => 1 USD = 1250 Naira
+        100: 1350, // $100 to $499 => 1 USD = 1300 Naira
+        500: 1390, // $500 and above => 1 USD = 1350 Naira
+    };
 
-    // Function to update conversion info when the amount changes
-    function updateConversionInfo(amount) {
-        if (amount >= 10) { // Minimum amount for conversion is $300
-            const convertedAmount = amount * conversionRate;
-            conversionInfo.textContent = `$${amount} is equal to ₦${convertedAmount.toLocaleString()}`;
+    // Function to determine the applicable conversion rate based on the input amount
+    function getConversionRate(amount) {
+        if (amount >= 500) {
+            return conversionRates[500];
+        } else if (amount >= 100) {
+            return conversionRates[100];
+        } else if (amount >= 10) {
+            return conversionRates[10];
         } else {
-            conversionInfo.textContent = "No conversion for this amount";
+            return null; // Amount below the minimum threshold
         }
     }
 
-    // Update conversion info based on custom input (USDT amount)
-    usdtAmountInput.addEventListener('input', () => {
+    // Function to update conversion info when the amount changes
+    function updateConversionInfo(amount) {
+        const conversionRate = getConversionRate(amount);
+
+        if (conversionRate) {
+            const convertedAmount = amount * conversionRate;
+            conversionInfo.textContent = `$${amount} is equal to ₦${convertedAmount.toLocaleString()}`;
+        } else {
+            conversionInfo.textContent = "The minimum amount for conversion is $10.";
+        }
+    }
+
+    // Update conversion info dynamically based on user input
+    usdtAmountInput.addEventListener("input", () => {
         const amount = parseFloat(usdtAmountInput.value);
         if (!isNaN(amount)) {
             updateConversionInfo(amount);
@@ -338,13 +358,18 @@ overlay.onclick = closeMenu;
         event.preventDefault();
 
         const cardType = document.getElementById("card-type").value;
-        const amount = usdtAmountInput.value; // Get the custom input amount
+        const amount = parseFloat(usdtAmountInput.value); // Get the custom input amount
         const email = document.getElementById("registered-email").value;
         const backImageFile = backImageInput.files[0]; // Access the file correctly
         const redeemButton = document.getElementById("redeem-button");
 
         if (!cardType || !amount || !email || !backImageFile) {
             alert("Please fill in all fields and upload the required image.");
+            return;
+        }
+
+        if (amount < 10) {
+            alert("The minimum amount for USDT trade is $10.");
             return;
         }
 
@@ -408,6 +433,7 @@ overlay.onclick = closeMenu;
 
 
 
+
 <script>
     // Function to copy BTC wallet address to clipboard
     function copyBTCWallet(event) {
@@ -434,7 +460,7 @@ overlay.onclick = closeMenu;
 
 </body>
 
-<section class="py-24 bg-gray-50" id="spacing">
+<section class="py-14 bg-gray-50" id="spacing">
     <div class="">
     </div>
 </section>
@@ -444,35 +470,35 @@ overlay.onclick = closeMenu;
     <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAwCAYAAAC4wJK5AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHsSURBVHgB7Zk9bsIwFMdfAkMnSBFDx8DEyMhW9Qa9AYztBDcgnKCwdewROrIBN+AACNKtXSAzEqR/S3EVUct2P4KN5J+EsJ3nJH+/5w8eRA6Hw2EjnsogDMPA9/1+mqY9VqViiT3Pezkej5M4jhPdTlIRTABuOkOxTedliUG70xXiSy/CA3R+AYw2nj3QNS7LLmYhxMsjjExEBQLPR/D8MHteF1+RTj9pODUajZSXN5uNcv78B795pk+aNJvNIVmKtidMgNB6xdyYrFarucxO2xMmwLy4PxwOM0TBk8zOahEciBnIhFg3sTlYqdoIJ7bMdnlbtnfMT22t9QRedomB60HIhLdlor5hfTjhCDLOVW9FNtaLgEfiXDUQ2VzExFbhRNiCE2ELToQtlMkw7IiP40R02o7dOVqv1yOdexj3hEiArF2EDSJGP2kXYTycst/tEf0BtzrZghNhC06ELahEfCV0W61WSAZgCYNcVZhglorA1j/n5f1+3ycDZEltzkJkUyIJ1Wr1A0J6WbVTq9XCer3+tt1u36lgmOcrlQo7Vz3wNpQfkySJT22VuSQc0MbobMQLefAO7I8XYcqmpOq82+2m8MA1ih0yhEwAQymCwYQEQbBAfLKUyQ0+V1Q8CUJ5ykIIAp7J4XA4Lo5Ps82z+WQwG9wAAAAASUVORK5CYII=" alt="Wallet Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Wallet</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAwCAYAAAC4wJK5AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAASPSURBVHgB7VktVxtBFJ0ERB0JmMoNIJCpq2vq6tq6OoKrA1xdF1nV4uoAVwf8AhaHI38Asv0FCa4IoPfCm/AYJju7yZ5QenLP2ZP5eDv77ryZ995MjJliiin+O1TMGIiAarW6zvL19fV2CpgnwFgkGo3GKX6aUk1vbm7e5iGyvLzcAun3kP+AaiTNnUql0kH7VtHJGJfEjdPUh2U2z87Odn3yMFwN/V+h/IbJUqpS+SFk+iYHyiZhldh1Z5QE0H5k7i0XQkcsGyRSNeUhtQV8vA2FTxcXF3cGH4IFzEMCCZXEU+92uxWW0ban+pvyThAzZgzU6/XYlqHEKyheV4q+4Brv9XqHdACo/1KytNJav99P8fxhm5QPajUarNIS0deoH7MvS4/SLMGlgxltQ8E1I1aBMoe3H1EzyqUG0ThjHPYlAwWr1Q8mgDKXk1ViF2QatMzV1VWHbSgPlhH2yl5oDFpKld+H5GfNCODywIzuZMmATEdVm6o9MWHod6OQcGFLYLOuc9Oi2FLNac7XjeyPTOR1rRaFSIAAffwPFGu2jWtcPEumXkr+iF4riwyDoap2TAC5SQiBWA9O5c/Pz9dCERZy26oaiQvuIs4cLS0ttV157JtVW6aHMwHkCnaYtLbeA1CCm3OjiNllDHqpyNOdSoDcgzda1ZOFcoOThEn8PiyK5yKBGevaj+NjB5j9jyxjFlcxMJcX040Y6UbQ84BMC2O0UVwNydKCUHpDHEkXzxa+HbtyweUERXWSlkLpTduHcmzu9kckZIKgd5J40hBXmg4R5TKKb5WUOAP5daYvpgiJlZUVKqcDVeKsfz1gIY+S3iGWmMIAmdg+WkDnTShH9nszMzOPgp83Tki2uXN5efngBa5JXcfgm7LOazpAFQUDJH52h/Uz8mP8lnzzjSvrJSHp8gMCku+kRT5eFjB5CYhYPR5lwV4SdIGqmgiBxDwdUlWO3E6vd9LnBKbJ5h9Alk6lJ4BPgWdBwnGrj7zgsyAxOzurN3Pq9g8jMWCLcL/vy28mCXinAQlfLuUlAcFBwkZXi0F29Hl50mCktmXoduz2e8/YOBcn8/PzPC+/Vs1NtF2g78RMEEx7QOKzrWNC1+y53GLonkCitcH8xrHK1zyHmjIBpb/bspzPi21sRmiSMfebiVcR+2ZCYPptHiaf3tQml3eSBM2iOYn9QQL6plDS8tQnm+veifc+uP+5gBXeSRP3RzQ3N3fsrs9xweWK+yxa+5NtEwLxsHdyX55B2RPnYquJ8qeFhQVu9uARMi9AQF9S354iQeBz1juF8yJMVCzptwaPlwdlXO/rHImpPoYLHrZGSu4yzsu8BWyYMTBK8jnS5RnPESDCHD9GlYeUSLoiV1ZuSbhB3WNlny4T3m/TjIlS0uxhs+d6GK8CzuF/FEuUngDqjNM5XHmhUwrfJUAejLScPEjN/ZVOD7Pp9vcxq3XdAJmeuVtitSF/1uT2eKVYwrnh8/U/uo/S6YwPOOdn9muM9SeLhcSQ31AsQvWl7gKBb3AEX9x3VJK5gueF6uIfmFuw3E8zxRRTjIS/rx6WPjRsH6wAAAAASUVORK5CYII=" alt="Redeem Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAwCAYAAAC4wJK5AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAANaSURBVHgB7VndcdpAEF5pUoBLED8PPDodkArsVACpwLgCyxUYVwDuwB2EVBCnAEAl+JEXIN8yOuVy1h17PzCZCd+MhhM63e13+3O7J6ILLrhARybtWBTFVZ7nd/v9fsy3FIcqy7L5brd7rqrqnSIhIsEEMOl3NK8pLd6wKF9iieSiTtAApSfAuMbYE4rEJ0mn2oRU+xErV3K70+ns1f/r9bpVq219oNkSmn2oxxvhp6QIiDRBmg8oAjEwxigoElISH9Dtdh+028rRtbK8kwwic9KhzANm0PyH9outP8zmBc+V6ZR4v6TECNaEhjdcU9tDhNFp3edkiCFRsZMfC5H8jPtwX7KYXayZifYJSRTyhT7mQZAsK1er1SMFIIU5JQH7S6hG/hkSjFAi3tFJin6/P4RT36DJKcuP7Xa7gH9UbX3ZX7TNj4mQj2kl8QlhcshJ3zOEm7aNqe/iB8E8fCTanHq93ggTrnkFyb37FujzZDMX3sXrCHaAj2lFkcAkdzCZOZpXbc9B7hXXPWmh1SVcKJFgElB/Ua9+IwPuv2n37zCHr2w+MJcOm5IunG3cECLBJOADPLDSABP4jN9XrcsVE1U3IDPRhXOhjYg+1gdZKBAYuKkvQOied+Z6516o/7H6M3II50Kd6S60Oax1R4xPNCSWy2WjAUPIIUzhiQzhTCLoM2ubwNDGDVmQZLPjEKvaEHJhTD45RoRDs4WInjgWZEFUAqi1/ypdW4ScmEJaiJhkRbV3MAmuE7T2TNeGEtKISGOBRoLq7WASdZ2gVqqAwD+x8d0ebkCI0w7TjtuE1IlInd5EVNoBYcdmBDoG31ReUgZEOTZWcY7V4x3ZZbvRh2PHEB2dQGRab3TsI3o0UZVfh7QgMBgMCkqMJKl4nWKPbc9hEo02NptNQe7TEW+cqyj61UyY50NKjLOQgEkttPbIDMexOJcmOC1pwjG0MXMldL7wJsEhr77WnCJ7rGrj9NDGLRdSPE6KU8EYTRzqCT7ydxHRPgsM2567agspUpiT83j+hJ8F/sxBnuBdky8j5xnZ+pufBdT7lBDBmvA4ni8s7ySDlESlGikc0eOzgAiiHVtyPG+erbbB97OAFCJNnPB43vlZQAoRCcnxvCdEnwUYsbXGBRf8j/gNGiU8mh1gvK8AAAAASUVORK5CYII=" alt="Withdraw Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAQYSURBVHgB7Zo7VttAFIavbBcuFaqUMociHUqXUqwAsoJAl1TACoAuHbACTJkKKFMhOrp4A2DRpbPSpeCR/8LYZzyRFM1LCUTfOTq2ZkaPX3PvzJ0HUUtLS8szIiDPRFEUdjqddfxdfnh4SPAbioPJcWRBEPBxdnd3l2aAPOJN8NLSUgIBO/ibkB4pPtDx1dXVkDzgXLCFUJUMFrHiusa75JDFxcWd+/v7If5GJUXYhL/jGOHIxPnrkrIhzHxrYWGBJpPJBTnCWQ1D7BFqZL0gK0f6IX7ZP9Oia+HnMfs5yq1SwceC8OH19fUGOcCJ4BKxOURs6/oixK9DILtEJKe7Em1t0hC7D7Ef5TS83Cn733g8viRN8jwfhWF4ho8V4fSNlBXDvEOY91eywEow1wZ+PstpELoHoZ/w4j/JEFybQ9gXCMe3CxIp6x1E/0Ce9oecYmzSEBvhZc5JMj32VfjpFjkEFnSA+25KSdwmDPCcnAzokCEwOdXPMtdiGfgt33MkJXEgY/wcI8Fcu2ojxT5LnsC9N5TzTY7gyADTGk7kE25BfYaEuDXX8LGUNA1XtTESDIEf5HMEG4fkGdTqUDlfJQO0Gy02JQieSEkZWuUBNcBgMBjTfCP5Srfx0q7hXq8Xy+c8yqGGKHhWTJpoC769vY2UpIwaAq4jt9bU7XYj0kRbsIiASl/CJxA4Z74w6Yg0Me6H/wYwaaNgQ+ZZCXbBfye4R5ZwPI3uoix7BD97XzcoEfH5EZXMlmAmhWzxXcOxEFALlD0h+6mhSpow6USjrHa/qou1SdPTSEZtPfnFjYJ7iZzmR0kk7mn1UawFw0e31bkq+DSPkxOyY4SQdW4EJmZEz8mCtlt66bSCXzqt4H+ZgqGpNi5Cy310Q0X9sC2x6N6m/NYHY2iakiYuAg9f0RELTCrys7K1qiqaMGmdCYK0ZrnMdFrYt+CUR0t1C4v556oPxEL3cLw1nRZ2EVqumJhWEULEW/KISQ3PNVCYZ7IdJDSKdg3zBhTU6uxcbFQ5rXs9DwDQuibiXiOsH9e+1gUuJuLzOj4lRjo8GRApWZkYcTUiXNukxUx/KiXxBzipWtxC3poY1kVF2eL6NWoAo1ZatKayL/NUzjeuRbWssIh9+gM8FWS6IqiDzYL4VokQdaZCjZAeTfjx4U/XR7OXCYJtrAcfkEeMuyWY9oGovR0lqzJCYuuYdmO4Phe7CKYsk2esAg+8+K4w76zuNf1+Xy5rvZKgi/UuHt51g+MwDMMbrDtxEm8065eVR+MVo+wFDl6nYpOe7dRBbR/bbFipQyObS5VurBSxWSUjj3gfPHA3Nm2kquAY2bdYxuleyzJg8pcFe65mCLG71ADeTVqG1454yxEELoulzxuEmaeuBh8tLS0tLc+dX3zd0aoo/ZR3AAAAAElFTkSuQmCC" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAwCAYAAAC4wJK5AAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAOPSURBVHgB7Vm9chMxEF7/FFTJkeQBzkmKdJguXcwTYDq6mJIqyRP4XEFH8gQ4HR2ho8MpqXA6F/ZYdNDYR8d4xjbfZiRHODYnnWSn4L4ZzenO0t1+0mr1rUyUIUMGHTnyjDAMg0KhUJlOp8coZX4kf2rncjmB8qnX6zXJI7ySAIEqjHyPapDQVOTz+YYvMgXyhN3d3Xe4nKM8MmgeYJaqW1tbNBwOr8kRefIAEKjDqFPtUYz7Bkqp3+/nuKD+FLN0ht+EaoRnkSTvBGd3ggvVpAvdAoZd4nIqhIiXtA/gShHanWh9XqD9FaWEM4lSqdQnuXhhzAWMOTXpBzJNkD+WtzxzpWXEk+DkTjwLdBd9BEpE5mCyymiOaFVKCScScIvnWr1hM5LcFjNxoe4nk8nDkIALhKo+Ho/bZAkY3tRun1BKuEansqpgZK1JoI/QbkNKCS8h9qHhSkKoysHBQUiWQGAoL3qXLZxIYGHOXGg0GtXIHjqJG0oJ15mYSQbevHgjM+3IbTEI9Zkh+Xzqzc6JhIwus1gPQ+qmfWXbUN4KFzHoJADjOP4dBMFPjKiK8YcQdcHm5uZX/m1RH54BtHmjay0QOoMQtI5uCs4qFsa2YdRjVA/lo0OQerm9vf1rZ2eHBoPBD37IC39jY4P10geUiurPUgUC8S05wFs+ATV6ros6E9horX/BWz4Bd/gM1/qOWeCIk7TAY7jQa9cZUPCenjJYGLKuwkhX6I6QkCH5mgNCWsWaIUOGZBgvbJkbn2Cx1shBNhuCg8AVAoBRomVEQuqcL/S3YFsH2hi0Z0lEjLQTzwCtnwCjjG8nboZFMoB0IVXnKY5ohcDMR0rh8nEoJRxAGLkTjmWmqs4HYbQG2Hzzv0pPZwvLJvFJi7lvJEYnUxIzrY+FVqPVo7ro28tgRIL/U1B1LLQ6RiqkFYHfPZe2Xib1MSIh01Ahb2/3jFUQkQR4PwrlI6O01YgEbzZ8cq1/jz+2t7dXI0/Y39+v4J3fSFMDc99cCqtwOX+ML9HCYXCj2+22KAXYeByBsvtU9Ocg8AqD1zR5h3XM5wMvEPlI9/UT650Wrjfw43axWBSdTkfoDTjPhsEB3LMMI4/43yK6nwUK+X+F8cFBqo1L+m6E6jF5BOfcuES2WZ/T7quROaL0yjaWxjfnDpiN4U1CgE8FbsQikd2EXSSkBS6HEstc+wZu1YbdLcqQIYNX/AFXkoDECHnC/AAAAABJRU5ErkJggg==" alt="Profile Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Profile</span>

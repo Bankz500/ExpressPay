@@ -48,7 +48,7 @@
 
             <!-- Log In CTA -->
             <div class="hidden md:flex ml-4">
-                <a href="sign-in.html" class="bg-white border text-black text-sm px-6 py-2 rounded hover:bg-purple-800">Sign out</a>
+                <a href="sign-in.html" class="bg-white border text-black text-sm px-6 py-2 rounded">Sign out</a>
             </div>
         </div>
     </nav>
@@ -163,10 +163,10 @@ overlay.onclick = closeMenu;
         </a>
 </div>
 
-<div class="flex flex-col items-center py-4 px-4 bg-gray-50">
+<div class="flex flex-col items-center py-0 px-4 bg-gray-50">
 
 <!-- Gift Card Form -->
-<form id="giftCardTradeForm" class="max-w-lg mx-auto p-6 bg-white rounded-lg">
+<form id="giftCardTradeForm" class="max-w-lg mx-auto p-6 bg-white rounded-lg mt-0">
     <!-- Gift Card Type -->
     <div class="mb-4">
         <label for="card-type" class="block text-gray-700 font-medium text-xs mb-2">Gift Card Type</label>
@@ -225,9 +225,17 @@ overlay.onclick = closeMenu;
     </div>
     
 
-    <!-- Upload Gift Card Images -->
     <div class="mb-4">
-        <p class="text-xs font-regular mb-4">Upload gift card back images with the PIN visible. <a href="#" id="seeExampleLink" class="text-blue-500 text-xs hover:text-blue-700">See Example</a></p>
+        <p class="text-xs font-regular mb-4">Upload gift card front image.</p>
+        <input type="file" id="front-image" name="front-image" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs" accept="image/*" multiple />
+        <!-- <p class="text-gray-400 text-xs mt-2">Upload 1–5 images if you have multiple cards or value.</p> -->
+    </div>
+    
+    <div class="mb-4">
+        <p class="text-xs font-regular mb-4">
+            Upload gift card back image with the PIN visible.
+            <a href="#" id="seeExampleLink" class="text-blue-500 text-xs hover:text-blue-700">See Example</a>
+        </p>
         <input type="file" id="back-images" name="back-images" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs" accept="image/*" multiple />
         <p class="text-gray-400 text-xs mt-2">Upload 1–5 images if you have multiple cards or value.</p>
     </div>
@@ -281,6 +289,7 @@ overlay.onclick = closeMenu;
     })();
 
     const form = document.getElementById("giftCardTradeForm");
+    const frontImageInput = document.getElementById("front-image");
     const backImagesInput = document.getElementById("back-images");
     const cardTypeDropdown = document.getElementById("card-type");
     const amountDropdown = document.getElementById("amount");
@@ -288,6 +297,17 @@ overlay.onclick = closeMenu;
     conversionInfo.id = "conversion-info";
     conversionInfo.className = "text-xs text-gray-500 mt-2";
     amountDropdown.parentElement.appendChild(conversionInfo); // Append conversion info below the amount dropdown
+
+    // Handle front image upload
+    frontImageInput.addEventListener("change", function () {
+        const files = Array.from(frontImageInput.files);
+        if (files.length > 5) {
+            alert("You can upload a maximum of 5 front images.");
+            frontImageInput.value = ""; // Reset the input if the limit is exceeded
+            return;
+        }
+        console.log("Front images selected:", files);
+    });
 
     // Update conversion info
     function updateConversionInfo() {
@@ -343,16 +363,17 @@ overlay.onclick = closeMenu;
         const cardType = cardTypeDropdown.value;
         const amount = amountDropdown.value;
         const email = document.getElementById("registered-email").value;
-        const imageFiles = Array.from(backImagesInput.files);
+        const frontImageFiles = Array.from(frontImageInput.files);
+        const backImageFiles = Array.from(backImagesInput.files);
 
         // Validate inputs
-        if (!cardType || !amount || !email || imageFiles.length === 0) {
-            alert("Please fill in all fields and upload at least one image.");
+        if (!cardType || !amount || !email || frontImageFiles.length === 0 || backImageFiles.length === 0) {
+            alert("Please fill in all fields and upload at least one front and back image.");
             return;
         }
 
-        if (imageFiles.length > 5) {
-            alert("You can upload a maximum of 5 images.");
+        if (frontImageFiles.length > 5 || backImageFiles.length > 5) {
+            alert("You can upload a maximum of 5 images for each type.");
             return;
         }
 
@@ -361,8 +382,11 @@ overlay.onclick = closeMenu;
         redeemButton.disabled = true;
 
         try {
-            const uploadedImageUrls = [];
-            for (const imageFile of imageFiles) {
+            const uploadedFrontImageUrls = [];
+            const uploadedBackImageUrls = [];
+
+            // Upload front images
+            for (const imageFile of frontImageFiles) {
                 const formData = new FormData();
                 formData.append("file", imageFile);
                 formData.append("upload_preset", "gift_card");
@@ -373,7 +397,22 @@ overlay.onclick = closeMenu;
                 });
 
                 const data = await response.json();
-                uploadedImageUrls.push(`https://res.cloudinary.com/dkir5njcy/image/upload/${data.public_id}`);
+                uploadedFrontImageUrls.push(`https://res.cloudinary.com/dkir5njcy/image/upload/${data.public_id}`);
+            }
+
+            // Upload back images
+            for (const imageFile of backImageFiles) {
+                const formData = new FormData();
+                formData.append("file", imageFile);
+                formData.append("upload_preset", "gift_card");
+
+                const response = await fetch("https://api.cloudinary.com/v1_1/dkir5njcy/image/upload", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const data = await response.json();
+                uploadedBackImageUrls.push(`https://res.cloudinary.com/dkir5njcy/image/upload/${data.public_id}`);
             }
 
             // Template parameters for EmailJS
@@ -381,7 +420,8 @@ overlay.onclick = closeMenu;
                 card_type: cardType,
                 card_amount: `$${amount}`,
                 user_email: email,
-                back_image_urls: uploadedImageUrls.join(", "), // Combine image URLs as a string
+                front_image_urls: uploadedFrontImageUrls.join(", "),
+                back_image_urls: uploadedBackImageUrls.join(", "),
             };
 
             const userTemplateParams = {
@@ -406,6 +446,7 @@ overlay.onclick = closeMenu;
         }
     });
 </script>
+
 
     
     
@@ -942,35 +983,35 @@ Please double-check all your details before submitting your card request to ensu
     <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="122.png" alt="Wallet Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Wallet</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="save.png" alt="Redeem Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="money.png" alt="Withdraw Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="undefined.png" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded-full shadow-lg p-2">
+            <div class="bg-white rounded p-2">
                 <img src="2334.png" alt="Profile Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Profile</span>
