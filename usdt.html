@@ -203,11 +203,11 @@ overlay.onclick = closeMenu;
     <select 
         id="card-type" 
         class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs appearance-none"
+        onchange="updateWalletAddress()"
     >
         <option value="" disabled selected>Select payment type</option>
-        <option value="Receiving USDT">Receiving USDT</option>
-        <option value="Selling USDT">Selling USDT</option>
-        <!-- Add other options as necessary -->
+        <option value="Receiving USDT">Receiving USDT ERC20</option>
+        <option value="Selling USDT">Receiving USDT TRC20</option>
     </select>
 </div>
 
@@ -230,28 +230,28 @@ overlay.onclick = closeMenu;
 </div>
 
 
-                <!-- BTC Wallet Address -->
-                <div class="mb-8">
-                    <label for="btcWallet" class="block text-gray-700 font-medium text-xs mb-2">USDT Wallet Address</label>
-                    <div class="flex items-center gap-4">
-                        <input 
-                            type="text" 
-                            id="btcWallet" 
-                            value="0x3736289346449990f28e1E93B92DaEf4F2C1b800" 
-                            readonly 
-                            class="flex-grow h-10 px-3 border rounded text-xs text-gray-400 focus:ring-2 focus:ring-purple-300"
-                        />
-                        <button 
-                            class="copy-button px-4 py-2 border bg-gray-100 rounded text-sm text-gray-700 hover:bg-gray-200"
-                            onclick="copyBTCWallet(event)"
-                        >
-                            Copy
-                        </button>
-                    </div>
-                    <p class="text-xs text-gray-500 mt-2">
-                        Copy the wallet address above to complete your transactions seamlessly.
-                    </p>
-                </div>
+<!-- USDT Wallet Address -->
+<div class="mb-8">
+    <label for="btcWallet" class="block text-gray-700 font-medium text-xs mb-2">USDT Wallet Address</label>
+    <div class="flex items-center gap-4">
+        <input 
+            type="text" 
+            id="btcWallet" 
+            value="0x3736289346449990f28e1E93B92DaEf4F2C1b800" 
+            readonly 
+            class="flex-grow h-10 px-3 border rounded text-xs text-gray-400 focus:ring-2 focus:ring-purple-300"
+        />
+        <button 
+            class="copy-button px-4 py-2 border bg-gray-100 rounded text-sm text-gray-700 hover:bg-gray-200"
+            onclick="copyBTCWallet(event)"
+        >
+            Copy
+        </button>
+    </div>
+    <p class="text-xs text-gray-500 mt-2">
+        Copy the wallet address above to complete your transactions seamlessly.
+    </p>
+</div>
     
                 <!-- Gift Card Back Image -->
                 <div class="mb-4">
@@ -433,26 +433,29 @@ overlay.onclick = closeMenu;
 
 
 <script>
-    // Function to copy BTC wallet address to clipboard
+    // Function to update the wallet address based on the selected payment type
+    function updateWalletAddress() {
+        const paymentType = document.getElementById("card-type").value;
+        const walletInput = document.getElementById("btcWallet");
+
+        if (paymentType === "Receiving USDT") {
+            walletInput.value = "0x3736289346449990f28e1E93B92DaEf4F2C1b800"; // USDT ERC20 wallet address
+        } else if (paymentType === "Selling USDT") {
+            walletInput.value = "TToMtsK7QLvoAr8QVojRCegTYLRMrGYoRw"; // USDT TRC20 wallet address
+        }
+    }
+
+    // Function to copy wallet address to clipboard
     function copyBTCWallet(event) {
         const btcWalletInput = document.getElementById("btcWallet");
         btcWalletInput.select();
         btcWalletInput.setSelectionRange(0, 99999); // For mobile devices
 
         navigator.clipboard.writeText(btcWalletInput.value)
-            .then(() => {
-                alert("USDT Wallet Address copied to clipboard!");
-            })
-            .catch((error) => {
-                console.error("Failed to copy USDT Wallet Address:", error);
-                alert("Failed to copy. Please try again.");
-            });
-
-        // Prevent form submission if triggered by button inside the form
-        event.preventDefault();
+            .then(() => alert("Wallet address copied to clipboard!"))
+            .catch(err => console.error("Failed to copy wallet address:", err));
     }
 </script>
-
 
 
 
@@ -517,35 +520,35 @@ overlay.onclick = closeMenu;
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded p-2">
-                <img src="122.png" alt="Wallet Icon" class="h-6 w-6" />
+                <img src="1221.png" alt="Wallet Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-medium mt-2">Wallet</span>
+            <span class="text-xs font-medium mt-2">Home</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded p-2">
-                <img src="save.png" alt="Redeem Icon" class="h-6 w-6" />
+                <img src="deposit.png" alt="Redeem Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded p-2">
-                <img src="money.png" alt="Withdraw Icon" class="h-6 w-6" />
+                <img src="withdraw.png" alt="Withdraw Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded p-2">
-                <img src="undefined.png" alt="Support Icon" class="h-6 w-6" />
+                <img src="support.png" alt="Support Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
             <div class="bg-white rounded p-2">
-                <img src="2334.png" alt="Profile Icon" class="h-6 w-6" />
+                <img src="profile.png" alt="Profile Icon" class="h-6 w-6" />
             </div>
             <span class="text-xs font-medium mt-2">Profile</span>
         </a>
