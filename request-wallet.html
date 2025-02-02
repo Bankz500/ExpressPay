@@ -320,11 +320,11 @@ overlay.onclick = closeMenu;
         // Define conversion rates for different ranges
         let conversionRate;
         if (amount < 50) {
-            conversionRate = 1400; // Example rate for amounts below $50
+            conversionRate = 1300; // Example rate for amounts below $50
         } else if (amount >= 50 && amount <= 500) {
-            conversionRate = 1450; // Example rate for amounts $50 to $500
+            conversionRate = 1350; // Example rate for amounts $50 to $500
         } else if (amount > 500) {
-            conversionRate = 1520; // Example rate for amounts above $500
+            conversionRate = 1400; // Example rate for amounts above $500
         }
 
         const convertedAmount = amount * conversionRate;

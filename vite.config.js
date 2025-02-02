@@ -23,6 +23,8 @@ export default defineConfig({
         usdt: './usdt.html',
         terms: './term-condition.html',
         ratecalculator: './rate-calculator.html',
+        profile2: './profile-2.html',
+
       },
     },
   },

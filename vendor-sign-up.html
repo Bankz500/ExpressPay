@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gifing Company</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="express (4).png">
+    <link rel="icon" href="express (4).png" type="image/png">
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans antialiased bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center justify-center w-full md:w-auto">
+                <img src="express (10).png" alt="Gift card Brand Logo" class="h-14">
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden ml-auto">
+                    <button id="mobile-menu-button" class="text-purple-500 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation links -->
+            <div class="hidden md:flex space-x-8 ml-auto">
+                <a href="index.html" class="text-blue text-sm hover:text-gray-800">Home</a>
+                <a href="sign-in.html" class="text-blue text-sm hover:text-gray-800">Sell Gift Cards</a>
+                <a href="rate-calculator.html" class="text-blue text-sm hover:text-gray-800">Rate Checker</a>
+                <a href="contact.html" class="text-blue text-sm hover:text-gray-800">Contact</a>
+            </div>
+
+            <!-- Log In CTA -->
+            <div class="hidden md:flex ml-4">
+                <a href="sign-in.html" class="bg-purple-500 text-white text-sm px-6 py-2 rounded hover:bg-purple-800">Log In</a>
+            </div>
+        </div>
+    </nav>
+
+<!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-gray-900 opacity-90 hidden z-40"></div>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+    <div class="p-6">
+        <!-- Close Button -->
+        <button id="close-menu" class="absolute top-4 right-4 text-2xl text-gray-600">
+            ✖
+        </button>
+
+        <!-- Navigation Links -->
+        <nav class="w-full flex flex-col items-center space-y-6 mt-8">
+            <a href="index.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-regular bg-white rounded hover:bg-purple-300 transition ">
+                Home
+            </a>
+            <a href="redeem.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
+                Sell Gift Cards
+            </a>
+            <a href="rate-calculator.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
+                Rate Checker
+            </a>
+            <a href="contact.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
+                Contact
+            </a>
+            <a href="sign-in.html" class="w-4/5 py-3 text-center text-lg text-white bg-purple-600 rounded-lg hover:bg-purple-500 transition">
+                Log In
+            </a>
+        </nav>
+    </div>
+</div>
+
+<script>
+window.onload = function () {
+    const splashScreen = document.getElementById('splash-screen');
+    setTimeout(() => {
+        splashScreen.style.display = 'none'; // Hide the splash screen
+        document.body.style.overflow = 'auto'; // Restore scroll
+    }, 4000); // Adjust time to match animation duration
+};
+
+const menu = document.getElementById('mobile-menu');
+const overlay = document.getElementById('overlay');
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const closeMenuButton = document.getElementById('close-menu');
+
+// Function to open the menu
+function openMenu() {
+    menu.classList.remove('translate-x-full');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Disable scrolling
+}
+
+// Function to close the menu
+function closeMenu() {
+    menu.classList.add('translate-x-full');
+    overlay.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Toggle mobile menu visibility
+mobileMenuButton.onclick = openMenu;
+closeMenuButton.onclick = closeMenu;
+
+// Close menu when clicking the overlay
+overlay.onclick = closeMenu;
+</script>
+
+    <script>
+        // // Your web app's Firebase configuration
+        // const firebaseConfig = {
+        //     apiKey: "AIzaSyA3OvFCz4sU4QnZAPnFrc_yzZezjzlzkgY",
+        //     authDomain: "exprespay-26ac0.firebaseapp.com",
+        //     projectId: "exprespay-26ac0",
+        //     storageBucket: "exprespay-26ac0.firebasestorage.app",
+        //     messagingSenderId: "933418932546",
+        //     appId: "1:933418932546:web:1eaac518eecab2042390db",
+        //     measurementId: "G-8ECL5E373T"
+        // };
+
+        // // Initialize Firebase
+        // const app = firebase.initializeApp(firebaseConfig);
+        // const analytics = firebase.getAnalytics(app);
+    </script>
+    
+</body>
+
+<!-- <section class="py-14 bg-white" id="spacing">
+    <div class="container mx-auto text-center">
+    </div>
+</section> -->
+
+
+<body class="font-sans antialiased bg-gray-100"></body>
+<!-- Vendor Sign-Up Section -->
+<section class="min-h-screen bg-gray-100 flex items-center justify-center mt-14">
+    <div class="bg-white rounded-lg p-8 max-w-4xl w-full mt-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Vendor Sign-Up</h2>
+        <p class="text-sm text-gray-600 text-center mb-8">Join ExpressPay as a vendor and start facilitating payments seamlessly.</p>
+        
+        <form class="grid grid-cols-2 gap-6">
+            <div>
+                <label for="vendorName" class="block text-sm font-medium text-gray-700">Business Name</label>
+                <input type="text" id="vendorName" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your business name">
+            </div>
+            <div>
+                <label for="vendorEmail" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="vendorEmail" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your email">
+            </div>
+            <div>
+                <label for="vendorPhone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                <input type="tel" id="vendorPhone" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your phone number">
+            </div>
+            <div>
+                <label for="vendorAddress" class="block text-sm font-medium text-gray-700">Business Address</label>
+                <input type="text" id="vendorAddress" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your business address">
+            </div>
+            <div>
+                <label for="vendorUsername" class="block text-sm font-medium text-gray-700">Username / Preferred Tag</label>
+                <input type="text" id="vendorUsername" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Choose a unique username or tag">
+                <p class="text-xs text-gray-500 mt-1">This will be used to create your unique vendor link (e.g., <span class="text-purple-500">expresspay.tech/vendor/your-username</span>).</p>
+            </div>
+            <div>
+                <label for="vendorImage" class="block text-sm font-medium text-gray-700">Business Logo / Image</label>
+                <input type="file" id="vendorImage" accept="image/*" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500">
+                <p class="text-xs text-gray-500 mt-1">Upload an image for your vendor profile.</p>
+            </div>
+            <div>
+                <label for="vendorPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" id="vendorPassword" required class="mt-1 w-full border rounded shadow-sm p-3 focus:border-blue-500 focus:ring-blue-500" placeholder="Enter your password">
+            </div>
+            <div class="col-span-2">
+                <button type="button" onclick="vendorSignUp()" id="vendorSignUpButton" class="w-full bg-purple-500 text-white py-3 rounded hover:bg-purple-800 transition duration-200">
+                    Sign Up
+                </button>
+            </div>
+        </form>
+
+        <p class="mt-8 text-sm text-gray-600 text-center col-span-2">Already have a vendor account? <a href="vendor-sign-in.html" class="text-blue-600 hover:underline">Sign In</a></p>
+    </div>
+</section>
+
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-storage.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyA3OvFCz4sU4QnZAPnFrc_yzZezjzlzkgY",
+        authDomain: "exprespay-26ac0.firebaseapp.com",
+        projectId: "exprespay-26ac0",
+        storageBucket: "exprespay-26ac0.appspot.com",
+        messagingSenderId: "933418932546",
+        appId: "1:933418932546:web:1eaac518eecab2042390db",
+        measurementId: "G-8ECL5E373T"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+
+    window.vendorSignUp = async function () {
+    const signUpButton = document.getElementById('vendorSignUpButton');
+    const name = document.getElementById('vendorName').value;
+    const email = document.getElementById('vendorEmail').value;
+    const phone = document.getElementById('vendorPhone').value;
+    const address = document.getElementById('vendorAddress').value;
+    const username = document.getElementById('vendorUsername').value;
+    const password = document.getElementById('vendorPassword').value;
+    const imageFile = document.getElementById('vendorImage').files[0];
+
+    signUpButton.textContent = "Signing up...";
+    signUpButton.disabled = true;
+
+    try {
+        // Username validation
+        const usernameRegex = /^[a-zA-Z0-9_-]+$/;
+        if (!usernameRegex.test(username)) {
+            alert('Username can only contain letters, numbers, underscores, and hyphens.');
+            return;
+        }
+
+        // Create user in Firebase Authentication
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // Check if image is uploaded
+        if (!imageFile) {
+            alert("Please upload an image.");
+            return;
+        }
+
+        // Prepare form data for Cloudinary upload
+        const formData = new FormData();
+        formData.append("file", imageFile);
+        formData.append("upload_preset", "gift_carda bv"); // Replace with your Cloudinary preset
+
+        // Upload image to Cloudinary
+        const cloudinaryResponse = await fetch("https://api.cloudinary.com/v1_1/dkir5njcy/image/upload", {
+            method: "POST",
+            body: formData,
+        });
+        const cloudinaryData = await cloudinaryResponse.json();
+
+        // Get the image URL from Cloudinary
+        const imageUrl = cloudinaryData.secure_url;
+
+        if (!imageUrl) {
+            throw new Error("Failed to upload image to Cloudinary.");
+        }
+
+        // Create the vendor link
+        const vendorLink = `https://expresspay.tech/vendor/${username}`;
+
+        // Save vendor data to Firestore (imageUrl only)
+        await setDoc(doc(db, 'vendors', user.uid), {
+            name,
+            email,
+            phone,
+            address,
+            username,
+            vendorLink,
+            imageUrl, // Store only the Cloudinary image URL
+            uid: user.uid,
+        });
+
+        alert(`Sign-up successful! Your vendor link is: ${vendorLink}`);
+        window.location.href = 'vendor-uniquelink.html';
+    } catch (error) {
+        alert(`Error: ${error.message}`);
+    } finally {
+        signUpButton.textContent = "Sign Up";
+        signUpButton.disabled = false;
+    }
+};
+
+</script>
+
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8">
+        <div class="container mx-auto text-center">
+            <h4 class="text-lg font-semibold">Expresspay</h4>
+            <p class="text-gray-200">Empowering your decentralized journey.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-200 hover:text-white"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-200 hover:text-white"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-gray-200 hover:text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="text-gray-200 text-sm mt-4">&copy; 2024 Expresspay. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        // Import Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js';
+
+        // Your web app's Firebase configuration
+//         const firebaseConfig = {
+//   apiKey: "AIzaSyA3OvFCz4sU4QnZAPnFrc_yzZezjzlzkgY",
+//   authDomain: "exprespay-26ac0.firebaseapp.com",
+//   projectId: "exprespay-26ac0",
+//   storageBucket: "exprespay-26ac0.firebasestorage.app",
+//   messagingSenderId: "933418932546",
+//   appId: "1:933418932546:web:1eaac518eecab2042390db",
+//   measurementId: "G-8ECL5E373T"
+// };
+
+//        // Initialize Firebase
+//     const app = initializeApp(firebaseConfig);
+//     const auth = getAuth(app);
+//     const db = getFirestore(app);
+
+    // Sign-up function with "Signing up..." state
+    window.signUp = function () {
+        const signUpButton = document.getElementById('signUpButton');
+        const name = document.getElementById('signUpName').value;
+        const email = document.getElementById('signUpEmail').value;
+        const password = document.getElementById('signUpPassword').value;
+
+        // Show "Signing up..." state
+        signUpButton.textContent = "Signing up...";
+        signUpButton.disabled = true;
+        signUpButton.classList.add("opacity-70", "cursor-not-allowed");
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(async (userCredential) => {
+                const user = userCredential.user;
+                try {
+                    // Save user data in Firestore
+                    await setDoc(doc(db, 'users', user.uid), {
+                        name: name,
+                        email: email,
+                        uid: user.uid
+                    });
+                    alert('Welcome onboard my Chief, your account was created successfully. Now proceed to sign in');
+                    window.location.href = 'sign-in.html';
+                } catch (firestoreError) {
+                    alert('Error saving user data: ' + firestoreError.message);
+                }
+            })
+            .catch((error) => {
+                alert('Ehhh.... my Chief there was an error signing up: ' + error.message);
+            })
+            .finally(() => {
+                // Revert button state
+                signUpButton.textContent = "Sign Up";
+                signUpButton.disabled = false;
+                signUpButton.classList.remove("opacity-70", "cursor-not-allowed");
+            });
+    };
+</script>
+</body>
+
+<!-- Telegram Chat Button -->
+<a href="https://wa.me/message/YAZLKCAO5JF7E1" target="_blank" class="fixed bottom-16 right-6">
+    <img src="Chat bot 12.png" alt="Chat with us on Telegram" class="w-16 h-18">
+</a>
+</body>
+</html>

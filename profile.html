@@ -160,7 +160,7 @@ onAuthStateChanged(auth, async (user) => {
         </a>
 
             <!-- Sign out button for mobile and desktop -->
-            <button onclick="signOut()" class="bg-white border-b-2 text-xs text-black px-6 py-2 rounded hover:bg-white border">Sign Out</button>
+            <a href="sign-in.html" onclick="signOut()" class="bg-white border-b-2 text-xs text-black px-6 py-2 rounded hover:bg-white border">Sign Out</a>
         </div>
     </div>
 </nav>
@@ -173,7 +173,7 @@ onAuthStateChanged(auth, async (user) => {
 <!-- Main Profile Content -->
 <div class="flex-1 p-4 mt-2">
         <div class="w-full bg-white px-1 py-2 rounded mt-0">
-<!-- Profile Header -->
+<!-- Profile Header
 <div class="flex items-left-2 mb-4">
     <input type="file" id="profileImageInput" accept="image/*" class="hidden" onchange="uploadProfilePicture(event)">
     <img id="profilePic" src="https://via.placeholder.com/100" alt="Profile Picture" class="w-16 h-16 rounded-lg border-gray-200 ml-4 mt-4" onclick="document.getElementById('profileImageInput').click();">    
@@ -181,7 +181,7 @@ onAuthStateChanged(auth, async (user) => {
         <h1 id="profileUsername" class="text-sm font-bold"></h1>
         <span class="inline-block bg-purple-500 text-white text-xs font-semibold px-2 py-1 rounded-full">Fresher 🐾</span>
     </div>
-</div>
+</div> -->
 
 
     <!-- Profile Sections -->
@@ -189,7 +189,7 @@ onAuthStateChanged(auth, async (user) => {
         <ul class="space-y-4">
             <li class="flex items-center text-xs justify-between p-4 border-b">
                 <span>Profile details</span>
-                <a href="#" class="text-blue-500" onclick="showUserInfo()">View</a>
+                <a href="profile-2.html" class="text-blue-500" onclick="showUserInfo()">View</a>
             </li>
             </li>
             <li class="flex items-center text-xs justify-between p-4 border-b">
@@ -256,7 +256,7 @@ async function showUserInfo() {
 </script>
 
 
-<div id="profileInfoCard" class="max-w-full bg-white rounded p-6 mt-8 hidden">
+<!-- <div id="profileInfoCard" class="max-w-full bg-white rounded p-6 mt-8 hidden">
     <h2 class="text-sm font-semibold text-gray-800 mb-6">Profile Information</h2>
     <form class="space-y-6" onsubmit="event.preventDefault(); updateProfile();">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -359,7 +359,7 @@ async function showUserInfo() {
             usernameField.value = storedUsername || ""; // Optional: Set username if previously saved
         }
     };
-</script>
+</script> -->
 
 
 
