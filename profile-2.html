@@ -142,10 +142,10 @@ document.getElementById('imageUpload').addEventListener('change', async function
     </script>
 
 </head>
-<body class="font-sans antialiased bg-gray-100">
+<body class="font-sans antialiased bg-black">
 
 <!-- Navbar -->
-<nav class="bg-white p-4 shadow">
+<nav class="bg-black p-4 shadow">
     <div class="container mx-auto flex items-center justify-between">
         <img src="express (4).png" alt="Gift card Brand Logo" class="h-14">
         </a>
@@ -159,15 +159,10 @@ document.getElementById('imageUpload').addEventListener('change', async function
 
 
 
-<!-- Main Profile Content -->
-<div class="flex-1 p-4 mt-0">
-
-
-
 <!-- Profile Header -->
 
-<div id="profileInfoCard" class="max-w-3xl mx-auto bg-white rounded-lg p-8 mt-3 hidden">
-    <h2 class="text-lg text-center font-semibold text-gray-800 mb-6">Profile Information</h2>
+<div id="profileInfoCard" class="max-w-3xl mx-auto bg-black rounded-lg p-8 mt-3 md-12 hidden">
+    <h2 class="text-lg text-center font-semibold text-white mb-6">Profile Information</h2>
     <form class="space-y-8">
         <!-- Profile Image Section -->
         <div class="flex flex-col items-center space-y-4">
@@ -185,75 +180,75 @@ document.getElementById('imageUpload').addEventListener('change', async function
                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
                 </label>
             </div>
-            <p class="text-sm text-gray-500">Click the icon to upload a profile picture</p>
+            <p class="text-sm text-white">Click the icon to upload a profile picture</p>
         </div>
 
         <!-- User Information Section -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-24">
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-2 mt-8">Full Name</label>
-                <input type="text" id="name" name="name" 
-                       class="block w-full px-4 py-3 text-sm border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                       placeholder="Loading name..."
-                       readonly>
-            </div>
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-2 mt-8">Email Address</label>
-                <input type="email" id="email" 
-                       class="block w-full px-4 py-3 text-sm border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                       placeholder="Loading email..."
-                       readonly>
+        <div class="mt-12">
+            <div class="flex flex-col md:flex-row md:gap-6 space-y-4 md:space-y-0">
+                <div class="w-full md:w-1/2">
+                    <label for="name" class="block text-sm font-medium text-white mb-2">Full Name</label>
+                    <input type="text" id="name" name="name" 
+                        class="bg-black w-full px-4 py-3 text-sm text-white border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Loading name..."
+                        readonly>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <label for="email" class="block text-sm font-medium text-white mb-2">Email Address</label>
+                    <input type="email" id="email" 
+                        class="bg-black w-full px-4 py-3 text-sm text-white border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Loading email..."
+                        readonly>
+                </div>
             </div>
         </div>
-    </form>
-</div>
 
 
 
 
-<section class="py-10" id="spacing"></section>
+<section class="py-24" id="spacing"></section>
     <div class="container mx-auto text-center">
     </div>
 </section>
 
 
 <!-- Bottom Navbar (Mobile Friendly) -->
-<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t p-3" style="height: 100px;">
+<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-black shadow-lg border-gray-900 p-3" style="height: 100px;">
     <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="1221.png" alt="Wallet Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="1221.png" alt="Wallet Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Home</span>
+            <span class="text-xs text-white font-medium mt-2">Home</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="deposit.png" alt="Redeem Icon" class="h-6 w-6" />
+            <div class="bg- rounded p-2">
+                <img src="deposit.png" alt="Redeem Icon" class="h-6 w-6" style="filter: invert(1);"/>
             </div>
-            <span class="text-xs font-medium mt-2">Redeem</span>
+            <span class="text-xs text-white font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="withdraw.png" alt="Withdraw Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="withdraw.png" alt="Withdraw Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Withdraw</span>
+            <span class="text-xs text-white font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="support.png" alt="Support Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="support.png" alt="Support Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Support</span>
+            <span class="text-xs text-white font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="profile.png" alt="Profile Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="profile.png" alt="Profile Icon" class="h-6 w-6" style="filter: invert(1);"/>
             </div>
-            <span class="text-xs font-medium mt-2">Profile</span>
+            <span class="text-xs text-white font-medium mt-2">Profile</span>
         </a>
     </div>
 </div>

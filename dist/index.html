@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gift Card Trading</title>
-    <link rel="manifest" href="/assets/manifest-BsYFUlnB.json">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/express%20(4)-BGXBmpnR.png">
-    <link rel="icon" href="/assets/express%20(4)-BGXBmpnR.png" type="image/png">
+    <link rel="manifest" href="/assets/manifest-7DWRkJU7.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/express%20(4)-ChytSFcj.png">
+    <link rel="icon" href="/assets/express%20(4)-ChytSFcj.png" type="image/png">
     <!-- Include Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Include Firebase SDK -->
@@ -20,10 +20,10 @@
 <body class="font-sans antialiased">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
+    <nav class="fixed top-0 left-0 right-0 bg-black bg-opacity-800 p-8 z-50">
         <div class="container mx-auto flex items-center justify-between">
             <div class="flex items-center justify-center w-full md:w-auto">
-                <img src="/assets/express%20(10)-B7dsekmP.png" alt="Gift card Brand Logo" class="h-14 pl">
+                <img src="/assets/express%20(10)-Yk_rCyAk.png" alt="Gift card Brand Logo" class="h-8 w-auto">
                 </a>
 
                 <!-- Mobile Menu Button -->
@@ -38,10 +38,10 @@
 
             <!-- Navigation links -->
             <div class="hidden md:flex space-x-8 ml-auto">
-                <a href="index.html" class="text-blue text-sm hover:text-gray-800">Home</a>
-                <a href="sign-in.html" class="text-blue text-sm hover:text-gray-800">Sell Gift Cards</a>
-                <a href="rate-calculator.html" class="text-blue text-sm hover:text-gray-800">Rate Checker</a>
-                <a href="contact.html" class="text-blue text-sm hover:text-gray-800">Contact</a>
+                <a href="index.html" class="text-white text-sm hover:text-gray-800">Home</a>
+                <a href="sign-in.html" class="text-white text-sm hover:text-gray-800">Sell Gift Cards</a>
+                <!-- <a href="rate-calculator.html" class="text-white text-sm hover:text-gray-800">Rate Checker</a> -->
+                <a href="contact.html" class="text-white text-sm hover:text-gray-800">Contact</a>
             </div>
 
             <!-- Log In CTA -->
@@ -57,7 +57,7 @@
 <div id="overlay" class="fixed inset-0 bg-gray-900 opacity-90 hidden z-40"></div>
 
 <!-- Mobile Menu -->
-<div id="mobile-menu" class="fixed inset-0 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+<div id="mobile-menu" class="fixed inset-0 bg-black shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
     <div class="p-6">
         <!-- Close Button -->
         <button id="close-menu" class="absolute top-4 right-4 text-2xl text-gray-600">
@@ -66,16 +66,13 @@
 
         <!-- Navigation Links -->
         <nav class="w-full flex flex-col items-center space-y-6 mt-8">
-            <a href="index.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-regular bg-white rounded hover:bg-purple-300 transition ">
+            <a href="index.html" class="w-4/5 py-3 text-center border text-white text-xs-2 font-regular bg-black rounded hover:bg-purple-300 transition ">
                 Home
             </a>
-            <a href="sign-in.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
+            <a href="sign-in.html" class="w-4/5 py-3 text-center border text-white text-xs-2 font-medium bg-black rounded hover:bg-purple-300 transition">
                 Sell Gift Cards
             </a>
-            <a href="rate-calculator.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
-                Rate Checker
-            </a>
-            <a href="contact.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
+            <a href="contact.html" class="w-4/5 py-3 text-center border text-white text-xs-2 font-medium bg-black rounded hover:bg-purple-300 transition">
                 Contact
             </a>
             <a href="sign-in.html" class="w-4/5 py-3 text-center text-lg text-white bg-purple-600 rounded-lg hover:bg-purple-500 transition">
@@ -142,14 +139,17 @@ overlay.onclick = closeMenu;
 
 
 
-<div class="bg">
+<div class="bg-black">
+
+
+
     <!-- Hero Section -->
-    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-8 md:px-12 md:py-16 bg-white mt-20">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-8 md:px-12 md:py-16 bg-black mt-20">
         
         <!-- Text Section (Desktop Only) -->
         <div class="hidden md:block w-full md:w-1/2 mb-8 md:mb-0">
-            <h1 class="text-5xl font-bold text-gray-800 mb-4">Transform Your Gift Cards into Cash</h1>
-            <p class="text-lg text-gray-700 mb-6">
+            <h1 class="text-5xl font-bold text-white mb-4">Transform Your Gift Cards into Cash</h1>
+            <p class="text-lg text-white mb-6">
                 Unlock the value of your unused gift cards and receive instant cash with competitive rates. Experience a seamless and secure transaction process.
             </p>
             <a href="sign-in.html">
@@ -175,25 +175,25 @@ overlay.onclick = closeMenu;
         </div>
 
        <!-- Mobile UI (Visible on Small Screens Only) -->
-<div class="block md:hidden w-full text-center mt-6 px-4">
-    <h1 class="text-4xl font-medium text-transparent bg-clip-text bg-purple-600 mb-6">
+<div class="block md:hidden w-full text-center mt-2 px-4">
+    <h1 class="text-2xl font-medium text-transparent bg-clip-text bg-purple-600 mb-6">
         Trade. Redeem. <span class="italic font-regular">Earn.</span>
     </h1>    
-    <p class="text-gray-500 text-sm leading-relaxed mb-8">
-        Redeem gift cards, trade Btc and usdt instantly for cash.<br>Top rates and fast payouts.
+    <p class="text-white text-xs leading-relaxed mb-8">
+        Redeem gift cards, trade Btc and usdt instantly for cash.
     </p>
-    <div class="space-y-4">
+    <div class="space-y-8 mt-2">
         <a href="sign-in.html">
-            <button class="bg-purple-700 text-white text-font-medium py-3 px-6 rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300">
+            <button class="bg-purple-700 text-white text-xs font-medium py-3 px-6 rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300">
                 Redeem Card
             </button>
         </a>
-
+        
         <a href="sign-up.html">
-            <button class=" bg-gray-100 text-black border border-purple-50 font-medium py-3 px-6 rounded-full shadow-md hover:bg-purple-100 hover:scale-105 transition-transform duration-300 mt-6">
+            <button class="bg-gray-100 text-black text-xs font-medium py-3 px-6 rounded-full shadow-md hover:bg-purple-100 hover:scale-105 transition-transform duration-300">
                 Sign Up an Account
             </button>
-        </a>
+        </a>        
     </div>
     <div class="mt-10">
         <div class="relative">
@@ -374,7 +374,7 @@ overlay.onclick = closeMenu;
         <!-- Left Image Card -->
         <div class="w-full h-full md:w-1/3 flex flex-col justify-center items-center">
             <a href="">
-                <img src="/assets/hand%204-Dv8JLdsm.png" 
+                <img src="/assets/hand%204-CHrfFpYT.jpeg" 
                     alt="Gift Card for Cash" 
                     class="w-full mx-auto rounded-lg shadow-1xl">
             </a>
@@ -384,7 +384,7 @@ overlay.onclick = closeMenu;
 
         <!-- Right Image Card (Duplicate) -->
         <div class="w-full h-full md:w-1/3 flex flex-col justify-center items-center">
-            <img src="/assets/hand%205-B-yMYQRX.png" alt="Gift Card for Cash" class="w-full mx-auto rounded-lg shadow-1xl object-cover">
+            <img src="/assets/hand%205--uoQfD_R.jpeg" alt="Gift Card for Cash" class="w-full mx-auto rounded-lg shadow-1xl object-cover">
         </div>
     </div>
 </div>
@@ -402,7 +402,7 @@ overlay.onclick = closeMenu;
         <p class="text-lg text-sm mb-10">We know gift card exchange can be a stressful experience which is why we made it our mission to transform the process into a <span class="font-bold text-purple-500">WAHALA-FREE</span> and enjoyable one.</p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Feature Card 1 -->
-            <div class="bg-gray-100 p-6 rounded-lg shadow-3xl">
+            <div class="bg-gray-100 p-6 shadow-3xl">
                 <div class="flex items-center justify-center mb-4">
                     <div class="h-16 w-16 rounded-full border-2 border-purple-500 flex items-center justify-center">
                         <span class="text-purple-500 text-2xl font-medium">6</span>
@@ -412,7 +412,7 @@ overlay.onclick = closeMenu;
                 <p class="text-xs">We have been in business for 6 years and have had clean records all through. We breathe integrity and excellent customer satisfaction.</p>
             </div>
             <!-- Feature Card 2 -->
-            <div class="bg-gray-100 p-6 rounded-lg shadow-3xl">
+            <div class="bg-gray-100 p-6 shadow-3xl">
                 <div class="flex items-center justify-center mb-4">
                     <div class="h-16 w-16 rounded-full border-2 border-purple-500 flex items-center justify-center">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAN9JREFUSEvdVcsVgyAQhLMWZG7YB73E9EIf4aYFxTMJKygBTJZfDuE9T8LMzuyPksaHNsYnvyPg/TwRRa9VFFF1E4/LpLF2BbxbVBVwAyLWAbADAvsjl8wGmkzgWSjJZoP0A0km4P3MiKL3mKKY2nSCbtHg7PVB1EC0FQMzKiCZ9uQTUDVaS1xVvoraBFKsw1im4OiPmEW7qmyL9EN+5OE9145tRQRA4na606nFZfrJ31jpJif5vwgw8+mrRRgQzJ1w2LXeB2d1jInW9ArsE390BCvT97A6ARYQe6/50n8CRaHgGV8CP7gAAAAASUVORK5CYII=" alt="Safe & Secure" class="h-8 w-8"> <!-- Add your secure icon -->
@@ -422,7 +422,7 @@ overlay.onclick = closeMenu;
                 <p class="text-xs">Enjoy a seamless experience with our platform, where safe and secure transactions are at the heart of everything we do, giving you peace of mind.</p>
             </div>
             <!-- Feature Card 3 -->
-            <div class="bg-gray-100 p-6 rounded-lg shadow-3xl">
+            <div class="bg-gray-100 p-6 shadow-3xl">
                 <div class="flex items-center justify-center mb-4">
                     <div class="h-16 w-16 rounded-full border-2 border-purple-500 flex items-center justify-center">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARhJREFUSEvtVcsRgyAQhbO2QR3RmvQec9eaQuqgDT2TWYZlVlwgOniLFx0/77cfpbj5kDfjiyLB2JpOCNFZKx5eTCelePlrPa9K50QmCQDYWvEE8IJLDYQpIpZgbM3kwQEbAD5wRhDiCgS4w5NMsZgDAQVPfURBSu/vCHws75wiLq7ou57GtSMYGgPgrojzqg52c7UgTvSyqT5EhxdUxbKpYndxZERgcBGAUMEV9UjGJcAR7DI8M4gkhRBTIBgaYxmwbI9nZuVnAjcHtGhUBEbCucQ6HhzQAqOrVNG55/G9P4FrjFysNCI3xVwnVSlyouXqtemZgUq9ix1Et8GlnRMTRO75ZXfVAV2S3FDWcgCrnf0/VyHIuf8CrZrzGVuAsOkAAAAASUVORK5CYII=" alt="Excellent Customer Reviews" class="h-8 w-8"> <!-- Add your reviews icon -->
@@ -449,13 +449,10 @@ overlay.onclick = closeMenu;
     </div>
 </div>
 
-<section class="py-5 bg-white" id="spacing"></section>
-    <div class="">
-    </div>
-</section>
+
 
 <!-- Calculate Your Cards and Crypto Payout Rates Section -->
-<section class="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
+<!-- <section class="py-16 bg-gradient-to-b from-gray-50 to-gray-100">
     <div class="container mx-auto text-center px-6 lg:px-0">
         <h2 class="text-2xl font-extrabold text-purple-800 mb-6 leading-tight">
             Calculate Your Cards and Crypto Payout Rates
@@ -463,16 +460,16 @@ overlay.onclick = closeMenu;
         <p class="text-xs text-gray-700 mb-12">
             Easily determine the payout rates for your gift cards and cryptocurrency with our intuitive and sleek calculator.
         </p>
-        <div class="flex flex-col items-center justify-center">
+        <div class="flex flex-col items-center justify-center"> -->
             <!-- <div class="bg-white shadow-lg rounded-2xl p-8 max-w-lg transition-transform transform hover:scale-105"> -->
-                <button onclick="location.href='rate-calculator.html'" 
+                <!-- <button onclick="location.href='rate-calculator.html'" 
                         class="bg-purple-700 text-white py-3 px-8 rounded-lg text-lg font-medium hover:bg-purple-800 transition-colors">
                     Calculate
                 </button>
             </div>
         </div>
-    </div>
-</section>
+    </div> -->
+<!-- </section> -->
 
 
 
@@ -487,7 +484,7 @@ overlay.onclick = closeMenu;
     <div class="container mx-auto text-center">
         <h2 class="text-2xl font-bold text-gray-800 mb-4">Start Trading to Earn Rewards</h2>
         <p class="text-gray-600 text-1xl mb-6">Explore the Exprespay app to sell your gift cards on the go</p>
-        <img src="/assets/expres%207-VF3D73aL.png" alt="Giftcardstonaira App" class="mx-auto rounded-lg shadow-lg">
+        <img src="/assets/expres%207-4GVsH3r9.jpeg" alt="Giftcardstonaira App" class="mx-auto">
 
         </div>
     </div>
@@ -502,7 +499,7 @@ overlay.onclick = closeMenu;
 <!-- Testimonial Section -->
 <section class="py-12 bg-purple-50">
     <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">Trusted by over 300,000+ customers</h2>
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Trusted by over 300,000+ customers</h2>
         <div class="flex justify-center mb-4">
             <span class="text-purple-500 text-2xl">★★★★☆</span> <!-- Star rating -->
             <span class="text-gray-600 ml-2">4.5+</span>
@@ -511,7 +508,7 @@ overlay.onclick = closeMenu;
         
         <div class="flex flex-col md:flex-row items-center justify-center gap-8">
             <!-- Testimonial Card 1 -->
-            <div class="bg-white shadow-3xl rounded-lg p-6 max-w-sm">
+            <div class="bg-white shadow-3xl p-6 max-w-sm">
                 <h3 class="font-semibold text-gray-800">Prince Samuel</h3>
                 <p class="text-gray-700 mb-2">"This app is fantastic! I was skeptical at first, but after using it, I realized how easy and efficient it is to trade gift cards. The process is seamless, and I appreciate the quick payouts!"</p>
                 <div class="flex justify-center">
@@ -520,7 +517,7 @@ overlay.onclick = closeMenu;
             </div>
 
             <!-- Testimonial Card 2 -->
-            <div class="bg-white shadow-3xl rounded-lg p-6 max-w-sm">
+            <div class="bg-white shadow-3xl  p-6 max-w-sm">
                 <h3 class="font-semibold text-gray-800">Jessica Lee</h3>
                 <p class="text-gray-700 mb-2">"I love using this app! It has made trading my gift cards so much easier. The customer service is excellent, and I always feel secure with my transactions. Highly recommend!"</p>
                 <div class="flex justify-center">
@@ -529,7 +526,7 @@ overlay.onclick = closeMenu;
             </div>
 
             <!-- Testimonial Card 3 -->
-            <div class="bg-white shadow-3xl rounded-lg p-6 max-w-sm">
+            <div class="bg-white shadow-3xl p-6 max-w-sm">
                 <h3 class="font-semibold text-gray-800">Michael Johnson</h3>
                 <p class="text-gray-700 mb-2">"This is the best gift card trading app I've ever used! The interface is user-friendly, and I love how quickly I can convert my cards into cash. Definitely a 5-star experience!"</p>
                 <div class="flex justify-center">
@@ -542,15 +539,15 @@ overlay.onclick = closeMenu;
     </div>
 </section>
 
-<!-- Compact iOS-Inspired Add to Home Screen Prompt -->
+<!-- Compact iOS-Inspired Add to Home Screen Prompt
 <div id="addToHomeScreenPrompt" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 bg-white max-w-xs md:max-w-sm w-full p-3 rounded-lg shadow-md border border-gray-100 flex items-center space-x-3 hidden">
-    <img src="/assets/express%20(4)-BGXBmpnR.png" alt="Expres Pay Icon" class="h-8 w-8 rounded-md flex-shrink-0">
+    <img src="express (41).png" alt="Expres Pay Icon" class="h-8 w-8 rounded-md flex-shrink-0">
     <div class="flex-1">
         <p class="text-sm font-medium text-gray-900">Add to Home Screen</p>
         <p class="text-xs text-gray-600 leading-snug mt-1">Tap Share in Safari, then "Add to Home Screen".</p>
     </div>
     <button id="closePrompt" class="text-gray-400 hover:text-gray-600 focus:outline-none text-lg">&times;</button>
-</div>
+</div> -->
 
 
 
@@ -577,66 +574,63 @@ overlay.onclick = closeMenu;
     <script>
         let deferredPrompt;
     
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(() => console.log('Service Worker registered successfully!'))
-                .catch(err => console.error('Service Worker registration failed:', err));
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const promptContainer = document.getElementById("addToHomeScreenPrompt");
+            const installButton = document.getElementById("installButton");
+            const closeButton = document.getElementById("closePrompt");
     
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-    
-            // Show the prompt when the event is triggered
-            document.getElementById('addToHomeScreenPrompt').classList.remove('hidden');
-        });
-    
-        document.getElementById('installButton').addEventListener('click', () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User accepted the A2HS prompt');
-                    } else {
-                        console.log('User dismissed the A2HS prompt');
-                    }
-                    deferredPrompt = null;
-                });
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("/service-worker.js")
+                    .then(() => console.log("Service Worker registered successfully!"))
+                    .catch(err => console.error("Service Worker registration failed:", err));
             }
-            // Hide the prompt after installation
-            document.getElementById('addToHomeScreenPrompt').classList.add('hidden');
-        });
     
-        // Close the prompt when clicking the cancel button
-        document.getElementById('closePrompt').addEventListener('click', () => {
-            document.getElementById('addToHomeScreenPrompt').classList.add('hidden');
-        });
+            window.addEventListener("beforeinstallprompt", (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                showInstallPrompt();
+            });
     
-        // Ensure the prompt is always shown on page reload
-        window.addEventListener('load', () => {
-            if (deferredPrompt) {
-                document.getElementById('addToHomeScreenPrompt').classList.remove('hidden');
+            installButton.addEventListener("click", () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === 'accepted') {
+                            console.log('User accepted the A2HS prompt');
+                        } else {
+                            console.log('User dismissed the A2HS prompt');
+                        }
+                        deferredPrompt = null;
+                    });
+                    hideInstallPrompt();
+                }
+            });
+    
+            closeButton.addEventListener("click", hideInstallPrompt);
+    
+            function showInstallPrompt() {
+                if (promptContainer) {
+                    promptContainer.classList.remove("hidden");
+                    promptContainer.classList.add("show");
+                }
+            }
+    
+            function hideInstallPrompt() {
+                if (promptContainer) {
+                    promptContainer.classList.remove("show");
+                    setTimeout(() => {
+                        promptContainer.classList.add("hidden");
+                    }, 300); // Matches CSS transition duration
+                }
+            }
+    
+            // Show prompt if it was dismissed in previous sessions
+            if (localStorage.getItem("PWAInstallPrompt") && promptContainer) {
+                showInstallPrompt();
             }
         });
     </script>
-    <script>
-    // Check if the user is on mobile (iOS or Android)
-    function isMobile() {
-        return /iphone|ipod|ipad|android/i.test(navigator.userAgent.toLowerCase());
-    }
     
-    // Show the "Add to Home Screen" prompt for mobile users
-    if (isMobile()) {
-        const prompt = document.getElementById('addToHomeScreenPrompt');
-        prompt.classList.remove('hidden'); // Show the prompt on mobile
-    }
-    
-    // Close the prompt when the close button is clicked
-    document.getElementById('closePrompt').addEventListener('click', function() {
-        const prompt = document.getElementById('addToHomeScreenPrompt');
-        prompt.classList.add('hidden'); // Hide the prompt when the close button is clicked
-    });
-    </script>
 
     <script>
 
@@ -658,8 +652,8 @@ setTimeout(() => {
 </body>
 
 <!-- Telegram Chat Button -->
-<a href="https://wa.me/message/YAZLKCAO5JF7E1" target="_blank" class="fixed bottom-16 right-6">
-    <img src="/assets/Chat%20bot%2012-CCHF1lRN.png" alt="Chat with us on Telegram" class="w-16 h-18">
+<a href="https://wa.me/447426172703" target="_blank" class="fixed bottom-16 right-10">
+    <img src="/assets/Chat%20bot%2012-PFqVVPTX.png" alt="Chat with us on Telegram" class="w-14 h-14">
 </a>
 </body>
 </html>

@@ -20,6 +20,14 @@
         html, body {
             overflow: auto; /* Ensures scrolling is enabled */
         }
+        input::placeholder, select::placeholder {
+            color: white; /* Placeholder text color */
+        }
+        input, select {
+            background-color: black; /* Background color */
+            color: white; /* Text color */
+            border: 1px solid white; /* Border color */
+        }
     </style>
     <script type="module">
         // Firebase SDK imports
@@ -83,19 +91,19 @@
         };
     </script>
 </head>
-<body class="font-sans antialiased bg-gray-100">
+<body class="font-sans antialiased bg-black">
 
 <!-- Navbar -->
-<nav class="bg-white p-4 fixed top-0 w-full z-50">
+<nav class="bg-black p-4 fixed top-0 w-full z-50">
     <div class="container mx-auto flex items-center justify-between">
         <!-- Left Logo -->
-        <a href="#" class="flex items-center">
-            <img src="express (4).png" alt="Gift Card Brand Logo" class="h-14">
+        <a href="index.html" class="flex items-center">
+            <img src="express (4).png" alt="Gift Card Brand Logo" class="h-16">
         </a>
 
         <!-- Right Logo -->
-        <a href="https://wa.me/message/YAZLKCAO5JF7E1" class="flex items-center">
-            <img src="chat.png" alt="Gift Card Brand Logo" class="h-8 w-8">
+        <a href=" https://wa.me/447426172703" class="flex items-center">
+            <img src="Chat bot 121 png.png" alt="Gift Card Brand Logo" class="h-8 w-8">
         </a>
     </div>
 </nav>
@@ -111,8 +119,8 @@
     <div class="flex">
 
 <!-- Main Content -->
-<div class="flex-1 p-4 bg-gray-100 pb-24 md:pb-0"> 
-    <div class="flex-1 p-6 bg-white rounded pb-0 text-black">
+<div class="flex-1 p-4 bg-black pb-24 md:pb-0"> 
+    <div class="flex-1 p-6 bg-black rounded pb-0 text-black">
         <h1 class="text-xl font-semibold mb-6 text-black"></h1>
 
         <!-- Tabs for Cash Withdrawal -->
@@ -120,7 +128,7 @@
             <button 
                 onclick="toggleWithdrawal('cash')" 
                 id="cashButton" 
-                class="flex-1 text-center text-xs md:text-lg text-white bg-purple-500 rounded-lg px-3 py-4 border border-gray-300"
+                class="flex-1 text-center text-xs md:text-lg text-white bg-purple-500 rounded-lg px-3 py-4"
             >
                 Cash Withdrawal
             </button>
@@ -128,15 +136,15 @@
 
         <!-- Cash Withdrawal Form -->
         <div id="cashWithdrawal" class="block">
-            <p class="mb-12 text-black text-xs text-center"> Enter your details to complete your withdrawal.</p>
+            <p class="mb-12 text-white text-xs text-center"> Enter your details to complete your withdrawal.</p>
             <form id="withdrawalForm">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Bank Name -->
                     <div>
-                        <label for="bankName" class="block text-xs text-black mb-2">Bank Name</label>
+                        <label for="bankName" class="block text-xs text-white mb-2">Bank Name</label>
                         <select 
                             id="bankName" 
-                            class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs"
+                            class="w-full bg-black border border-gray-300 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs"
                         >
                             <option value="" disabled selected>Select your bank</option>
                             <!-- Bank Options -->
@@ -204,16 +212,16 @@
                             
                             <!-- Add more banks as needed -->
                         </select>
-                        <p id="bankNameError" class="text-red-500 text-xs hidden mt-2">Bank Name is required</p>
+                        <p id="bankNameError" class="text-red-500 text-xs text-white hidden mt-2">Bank Name is required</p>
                     </div>
 
                     <!-- Account Number -->
                     <div>
-                        <label for="accountNumber" class="block text-xs text-black mb-2">Account Number</label>
+                        <label for="accountNumber" class="block text-xs text-white mb-2">Account Number</label>
                         <input 
                             type="text" 
                             id="accountNumber" 
-                            class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs" 
+                            class="w-full bg-black border border-gray-300 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs" 
                             placeholder="Enter account number"
                         >
                         <p id="accountNumberError" class="text-red-500 text-xs hidden mt-2">Account Number is required</p>
@@ -221,11 +229,11 @@
 
                     <!-- Account Name -->
                     <div>
-                        <label for="accountName" class="block text-xs text-black mb-2">Account Name</label>
+                        <label for="accountName" class="block text-xs text-white mb-2">Account Name</label>
                         <input 
                             type="text" 
                             id="accountName" 
-                            class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs" 
+                            class="w-full bg-black border border-gray-300 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs" 
                             placeholder="Enter account name"
                         >
                         <p id="accountNameError" class="text-red-500 text-xs hidden mt-2">Account Name is required</p>
@@ -233,11 +241,11 @@
 
                     <!-- Registered Email -->
                     <div>
-                        <label for="registeredEmail" class="block text-xs text-black mb-2">Enter Registered Email</label>
+                        <label for="registeredEmail" class="block text-xs text-white mb-2">Enter Registered Email</label>
                         <input 
                             type="email" 
                             id="registeredEmail" 
-                            class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs" 
+                            class="w-full bg-black border border-gray-300 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs" 
                             placeholder="Enter registered email"
                         >
                         <p id="registeredEmailError" class="text-red-500 text-xs hidden mt-2">Registered Email is required</p>
@@ -246,19 +254,20 @@
 
                 <!-- Withdrawal Amount -->
                 <div class="mt-6">
-                    <label for="withdrawCash" class="block text-xs text-black mb-2">Withdrawal Amount</label>
+                    <label for="withdrawCash" class="block text-xs text-white mb-2">Withdrawal Amount</label>
                     <input 
                         type="text" 
                         id="withdrawCash" 
-                        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-purple-300 focus:ring-purple-500 text-xs" 
+                        class="w-full bg-black border border-gray-300 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-purple-300 focus:ring-purple-500 text-xs" 
                         placeholder="Enter amount"
                     >
                     <p id="withdrawCashError" class="text-red-500 text-xs hidden mt-2">Amount is required</p>
+                    <p id="error-message" class="text-red-500 text-xs hidden mt-2"></p> <!-- Error message for insufficient funds -->
                 </div>
 
                 <!-- Notice of Withdrawal -->
                 <div class="pt-10">
-                <div class="bg-gray-100 border-l-4 border-purple-600 text-purple-700 p-5 rounded mb-4 text-xs text-center">
+                <div class="bg-gray-900 border-l-4 border-purple-600 text-white p-5 rounded mb-4 text-xs text-center">
                     <p>
                         Do not make multiple withdrawal request, after a successful withdrawal request has been made.  Please double-check all your details before submitting your withdrawal request to ensure prompt processing. If you encounter any issues, contact support for assistance.
                     </p>
@@ -270,9 +279,9 @@
                     <input 
                         type="checkbox" 
                         id="confirmDetails" 
-                        class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500"
+                        class="w-4 h-4 text-white bg-gray-100 border-gray-300 rounded focus:ring-purple-500"
                     >
-                    <label for="confirmDetails" class="ml-2 text-xs text-black">
+                    <label for="confirmDetails" class="ml-2 text-xs text-white">
                         Do you confirm that your details have been filled correctly?
                     </label>
                 </div>
@@ -309,7 +318,7 @@
             type="button" 
             onclick="submitCashWithdrawal()" 
             id="cashWithdrawButton"
-            class="bg-purple-500 text-white text-xs border font-semibold rounded px-16 py-3 w-full md:w-auto hover:bg-purple-800"
+            class="bg-purple-500 text-white text-xs font-semibold rounded px-16 py-3 w-full md:w-auto hover:bg-purple-800"
         >
             Submit
         </button>
@@ -416,42 +425,42 @@ function closeSuccessModal() {
              
 
 <!-- Bottom Navbar (Mobile Friendly) -->
-<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t p-3" style="height: 100px;">
+<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-black shadow-lg border-gray-700 p-3" style="height: 100px;">
     <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="1221.png" alt="Wallet Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="1221.png" alt="Wallet Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Home</span>
+            <span class="text-xs text-white font-medium mt-2">Home</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="deposit.png" alt="Redeem Icon" class="h-6 w-6" />
+            <div class="bg- rounded p-2">
+                <img src="deposit.png" alt="Redeem Icon" class="h-6 w-6" style="filter: invert(1);"/>
             </div>
-            <span class="text-xs font-medium mt-2">Redeem</span>
+            <span class="text-xs text-white font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
+            <div class="bg-black rounded p-2">
                 <img src="withdraw.png" alt="Withdraw Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-medium mt-2">Withdraw</span>
+            <span class="text-xs text-white font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="support.png" alt="Support Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="support.png" alt="Support Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Support</span>
+            <span class="text-xs text-white font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="profile.png" alt="Profile Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="profile.png" alt="Profile Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Profile</span>
+            <span class="text-xs text-white font-medium mt-2">Profile</span>
         </a>
     </div>
 </div>

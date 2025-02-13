@@ -78,10 +78,10 @@
         };
     </script>
 </head>
-<body class="font-sans antialiased bg-gray-100">
+<body class="font-sans antialiased bg-black">
 
 <!-- Navbar -->
-<nav class="bg-white p-4">
+<nav class="bg-black p-4">
     <div class="container mx-auto flex items-center justify-between">
         <img src="express (4).png" alt="Gift card Brand Logo" class="h-14">
         </a>
@@ -99,42 +99,42 @@
 
 
 <!-- Bottom Navbar (Mobile Friendly) -->
-<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t p-3" style="height: 100px;">
+<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-black shadow-lg border-gray-700 p-3" style="height: 100px;">
     <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="1221.png" alt="Wallet Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="1221.png" alt="Wallet Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Home</span>
+            <span class="text-xs text-white font-medium mt-2">Home</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="deposit.png" alt="Redeem Icon" class="h-6 w-6" />
+            <div class="bg- rounded p-2">
+                <img src="deposit.png" alt="Redeem Icon" class="h-6 w-6" style="filter: invert(1);"/>
             </div>
-            <span class="text-xs font-medium mt-2">Redeem</span>
+            <span class="text-xs text-white font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="withdraw.png" alt="Withdraw Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="withdraw.png" alt="Withdraw Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Withdraw</span>
+            <span class="text-xs text-white font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
+            <div class="bg-black rounded p-2">
                 <img src="support.png" alt="Support Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-medium mt-2">Support</span>
+            <span class="text-xs text-white font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="profile.png" alt="Profile Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="profile.png" alt="Profile Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Profile</span>
+            <span class="text-xs text-white font-medium mt-2">Profile</span>
         </a>
     </div>
 </div>
@@ -168,33 +168,47 @@
 </script>
 
 <!-- Contact Card -->
-<div class="w-full Center p-4 bg-white mt-2">
-    <h2 class="text-xl font-bold text-center text-gray-800 mb-4">Support</h2>
+<div class="w-full Center p-4 bg-black mt-2 px-8">
+    <h2 class="text-xl font-bold text-center text-white mb-4">Support</h2>
     <p class="text-center text-xs text-gray-600 mb-4">Visit the chat Center</p>
     <p class="text-center text-purple-600 mb-4"><a href="https://wa.me/message/YAZLKCAO5JF7E1" class="hover:underline">Exprespay.live/helpcenter</a></p>
 
-    <div class="border-t border-gray-200 mt-4 pt-4">
-        <h3 class="text-sm font-semibold text-gray-800 mb-2">Support & Inquiries</h3>
-        <p class="text-gray-600 text-xs mb-2"><a href="https://t.me/Exprespaytradings" class="text-purple-600 hover:underline">Chat-bot</a></p>
+    <div class="border-t border-gray-900 mt-4 pt-4">
+        <h3 class="text-sm font-semibold text-white mb-2">Support & Inquiries</h3>
+        <p class="text-gray-600 text-xs mb-2 flex justify-between items-center">
+            <a href="https://wa.me/447426172703" class="text-purple-600 hover:underline flex justify-between items-center w-full">
+                <span>Chat-bot</span>
+                <img src="chat message.png" alt="Chat-bot Icon" class="inline-block h-4 w-4" />
+            </a>
+        </p>
     </div>
 
-    <div class="border-t border-gray-200 mt-4 pt-4">
-        <h3 class="text-sm font-semibold text-gray-800 mb-2">Email</h3>
-        <p class="text-gray-600 text-xs mb-2">
-            <a href="mailto:Support@Exprespay.tech" class="text-purple-600 hover:underline">
-                Support@Exprespay.tech
+    <div class="border-t border-gray-900 mt-4 pt-4">
+        <h3 class="text-sm font-semibold text-white mb-2">Email</h3>
+        <p class="text-gray-600 text-xs mb-2 flex justify-between items-center">
+            <a href="mailto:Support@Exprespay.tech" class="text-purple-600 hover:underline flex justify-between items-center w-full">
+                <span>Support@Exprespay.tech</span>
+                <img src="mail.png" alt="Email Icon" class="inline-block h-4 w-4" />
             </a>
         </p>
     </div>
     
-
-    <div class="border-t border-gray-200 mt-4 pt-4">
-        <h3 class="text-sm font-semibold text-gray-800 mb-2">Contact</h3>
-        <p class="text-gray-600 text-xs"><a href="#" class="text-purple-600 hover:underline">‪+234 704 290 0691‬</a></p>
+    <div class="border-t border-gray-900 mt-4 pt-4">
+        <h3 class="text-sm font-semibold text-white mb-2">Contact</h3>
+        <p class="text-gray-600 text-xs flex justify-between items-center">
+            <a href="#" class="text-purple-600 hover:underline flex justify-between items-center w-full">
+                <span>‪+234 704 290 0691‬</span>
+                <img src="phone.png" alt="Contact Icon" class="inline-block h-4 w-4" />
+            </a>
+        </p>
     </div>
-    <div class="border-t border-gray-200 mt-4 pt-4">
-        <h3 class="text-sm font-semibold text-gray-800 mb-2">Terms & Conditions</h3>
-        <p class="text-gray-600 text-xs"><a href="term-condition.html" class="text-purple-600 hover:underline">Terms of service</a></p>
+    <div class="border-t border-gray-900 mt-4 pt-4">
+        <h3 class="text-sm font-semibold text-white mb-2">Terms & Conditions</h3>
+        <p class="text-gray-600 text-xs flex justify-between items-center">
+            <a href="term-condition.html" class="text-purple-600 hover:underline flex justify-between items-center w-full">
+                <span>Terms of service</span>
+            </a>
+        </p>
     </div>
 </div>
 </html>

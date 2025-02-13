@@ -12,38 +12,53 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
-<body class="font-sans bg-gray-50 antialiased">
+<body class="font-sans bg-black antialiased">
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
-        <div class="container mx-auto flex items-center justify-between">
-            <div class="flex items-center justify-center w-full md:w-auto">
-                <img src="express (4).png" alt="Gift card Brand Logo" class="h-14">
-                </a>
+<!-- Navbar -->
+<nav class="bg-black p-4 fixed top-0 w-full z-50">
+    <div class="container mx-auto flex items-center justify-between">
+        <!-- Left Logo -->
+        <a href="index.html" class="flex items-center">
+            <img src="express (4).png" alt="Gift Card Brand Logo" class="h-16">
+        </a>
 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden ml-auto">
-                    <button id="mobile-menu-button" class="text-purple-500 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+        <!-- Right Logo -->
+        <a href=" https://wa.me/447426172703" class="flex items-center">
+            <img src="Chat bot 121 png.png" alt="Gift Card Brand Logo" class="h-8 w-8">
+        </a>
+    </div>
+</nav>
+</nav>
 
-            <!-- Navigation links -->
-            <div class="hidden md:flex space-x-8 ml-auto">
-                <a href="index.html" class="text-blue text-sm text-gray-800">Home</a>
-                <!-- <a href="redeem.html" class="text-blue hover:text-gray-800">Sell Gift Cards</a> -->
-                <!-- <a href="contact.html" class="text-blue hover:text-gray-800">Contact</a> -->
-            </div>
+<!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black opacity-90 hidden z-40"></div>
 
-            <!-- Log In CTA -->
-            <div class="hidden md:flex ml-4">
-                <a href="sign-in.html" class="bg-white border text-black text-sm px-6 py-2 rounded">Sign out</a>
-            </div>
-        </div>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 bg-black shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+<div class="p-6">
+    <!-- Close Button -->
+    <button id="close-menu" class="absolute top-4 right-4 text-2xl text-white">
+        ✖
+    </button>
+
+    <!-- Navigation Links -->
+    <nav class="w-full flex flex-col items-center space-y-6 mt-8">
+        <a href="index.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-regular bg-white rounded hover:bg-purple-300 transition ">
+            Home
+        </a>
+        <!-- <a href="redeem.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
+            Sell Gift Cards
+        </a>
+        <a href="contact.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
+            Contact
+        </a> -->
+        <a href="sign-in.html" class="w-4/5 py-3 text-center text-lg text-white bg-purple-600 rounded-lg hover:bg-purple-500 transition">
+            Sign out
+        </a>
     </nav>
+</div>
+</div>
+
 
 <!-- Overlay -->
 <div id="overlay" class="fixed inset-0 bg-gray-900 opacity-90 hidden z-40"></div>
@@ -129,15 +144,15 @@ overlay.onclick = closeMenu;
     
 </body>
 
-<section class="py-12 bg-gray-50" id="spacing">
+<section class="py-12 bg-black" id="spacing">
     <div class="container mx-auto text-center">
     </div>
 </section>
 
 
-<div class="flex flex-col items-center py-6 px-4 bg-gray-50">
+<div class="flex flex-col items-center py-6 px-4 bg-black">
     <!-- Navigation Header -->
-    <nav class="w-full max-w-lg mb-6 flex justify-around bg-white rounded p-2">
+    <nav class="w-full max-w-lg mb-6 flex justify-around bg-gray-900 rounded p-2">
         <a href="request-wallet.html" class="flex-1 text-center">
             <button 
                 id="giftCardTab" 
@@ -156,10 +171,10 @@ overlay.onclick = closeMenu;
 </div>
 
 <div class="flex flex-col items-center py-0 px-4">
-    <div class="w-full max-w-md bg-white p-6">
+    <div class="w-full max-w-md bg-black p-6">
         <!-- Title and Description -->
         <h2 class="text-sm font-bold mb-4 text-center text-purple-500">Transact with USDT</h2>
-        <p class="text-gray-700 mb-4 text-xs text-center">
+        <p class="text-white mb-4 text-xs text-center">
             Generate your unique USDT payment address, upload a receipt, and send details securely to get paid.
         </p>
 
@@ -199,10 +214,10 @@ overlay.onclick = closeMenu;
             <form id="giftCardTradeForm">
 <!-- USDT Payment Type -->
 <div class="mb-4">
-    <label class="block text-xs text-black mb-2" for="card-type">USDT Payment Type</label>
+    <label class="block text-xs text-white mb-2" for="card-type">USDT Payment Type</label>
     <select 
         id="card-type" 
-        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs appearance-none"
+        class="w-full bg-black border border-gray-300 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs appearance-none"
         onchange="updateWalletAddress()"
     >
         <option value="" disabled selected>Select payment type</option>
@@ -213,13 +228,13 @@ overlay.onclick = closeMenu;
 
 <!-- USDT Amount -->
 <div class="mb-4">
-    <label class="block text-xs text-black mb-2" for="usdt-amount">USDT Amount</label>
+    <label class="block text-xs text-white mb-2" for="usdt-amount">USDT Amount</label>
     <div class="relative">
         <span class="absolute left-4 top-3 text-gray-400 text-xs">$</span>
         <input 
             id="usdt-amount-input" 
             type="number" 
-            class="w-full pl-8 bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs"
+            class="w-full pl-8 bg-black border border-gray-300 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs"
             placeholder="Enter amount (min $10)"
             step="0.01"
             min="0"
@@ -232,14 +247,14 @@ overlay.onclick = closeMenu;
 
 <!-- USDT Wallet Address -->
 <div class="mb-8">
-    <label for="btcWallet" class="block text-gray-700 font-medium text-xs mb-2">USDT Wallet Address</label>
+    <label for="btcWallet" class="block text-white font-medium text-xs mb-2">USDT Wallet Address</label>
     <div class="flex items-center gap-4">
         <input 
             type="text" 
             id="btcWallet" 
             value="0x3736289346449990f28e1E93B92DaEf4F2C1b800" 
             readonly 
-            class="flex-grow h-10 px-3 border rounded text-xs text-gray-400 focus:ring-2 focus:ring-purple-300"
+            class="flex-grow bg-black h-10 px-3 border rounded text-xs text-white focus:ring-2 focus:ring-purple-300"
         />
         <button 
             class="copy-button px-4 py-2 border bg-gray-100 rounded text-sm text-gray-700 hover:bg-gray-200"
@@ -248,21 +263,21 @@ overlay.onclick = closeMenu;
             Copy
         </button>
     </div>
-    <p class="text-xs text-gray-500 mt-2">
+    <p class="text-xs text-gray-200 mt-2">
         Copy the wallet address above to complete your transactions seamlessly.
     </p>
 </div>
     
                 <!-- Gift Card Back Image -->
                 <div class="mb-4">
-                    <label class="block text-gray-700 font-medium text-xs mb-2">USDT payment receipt</label>
+                    <label class="block text-white font-medium text-xs mb-2">USDT payment receipt</label>
                     <input type="file" id="back-image" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs" accept="image/*">
                 </div>
     
                 <!-- Registered Email -->
                 <div class="mb-4">
-                    <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
-                    <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs">
+                    <label class="block text-white font-medium text-xs mb-2">Enter Registered Email</label>
+                    <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full bg-black text-white px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs">
                 </div>
     
                 <!-- Submit Button -->
@@ -273,16 +288,16 @@ overlay.onclick = closeMenu;
             </form>
         </div>
     </div>
-
-    <section class="py-4 bg-gray-50" id="spacing">
+<!-- 
+    <section class="py-4 bg-black" id="spacing">
         <div class="">
         </div>
-    </section>
+    </section> -->
 
 
  <!-- Notice of Withdrawal -->
- <div class="pt-3">
-    <div class="bg-gray-100 border-l-4 border-purple-600 text-purple-700 p-5 rounded mb-4 text-xs text-center">
+ <div class="pt-1">
+    <div class="bg-gray-900 border-l-4 border-purple-600 text-white p-5 rounded mb-4 text-xs text-center">
  <p>
     Note: After copying the Wallet ID, do not close this page until a transaction receipt has been uploaded and sent to complete the transaction. Wallet ID's expire after 40 minutes.
 </p>
@@ -509,48 +524,48 @@ overlay.onclick = closeMenu;
 </script>
 </body>
 
-<section class="py-14 bg-gray-50" id="spacing">
+<section class="py-14 bg-black" id="spacing">
     <div class="">
     </div>
 </section>
 
 <!-- Bottom Navbar (Mobile Friendly) -->
-<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t p-3" style="height: 100px;">
+<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-black shadow-lg border-gray-700 p-3" style="height: 100px;">
     <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="1221.png" alt="Wallet Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="1221.png" alt="Wallet Icon" class="h-6 w-6" style="filter: invert(1);"/>
             </div>
-            <span class="text-xs font-medium mt-2">Home</span>
+            <span class="text-xs text-white font-medium mt-2">Home</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="deposit.png" alt="Redeem Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="deposit.png" alt="Redeem Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Redeem</span>
+            <span class="text-xs text-white font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="withdraw.png" alt="Withdraw Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="withdraw.png" alt="Withdraw Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Withdraw</span>
+            <span class="text-xs text-white font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="support.png" alt="Support Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="support.png" alt="Support Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Support</span>
+            <span class="text-xs text-white font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="profile.png" alt="Profile Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="profile.png" alt="Profile Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Profile</span>
+            <span class="text-xs text-white font-medium mt-2">Profile</span>
         </a>
     </div>
 </div>

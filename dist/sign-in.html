@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gifing Company</title>
-    <link rel="manifest" href="/assets/manifest-BsYFUlnB.json">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/express%20(4)-BGXBmpnR.png">
-    <link rel="icon" href="/assets/express%20(4)-BGXBmpnR.png" type="image/png">
+    <link rel="manifest" href="/assets/manifest-7DWRkJU7.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/express%20(4)-ChytSFcj.png">
+    <link rel="icon" href="/assets/express%20(4)-ChytSFcj.png" type="image/png">
     <!-- Include Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
   <script type="module" crossorigin src="/assets/signIn-BQKJt8vi.js"></script>
@@ -16,10 +16,10 @@
 <body class="font-sans antialiased">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
+    <nav class="fixed top-0 left-0 right-0 bg-black bg-opacity-800 p-8 z-50">
         <div class="container mx-auto flex items-center justify-between">
             <div class="flex items-center justify-center w-full md:w-auto">
-                <img src="/assets/express%20(10)-B7dsekmP.png" alt="Gift card Brand Logo" class="h-14">
+                <img src="/assets/express%20(10)-Yk_rCyAk.png" alt="Gift card Brand Logo" class="h-8 w-auto">
                 </a>
 
                 <!-- Mobile Menu Button -->
@@ -34,24 +34,26 @@
 
             <!-- Navigation links -->
             <div class="hidden md:flex space-x-8 ml-auto">
-                <a href="index.html" class="text-blue text-sm hover:text-gray-800">Home</a>
-                <a href="sign-in.html" class="text-blue text-sm hover:text-gray-800">Sell Gift Cards</a>
-                <a href="rate-calculator.html" class="text-blue text-sm hover:text-gray-800">Rate Checker</a>
-                <a href="contact.html" class="text-blue text-sm hover:text-gray-800">Contact</a>
+                <a href="index.html" class="text-white text-sm hover:text-gray-800">Home</a>
+                <a href="sign-in.html" class="text-white text-sm hover:text-gray-800">Sell Gift Cards</a>
+                <!-- <a href="rate-calculator.html" class="text-white text-sm hover:text-gray-800">Rate Checker</a> -->
+                <a href="contact.html" class="text-white text-sm hover:text-gray-800">Contact</a>
             </div>
 
             <!-- Log In CTA -->
-            <div class="hidden md:flex ml-4">
+            <!-- <div class="hidden md:flex ml-4">
                 <a href="sign-in.html" class="bg-purple-500 text-white text-sm px-6 py-2 rounded hover:bg-purple-800">Log In</a>
-            </div>
+            </div> -->
         </div>
     </nav>
 
-    <!-- Overlay -->
+    
+
+<!-- Overlay -->
 <div id="overlay" class="fixed inset-0 bg-gray-900 opacity-90 hidden z-40"></div>
 
 <!-- Mobile Menu -->
-<div id="mobile-menu" class="fixed inset-0 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+<div id="mobile-menu" class="fixed inset-0 bg-black shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
     <div class="p-6">
         <!-- Close Button -->
         <button id="close-menu" class="absolute top-4 right-4 text-2xl text-gray-600">
@@ -60,16 +62,13 @@
 
         <!-- Navigation Links -->
         <nav class="w-full flex flex-col items-center space-y-6 mt-8">
-            <a href="index.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-regular bg-white rounded hover:bg-purple-300 transition ">
+            <a href="index.html" class="w-4/5 py-3 text-center border text-white text-xs-2 font-regular bg-black rounded hover:bg-purple-300 transition ">
                 Home
             </a>
-            <a href="redeem.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
+            <a href="sign-in.html" class="w-4/5 py-3 text-center border text-white text-xs-2 font-medium bg-black rounded hover:bg-purple-300 transition">
                 Sell Gift Cards
             </a>
-            <a href="rate-calculator.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
-                Rate Checker
-            </a>
-            <a href="contact.html" class="w-4/5 py-3 text-center border text-black text-xs-2 font-medium bg-white rounded hover:bg-purple-300 transition">
+            <a href="contact.html" class="w-4/5 py-3 text-center border text-white text-xs-2 font-medium bg-black rounded hover:bg-purple-300 transition">
                 Contact
             </a>
             <a href="sign-in.html" class="w-4/5 py-3 text-center text-lg text-white bg-purple-600 rounded-lg hover:bg-purple-500 transition">
@@ -115,31 +114,38 @@ closeMenuButton.onclick = closeMenu;
 overlay.onclick = closeMenu;
 </script>
 
-    <script>
-        // // Your web app's Firebase configuration
-        // const firebaseConfig = {
-        //     apiKey: "AIzaSyA3OvFCz4sU4QnZAPnFrc_yzZezjzlzkgY",
-        //     authDomain: "exprespay-26ac0.firebaseapp.com",
-        //     projectId: "exprespay-26ac0",
-        //     storageBucket: "exprespay-26ac0.firebasestorage.app",
-        //     messagingSenderId: "933418932546",
-        //     appId: "1:933418932546:web:1eaac518eecab2042390db",
-        //     measurementId: "G-8ECL5E373T"
-        // };
+    <!-- <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA3OvFCz4sU4QnZAPnFrc_yzZezjzlzkgY",
+            authDomain: "exprespay-26ac0.firebaseapp.com",
+            projectId: "exprespay-26ac0",
+            storageBucket: "exprespay-26ac0.firebasestorage.app",
+            messagingSenderId: "933418932546",
+            appId: "1:933418932546:web:1eaac518eecab2042390db",
+            measurementId: "G-8ECL5E373T"
+        };
 
-        // // Initialize Firebase
-        // const app = firebase.initializeApp(firebaseConfig);
-        // const analytics = firebase.getAnalytics(app);
-    </script>
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const analytics = firebase.getAnalytics(app);
+    </script> -->
     
 </body>
-<section class="py-8 bg-gray-100" id="spacing">
+
+
+
+<div class="bg-black">
+
+
+
+<section class="py-8 bg-black" id="spacing">
     <div class="container mx-auto text-center">
     </div>
 </section>
 
 <!-- Sign In Section -->
-<section class="py-16 bg-gray-100">
+<section class="py-16 bg-gray-100 mt-12">
     <div class="container mx-auto text-center">
         <h2 class="text-2xl font-bold text-black mb-6">Welcome Back</h2>
         <p class="text-sm text-gray-500 mb-10">Please sign in to continue.</p>
@@ -185,8 +191,8 @@ overlay.onclick = closeMenu;
 </body>
 
 <!-- Telegram Chat Button -->
-<a href="https://wa.me/message/YAZLKCAO5JF7E1" target="_blank" class="fixed bottom-16 right-6">
-    <img src="/assets/Chat%20bot%2012-CCHF1lRN.png" alt="Chat with us on Telegram" class="w-16 h-18">
+<a href="https://wa.me/message/YAZLKCAO5JF7E1" target="_blank" class="fixed bottom-16 right-10">
+    <img src="/assets/Chat%20bot%2012-PFqVVPTX.png" alt="Chat with us on Telegram" class="w-14 h-14">
 </a>
 </body>
 </html>

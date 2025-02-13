@@ -5,56 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gifing Company</title>
-    <link rel="manifest" href="/assets/manifest-BsYFUlnB.json">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/express%20(4)-BGXBmpnR.png">
-    <link rel="icon" href="/assets/express%20(4)-BGXBmpnR.png" type="image/png">
+    <link rel="manifest" href="/assets/manifest-7DWRkJU7.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/express%20(4)-ChytSFcj.png">
+    <link rel="icon" href="/assets/express%20(4)-ChytSFcj.png" type="image/png">
     <!-- Include Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
   <script type="module" crossorigin src="/assets/requestwallet-RQS9Rv89.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
 </head>
-<body class="font-sans bg-gray-50 antialiased">
+<body class="font-sans bg-black antialiased">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 bg-white bg-opacity-800 p-4 z-50">
+    <nav class="bg-black p-4 fixed top-0 w-full z-50">
         <div class="container mx-auto flex items-center justify-between">
-            <div class="flex items-center justify-center w-full md:w-auto">
-                <img src="/assets/express%20(4)-BGXBmpnR.png" alt="Gift card Brand Logo" class="h-14">
-                </a>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden ml-auto">
-                    <button id="mobile-menu-button" class="text-purple-500 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Navigation links -->
-            <div class="hidden md:flex space-x-8 ml-auto">
-                <a href="index.html" class="text-blue text-sm text-gray-800">Home</a>
-                <!-- <a href="redeem.html" class="text-blue hover:text-gray-800">Sell Gift Cards</a> -->
-                <!-- <a href="contact.html" class="text-blue hover:text-gray-800">Contact</a> -->
-            </div>
-
-            <!-- Log In CTA -->
-            <div class="hidden md:flex ml-4">
-                <a href="sign-in.html" class="bg-white border text-black text-sm px-6 py-2 rounded">Sign out</a>
-            </div>
+            <!-- Left Logo -->
+            <a href="index.html" class="flex items-center">
+                <img src="/assets/express%20(4)-ChytSFcj.png" alt="Gift Card Brand Logo" class="h-16">
+            </a>
+    
+            <!-- Right Logo -->
+            <a href=" https://wa.me/447426172703" class="flex items-center">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAIpSURBVHgB7d3RUcJAFIXhi2MBlkAJlGAH2oGxArUCtQK1AuhArUQ7ACvADtYb3HE0LpoN2ZwZ8n8zdxgeSOQcovHlYgYAAAAAwJhMbAchhCN/OPU58Zn5TG0cXn1WPs+TyWRhO+hcgIdfBz/3ObJxW/ncdi3iwDrw8O/84dEIvzb1mXsm19ZB9hUQT3RjSLn3K+HKSvHwq/Db2ufG59hGwt/rzGcR0k6tFD/4snGy+vnURqp+74lM1vHmpPeTpT79Uxu5WMK6kUtlffODPjZOMjdsxF/B3z1Z3/ygL42TzAwbnsVxI5tl29e2vguqj/rjhc7wpWs+nf4PQH8oQIwCxChAjALEKECMAsQoQIwCxChAjALEKECMAsQoQIwCxChAjALEKECMAsQoQIwCxChAjALEKECMAsQoQIwCxChAjALEKECMAsQoQIwCxChAjALEKECMAsQoQIwCxChAjALEKKAHibUNr9YSBfTjovH8zfrW3FNj2IjrasIQ62oooCGkFza13pSSezIKiOJ6muvwe1FT9qf/0AbiP9iZP9zbfm9azF5fOci+oBj+wvbbg0dyaZmKXwEjCP/d59zD77SmrGgBexz+yj7v9Z99njz8dyst949wHX5Iqwz5cgog/ALaFkD4hbQpgPAL+q8Awi/srwIIfwDbCiD8gaQKIPwBJUIm/CGFdipDGYQvRvhihC9G+GJhiO9JwXbh80t8lrGIygAAAAAAALJ9AEa14n2xmluxAAAAAElFTkSuQmCC" alt="Gift Card Brand Logo" class="h-8 w-8">
+            </a>
         </div>
     </nav>
 
-    <!-- Overlay -->
-<div id="overlay" class="fixed inset-0 bg-gray-900 opacity-90 hidden z-40"></div>
+   <!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black opacity-90 hidden z-40"></div>
 
 <!-- Mobile Menu -->
-<div id="mobile-menu" class="fixed inset-0 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+<div id="mobile-menu" class="fixed inset-0 bg-black shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
     <div class="p-6">
         <!-- Close Button -->
-        <button id="close-menu" class="absolute top-4 right-4 text-2xl text-gray-600">
+        <button id="close-menu" class="absolute top-4 right-4 text-2xl text-white">
             ✖
         </button>
 
@@ -131,15 +115,15 @@ overlay.onclick = closeMenu;
     
 </body>
 
-<section class="py-12 bg-gray-50" id="spacing">
+<section class="py-12 bg-black" id="spacing">
     <div class="container mx-auto text-center">
     </div>
 </section>
 
 
-<div class="flex flex-col items-center py-6 px-4 bg-gray-50">
+<div class="flex flex-col items-center py-6 px-4 bg-black">
     <!-- Navigation Header -->
-    <nav class="w-full max-w-lg mb-6 flex justify-around bg-white rounded p-2">
+    <nav class="w-full max-w-lg mb-6 flex justify-around bg-gray-900 rounded p-2">
         <a href="request-wallet.html" class="flex-1 text-center">
             <button 
                 id="giftCardTab" 
@@ -159,10 +143,10 @@ overlay.onclick = closeMenu;
 
 
 <div class="flex flex-col items-center py-0 px-4">
-    <div class="w-full max-w-md bg-white p-6">
+    <div class="w-full max-w-md bg-black p-6">
         <!-- Title and Description -->
         <h2 class="text-sm font-bold mb-4 text-center text-purple-500">Transact with BTC</h2>
-        <p class="text-gray-700 mb-4 text-xs text-center">
+        <p class="text-white mb-4 text-xs text-center">
             Generate your unique BTC payment address, upload a receipt, and send details securely to get paid.
         </p>
 
@@ -202,10 +186,10 @@ overlay.onclick = closeMenu;
             <form id="giftCardTradeForm">
 <!-- BTC Payment Type -->
 <div class="mb-4">
-    <label class="block text-xs text-black mb-2" for="card-type">BTC Payment Type</label>
+    <label class="block text-xs text-white mb-2" for="card-type">BTC Payment Type</label>
     <select 
         id="card-type" 
-        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs appearance-none"
+        class="w-full bg-black border border-gray-300 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs appearance-none"
     >
         <option value="" disabled selected>Select payment type</option>
         <option value="Receiving BTC">Receiving BTC</option>
@@ -216,11 +200,11 @@ overlay.onclick = closeMenu;
 
 <!-- BTC Amount -->
 <div class="mb-4">
-    <label class="block text-xs text-black mb-2" for="btc-amount-input">BTC Amount</label>
+    <label class="block text-xs text-white mb-2" for="btc-amount-input">BTC Amount</label>
     <input
         type="number"
         id="btc-amount-input"
-        class="w-full bg-white border border-gray-300 rounded px-4 py-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs"
+        class="w-full bg-black border border-gray-300 rounded px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 text-xs"
         placeholder="Enter amount (min $10)"
         min="1"
     >
@@ -231,14 +215,14 @@ overlay.onclick = closeMenu;
 
                 <!-- BTC Wallet Address -->
                 <div class="mb-8">
-                    <label for="btcWallet" class="block text-gray-700 font-medium text-xs mb-2">BTC Wallet Address</label>
+                    <label for="btcWallet" class="block text-white font-medium text-xs mb-2">BTC Wallet Address</label>
                     <div class="flex items-center gap-4">
                         <input 
                             type="text" 
                             id="btcWallet" 
                             value="bc1qva23plr7e69c9tvar9a90f7dt8lh8zyql6t3q3" 
                             readonly 
-                            class="flex-grow h-10 px-3 border rounded text-xs text-gray-400 focus:ring-2 focus:ring-purple-300"
+                            class="flex-grow bg-black h-10 px-3 border rounded text-xs text-white focus:ring-2 focus:ring-purple-300"
                         />
                         <button 
                             class="copy-button px-4 py-2 border bg-gray-100 rounded text-sm text-gray-700 hover:bg-gray-200"
@@ -247,21 +231,21 @@ overlay.onclick = closeMenu;
                             Copy
                         </button>
                     </div>
-                    <p class="text-xs text-gray-500 mt-2">
+                    <p class="text-xs text-gray-100 mt-2">
                         Copy the wallet address above to complete your transactions seamlessly.
                     </p>
                 </div>
     
                 <!-- Gift Card Back Image -->
                 <div class="mb-4">
-                    <label class="block text-gray-700 font-medium text-xs mb-2">BTC payment receipt</label>
+                    <label class="block text-white font-medium text-xs mb-2">BTC payment receipt</label>
                     <input type="file" id="back-image" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs" accept="image/*">
                 </div>
     
                 <!-- Registered Email -->
                 <div class="mb-4">
-                    <label class="block text-gray-700 font-medium text-xs mb-2">Enter Registered Email</label>
-                    <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs">
+                    <label class="block text-white font-medium text-xs mb-2">Enter Registered Email</label>
+                    <input type="email" id="registered-email" placeholder="E.g XYZ@gmail.com" class="w-full bg-black text-white px-4 py-3 border rounded focus:ring-2 focus:ring-purple-300 text-xs">
                 </div>
     
                 <!-- Submit Button -->
@@ -273,15 +257,15 @@ overlay.onclick = closeMenu;
         </div>
     </div>
 
-    <section class="py-4 bg-gray-50" id="spacing">
+    <!-- <section class="py-4 bg-gray-50" id="spacing">
         <div class="">
         </div>
-    </section>
+    </section> -->
 
 
  <!-- Notice of Withdrawal -->
- <div class="pt-3">
-    <div class="bg-gray-100 border-l-4 border-purple-600 text-purple-700 p-5 rounded mb-4 text-xs text-center">
+ <div class="pt-1">
+    <div class="bg-gray-900 border-l-4 border-purple-600 text-white p-5 rounded mb-4 text-xs text-center">
  <p>
     Note: After copying the Wallet ID, do not close this page until a transaction receipt has been uploaded and sent to complete the transaction. Wallet ID's expire after 40 minutes.
 </p>
@@ -436,48 +420,48 @@ overlay.onclick = closeMenu;
 
 </body>
 
-<section class="py-14 bg-gray-50" id="spacing">
+<section class="py-14 bg-black" id="spacing">
     <div class="">
     </div>
 </section>
 
 <!-- Bottom Navbar (Mobile Friendly) -->
-<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t p-3" style="height: 100px;">
+<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-black shadow-lg border-gray-700 p-3" style="height: 100px;">
     <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAARbSURBVHgB7Vq9cttGEN470LGLFHQSy5KawEVm6NhSECmZccl0SWeVqSw/gZkniFWldNKlM/UEUZ5ATOfCoag/k12QmUxEy5wxXUn+uVvvgfg5/NEgAJos/M1wuHfYA3Z53y727gjwAbMFgynBtOrVS3BeVXKv88iGKaF0B26srG1KYHcAsB55VIsDbh8ftptQIkpzoGbdMpl4/TBueOyRLTQu3C1rVkpx4Ib1rSWF+INEM3J32/nGSD+AjcZH35XhBIeCuL66fg+F2AXdeITfzgx5uXvQvqY+aMhriLClDaPZevXP9dW1BhREoRkgAx6Qsb4RjMFQSr7RO3rcStRfWb8NDB/oM0Jj7j85aG9BTuRyIJHvRBfkkmjRscePtUwm+W6IVox1kF/YyEOpiSmk+E7TvxsOVtw+4/LrdxmvoHQukq4aEwxH557qh4EJYUyirPgOUjZJXPT6GHG7e7TXGPb751nv0yfdwWl/57OFJUYUqrvdVYaicWVx6cXg6cmjrPfK7IDL9/skXnIMJ74j8h+6R383IScGpyetK1eX94l+t6hZdbu/X1hcgmdPT/7Kco93xkARvmdFkbgYGwNF+Z4VReIilUJl8T0r8saFkWx8nO8C2I+9o/bvMGVMGhexGIi+nMrme1YkxQUH/uvx4eOfdL1QDKhKMvRmBdgpm+9ZkRQXEmTj5s1v6rpeRW8gY/coeByZjG8+OWzfhRmi0+kM6WuTShBl3R3VJxj+TF8tT8efgS8o4yBFvteWhsxdn5SNi4Zo0A86HLWwrujlXfMdqEhRD4bgn7OgTRrUTCCwjtc2BK97su8ACyKesk6gPC9gDP0MhEwPbK/TnyJHrsKcIc2mIAshswMZTZg3IPvKFzFgSDADhtBoEyjPCxgECYYbwg76NXy5svbcmyq1JLRHaWzmsCyr+lLw5167e9j27Q4Xcyyg0cdvKhbMCc4hsCWaYEIOIMh9TxZczo0DTAa2IMp/9WuRcjrknQkFoUoTpzwpDtMTxs5AOBMVC+TRDh08VJ/CTqRkIIUwhUKZCAtRSH/Z6HIepGUgp603VPkQ1BxQNSn6YcZQGUh7iQ2Pqa7Qr8eXlHOWifQMFIlRBzEH5i0T6RmIauQX0esJi/pyM1EJMH2JsVb0YtyBEjNRKdBsMCTPQKGSMpFEd2s9Ik8KPQNh5c0wfj0BZdVENTf/93KeykRqoCHVQJejOpXEkSoTuctLNxO1IAd6BY+TVAZitJR3jUpcZCXuzCEEqx/JRovpWYCL4NlEJTtRJ6kTJd/xZcDN2ur6e3fCOfmhZ3vttE2GxJ25wen/9sLVZUWdmmpToNymtvnp8uf7g/5/U10jqOPZpYVPfnF3BsF9frN7sLedpJ+6O+0EkOR7sQM6lj+jZELC89TmWloiGbu97mzvCSPD0em0wFpnhtgYlwUznZGpdMgSD6/Lx+jghM4GkG2lHRaG9GFC1GqTn2NNgl5ven9L+IBp4C127CiPC2xWGQAAAABJRU5ErkJggg==" alt="Wallet Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAARbSURBVHgB7Vq9cttGEN470LGLFHQSy5KawEVm6NhSECmZccl0SWeVqSw/gZkniFWldNKlM/UEUZ5ATOfCoag/k12QmUxEy5wxXUn+uVvvgfg5/NEgAJos/M1wuHfYA3Z53y727gjwAbMFgynBtOrVS3BeVXKv88iGKaF0B26srG1KYHcAsB55VIsDbh8ftptQIkpzoGbdMpl4/TBueOyRLTQu3C1rVkpx4Ib1rSWF+INEM3J32/nGSD+AjcZH35XhBIeCuL66fg+F2AXdeITfzgx5uXvQvqY+aMhriLClDaPZevXP9dW1BhREoRkgAx6Qsb4RjMFQSr7RO3rcStRfWb8NDB/oM0Jj7j85aG9BTuRyIJHvRBfkkmjRscePtUwm+W6IVox1kF/YyEOpiSmk+E7TvxsOVtw+4/LrdxmvoHQukq4aEwxH557qh4EJYUyirPgOUjZJXPT6GHG7e7TXGPb751nv0yfdwWl/57OFJUYUqrvdVYaicWVx6cXg6cmjrPfK7IDL9/skXnIMJ74j8h+6R383IScGpyetK1eX94l+t6hZdbu/X1hcgmdPT/7Kco93xkARvmdFkbgYGwNF+Z4VReIilUJl8T0r8saFkWx8nO8C2I+9o/bvMGVMGhexGIi+nMrme1YkxQUH/uvx4eOfdL1QDKhKMvRmBdgpm+9ZkRQXEmTj5s1v6rpeRW8gY/coeByZjG8+OWzfhRmi0+kM6WuTShBl3R3VJxj+TF8tT8efgS8o4yBFvteWhsxdn5SNi4Zo0A86HLWwrujlXfMdqEhRD4bgn7OgTRrUTCCwjtc2BK97su8ACyKesk6gPC9gDP0MhEwPbK/TnyJHrsKcIc2mIAshswMZTZg3IPvKFzFgSDADhtBoEyjPCxgECYYbwg76NXy5svbcmyq1JLRHaWzmsCyr+lLw5167e9j27Q4Xcyyg0cdvKhbMCc4hsCWaYEIOIMh9TxZczo0DTAa2IMp/9WuRcjrknQkFoUoTpzwpDtMTxs5AOBMVC+TRDh08VJ/CTqRkIIUwhUKZCAtRSH/Z6HIepGUgp603VPkQ1BxQNSn6YcZQGUh7iQ2Pqa7Qr8eXlHOWifQMFIlRBzEH5i0T6RmIauQX0esJi/pyM1EJMH2JsVb0YtyBEjNRKdBsMCTPQKGSMpFEd2s9Ik8KPQNh5c0wfj0BZdVENTf/93KeykRqoCHVQJejOpXEkSoTuctLNxO1IAd6BY+TVAZitJR3jUpcZCXuzCEEqx/JRovpWYCL4NlEJTtRJ6kTJd/xZcDN2ur6e3fCOfmhZ3vttE2GxJ25wen/9sLVZUWdmmpToNymtvnp8uf7g/5/U10jqOPZpYVPfnF3BsF9frN7sLedpJ+6O+0EkOR7sQM6lj+jZELC89TmWloiGbu97mzvCSPD0em0wFpnhtgYlwUznZGpdMgSD6/Lx+jghM4GkG2lHRaG9GFC1GqTn2NNgl5ven9L+IBp4C127CiPC2xWGQAAAABJRU5ErkJggg==" alt="Wallet Icon" class="h-6 w-6" style="filter: invert(1);"/>
             </div>
-            <span class="text-xs font-medium mt-2">Home</span>
+            <span class="text-xs text-white font-medium mt-2">Home</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAPISURBVHgB7VnNUhpBEO6Z1aSsSlU8pFKV23pDRbNBU+XN5Qk0x5yCT6A+AfAE0ScQ3oA3gNxSlQQ3/gRubk6xUjlQKVOmTHY6PcAuw7LILj+CFb4DzE/PTH8zPdA9DTDFeMF6CeiGOf8IrgwUwkCAebgDIGcWB26fWx+sXrJdCSwbLw3hiLcM8M4UD4DNAbLnp+VcN4FAAoura7uAeAATA1ZAbXa/ar23O3r8DbHVRJohZHxiJRK0geFXGCIQIe2twKCGAvKMQw2QPae1TOpXT96+1sQL27JqbZqplZixoTPn5kLpLqHm7FQty4YhI2asm8wRxaYWNnKRVNeJGYYOf3mKiKVVfSqnn5LqPLyt4vxp7QhAQQqPQvn6WkKY3loIJf86sl49K2fo/u20WtFcXFnbbpvHLRiGMY+AKbcuNLEPdwUGXU2zKi8wwqHStKv2ewR+w4yhzFga1c73g4czIkMW0bR9NOvm1YRHQHOE10hn+hkmCBZdXKRNdeuaw0237BFABrpbbrGdHDBlU1VdOdxzTAmMG/eewEwU4eWVREq9QGFAf1L2bc7YoAhNQCovAI7oTyUSsDEWBiXRzSMObUIO9I9BxnqQDp5bRObFCaFPQP6lx2gneUQTEmRC1QF3X3rIpLXp1q81p+SWI92B6ohsmXZ0c2k1kels54/p01CVl36R6lJHIjA61H1/s7NdtFcZs8hD3lOb7sXPaD3YQchecyfp75uQE6CIj+G7wB66Q7+4KNgnVqB/FpmAjNq4uEmFkRX8QS4ojvVDKv/lpJyBPhCZAIWcRfpN1kPKvqGvBRghot+Bni9Jfcr2icgnIINvLngqjKzgIgcjRmQCzVAzAxOCqTs9bkwJjBtTAuPGlMC4MSUwboRyJWSib865SgMT2xRcU94K871eGRppKtgmh26efHpLaLPZMK51VPQ8gThlUuacn8fkmu2RQroM/+TzytLK2lG3Mc0g/EDK0rch8w7SDY/H100YMm4lIBVxGmkg3d8nlQoiEZxjq0N3mCguSXJDROt5XXlSp7f4LUrlFFVFGnEpT8rYtCXXTqJTeczTyFcyB+a1UL+cGwXbgiHACzlk1oM5/KKLWFuyLxZPZNTkGwOWQ4aUXYQ9VfnK6XGqNbd2VDepAKAmFvrNCGlu4cflZe3J02eMFDPbZ4fDyln5tez3ZL9/K/lkZXpqI0h5d24akw+an04sWzk5LkCf6MwT027JiEuaFApuVc8+lroN9p9EkPJB8zPB65nGXvOHwcBRKz03pjiwTVkWyPKDKvTf4R8pRK9OFYkv4gAAAABJRU5ErkJggg==" alt="Redeem Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAPISURBVHgB7VnNUhpBEO6Z1aSsSlU8pFKV23pDRbNBU+XN5Qk0x5yCT6A+AfAE0ScQ3oA3gNxSlQQ3/gRubk6xUjlQKVOmTHY6PcAuw7LILj+CFb4DzE/PTH8zPdA9DTDFeMF6CeiGOf8IrgwUwkCAebgDIGcWB26fWx+sXrJdCSwbLw3hiLcM8M4UD4DNAbLnp+VcN4FAAoura7uAeAATA1ZAbXa/ar23O3r8DbHVRJohZHxiJRK0geFXGCIQIe2twKCGAvKMQw2QPae1TOpXT96+1sQL27JqbZqplZixoTPn5kLpLqHm7FQty4YhI2asm8wRxaYWNnKRVNeJGYYOf3mKiKVVfSqnn5LqPLyt4vxp7QhAQQqPQvn6WkKY3loIJf86sl49K2fo/u20WtFcXFnbbpvHLRiGMY+AKbcuNLEPdwUGXU2zKi8wwqHStKv2ewR+w4yhzFga1c73g4czIkMW0bR9NOvm1YRHQHOE10hn+hkmCBZdXKRNdeuaw0237BFABrpbbrGdHDBlU1VdOdxzTAmMG/eewEwU4eWVREq9QGFAf1L2bc7YoAhNQCovAI7oTyUSsDEWBiXRzSMObUIO9I9BxnqQDp5bRObFCaFPQP6lx2gneUQTEmRC1QF3X3rIpLXp1q81p+SWI92B6ohsmXZ0c2k1kels54/p01CVl36R6lJHIjA61H1/s7NdtFcZs8hD3lOb7sXPaD3YQchecyfp75uQE6CIj+G7wB66Q7+4KNgnVqB/FpmAjNq4uEmFkRX8QS4ojvVDKv/lpJyBPhCZAIWcRfpN1kPKvqGvBRghot+Bni9Jfcr2icgnIINvLngqjKzgIgcjRmQCzVAzAxOCqTs9bkwJjBtTAuPGlMC4MSUwboRyJWSib865SgMT2xRcU94K871eGRppKtgmh26efHpLaLPZMK51VPQ8gThlUuacn8fkmu2RQroM/+TzytLK2lG3Mc0g/EDK0rch8w7SDY/H100YMm4lIBVxGmkg3d8nlQoiEZxjq0N3mCguSXJDROt5XXlSp7f4LUrlFFVFGnEpT8rYtCXXTqJTeczTyFcyB+a1UL+cGwXbgiHACzlk1oM5/KKLWFuyLxZPZNTkGwOWQ4aUXYQ9VfnK6XGqNbd2VDepAKAmFvrNCGlu4cflZe3J02eMFDPbZ4fDyln5tez3ZL9/K/lkZXpqI0h5d24akw+an04sWzk5LkCf6MwT027JiEuaFApuVc8+lroN9p9EkPJB8zPB65nGXvOHwcBRKz03pjiwTVkWyPKDKvTf4R8pRK9OFYkv4gAAAABJRU5ErkJggg==" alt="Redeem Icon" class="h-6 w-6" style="filter: invert(1);"/>
             </div>
-            <span class="text-xs font-medium mt-2">Redeem</span>
+            <span class="text-xs text-white font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="data:image/png;base64,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" alt="Withdraw Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="data:image/png;base64,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" alt="Withdraw Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Withdraw</span>
+            <span class="text-xs text-white font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAVLSURBVHgB7VnNUhtHEO6eJf5JUokOwYQkVRE3CD9Zg1Plm8UTBD8B4gmAJ7B4AuAJDE+AOOZk5eaqxMqGX928uQQFcyB/NgXZ6fSstKPZH0krCRCu4quimNHszHRP98x83QNwi/4C4ZIxaj/OIlzYAigT/CYBTy3++wc+dlyndAqXiJ4VyNq5zEfyr7wk/B6BbALItOni8rQOK7j9r/VJsVeFulZgwn6U8zx6BkA56AEIuCGtD1YqzksXukDHCozb39nSk6vNBEeEUyJ00F9pjYyyDCJbiJIt1K0iHSkwNjWzCERrCcOUAGmbzu8UK5XWAoyP8wJYXo4FniciO9LsCoCV/d3yBqREKgWUn9/3/t6KrTrB+rsBWXAdpys/Hp14lEP08izGfEgohMLBTnklzRhtFfBPFe/8BRezRrcSWd5CxXFcuASMTc7MsQVXeUGyegZ2qYPdVwvt+lqtGpOER4KVw73ywkm1emnH4cnxUeWr4aFNj2CYZwjcyn4w9EX2zfHRdqu+LRUYHBzaUgMFdZKwcLhfXoMrQLVaPTs5rhY/ezCM7EK5+s/20NCXmTfHv//QrF9TBUanpp+xf+WDuhK+sp9+c3ULtkbJVIKAHg9+PvznyR9HL5O+T9wDddd5rT9itznYKxfgGsH7YoPFDzb3KVl3HiYdsSKpc93vg1rpuoVXuGt5S7y8br2aQe9iNem7mALjk9N5MDatOm2gD3D4aCYpjLlpboKP3eh3MQWkcSazf21c1lHZDSp7P5f8S7IODxV1CSOkgPJ987KSlkx1mVwlmJYYMlAua9shKhJSAOX5ki73efUDRK1wX4q82R5WAPBJUCbAlhfItYJ5li4zbTebtAI2m8YkV+8srwQ3BHeF3GjUwgRQK3AGA7qBbxGnW4J2FXBqsrj1amacVzto0wqg1wgBieRvcOOAji56Iq4A+1m2UUYXbhqQ9KJKbARFDQsYsSyXb4z7BDBlMmUV8J5jAPoMFWNzNoNjZjzdd35yOu3fkQI1lvrfIoLM+0G6b1YsdhOMq/gaiQrS87Q7jE1Ouzze8uHuq2LacVK7UCM6k0tB7of8bAPlFfUenZqZTz0WxxoqOZCQQ8ryqFudjJVagXhcHGlngaI8JQn+QhAUdD/0rViq/e9sLIVUCvhBd134Wt5HzB7ulpEsOWJy9g+lWGo7oXehGSW7YPGtkCPsMrNSyIfmWFHO05MCKiGlKwTFGsFioqXIHuGyborneWIgw4qCxHpw49eJ47rxaRZSIJUC7OfZoMyr9mOozULjzhCfQg8QZLoRpBrrvb8HbhXoN24V6De0AmSwvegNyTzFDcrquQh6g+7PWYbQPB4JtzFP+LTj4/prSJBVGB+4Rvlbs29lp1zgTpyjwadRnoJSzjUq9Cu0g8HruZwLzVML4J+quSqRNwIysiWWFJr06dSiionPPfE6WH2Lb9u9+oXVDPHsdVzBWB//TUAGmb+mKUMToYcVvq0Pd8ojQZu2gJ8Jg0b076F8XssTNYeopfuyeuAULDKSJsmoBWg1j0+3mbUGdZSwGZLBrNy1aMmIfPzVracaQ1ATMj96wQpr9+G3r9RJMCHFctI86iUo+EaVv2HWynT7F70neZHeDsg1c6xYdjpi4gCuCqrVpDUuE/bdbrLXoywwj/c81hAQOopwIf6dhJyNJtsS0+v1h7it2CBJkLDc7aNH+nmaP2k1fSMbtW02LRaYij5JngBLwvKW93nzQI9Q1hCIiyabDZ5r2U03Ky1eLVO9Uiq3slBmVVndAyprdxWJLxXE3Du75/t7u+faW9wU/A/JvW6n3/qIXAAAAABJRU5ErkJggg==" alt="Support Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAVLSURBVHgB7VnNUhtHEO6eJf5JUokOwYQkVRE3CD9Zg1Plm8UTBD8B4gmAJ7B4AuAJDE+AOOZk5eaqxMqGX928uQQFcyB/NgXZ6fSstKPZH0krCRCu4quimNHszHRP98x83QNwi/4C4ZIxaj/OIlzYAigT/CYBTy3++wc+dlyndAqXiJ4VyNq5zEfyr7wk/B6BbALItOni8rQOK7j9r/VJsVeFulZgwn6U8zx6BkA56AEIuCGtD1YqzksXukDHCozb39nSk6vNBEeEUyJ00F9pjYyyDCJbiJIt1K0iHSkwNjWzCERrCcOUAGmbzu8UK5XWAoyP8wJYXo4FniciO9LsCoCV/d3yBqREKgWUn9/3/t6KrTrB+rsBWXAdpys/Hp14lEP08izGfEgohMLBTnklzRhtFfBPFe/8BRezRrcSWd5CxXFcuASMTc7MsQVXeUGyegZ2qYPdVwvt+lqtGpOER4KVw73ywkm1emnH4cnxUeWr4aFNj2CYZwjcyn4w9EX2zfHRdqu+LRUYHBzaUgMFdZKwcLhfXoMrQLVaPTs5rhY/ezCM7EK5+s/20NCXmTfHv//QrF9TBUanpp+xf+WDuhK+sp9+c3ULtkbJVIKAHg9+PvznyR9HL5O+T9wDddd5rT9itznYKxfgGsH7YoPFDzb3KVl3HiYdsSKpc93vg1rpuoVXuGt5S7y8br2aQe9iNem7mALjk9N5MDatOm2gD3D4aCYpjLlpboKP3eh3MQWkcSazf21c1lHZDSp7P5f8S7IODxV1CSOkgPJ987KSlkx1mVwlmJYYMlAua9shKhJSAOX5ki73efUDRK1wX4q82R5WAPBJUCbAlhfItYJ5li4zbTebtAI2m8YkV+8srwQ3BHeF3GjUwgRQK3AGA7qBbxGnW4J2FXBqsrj1amacVzto0wqg1wgBieRvcOOAji56Iq4A+1m2UUYXbhqQ9KJKbARFDQsYsSyXb4z7BDBlMmUV8J5jAPoMFWNzNoNjZjzdd35yOu3fkQI1lvrfIoLM+0G6b1YsdhOMq/gaiQrS87Q7jE1Ouzze8uHuq2LacVK7UCM6k0tB7of8bAPlFfUenZqZTz0WxxoqOZCQQ8ryqFudjJVagXhcHGlngaI8JQn+QhAUdD/0rViq/e9sLIVUCvhBd134Wt5HzB7ulpEsOWJy9g+lWGo7oXehGSW7YPGtkCPsMrNSyIfmWFHO05MCKiGlKwTFGsFioqXIHuGyborneWIgw4qCxHpw49eJ47rxaRZSIJUC7OfZoMyr9mOozULjzhCfQg8QZLoRpBrrvb8HbhXoN24V6De0AmSwvegNyTzFDcrquQh6g+7PWYbQPB4JtzFP+LTj4/prSJBVGB+4Rvlbs29lp1zgTpyjwadRnoJSzjUq9Cu0g8HruZwLzVML4J+quSqRNwIysiWWFJr06dSiionPPfE6WH2Lb9u9+oXVDPHsdVzBWB//TUAGmb+mKUMToYcVvq0Pd8ojQZu2gJ8Jg0b076F8XssTNYeopfuyeuAULDKSJsmoBWg1j0+3mbUGdZSwGZLBrNy1aMmIfPzVracaQ1ATMj96wQpr9+G3r9RJMCHFctI86iUo+EaVv2HWynT7F70neZHeDsg1c6xYdjpi4gCuCqrVpDUuE/bdbrLXoywwj/c81hAQOopwIf6dhJyNJtsS0+v1h7it2CBJkLDc7aNH+nmaP2k1fSMbtW02LRaYij5JngBLwvKW93nzQI9Q1hCIiyabDZ5r2U03Ky1eLVO9Uiq3slBmVVndAyprdxWJLxXE3Du75/t7u+faW9wU/A/JvW6n3/qIXAAAAABJRU5ErkJggg==" alt="Support Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Support</span>
+            <span class="text-xs text-white font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAT9SURBVHgB7Vm/UxtXEN69U2IHZyZKBluIZIZzkRnhCLiRnRm6iC4l6dIFunQ4fwGiSweUqYDSndIllUXnmSTiDAKU7jyTMRiYiSCJIQ7vbfaddJIs34HunQAXfI1un96P3Xf73u5+B3CNqwXCBSBrP8gTSIskWI1FamgYTsX5tQQ9Rs8MyNjjForTGQQ5RQDJkG4uApak+c5c1XniQg/QEwOGR+/PIFHhDMXfXBihsLVenoOYiGWAZeeTfXQ0z64y1TGri4QlQHrmyYRjhGQD1V2qrWPx2BTTruPUQBMJiIE+8dcS7/pkqwVLRDhX3Qj29Uz2QR4NudQyhCb7hKmUnwZNmKCJzGhuln++9WUkmNuulKcP9p67YWPUfwcvdhb776SRXSjfaLZvD6QPuf0JaEDLAO/ASlH0ZaX8VqVc6Hb8wd5OqcOI8f7BoUcHu39EdiUDNGCI/2abAvt7FOV9VL0xfE7qSKJ89RA0oGUAAeX9Z1Ma2v6rzkvbpN+ABiIbkOEgxT+WJ/DuVyr6walaH+s2xGQ2680dCZENQCntpkD0FOICabU5HUoLIiK6AW3Bik+hAzHBkdn1nwk748T50DoDbxOivwFq+qw6eEMQE3yQx1rTwcVfo4IMt23BPMQGNc8U32iRXVIrF7o3kvvTT9xMMiZ0byJ1o6GQjxuauNvr5bsQEXpxAGHFfxZIs6AJVn6p+UxQAg3oGWDIBWz6K+Xv1fOiSGjkUpYvS1NqpdZaudDB7m7to4H0v2zEl42m/J2BNOy/2FntZrxSnne84MteIri+VgQNxKoHhkfuL/MbaE8BXNM0psNKR1VqCqFcrpWKsALFrY3yV6CJWPXADVM8fCXMDzg38msCS/ChHB7Juayag9iI1IRDXNCw8p2RllZemqSVxPnoSUmZyeYKnBp3fQ64b40Eu81meQFiQrugaYeX3w+mVtiXP2Tt1PUaWBsrxTl4/ECmnK5urP0EPcCF0CqN0tH28yYVvVUArFZ6T6tc46rRUxdSNMst+Mfi+GyDhKSfbqigJw10TcDa3/C+4zolbRqlE7ENUHe7lPILApzk1NLuapCqI5g3Mkxc2XR+iVVTaBsQFJT0NEDHIFrc3CgvgwYiG3Ce4l6VRuAQ0SEa9XyJmbsktw/xahaFvyWXzHcnonKmkQzozGHqCnNQkrBCYBRPEqfOeTShZdvJm6cJG1FM8eg3mIionGlXBgRxoEpxKWHxJCEXdLnNjG1bcGpMGQgz7cQw18nLL03xXTfzdmUAJ22PX3cZ5kCZlK06jgs9gDLEEOZ8W07lrbG98dvEeWPPTSWGR3Pz/PN1c1qfA+WUGnoENdf+3s6jDrrRSqU+Tu7vPf/5rLFnGvDZSE59rPjel6NyoFHRyZnyGxm/nRp8yu3VsDGhLqT8/j1xtAZ+1USwyDsfK/XtFsPZ3AJrNtMQa8emvBt2HkJLylviSPmj5QlccB8nZAEuCTfUWtiiHPukEbpxoQZIaOX3xK4T5ytKVDi8llqzbf2ZsL6BBnxqf66CjeUJvBNVzSgZBzdNWWwRB+HEb6ABCSmanXXpjrjw3gLSj74sDBkYwcNcyPIfmAOKz0Bro0Ue80aOBfUIMYCaUdEguDTf70Q3awcaQG2UN7ZxoZeN13hYhMOgPoGB7JN0yjkl/J0puMWtK6xj1VfN/lT6GQe21WNmA2u7uydwjbcM/wOLnCVOEwYUZwAAAABJRU5ErkJggg==" alt="Profile Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAT9SURBVHgB7Vm/UxtXEN69U2IHZyZKBluIZIZzkRnhCLiRnRm6iC4l6dIFunQ4fwGiSweUqYDSndIllUXnmSTiDAKU7jyTMRiYiSCJIQ7vbfaddJIs34HunQAXfI1un96P3Xf73u5+B3CNqwXCBSBrP8gTSIskWI1FamgYTsX5tQQ9Rs8MyNjjForTGQQ5RQDJkG4uApak+c5c1XniQg/QEwOGR+/PIFHhDMXfXBihsLVenoOYiGWAZeeTfXQ0z64y1TGri4QlQHrmyYRjhGQD1V2qrWPx2BTTruPUQBMJiIE+8dcS7/pkqwVLRDhX3Qj29Uz2QR4NudQyhCb7hKmUnwZNmKCJzGhuln++9WUkmNuulKcP9p67YWPUfwcvdhb776SRXSjfaLZvD6QPuf0JaEDLAO/ASlH0ZaX8VqVc6Hb8wd5OqcOI8f7BoUcHu39EdiUDNGCI/2abAvt7FOV9VL0xfE7qSKJ89RA0oGUAAeX9Z1Ma2v6rzkvbpN+ABiIbkOEgxT+WJ/DuVyr6walaH+s2xGQ2680dCZENQCntpkD0FOICabU5HUoLIiK6AW3Bik+hAzHBkdn1nwk748T50DoDbxOivwFq+qw6eEMQE3yQx1rTwcVfo4IMt23BPMQGNc8U32iRXVIrF7o3kvvTT9xMMiZ0byJ1o6GQjxuauNvr5bsQEXpxAGHFfxZIs6AJVn6p+UxQAg3oGWDIBWz6K+Xv1fOiSGjkUpYvS1NqpdZaudDB7m7to4H0v2zEl42m/J2BNOy/2FntZrxSnne84MteIri+VgQNxKoHhkfuL/MbaE8BXNM0psNKR1VqCqFcrpWKsALFrY3yV6CJWPXADVM8fCXMDzg38msCS/ChHB7Juayag9iI1IRDXNCw8p2RllZemqSVxPnoSUmZyeYKnBp3fQ64b40Eu81meQFiQrugaYeX3w+mVtiXP2Tt1PUaWBsrxTl4/ECmnK5urP0EPcCF0CqN0tH28yYVvVUArFZ6T6tc46rRUxdSNMst+Mfi+GyDhKSfbqigJw10TcDa3/C+4zolbRqlE7ENUHe7lPILApzk1NLuapCqI5g3Mkxc2XR+iVVTaBsQFJT0NEDHIFrc3CgvgwYiG3Ce4l6VRuAQ0SEa9XyJmbsktw/xahaFvyWXzHcnonKmkQzozGHqCnNQkrBCYBRPEqfOeTShZdvJm6cJG1FM8eg3mIionGlXBgRxoEpxKWHxJCEXdLnNjG1bcGpMGQgz7cQw18nLL03xXTfzdmUAJ22PX3cZ5kCZlK06jgs9gDLEEOZ8W07lrbG98dvEeWPPTSWGR3Pz/PN1c1qfA+WUGnoENdf+3s6jDrrRSqU+Tu7vPf/5rLFnGvDZSE59rPjel6NyoFHRyZnyGxm/nRp8yu3VsDGhLqT8/j1xtAZ+1USwyDsfK/XtFsPZ3AJrNtMQa8emvBt2HkJLylviSPmj5QlccB8nZAEuCTfUWtiiHPukEbpxoQZIaOX3xK4T5ytKVDi8llqzbf2ZsL6BBnxqf66CjeUJvBNVzSgZBzdNWWwRB+HEb6ABCSmanXXpjrjw3gLSj74sDBkYwcNcyPIfmAOKz0Bro0Ue80aOBfUIMYCaUdEguDTf70Q3awcaQG2UN7ZxoZeN13hYhMOgPoGB7JN0yjkl/J0puMWtK6xj1VfN/lT6GQe21WNmA2u7uydwjbcM/wOLnCVOEwYUZwAAAABJRU5ErkJggg==" alt="Profile Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Profile</span>
+            <span class="text-xs text-white font-medium mt-2">Profile</span>
         </a>
     </div>
 </div>

@@ -151,10 +151,10 @@ onAuthStateChanged(auth, async (user) => {
         document.querySelector('a[onclick="showUserInfo()"]').addEventListener('click', showUserInfo);
     </script>
 </head>
-<body class="font-sans antialiased bg-gray-100">
+<body class="font-sans antialiased bg-black">
 
 <!-- Navbar -->
-<nav class="bg-white p-4 shadow">
+<nav class="bg-black p-4 shadow">
     <div class="container mx-auto flex items-center justify-between">
         <img src="express (4).png" alt="Gift card Brand Logo" class="h-14">
         </a>
@@ -172,7 +172,7 @@ onAuthStateChanged(auth, async (user) => {
 
 <!-- Main Profile Content -->
 <div class="flex-1 p-4 mt-2">
-        <div class="w-full bg-white px-1 py-2 rounded mt-0">
+        <div class="w-full bg-black px-1 py-2 rounded mt-0">
 <!-- Profile Header
 <div class="flex items-left-2 mb-4">
     <input type="file" id="profileImageInput" accept="image/*" class="hidden" onchange="uploadProfilePicture(event)">
@@ -187,12 +187,12 @@ onAuthStateChanged(auth, async (user) => {
     <!-- Profile Sections -->
         <h2 class="text-sm font-semibold mb-4"></h2>
         <ul class="space-y-4">
-            <li class="flex items-center text-xs justify-between p-4 border-b">
+            <li class="flex items-center text-xs text-white justify-between p-4 px-4 border-gray-900">
                 <span>Profile details</span>
                 <a href="profile-2.html" class="text-blue-500" onclick="showUserInfo()">View</a>
             </li>
             </li>
-            <li class="flex items-center text-xs justify-between p-4 border-b">
+            <li class="flex items-center text-xs text-white justify-between p-4 px-4 border-gray-900">
                 <span>Support</span>
                 <a href="support.html" class="text-blue-500">Contact</a>
             </li>
@@ -370,42 +370,42 @@ async function showUserInfo() {
 
 
 <!-- Bottom Navbar (Mobile Friendly) -->
-<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t p-3" style="height: 100px;">
+<div class="mobile-nav fixed bottom-0 left-0 right-0 bg-black shadow-lg border-gray-700 p-3" style="height: 100px;">
     <div class="flex justify-around items-center h-full">
         <!-- Wallet Icon -->
         <a href="dashboard.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="1221.png" alt="Wallet Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="1221.png" alt="Wallet Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Home</span>
+            <span class="text-xs text-white font-medium mt-2">Home</span>
         </a>
         <!-- Deposit Icon -->
         <a href="redeem.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="deposit.png" alt="Redeem Icon" class="h-6 w-6" />
+            <div class="bg- rounded p-2">
+                <img src="deposit.png" alt="Redeem Icon" class="h-6 w-6" style="filter: invert(1);"/>
             </div>
-            <span class="text-xs font-medium mt-2">Redeem</span>
+            <span class="text-xs text-white font-medium mt-2">Redeem</span>
         </a>
         <!-- Withdraw Icon -->
         <a href="withdraw.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="withdraw.png" alt="Withdraw Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="withdraw.png" alt="Withdraw Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Withdraw</span>
+            <span class="text-xs text-white font-medium mt-2">Withdraw</span>
         </a>
         <!-- Verify Icon -->
         <a href="support.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
-                <img src="support.png" alt="Support Icon" class="h-6 w-6" />
+            <div class="bg-black rounded p-2">
+                <img src="support.png" alt="Support Icon" class="h-6 w-6" style="filter: invert(1);" />
             </div>
-            <span class="text-xs font-medium mt-2">Support</span>
+            <span class="text-xs text-white font-medium mt-2">Support</span>
         </a>
         <!-- Profile Icon -->
         <a href="profile.html" class="nav-item flex flex-col items-center" onclick="setActive(this)">
-            <div class="bg-white rounded p-2">
+            <div class="bg-black rounded p-2">
                 <img src="profile.png" alt="Profile Icon" class="h-6 w-6" />
             </div>
-            <span class="text-xs font-medium mt-2">Profile</span>
+            <span class="text-xs text-white font-medium mt-2">Profile</span>
         </a>
     </div>
 </div>
