@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gifing Company</title>
+    <link rel="manifest" href="/assets/manifest-7DWRkJU7.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/express%20(4)-ChytSFcj.png">
+    <link rel="icon" href="/assets/express%20(4)-ChytSFcj.png" type="image/png">
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans antialiased">
+
+        <!-- Navbar -->
+        <nav class="fixed top-0 left-0 right-0 bg-black bg-opacity-800 p-8 z-50">
+            <div class="container mx-auto flex items-center justify-between">
+                <div class="flex items-center justify-center w-full md:w-auto">
+                    <img src="/assets/express%20(10)-Yk_rCyAk.png" alt="Gift card Brand Logo" class="h-8 w-auto">
+                    </a>
+    
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden ml-auto">
+                        <button id="mobile-menu-button" class="text-purple-500 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+    
+                <!-- Navigation links -->
+                <div class="hidden md:flex space-x-8 ml-auto">
+                    <a href="index.html" class="text-white text-sm hover:text-gray-800">Home</a>
+                    <a href="sign-in.html" class="text-white text-sm hover:text-gray-800">Sell Gift Cards</a>
+                    <!-- <a href="rate-calculator.html" class="text-white text-sm hover:text-gray-800">Rate Checker</a> -->
+                    <a href="contact.html" class="text-white text-sm hover:text-gray-800">Contact</a>
+                </div>
+    
+                <!-- Log In CTA -->
+                <div class="hidden md:flex ml-4">
+                    <a href="sign-in.html" class="bg-purple-500 text-white text-sm px-6 py-2 rounded hover:bg-purple-800">Log In</a>
+                </div>
+            </div>
+        </nav>
+    
+        
+    
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-gray-900 opacity-90 hidden z-40"></div>
+    
+        <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+        <div class="p-6">
+            <!-- Close Button -->
+            <button id="close-menu" class="absolute top-4 right-4 text-2xl text-gray-600">
+                ✖
+            </button>
+
+            <!-- Navigation Links -->
+            <nav class="w-full flex flex-col items-center space-y-6 mt-8">
+                <a href="index.html" class="w-4/5 py-3 text-center border text-white text-xs-2 font-regular bg-black rounded hover:bg-purple-300 transition ">
+                    Home
+                </a>
+                <a href="sign-in.html" class="w-4/5 py-3 text-center border text-white text-xs-2 font-medium bg-black rounded hover:bg-purple-300 transition">
+                    Sell Gift Cards
+                </a>
+                <a href="contact.html" class="w-4/5 py-3 text-center border text-white text-xs-2 font-medium bg-black rounded hover:bg-purple-300 transition">
+                    Contact
+                </a>
+                <a href="sign-in.html" class="w-4/5 py-3 text-center text-lg text-white bg-purple-600 rounded-lg hover:bg-purple-500 transition">
+                    Log In
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+    window.onload = function () {
+        const splashScreen = document.getElementById('splash-screen');
+        setTimeout(() => {
+            splashScreen.style.display = 'none'; // Hide the splash screen
+            document.body.style.overflow = 'auto'; // Restore scroll
+        }, 4000); // Adjust time to match animation duration
+    };
+
+    const menu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('overlay');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu');
+
+    // Function to open the menu
+    function openMenu() {
+        menu.classList.remove('translate-x-full');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Disable scrolling
+    }
+
+    // Function to close the menu
+    function closeMenu() {
+        menu.classList.add('translate-x-full');
+        overlay.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Toggle mobile menu visibility
+    mobileMenuButton.onclick = openMenu;
+    closeMenuButton.onclick = closeMenu;
+
+    // Close menu when clicking the overlay
+    overlay.onclick = closeMenu;
+    </script>
+    
+        <script>
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyA3OvFCz4sU4QnZAPnFrc_yzZezjzlzkgY",
+                authDomain: "exprespay-26ac0.firebaseapp.com",
+                projectId: "exprespay-26ac0",
+                storageBucket: "exprespay-26ac0.firebasestorage.app",
+                messagingSenderId: "933418932546",
+                appId: "1:933418932546:web:1eaac518eecab2042390db",
+                measurementId: "G-8ECL5E373T"
+            };
+    
+            // Initialize Firebase
+            const app = firebase.initializeApp(firebaseConfig);
+            const analytics = firebase.getAnalytics(app);
+        </script>
+        
+    </body>
+
+</html>
+
+
+        
+        <!-- Include Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        
+        <!-- Firebase SDKs -->
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    </head>
+    <body class="flex items-center justify-center min-h-screen bg-gray-100">
+        <!-- New Password Card -->
+        <div class="flex items-center justify-center min-h-screen bg-gray-100">
+            <div class="bg-white rounded-lg p-8 max-w-md w-full shadow-lg">
+                <!-- Logo -->
+                <div class="flex justify-center mb-6">
+                    <img src="data:image/png;base64,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" alt="Expres pay" class="h-16">
+                </div>
+    
+                <h2 class="text-2xl font-semibold text-center mb-2">Set New Password</h2>
+                <p class="text-gray-600 text-center mb-6">Please enter your new password below</p>
+                
+                <form id="new-password-form" class="space-y-4">
+                    <!-- Password Field -->
+                    <div class="relative">
+                        <input 
+                            type="password" 
+                            id="new-password" 
+                            placeholder="New Password" 
+                            required 
+                            class="border border-gray-300 rounded-lg p-3 w-full mb-2"
+                            minlength="8"
+                        />
+                        <button 
+                            type="button" 
+                            id="toggle-password" 
+                            class="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
+                        >
+                            👁️
+                        </button>
+                    </div>
+    
+                    <!-- Password Requirements -->
+                    <div class="text-sm text-gray-600 space-y-1 mb-4">
+                        <p id="length-check" class="flex items-center">
+                            <span class="mr-2">❌</span> At least 8 characters
+                        </p>
+                        <p id="uppercase-check" class="flex items-center">
+                            <span class="mr-2">❌</span> One uppercase letter
+                        </p>
+                        <p id="lowercase-check" class="flex items-center">
+                            <span class="mr-2">❌</span> One lowercase letter
+                        </p>
+                        <p id="number-check" class="flex items-center">
+                            <span class="mr-2">❌</span> One number
+                        </p>
+                        <p id="special-check" class="flex items-center">
+                            <span class="mr-2">❌</span> One special character
+                        </p>
+                    </div>
+    
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        id="reset-button"
+                        class="bg-purple-600 text-white rounded-lg py-3 w-full hover:bg-purple-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled
+                    >
+                        Reset Password
+                    </button>
+                </form>
+    
+                <!-- Status Message -->
+                <p id="status-message" class="mt-4 text-center hidden"></p>
+            </div>
+        </div>
+    
+        <script>
+            // Initialize Firebase
+            // const firebaseConfig = {
+            //     apiKey: "AIzaSyCJdMdkW5NZF83PLBLYZk3yBAFsUxqautY",
+            //     authDomain: "atpib-82d72.firebaseapp.com",
+            //     projectId: "atpib-82d72",
+            //     storageBucket: "atpib-82d72.firebasestorage.app",
+            //     messagingSenderId: "938927546204",
+            //     appId: "1:938927546204:web:ea096f1dfe3b3754dd6b99",
+            //     measurementId: "G-G3BRPK5B9T"
+            // };
+    
+            firebase.initializeApp(firebaseConfig);
+    
+            // Get the action code from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const mode = urlParams.get('mode');
+            const actionCode = urlParams.get('oobCode');
+    
+            // Password visibility toggle
+            document.getElementById('toggle-password').addEventListener('click', function() {
+                const passwordInput = document.getElementById('new-password');
+                passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+                this.textContent = passwordInput.type === 'password' ? '👁️' : '👁️‍🗨️';
+            });
+    
+            // Password validation
+            const newPassword = document.getElementById('new-password');
+            const resetButton = document.getElementById('reset-button');
+    
+            function updateRequirementCheck(requirement, isValid) {
+                const element = document.getElementById(`${requirement}-check`);
+                element.querySelector('span').textContent = isValid ? '✅' : '❌';
+            }
+    
+            function validatePassword() {
+                const password = newPassword.value;
+                
+                // Check requirements
+                const isLengthValid = password.length >= 8;
+                const isUppercaseValid = /[A-Z]/.test(password);
+                const isLowercaseValid = /[a-z]/.test(password);
+                const isNumberValid = /[0-9]/.test(password);
+                const isSpecialValid = /[!@#$%^&*]/.test(password);
+    
+                updateRequirementCheck('length', isLengthValid);
+                updateRequirementCheck('uppercase', isUppercaseValid);
+                updateRequirementCheck('lowercase', isLowercaseValid);
+                updateRequirementCheck('number', isNumberValid);
+                updateRequirementCheck('special', isSpecialValid);
+    
+                // Enable/disable submit button
+                resetButton.disabled = !(isLengthValid && isUppercaseValid && 
+                                      isLowercaseValid && isNumberValid && isSpecialValid);
+            }
+    
+            newPassword.addEventListener('input', validatePassword);
+    
+            // Handle form submission
+            document.getElementById('new-password-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const newPassword = document.getElementById('newPassword').value;
+
+                // Update button state
+                resetButton.disabled = true;
+                resetButton.textContent = 'Updating...';
+
+                try {
+                    // Get the current user
+                    const user = firebase.auth().currentUser;
+
+                    if (user) {
+                        // Update the user's password
+                        await user.updatePassword(newPassword);
+                        showMessage('Password updated successfully!');
+                        resetButton.textContent = 'Password Updated';
+                        
+                        // Optional: Redirect to login page after 3 seconds
+                        setTimeout(() => {
+                            window.location.href = 'sign-in.html';
+                        }, 3000);
+                    } else {
+                        showMessage('No user is currently signed in.', true);
+                    }
+                } catch (error) {
+                    showMessage('Error updating password: ' + error.message, true);
+                    resetButton.textContent = 'Try Again';
+                }
+            });
+    
+            function showMessage(message, isError = false) {
+                const statusMessage = document.getElementById('status-message');
+                statusMessage.textContent = message;
+                statusMessage.className = `mt-4 text-center ${isError ? 'text-red-600' : 'text-green-600'}`;
+                statusMessage.classList.remove('hidden');
+            }
+        </script>
+    </body>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gifing Company</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="express (4).png">
+    <link rel="icon" href="express (4).png" type="image/png">
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans antialiased">
+
+        <!-- Navbar -->
+        <nav class="fixed top-0 left-0 right-0 bg-black bg-opacity-800 p-8 z-50">
+            <div class="container mx-auto flex items-center justify-between">
+                <div class="flex items-center justify-center w-full md:w-auto">
+                    <img src="express (10).png" alt="Gift card Brand Logo" class="h-8 w-auto">
+                    </a>
+    
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden ml-auto">
+                        <button id="mobile-menu-button" class="text-purple-500 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+    
+                <!-- Navigation links -->
+                <div class="hidden md:flex space-x-8 ml-auto">
+                    <a href="index.html" class="text-white text-sm hover:text-gray-800">Home</a>
+                    <a href="sign-in.html" class="text-white text-sm hover:text-gray-800">Sell Gift Cards</a>
+                    <!-- <a href="rate-calculator.html" class="text-white text-sm hover:text-gray-800">Rate Checker</a> -->
+                    <a href="contact.html" class="text-white text-sm hover:text-gray-800">Contact</a>
+                </div>
+    
+                <!-- Log In CTA -->
+                <div class="hidden md:flex ml-4">
+                    <a href="sign-in.html" class="bg-purple-500 text-white text-sm px-6 py-2 rounded hover:bg-purple-800">Log In</a>
+                </div>
+            </div>
+        </nav>
+    
+        
+    
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-gray-900 opacity-90 hidden z-40"></div>
+    
+        <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-50">
+        <div class="p-6">
+            <!-- Close Button -->
+            <button id="close-menu" class="absolute top-4 right-4 text-2xl text-gray-600">
+                ✖
+            </button>
+
+            <!-- Navigation Links -->
+            <nav class="w-full flex flex-col items-center space-y-6 mt-8">
+                <a href="index.html" class="w-4/5 py-3 text-center border text-white text-xs-2 font-regular bg-black rounded hover:bg-purple-300 transition ">
+                    Home
+                </a>
+                <a href="sign-in.html" class="w-4/5 py-3 text-center border text-white text-xs-2 font-medium bg-black rounded hover:bg-purple-300 transition">
+                    Sell Gift Cards
+                </a>
+                <a href="contact.html" class="w-4/5 py-3 text-center border text-white text-xs-2 font-medium bg-black rounded hover:bg-purple-300 transition">
+                    Contact
+                </a>
+                <a href="sign-in.html" class="w-4/5 py-3 text-center text-lg text-white bg-purple-600 rounded-lg hover:bg-purple-500 transition">
+                    Log In
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+    window.onload = function () {
+        const splashScreen = document.getElementById('splash-screen');
+        setTimeout(() => {
+            splashScreen.style.display = 'none'; // Hide the splash screen
+            document.body.style.overflow = 'auto'; // Restore scroll
+        }, 4000); // Adjust time to match animation duration
+    };
+
+    const menu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('overlay');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu');
+
+    // Function to open the menu
+    function openMenu() {
+        menu.classList.remove('translate-x-full');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Disable scrolling
+    }
+
+    // Function to close the menu
+    function closeMenu() {
+        menu.classList.add('translate-x-full');
+        overlay.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Toggle mobile menu visibility
+    mobileMenuButton.onclick = openMenu;
+    closeMenuButton.onclick = closeMenu;
+
+    // Close menu when clicking the overlay
+    overlay.onclick = closeMenu;
+    </script>
+    
+        <script>
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyA3OvFCz4sU4QnZAPnFrc_yzZezjzlzkgY",
+                authDomain: "exprespay-26ac0.firebaseapp.com",
+                projectId: "exprespay-26ac0",
+                storageBucket: "exprespay-26ac0.firebasestorage.app",
+                messagingSenderId: "933418932546",
+                appId: "1:933418932546:web:1eaac518eecab2042390db",
+                measurementId: "G-8ECL5E373T"
+            };
+    
+            // Initialize Firebase
+            const app = firebase.initializeApp(firebaseConfig);
+            const analytics = firebase.getAnalytics(app);
+        </script>
+        
+    </body>
+
+</html>
+
+
+        
+        <!-- Include Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        
+        <!-- Firebase SDKs -->
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    </head>
+    <body class="flex items-center justify-center min-h-screen bg-gray-100">
+        <!-- New Password Card -->
+        <div class="flex items-center justify-center min-h-screen bg-gray-100">
+            <div class="bg-white rounded-lg p-8 max-w-md w-full shadow-lg">
+                <!-- Logo -->
+                <div class="flex justify-center mb-6">
+                    <img src="express (41).png" alt="Expres pay" class="h-16">
+                </div>
+    
+                <h2 class="text-2xl font-semibold text-center mb-2">Set New Password</h2>
+                <p class="text-gray-600 text-center mb-6">Please enter your new password below</p>
+                
+                <form id="new-password-form" class="space-y-4">
+                    <!-- Password Field -->
+                    <div class="relative">
+                        <input 
+                            type="password" 
+                            id="new-password" 
+                            placeholder="New Password" 
+                            required 
+                            class="border border-gray-300 rounded-lg p-3 w-full mb-2"
+                            minlength="8"
+                        />
+                        <button 
+                            type="button" 
+                            id="toggle-password" 
+                            class="absolute right-3 top-3 text-gray-400 hover:text-gray-600"
+                        >
+                            👁️
+                        </button>
+                    </div>
+    
+                    <!-- Password Requirements -->
+                    <div class="text-sm text-gray-600 space-y-1 mb-4">
+                        <p id="length-check" class="flex items-center">
+                            <span class="mr-2">❌</span> At least 8 characters
+                        </p>
+                        <p id="uppercase-check" class="flex items-center">
+                            <span class="mr-2">❌</span> One uppercase letter
+                        </p>
+                        <p id="lowercase-check" class="flex items-center">
+                            <span class="mr-2">❌</span> One lowercase letter
+                        </p>
+                        <p id="number-check" class="flex items-center">
+                            <span class="mr-2">❌</span> One number
+                        </p>
+                        <p id="special-check" class="flex items-center">
+                            <span class="mr-2">❌</span> One special character
+                        </p>
+                    </div>
+    
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        id="reset-button"
+                        class="bg-purple-600 text-white rounded-lg py-3 w-full hover:bg-purple-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled
+                    >
+                        Reset Password
+                    </button>
+                </form>
+    
+                <!-- Status Message -->
+                <p id="status-message" class="mt-4 text-center hidden"></p>
+            </div>
+        </div>
+    
+        <script>
+            // Initialize Firebase
+            // const firebaseConfig = {
+            //     apiKey: "AIzaSyCJdMdkW5NZF83PLBLYZk3yBAFsUxqautY",
+            //     authDomain: "atpib-82d72.firebaseapp.com",
+            //     projectId: "atpib-82d72",
+            //     storageBucket: "atpib-82d72.firebasestorage.app",
+            //     messagingSenderId: "938927546204",
+            //     appId: "1:938927546204:web:ea096f1dfe3b3754dd6b99",
+            //     measurementId: "G-G3BRPK5B9T"
+            // };
+    
+            firebase.initializeApp(firebaseConfig);
+    
+            // Get the action code from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const mode = urlParams.get('mode');
+            const actionCode = urlParams.get('oobCode');
+    
+            // Password visibility toggle
+            document.getElementById('toggle-password').addEventListener('click', function() {
+                const passwordInput = document.getElementById('new-password');
+                passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+                this.textContent = passwordInput.type === 'password' ? '👁️' : '👁️‍🗨️';
+            });
+    
+            // Password validation
+            const newPassword = document.getElementById('new-password');
+            const resetButton = document.getElementById('reset-button');
+    
+            function updateRequirementCheck(requirement, isValid) {
+                const element = document.getElementById(`${requirement}-check`);
+                element.querySelector('span').textContent = isValid ? '✅' : '❌';
+            }
+    
+            function validatePassword() {
+                const password = newPassword.value;
+                
+                // Check requirements
+                const isLengthValid = password.length >= 8;
+                const isUppercaseValid = /[A-Z]/.test(password);
+                const isLowercaseValid = /[a-z]/.test(password);
+                const isNumberValid = /[0-9]/.test(password);
+                const isSpecialValid = /[!@#$%^&*]/.test(password);
+    
+                updateRequirementCheck('length', isLengthValid);
+                updateRequirementCheck('uppercase', isUppercaseValid);
+                updateRequirementCheck('lowercase', isLowercaseValid);
+                updateRequirementCheck('number', isNumberValid);
+                updateRequirementCheck('special', isSpecialValid);
+    
+                // Enable/disable submit button
+                resetButton.disabled = !(isLengthValid && isUppercaseValid && 
+                                      isLowercaseValid && isNumberValid && isSpecialValid);
+            }
+    
+            newPassword.addEventListener('input', validatePassword);
+    
+            // Handle form submission
+            document.getElementById('new-password-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const newPassword = document.getElementById('newPassword').value;
+
+                // Update button state
+                resetButton.disabled = true;
+                resetButton.textContent = 'Updating...';
+
+                try {
+                    // Get the current user
+                    const user = firebase.auth().currentUser;
+
+                    if (user) {
+                        // Update the user's password
+                        await user.updatePassword(newPassword);
+                        showMessage('Password updated successfully!');
+                        resetButton.textContent = 'Password Updated';
+                        
+                        // Optional: Redirect to login page after 3 seconds
+                        setTimeout(() => {
+                            window.location.href = 'sign-in.html';
+                        }, 3000);
+                    } else {
+                        showMessage('No user is currently signed in.', true);
+                    }
+                } catch (error) {
+                    showMessage('Error updating password: ' + error.message, true);
+                    resetButton.textContent = 'Try Again';
+                }
+            });
+    
+            function showMessage(message, isError = false) {
+                const statusMessage = document.getElementById('status-message');
+                statusMessage.textContent = message;
+                statusMessage.className = `mt-4 text-center ${isError ? 'text-red-600' : 'text-green-600'}`;
+                statusMessage.classList.remove('hidden');
+            }
+        </script>
+    </body>
+</body>
+</html>

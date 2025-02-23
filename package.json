@@ -16,6 +16,7 @@
   "dependencies": {
     "@cloudinary/url-gen": "^1.21.0",
     "@emailjs/browser": "^4.4.1",
+    "@pwabuilder/cli": "^0.0.17",
     "axios": "^1.7.7",
     "cloudinary": "^2.5.1",
     "cors": "^2.8.5",
